@@ -1,20 +1,20 @@
 {
   "paragraphs": [
     {
-      "text": "%md\n# NCATS Translator Blackboard\n\n### Overview\nThis note explores methods for combining resources within the [RENCI data](https://mesostars.wordpress.com/) lake. These resources pair data with the technologies best suited to manage them. Graph oriented semantic web data is housed in scalable graph databases. Environmental exposure data is housed in a GIS oriented relational store. In front of it all, we have a Zeppelin notebook interfacing to Apache Spark.\n\nThis notebook is also the workspace for addressing the NCATS Translator Green Team Blackboard described in this [GitHub Issue](https://github.com/ResearchSoftwareInstitute/greendatatranslator/issues/15).\nUsing these resources, we\u0027ll attempt the following tasks:\n\u003e* List medications for a disease (in our case asthma) \n\u003e* List protein targets for a list of medications\n\u003e* List biological pathways for a list of protein targets\n\u003e* List initiating mechanisms (e.g., molecular initiative events) for PM2.5 and ozone\n\u003e* List targets affected by asthma initiating events and whether the interaction is activation or inhibition\n\u003e* List genes associated with up and down regulation of targets from 5\n\n### Data Sources\nHere are the initial data sources we\u0027ll be integrating:\n\n| Source        | Stack                  | Description                   |\n|---------------|:----------------------:|-------------------------------|\n| Blackboard    | Apache Spark/Zeppelin  | Data Parallel Compute / Python|\n| Chem2Bio2RDF  | Blazegraph             | Graph Database / SPARQL       |\n| Monarch       | Blazegraph             | Graph Database / SPARQL       |\n| Environmental | PostgreSQL / PostGIS   | Relational GIS Database / SQL |\n\n\n### Approach\n\nTo start with, we\u0027ll connect to the graph databsase via a SPARQL query.\n",
+      "text": "%md\n# NCATS Translator Blackboard\n\n### Overview\nThis note explores methods for combining resources within the [RENCI data](https://mesostars.wordpress.com/) lake. These resources pair data with the technologies best suited to manage them. Graph oriented semantic web data is housed in scalable graph databases. Environmental exposure data is housed in a GIS oriented relational store. In front of it all, we have a Zeppelin notebook interfacing to Apache Spark.\n\nThis notebook is also the workspace for addressing the NCATS Translator Green Team Blackboard described in this [GitHub Issue](https://github.com/ResearchSoftwareInstitute/greendatatranslator/issues/15).\nUsing these resources, we\u0027ll attempt the following tasks:\n\u003e* List medications for a disease (in our case asthma) \n\u003e* List protein targets for a list of medications\n\u003e* List biological pathways for a list of protein targets\n\u003e* List initiating mechanisms (e.g., molecular initiative events) for PM2.5 and ozone\n\u003e* List targets affected by asthma initiating events and whether the interaction is activation or inhibition\n\u003e* List genes associated with up and down regulation of targets from 5\n\n### Data Sources\nHere are the initial data sources we\u0027ll be integrating:\n\n| Source        | Stack                  | Description                   |\n|---------------|:----------------------:|-------------------------------|\n| Blackboard    | Apache Spark/Zeppelin  | Data Parallel Compute / Python|\n| Chem2Bio2RDF  | Blazegraph             | Graph Database / SPARQL       |\n| Monarch       | Blazegraph             | Graph Database / SPARQL       |\n| Environmental | PostgreSQL / PostGIS   | Relational GIS Database / SQL |\n\n\n### Approach\n\nTo start with, we\u0027ll connect to the graph databsase via a SPARQL query.",
       "user": "admin",
-      "dateUpdated": "Feb 20, 2017 8:49:57 PM",
+      "dateUpdated": "Feb 20, 2017 8:54:31 PM",
       "config": {
+        "colWidth": 12.0,
         "enabled": true,
-        "tableHide": true,
-        "editorMode": "ace/mode/markdown",
         "results": {},
-        "editorHide": false,
         "editorSetting": {
           "language": "markdown",
           "editOnDblClick": true
         },
-        "colWidth": 12.0
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
       },
       "settings": {
         "params": {},
@@ -30,28 +30,28 @@
         ]
       },
       "apps": [],
-      "jobName": "paragraph_1487214778109_-2103888443",
-      "id": "20170215-153902_791920659",
-      "dateCreated": "Feb 15, 2017 10:12:58 PM",
-      "dateStarted": "Feb 20, 2017 8:47:38 PM",
-      "dateFinished": "Feb 20, 2017 8:47:38 PM",
+      "jobName": "paragraph_1487641792518_-730299451",
+      "id": "20170220-204952_812620537",
+      "dateCreated": "Feb 20, 2017 8:49:52 PM",
+      "dateStarted": "Feb 20, 2017 8:50:05 PM",
+      "dateFinished": "Feb 20, 2017 8:50:05 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%pyspark\nfrom string import Template\nfrom collections import defaultdict\nfrom SPARQLWrapper import SPARQLWrapper, JSON\nimport matplotlib.pyplot as plt\nimport seaborn as sns\n\nimport urllib2\nproxy \u003d urllib2.ProxyHandler({\u0027http\u0027: \u0027gateway.ad.renci.org:8080\u0027})\nopener \u003d urllib2.build_opener(proxy)\nurllib2.install_opener(opener)\n\nblazegraph_uri \u003d \"http://stars-blazegraph.renci.org/bigdata/sparql\"\nblazegraph \u003d SPARQLWrapper (blazegraph_uri)\ndef query_sparql (query, service\u003dblazegraph):\n    service.setQuery (query)\n    service.setReturnFormat (JSON)\n    return service.query().convert ()",
+      "text": "%pyspark\nfrom string import Template\nfrom collections import defaultdict\nfrom SPARQLWrapper import SPARQLWrapper, JSON\nimport matplotlib.pyplot as plt\nimport seaborn as sns\n\nimport urllib2\nproxy \u003d urllib2.ProxyHandler({\u0027http\u0027: \u0027gateway.ad.renci.org:8080\u0027})\nopener \u003d urllib2.build_opener(proxy)\nurllib2.install_opener(opener)\n\nblazegraph_uri \u003d \"http://stars-blazegraph.renci.org/bigdata/sparql\"\nblazegraph \u003d SPARQLWrapper (blazegraph_uri)\ndef query_sparql (query, service\u003dblazegraph):\n    service.setQuery (query)\n    service.setReturnFormat (JSON)\n    return service.query().convert ()\n",
       "user": "admin",
-      "dateUpdated": "Feb 20, 2017 4:59:48 PM",
+      "dateUpdated": "Feb 20, 2017 8:55:05 PM",
       "config": {
+        "colWidth": 12.0,
         "enabled": true,
-        "editorMode": "ace/mode/python",
         "results": {},
         "editorSetting": {
-          "language": "python"
+          "language": "python",
+          "editOnDblClick": false
         },
-        "colWidth": 12.0,
-        "editorHide": false,
-        "tableHide": false
+        "editorMode": "ace/mode/python",
+        "editorHide": true
       },
       "settings": {
         "params": {},
@@ -62,29 +62,29 @@
         "msg": []
       },
       "apps": [],
-      "jobName": "paragraph_1487214778111_-2103118945",
-      "id": "20170215-153208_2102201076",
-      "dateCreated": "Feb 15, 2017 10:12:58 PM",
-      "dateStarted": "Feb 20, 2017 4:59:48 PM",
-      "dateFinished": "Feb 20, 2017 4:59:48 PM",
+      "jobName": "paragraph_1487641805261_98865077",
+      "id": "20170220-205005_1359367316",
+      "dateCreated": "Feb 20, 2017 8:50:05 PM",
+      "dateStarted": "Feb 20, 2017 8:54:46 PM",
+      "dateFinished": "Feb 20, 2017 8:54:46 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%md\n### 1. List medications by disease:\nFirst, define a SPARQL query as a template allowing us to filter by disease name.\n\nIt considers DrugBank and OMIM data sets from Chem2Bio2RDF",
       "user": "admin",
-      "dateUpdated": "Feb 20, 2017 8:50:27 PM",
+      "dateUpdated": "Feb 20, 2017 8:54:51 PM",
       "config": {
+        "colWidth": 12.0,
         "enabled": true,
-        "tableHide": true,
-        "editorMode": "ace/mode/markdown",
         "results": {},
-        "editorHide": false,
         "editorSetting": {
           "language": "markdown",
           "editOnDblClick": true
         },
-        "colWidth": 12.0
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
       },
       "settings": {
         "params": {},
@@ -100,28 +100,28 @@
         ]
       },
       "apps": [],
-      "jobName": "paragraph_1487214778112_-2018858936",
-      "id": "20170215-160714_1705952273",
-      "dateCreated": "Feb 15, 2017 10:12:58 PM",
-      "dateStarted": "Feb 19, 2017 9:22:37 PM",
-      "dateFinished": "Feb 19, 2017 9:22:37 PM",
+      "jobName": "paragraph_1487641821720_2073042332",
+      "id": "20170220-205021_804465188",
+      "dateCreated": "Feb 20, 2017 8:50:21 PM",
+      "dateStarted": "Feb 20, 2017 8:50:37 PM",
+      "dateFinished": "Feb 20, 2017 8:50:37 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%pyspark\nquery \u003d Template (\"\"\"\nPREFIX db_resource: \u003chttp://chem2bio2rdf.org/drugbank/resource/\u003e\nPREFIX omim:        \u003chttp://chem2bio2rdf.org/omim/resource/\u003e\nSELECT DISTINCT ?disease ?generic_name\nWHERE {\n  ?drug        db_resource:Generic_Name ?generic_name .\n  ?disease_rec omim:drug                ?drug ;\n               omim:Name                ?disease .\n  FILTER regex(?disease, \"${disease}\", \"i\")\n}\"\"\")\nresults \u003d query_sparql (query.substitute (disease\u003d\"asthma\"))\ndrugs \u003d []\nfor r in results[\"results\"][\"bindings\"]:\n    disease_name \u003d r[\u0027disease\u0027][\u0027value\u0027]\n    drug_name \u003d r[\u0027generic_name\u0027][\u0027value\u0027]\n    if not drug_name in drugs:\n        drugs.append (drug_name)\nprint (\"drugs: {0}\".format (drugs))",
       "user": "admin",
-      "dateUpdated": "Feb 20, 2017 3:00:25 PM",
+      "dateUpdated": "Feb 20, 2017 8:55:02 PM",
       "config": {
+        "colWidth": 12.0,
         "enabled": true,
-        "editorMode": "ace/mode/python",
         "results": {},
         "editorSetting": {
           "language": "python",
-          "editOnDblClick": false
+          "editOnDblClick": true
         },
-        "colWidth": 12.0,
-        "editorHide": false,
+        "editorMode": "ace/mode/python",
+        "editorHide": true,
         "tableHide": false
       },
       "settings": {
@@ -133,34 +133,34 @@
         "msg": [
           {
             "type": "TEXT",
-            "data": "drugs: [u\u0027Chlorpheniramine\u0027, u\u0027Aminophylline\u0027, u\u0027Vitamin E\u0027, u\u0027Flunisolide\u0027, u\u0027Fluticasone Propionate\u0027, u\u0027Hydrocortisone\u0027, u\u0027Salmeterol\u0027, u\u0027Formoterol\u0027, u\u0027Nedocromil\u0027, u\u0027Zileuton\u0027, u\u0027Mometasone\u0027, u\u0027Enprofylline\u0027, u\u0027Isoproterenol\u0027, u\u0027Dyphylline\u0027, u\u0027Omalizumab\u0027, u\u0027Theophylline\u0027, u\u0027Beclomethasone\u0027, u\u0027Montelukast\u0027, u\u0027Isoetharine\u0027, u\u0027Zafirlukast\u0027, u\u0027Cinalukast\u0027, u\u0027Terbutaline\u0027]\n"
+            "data": "drugs: [u\u0027Chlorpheniramine\u0027, u\u0027Aminophylline\u0027, u\u0027Vitamin E\u0027, u\u0027Flunisolide\u0027, u\u0027Hydrocortisone\u0027, u\u0027Salmeterol\u0027, u\u0027Formoterol\u0027, u\u0027Theophylline\u0027, u\u0027Beclomethasone\u0027, u\u0027Montelukast\u0027, u\u0027Fluticasone Propionate\u0027, u\u0027Dyphylline\u0027, u\u0027Nedocromil\u0027, u\u0027Zileuton\u0027, u\u0027Mometasone\u0027, u\u0027Enprofylline\u0027, u\u0027Isoproterenol\u0027, u\u0027Omalizumab\u0027, u\u0027Isoetharine\u0027, u\u0027Zafirlukast\u0027, u\u0027Cinalukast\u0027, u\u0027Terbutaline\u0027]\n"
           }
         ]
       },
       "apps": [],
-      "jobName": "paragraph_1487214778114_-2018089438",
-      "id": "20170215-153449_643492023",
-      "dateCreated": "Feb 15, 2017 10:12:58 PM",
-      "dateStarted": "Feb 20, 2017 3:00:25 PM",
-      "dateFinished": "Feb 20, 2017 3:00:25 PM",
+      "jobName": "paragraph_1487641837632_-876226553",
+      "id": "20170220-205037_1655435298",
+      "dateCreated": "Feb 20, 2017 8:50:37 PM",
+      "dateStarted": "Feb 20, 2017 8:52:37 PM",
+      "dateFinished": "Feb 20, 2017 8:52:37 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%md\n\n### 2. List of Gene Targets for a set of drugs:\n\nThis is a count of protein targets by drug. It\u0027s generated by a Zeppelin notebook running on RENCI\u0027s Stars big data infrastructure.\nThe Zeppelin notebook is connected to an Apache Spark Python interpreter running on the Stars distributed Mesos compute fabric.\n\nThis text is generated by a Zeppelin markdown note. The graphic below is generated by a second Zeppelin PySpark note. The PySpark note creates a SPARQL query which it executes on a Blazegraph graph database instance.\n\nThe Blazegraph\tinstance contains several Semantic Web artifacts from the Chem2Bio2RDF project.\nProtein targets associated with each drug are counted and rendered in the following histogram using Seaborn and Matplotlib.",
       "user": "admin",
-      "dateUpdated": "Feb 20, 2017 8:51:42 PM",
+      "dateUpdated": "Feb 20, 2017 8:54:31 PM",
       "config": {
+        "colWidth": 12.0,
         "enabled": true,
-        "tableHide": true,
-        "editorMode": "ace/mode/markdown",
         "results": {},
-        "editorHide": false,
         "editorSetting": {
           "language": "markdown",
           "editOnDblClick": true
         },
-        "colWidth": 12.0
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
       },
       "settings": {
         "params": {},
@@ -176,29 +176,28 @@
         ]
       },
       "apps": [],
-      "jobName": "paragraph_1487214778117_-2020782681",
-      "id": "20170215-161042_1366911069",
-      "dateCreated": "Feb 15, 2017 10:12:58 PM",
-      "dateStarted": "Feb 20, 2017 12:26:04 PM",
-      "dateFinished": "Feb 20, 2017 12:26:04 PM",
+      "jobName": "paragraph_1487641863986_2079845219",
+      "id": "20170220-205103_421037077",
+      "dateCreated": "Feb 20, 2017 8:51:03 PM",
+      "dateStarted": "Feb 20, 2017 8:51:51 PM",
+      "dateFinished": "Feb 20, 2017 8:51:51 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%pyspark\nquery \u003d Template (\"\"\"\nPREFIX db_resource: \u003chttp://chem2bio2rdf.org/drugbank/resource/\u003e\nSELECT ?generic_name ?protein\nWHERE {\n  ?interaction db_resource:SwissProt_ID ?protein .\n  ?interaction db_resource:DBID         ?drug .\n  ?drug        db_resource:Generic_Name ?generic_name .\n  FILTER regex(?generic_name, \"${drugs}\", \"i\")\n}\"\"\")\ndrug_list \u003d \"Creatine|Baclofen|Amlodipine|Brimonidine|Acetaminophen|Aspirin\"\nresults \u003d query_sparql ( query.substitute (drugs\u003ddrug_list))\ndrug_protein \u003d defaultdict(list)\nprotein_drug \u003d defaultdict(list)\nfor r in results[\"results\"][\"bindings\"]:\n    drug \u003d r[\u0027generic_name\u0027][\u0027value\u0027]\n    protein \u003d r[\u0027protein\u0027][\u0027value\u0027].rsplit(\u0027/\u0027, 1)[-1]\n    if protein !\u003d \u0027Not_available\u0027:\n        drug_protein[drug].append (protein)\n        protein_drug[protein].append (drug)\nx \u003d drug_list.split (\"|\")\ndata\u003d{ \u0027x\u0027 : x, \u0027y\u0027 : map (lambda k : len(drug_protein[k]), x) }\nsns.set_style(\"whitegrid\")\nsns.plt.title(\u0027Protein Targets By Drug\u0027, weight\u003d\u0027bold\u0027).set_fontsize(\u002718\u0027)\nax \u003d sns.barplot(x\u003d\"x\", y\u003d\"y\", data\u003ddata). \\\n    set(xlabel\u003d\u0027Drug\u0027, ylabel\u003d\u0027#Protein Targets\u0027)\n",
       "user": "admin",
-      "dateUpdated": "Feb 20, 2017 3:00:30 PM",
+      "dateUpdated": "Feb 20, 2017 8:54:31 PM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
         "results": {},
         "editorSetting": {
           "language": "python",
-          "editOnDblClick": false
+          "editOnDblClick": true
         },
         "editorMode": "ace/mode/python",
-        "lineNumbers": false,
-        "editorHide": false,
+        "editorHide": true,
         "tableHide": false
       },
       "settings": {
@@ -215,95 +214,18 @@
         ]
       },
       "apps": [],
-      "jobName": "paragraph_1487214778118_-2019628434",
-      "id": "20170215-162329_1585441000",
-      "dateCreated": "Feb 15, 2017 10:12:58 PM",
-      "dateStarted": "Feb 20, 2017 3:00:30 PM",
-      "dateFinished": "Feb 20, 2017 3:00:32 PM",
-      "status": "FINISHED",
-      "progressUpdateIntervalMs": 500
-    },
-    {
-      "text": "%pyspark\nfrom gensim.models import word2vec\nword_embedding_path \u003d \"/projects/stars/var/chemotext/w2v/gensim/cumulative/pmc-2016.w2v\"\nmodel \u003d word2vec.Word2Vec.load (word_embedding_path)",
-      "user": "admin",
-      "dateUpdated": "Feb 20, 2017 12:45:33 PM",
-      "config": {
-        "colWidth": 12.0,
-        "enabled": true,
-        "results": {},
-        "editorSetting": {
-          "language": "python"
-        },
-        "editorMode": "ace/mode/python",
-        "editorHide": false,
-        "tableHide": false
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "results": {
-        "code": "SUCCESS",
-        "msg": []
-      },
-      "apps": [],
-      "jobName": "paragraph_1487303806372_26387141",
-      "id": "20170216-225646_1948020697",
-      "dateCreated": "Feb 16, 2017 10:56:46 PM",
-      "dateStarted": "Feb 20, 2017 12:45:33 PM",
-      "dateFinished": "Feb 20, 2017 12:46:12 PM",
-      "status": "FINISHED",
-      "progressUpdateIntervalMs": 500
-    },
-    {
-      "text": "%pyspark\nprint (\"semantic proximity of tp53 and map2k: {0}\".format (model.similarity (\"tp53\", \"map2k\")))",
-      "user": "admin",
-      "dateUpdated": "Feb 20, 2017 12:45:53 PM",
-      "config": {
-        "colWidth": 12.0,
-        "enabled": true,
-        "results": {
-          "0": {
-            "graph": {
-              "mode": "table",
-              "height": 94.21875762939453,
-              "optionOpen": false
-            }
-          }
-        },
-        "editorSetting": {
-          "language": "python"
-        },
-        "editorMode": "ace/mode/python",
-        "editorHide": false,
-        "tableHide": false
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TEXT",
-            "data": "semantic proximity of tp53 and map2k: 0.301756399991\n"
-          }
-        ]
-      },
-      "apps": [],
-      "jobName": "paragraph_1487539792925_362070388",
-      "id": "20170219-162952_156592626",
-      "dateCreated": "Feb 19, 2017 4:29:52 PM",
-      "dateStarted": "Feb 20, 2017 12:45:53 PM",
-      "dateFinished": "Feb 20, 2017 12:46:12 PM",
+      "jobName": "paragraph_1487641911782_-153359991",
+      "id": "20170220-205151_1129629826",
+      "dateCreated": "Feb 20, 2017 8:51:51 PM",
+      "dateStarted": "Feb 20, 2017 8:52:07 PM",
+      "dateFinished": "Feb 20, 2017 8:52:08 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%md\n### Query 3: Find pathways for a given protein\n\nWe\u0027ll look at the Monarch Initiative\u0027s [SmartAPI](http://api.monarchinitiative.org/api/#!/bioentity/get_pathway_object) first:",
       "user": "admin",
-      "dateUpdated": "Feb 20, 2017 8:53:06 PM",
+      "dateUpdated": "Feb 20, 2017 8:54:31 PM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -313,8 +235,8 @@
           "editOnDblClick": true
         },
         "editorMode": "ace/mode/markdown",
-        "editorHide": false,
-        "tableHide": true
+        "editorHide": true,
+        "tableHide": false
       },
       "settings": {
         "params": {},
@@ -330,29 +252,29 @@
         ]
       },
       "apps": [],
-      "jobName": "paragraph_1487629701530_1023860406",
-      "id": "20170220-172821_1606669408",
-      "dateCreated": "Feb 20, 2017 5:28:21 PM",
-      "dateStarted": "Feb 20, 2017 5:29:32 PM",
-      "dateFinished": "Feb 20, 2017 5:29:32 PM",
+      "jobName": "paragraph_1487641927082_-1312223678",
+      "id": "20170220-205207_1746444949",
+      "dateCreated": "Feb 20, 2017 8:52:07 PM",
+      "dateStarted": "Feb 20, 2017 8:53:31 PM",
+      "dateFinished": "Feb 20, 2017 8:53:31 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%pyspark\nimport requests\nproxies \u003d {\n  \u0027http\u0027: \u0027http://gateway.ad.renci.org:8080/\u0027,\n}\nmonarch_api_base \u003d \"http://api.monarchinitiative.org/api\"\nmonarch_api__bioentity_pathway \u003d \"{0}/bioentity/pathway\".format (monarch_api_base)\nuri \u003d \"{0}/GO:0005978\".format (monarch_api__bioentity_pathway)\nresp \u003d requests.get(\n    uri,\n    proxies\u003dproxies)\nif resp.status_code !\u003d 200:\n    raise ValueError(\u0027GET {} status: {}\u0027.format(uri, resp.status_code))\n\nprint(\u0027{}\u0027.format(resp.json()))",
       "user": "admin",
-      "dateUpdated": "Feb 20, 2017 5:28:54 PM",
+      "dateUpdated": "Feb 20, 2017 8:54:31 PM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
         "results": {},
         "editorSetting": {
-          "language": "python"
+          "language": "python",
+          "editOnDblClick": true
         },
         "editorMode": "ace/mode/python",
-        "editorHide": false,
-        "tableHide": false,
-        "lineNumbers": true
+        "editorHide": true,
+        "tableHide": false
       },
       "settings": {
         "params": {},
@@ -368,18 +290,18 @@
         ]
       },
       "apps": [],
-      "jobName": "paragraph_1487539908379_1309073704",
-      "id": "20170219-163148_97105638",
-      "dateCreated": "Feb 19, 2017 4:31:48 PM",
-      "dateStarted": "Feb 20, 2017 5:10:14 PM",
-      "dateFinished": "Feb 20, 2017 5:10:14 PM",
+      "jobName": "paragraph_1487642011547_-980616098",
+      "id": "20170220-205331_987621401",
+      "dateCreated": "Feb 20, 2017 8:53:31 PM",
+      "dateStarted": "Feb 20, 2017 8:53:48 PM",
+      "dateFinished": "Feb 20, 2017 8:53:49 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%md\nLooks like that functionality\u0027s still in development. Let\u0027s try [WikiPathways](http://www.wikipathways.org/index.php/WikiPathways) in the meantime:",
       "user": "admin",
-      "dateUpdated": "Feb 20, 2017 8:53:54 PM",
+      "dateUpdated": "Feb 20, 2017 8:54:31 PM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -389,8 +311,8 @@
           "editOnDblClick": true
         },
         "editorMode": "ace/mode/markdown",
-        "editorHide": false,
-        "tableHide": true
+        "editorHide": true,
+        "tableHide": false
       },
       "settings": {
         "params": {},
@@ -406,26 +328,37 @@
         ]
       },
       "apps": [],
-      "jobName": "paragraph_1487629778733_1882878818",
-      "id": "20170220-172938_812207066",
-      "dateCreated": "Feb 20, 2017 5:29:38 PM",
-      "dateStarted": "Feb 20, 2017 5:40:13 PM",
-      "dateFinished": "Feb 20, 2017 5:40:13 PM",
+      "jobName": "paragraph_1487642028509_-1637367147",
+      "id": "20170220-205348_1942986158",
+      "dateCreated": "Feb 20, 2017 8:53:48 PM",
+      "dateStarted": "Feb 20, 2017 8:54:06 PM",
+      "dateFinished": "Feb 20, 2017 8:54:06 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%pyspark\n\nfrom SPARQLWrapper import SPARQLWrapper2\n\nwikipathways_iri \u003d \"http://sparql.wikipathways.org/\"\nwikipathways \u003d SPARQLWrapper2 (wikipathways_iri)\nquery \u003d Template (\"\"\"\nPREFIX wp:      \u003chttp://vocabularies.wikipathways.org/wp#\u003e\nPREFIX rdfs:    \u003chttp://www.w3.org/2000/01/rdf-schema#\u003e\nPREFIX dcterms: \u003chttp://purl.org/dc/terms/\u003e\nSELECT DISTINCT ?pathway str(?label) as ?geneProduct\nWHERE {\n    ?geneProduct a wp:GeneProduct . \n    ?geneProduct rdfs:label ?label .\n    ?geneProduct dcterms:isPartOf ?pathway .\n    ?pathway a wp:Pathway .\n    FILTER regex(str(?label), \"${protein}\"). \n}\"\"\").substitute (protein\u003d\"CYP\")\nresults \u003d query_sparql (query \u003d query, service \u003d wikipathways)\nfor binding in results.bindings:\n    print (\"path: {} gene_product: {}\".format (binding[\"pathway\"].value, binding[\"geneProduct\"].value))\n",
+      "text": "%pyspark\n\nfrom SPARQLWrapper import SPARQLWrapper2\n\nwikipathways_iri \u003d \"http://sparql.wikipathways.org/\"\nwikipathways \u003d SPARQLWrapper2 (wikipathways_iri)\nquery \u003d Template (\"\"\"\nPREFIX wp:      \u003chttp://vocabularies.wikipathways.org/wp#\u003e\nPREFIX rdfs:    \u003chttp://www.w3.org/2000/01/rdf-schema#\u003e\nPREFIX dcterms: \u003chttp://purl.org/dc/terms/\u003e\nSELECT DISTINCT ?pathway str(?label) as ?geneProduct\nWHERE {\n    ?geneProduct a wp:GeneProduct . \n    ?geneProduct rdfs:label ?label .\n    ?geneProduct dcterms:isPartOf ?pathway .\n    ?pathway a wp:Pathway .\n    FILTER regex(str(?label), \"${protein}\"). \n}\"\"\").substitute (protein\u003d\"CYP\")\nresults \u003d query_sparql (query \u003d query, service \u003d wikipathways)\nfor binding in results.bindings:\n    print (\"path: {} gene_product: {}\".format (binding[\"pathway\"].value, binding[\"geneProduct\"].value))",
       "user": "admin",
-      "dateUpdated": "Feb 20, 2017 5:39:05 PM",
+      "dateUpdated": "Feb 20, 2017 8:55:26 PM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
-        "results": {},
-        "editorSetting": {
-          "language": "python"
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 91.11111450195312,
+              "optionOpen": false
+            }
+          }
         },
-        "editorMode": "ace/mode/python"
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": true
+        },
+        "editorMode": "ace/mode/python",
+        "editorHide": true,
+        "tableHide": false
       },
       "settings": {
         "params": {},
@@ -441,38 +374,46 @@
         ]
       },
       "apps": [],
-      "jobName": "paragraph_1487620318216_-1532622985",
-      "id": "20170220-145158_1642557161",
-      "dateCreated": "Feb 20, 2017 2:51:58 PM",
-      "dateStarted": "Feb 20, 2017 5:39:05 PM",
-      "dateFinished": "Feb 20, 2017 5:39:06 PM",
+      "jobName": "paragraph_1487642046377_-323079704",
+      "id": "20170220-205406_1128585816",
+      "dateCreated": "Feb 20, 2017 8:54:06 PM",
+      "dateStarted": "Feb 20, 2017 8:54:21 PM",
+      "dateFinished": "Feb 20, 2017 8:54:22 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%pyspark\n",
       "user": "admin",
-      "dateUpdated": "Feb 20, 2017 5:32:23 PM",
-      "config": {},
+      "dateUpdated": "Feb 20, 2017 8:54:31 PM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python"
+        },
+        "editorMode": "ace/mode/python",
+        "editorHide": true
+      },
       "settings": {
         "params": {},
         "forms": {}
       },
       "apps": [],
-      "jobName": "paragraph_1487629943016_-761037358",
-      "id": "20170220-173223_1509888777",
-      "dateCreated": "Feb 20, 2017 5:32:23 PM",
+      "jobName": "paragraph_1487642061084_-1772798236",
+      "id": "20170220-205421_2062798440",
+      "dateCreated": "Feb 20, 2017 8:54:21 PM",
       "status": "READY",
       "progressUpdateIntervalMs": 500
     }
   ],
-  "name": "NCATS Translator Blackboard",
-  "id": "2CACGUAPY",
+  "name": "NCATSTranslator/GreenTeamChemicalMedicalQueries",
+  "id": "2CC7STGUR",
   "angularObjects": {
     "2C8PNVW4G:shared_process": [],
     "2C9M4A84U:shared_process": [],
     "2C8JB5J2A:shared_process": [],
-    "2C9WWVYVN::2CACGUAPY": [],
     "2C8UPVAV8:shared_process": [],
     "2CB6QSJQK:shared_process": [],
     "2CB4GRYA4:shared_process": [],
@@ -484,14 +425,12 @@
     "2C7NS2RPM:shared_process": [],
     "2CB55MCKF:shared_process": [],
     "2C9P6TDB4:shared_process": [],
+    "2C9WWVYVN::2CC7STGUR": [],
     "2C7YD2D51:shared_process": [],
     "2C9UAC7QR:shared_process": [],
     "2C8K1VZ6J:shared_process": [],
     "2CA9JMF94:shared_process": []
   },
-  "config": {
-    "looknfeel": "default",
-    "personalizedMode": "false"
-  },
+  "config": {},
   "info": {}
 }
