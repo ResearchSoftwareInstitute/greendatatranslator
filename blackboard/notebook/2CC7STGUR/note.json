@@ -3,7 +3,7 @@
     {
       "text": "%md\n# NCATS Translator Blackboard\n\n### Overview\nThis note explores methods for combining resources within the [RENCI data](https://mesostars.wordpress.com/) lake. These resources pair data with the technologies best suited to manage them. Graph oriented semantic web data is housed in scalable graph databases. Environmental exposure data is housed in a GIS oriented relational store. In front of it all, we have a Zeppelin notebook interfacing to Apache Spark.\n\nThis notebook is also the workspace for addressing the NCATS Translator Green Team Blackboard described in this [GitHub Issue](https://github.com/ResearchSoftwareInstitute/greendatatranslator/issues/15).\nUsing these resources, we\u0027ll attempt the following tasks:\n\u003e* List medications for a disease (in our case asthma) \n\u003e* List protein targets for a list of medications\n\u003e* List biological pathways for a list of protein targets\n\u003e* List initiating mechanisms (e.g., molecular initiative events) for PM2.5 and ozone\n\u003e* List targets affected by asthma initiating events and whether the interaction is activation or inhibition\n\u003e* List genes associated with up and down regulation of targets from 5\n\n### Data Sources\nHere are the initial data sources we\u0027ll be integrating:\n\n| Source        | Stack                  | Description                   |\n|---------------|:----------------------:|-------------------------------|\n| Blackboard    | Apache Spark/Zeppelin  | Data Parallel Compute / Python|\n| Chem2Bio2RDF  | Blazegraph             | Graph Database / SPARQL       |\n| Monarch       | Blazegraph             | Graph Database / SPARQL       |\n| Monarch       | SmartAPI               | Swagger/smartAPI REST service |\n| Environmental | PostgreSQL / PostGIS   | Relational GIS Database / SQL |\n| WikiPathways  | Virtuoso               | Public SPARQL Endpoint        |\n\n\n### Approach\n\nTo start with, we\u0027ll do some environmental setup, including:\n\n* **Setup**\n    * Import Python libraries for templating and invoking SPARQL endpoints\n    * Configure our HTTP proxy\n    * Provide a function for calling a SPARQL endpoint\n* **Query 1** : List medications for a disease\n    * Query RENCI\u0027s Blazegraph store via the chem2bio2rdf schema\n* **Query 2** : List protein targets for a list of medications\n    * Chem2bio2rdf again\n    * Graph results via Seaborn\n* **Query 3** : List biological pathways for a list of protein targets\n    * Try Monarch Initiative SmartAPI\n    * Fallback to WikiPathways SPARQL query for now",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 3, 2017 1:14:14 PM",
+      "dateUpdated": "Mar 3, 2017 7:26:03 PM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -33,8 +33,8 @@
       "jobName": "paragraph_1487641792518_-730299451",
       "id": "20170220-204952_812620537",
       "dateCreated": "Feb 20, 2017 8:49:52 PM",
-      "dateStarted": "Mar 3, 2017 1:14:14 PM",
-      "dateFinished": "Mar 3, 2017 1:14:14 PM",
+      "dateStarted": "Mar 3, 2017 7:26:03 PM",
+      "dateFinished": "Mar 3, 2017 7:26:03 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
