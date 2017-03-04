@@ -41,7 +41,7 @@
     {
       "text": "%pyspark\nfrom string import Template\nfrom collections import defaultdict\nfrom SPARQLWrapper import SPARQLWrapper2, JSON\nimport matplotlib.pyplot as plt\nimport seaborn as sns\n\nimport urllib2\nproxy \u003d urllib2.ProxyHandler({\u0027http\u0027: \u0027gateway.ad.renci.org:8080\u0027})\nopener \u003d urllib2.build_opener(proxy)\nurllib2.install_opener(opener)\n\nblazegraph_uri \u003d \"http://stars-blazegraph.renci.org/bigdata/sparql\"\nblazegraph \u003d SPARQLWrapper2 (blazegraph_uri)\ndef query_sparql (query, service\u003dblazegraph):\n    service.setQuery (query)\n    service.setReturnFormat (JSON)\n    return service.query().convert ()\n",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 1, 2017 10:41:06 AM",
+      "dateUpdated": "Mar 4, 2017 7:46:11 AM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -66,8 +66,8 @@
       "jobName": "paragraph_1487641805261_98865077",
       "id": "20170220-205005_1359367316",
       "dateCreated": "Feb 20, 2017 8:50:05 PM",
-      "dateStarted": "Mar 1, 2017 10:41:06 AM",
-      "dateFinished": "Mar 1, 2017 10:41:06 AM",
+      "dateStarted": "Mar 4, 2017 7:46:11 AM",
+      "dateFinished": "Mar 4, 2017 7:46:12 AM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -386,7 +386,7 @@
     {
       "text": "%pyspark\n\nchembl_sparql_iri \u003d \"https://www.ebi.ac.uk/rdf/services/chembl/servlet/query\"\nchembl_sparql_iri \u003d \"https://www.ebi.ac.uk/rdf/services/chembl/sparql\"\nchembl_sparql \u003d SPARQLWrapper2 (chembl_sparql_iri) \n\nquery \u003d Template (\"\"\"\nPREFIX rdf: \u003chttp://www.w3.org/1999/02/22-rdf-syntax-ns#\u003e\nPREFIX rdfs: \u003chttp://www.w3.org/2000/01/rdf-schema#\u003e\nPREFIX owl: \u003chttp://www.w3.org/2002/07/owl#\u003e\nPREFIX dcterms: \u003chttp://purl.org/dc/terms/\u003e\nPREFIX obo: \u003chttp://purl.obolibrary.org/obo/\u003e\nPREFIX sio: \u003chttp://semanticscience.org/resource/\u003e\nPREFIX efo: \u003chttp://www.ebi.ac.uk/efo/\u003e\nPREFIX atlas: \u003chttp://rdf.ebi.ac.uk/resource/atlas/\u003e\nPREFIX atlasterms: \u003chttp://rdf.ebi.ac.uk/terms/atlas/\u003e\nPREFIX biopax3:\u003chttp://www.biopax.org/release/biopax-level3.owl#\u003e\nPREFIX cco: \u003chttp://rdf.ebi.ac.uk/terms/chembl#\u003e\n\nSELECT distinct ?dbXrefProt ?pathwayname ?moleculeLabel ?expressionValue ?propertyValue\nWHERE {\n#Get differentially expressed genes (and proteins) where factor is asthma\n?value atlasterms:pValue ?pvalue .\n?value atlasterms:hasFactorValue ?factor .\n?value rdfs:label ?expressionValue .\n?value atlasterms:isMeasurementOf ?probe .\n?probe atlasterms:dbXref ?dbXrefProt .\n?dbXrefProt a atlasterms:UniprotDatabaseReference .\n?factor atlasterms:propertyType ?propertyType .\n?factor atlasterms:propertyValue ?propertyValue .\n?factor rdf:type efo:EFO_0000270 .\n\n#Compounds target them\nSERVICE \u003chttp://www.ebi.ac.uk/rdf/services/chembl/sparql\u003e {\n  ?act a cco:Activity ;\n    cco:hasMolecule ?molecule ;\n    cco:hasAssay ?assay .\n     ?molecule rdfs:label ?moleculeLabel .\n    ?assay cco:hasTarget ?target .\n    ?target cco:hasTargetComponent ?targetcmpt .\n    ?targetcmpt cco:targetCmptXref ?dbXrefProt .\n    ?targetcmpt cco:taxonomy \u003chttp://identifiers.org/taxonomy/9606\u003e .\n    ?dbXrefProt a cco:UniprotRef .\n}\n\nSERVICE \u003chttp://www.ebi.ac.uk/rdf/services/reactome/sparql\u003e {\n\n  ?protein rdf:type biopax3:Protein .\n  ?protein biopax3:memberPhysicalEntity\n  \t\t[biopax3:entityReference ?dbXrefProt] .\n  ?pathway biopax3:displayName ?pathwayname .\n  ?pathway biopax3:pathwayComponent ?reaction .\n  ?reaction ?rel ?protein\n}\n\n}\n\"\"\")\n\nquery_text \u003d query.substitute ()\nresults \u003d query_sparql (query_text, service\u003dchembl_sparql)\nprint (results.bindings)\n\u0027\u0027\u0027\nfor bind in results.bindings:\n    print (bind)\n    print (\"\"\"dbXrefProt: {0} path: {1} mol: {2} express: {3} prop: {4}\"\"\".format (\n            bind[\u0027dbXrefProt\u0027].value,\n            bind[\u0027pathwayname\u0027].value,\n            bind[\u0027moleculeLabel\u0027].value,\n            bind[\u0027expressionValue\u0027].value,\n            bind[\u0027propertyValue\u0027].value))\n\u0027\u0027\u0027\n    \n    ",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 1, 2017 6:17:10 AM",
+      "dateUpdated": "Mar 4, 2017 7:46:17 AM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -406,7 +406,7 @@
         "msg": [
           {
             "type": "TEXT",
-            "data": "Traceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-4831550610144878864.py\", line 346, in \u003cmodule\u003e\n    raise Exception(traceback.format_exc())\nException: Traceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-4831550610144878864.py\", line 334, in \u003cmodule\u003e\n    exec(code)\n  File \"\u003cstdin\u003e\", line 49, in \u003cmodule\u003e\n  File \"\u003cstdin\u003e\", line 15, in query_sparql\n  File \"/projects/stars/venv/lib/python2.7/site-packages/SPARQLWrapper/SmartWrapper.py\", line 276, in query\n    res \u003d super(SPARQLWrapper2, self).query()\n  File \"/projects/stars/venv/lib/python2.7/site-packages/SPARQLWrapper/Wrapper.py\", line 567, in query\n    return QueryResult(self._query())\n  File \"/projects/stars/venv/lib/python2.7/site-packages/SPARQLWrapper/Wrapper.py\", line 537, in _query\n    response \u003d urlopener(request)\n  File \"/usr/lib64/python2.7/urllib2.py\", line 154, in urlopen\n    return opener.open(url, data, timeout)\n  File \"/usr/lib64/python2.7/urllib2.py\", line 431, in open\n    response \u003d self._open(req, data)\n  File \"/usr/lib64/python2.7/urllib2.py\", line 449, in _open\n    \u0027_open\u0027, req)\n  File \"/usr/lib64/python2.7/urllib2.py\", line 409, in _call_chain\n    result \u003d func(*args)\n  File \"/usr/lib64/python2.7/urllib2.py\", line 1258, in https_open\n    context\u003dself._context, check_hostname\u003dself._check_hostname)\n  File \"/usr/lib64/python2.7/urllib2.py\", line 1214, in do_open\n    raise URLError(err)\nURLError: \u003curlopen error [Errno 110] Connection timed out\u003e\n\n"
+            "data": "Traceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-3024352621796304083.py\", line 346, in \u003cmodule\u003e\n    raise Exception(traceback.format_exc())\nException: Traceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-3024352621796304083.py\", line 334, in \u003cmodule\u003e\n    exec(code)\n  File \"\u003cstdin\u003e\", line 49, in \u003cmodule\u003e\n  File \"\u003cstdin\u003e\", line 15, in query_sparql\n  File \"/projects/stars/venv/lib/python2.7/site-packages/SPARQLWrapper/SmartWrapper.py\", line 276, in query\n    res \u003d super(SPARQLWrapper2, self).query()\n  File \"/projects/stars/venv/lib/python2.7/site-packages/SPARQLWrapper/Wrapper.py\", line 567, in query\n    return QueryResult(self._query())\n  File \"/projects/stars/venv/lib/python2.7/site-packages/SPARQLWrapper/Wrapper.py\", line 537, in _query\n    response \u003d urlopener(request)\n  File \"/usr/lib64/python2.7/urllib2.py\", line 154, in urlopen\n    return opener.open(url, data, timeout)\n  File \"/usr/lib64/python2.7/urllib2.py\", line 431, in open\n    response \u003d self._open(req, data)\n  File \"/usr/lib64/python2.7/urllib2.py\", line 449, in _open\n    \u0027_open\u0027, req)\n  File \"/usr/lib64/python2.7/urllib2.py\", line 409, in _call_chain\n    result \u003d func(*args)\n  File \"/usr/lib64/python2.7/urllib2.py\", line 1258, in https_open\n    context\u003dself._context, check_hostname\u003dself._check_hostname)\n  File \"/usr/lib64/python2.7/urllib2.py\", line 1214, in do_open\n    raise URLError(err)\nURLError: \u003curlopen error [Errno 110] Connection timed out\u003e\n\n"
           }
         ]
       },
@@ -414,8 +414,8 @@
       "jobName": "paragraph_1487790715123_1056319790",
       "id": "20170222-141155_1338915754",
       "dateCreated": "Feb 22, 2017 2:11:55 PM",
-      "dateStarted": "Feb 23, 2017 4:04:58 PM",
-      "dateFinished": "Feb 23, 2017 4:07:06 PM",
+      "dateStarted": "Mar 4, 2017 7:46:17 AM",
+      "dateFinished": "Mar 4, 2017 7:48:25 AM",
       "status": "ERROR",
       "progressUpdateIntervalMs": 500
     },
