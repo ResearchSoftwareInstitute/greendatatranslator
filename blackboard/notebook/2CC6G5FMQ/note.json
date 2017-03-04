@@ -1,0 +1,148 @@
+{
+  "paragraphs": [
+    {
+      "text": "%md\n# Test page \n\nThis page is for testing the zeppelin-sparq system to run queries and scripts against the RENCI Blazegraph instance.\n\n",
+      "user": "ad\\cschmitt",
+      "dateUpdated": "Feb 23, 2017 10:41:03 PM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch1\u003eTest page\u003c/h1\u003e\n\u003cp\u003eThis page is for testing the zeppelin-sparq system to run queries and scripts against the RENCI Blazegraph instance.\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1487907345791_-2117927909",
+      "id": "20170223-223545_593074173",
+      "dateCreated": "Feb 23, 2017 10:35:45 PM",
+      "dateStarted": "Feb 23, 2017 10:41:03 PM",
+      "dateFinished": "Feb 23, 2017 10:41:05 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%pyspark\nfrom string import Template\nfrom collections import defaultdict\nfrom SPARQLWrapper import SPARQLWrapper, JSON\nimport matplotlib.pyplot as plt\nimport seaborn as sns\n\nimport urllib2\nproxy \u003d urllib2.ProxyHandler({\u0027http\u0027: \u0027gateway.ad.renci.org:8080\u0027})\nopener \u003d urllib2.build_opener(proxy)\nurllib2.install_opener(opener)\n\nblazegraph_uri \u003d \"http://stars-blazegraph.renci.org/bigdata/sparql\"\nblazegraph \u003d SPARQLWrapper (blazegraph_uri)\ndef query_sparql (query, service\u003dblazegraph):\n    service.setQuery (query)\n    service.setReturnFormat (JSON)\n    return service.query().convert ()",
+      "user": "ad\\cschmitt",
+      "dateUpdated": "Feb 23, 2017 11:00:26 PM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python"
+        },
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "jobName": "paragraph_1487907663870_1679050072",
+      "id": "20170223-224103_1798210959",
+      "dateCreated": "Feb 23, 2017 10:41:03 PM",
+      "dateStarted": "Feb 23, 2017 11:00:26 PM",
+      "dateFinished": "Feb 23, 2017 11:00:26 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%pyspark\n\nquery \u003d Template (\"\"\"\nPREFIX db_resource: \u003chttp://chem2bio2rdf.org/drugbank/resource/\u003e\nSELECT ?subject ?predicate ?object\nWHERE {?subject ?predicate ?object} \nLIMIT 100\"\"\")\nresults \u003d query_sparql (query)\n",
+      "user": "ad\\cschmitt",
+      "dateUpdated": "Feb 23, 2017 11:01:35 PM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python"
+        },
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "ERROR",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Traceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-360406915034722292.py\", line 346, in \u003cmodule\u003e\n    raise Exception(traceback.format_exc())\nException: Traceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-360406915034722292.py\", line 339, in \u003cmodule\u003e\n    exec(code)\n  File \"\u003cstdin\u003e\", line 6, in \u003cmodule\u003e\n  File \"\u003cstdin\u003e\", line 13, in query_sparql\n  File \"/projects/stars/venv/lib/python2.7/site-packages/SPARQLWrapper/Wrapper.py\", line 352, in setQuery\n    raise TypeError(\u0027setQuery takes either unicode-strings or utf-8 encoded byte-strings\u0027)\nTypeError: setQuery takes either unicode-strings or utf-8 encoded byte-strings\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1487908119592_1658701064",
+      "id": "20170223-224839_1697126440",
+      "dateCreated": "Feb 23, 2017 10:48:39 PM",
+      "dateStarted": "Feb 23, 2017 11:01:36 PM",
+      "dateFinished": "Feb 23, 2017 11:01:36 PM",
+      "status": "ERROR",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%pyspark\n",
+      "user": "ad\\cschmitt",
+      "dateUpdated": "Feb 23, 2017 10:55:31 PM",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1487908531226_2143871595",
+      "id": "20170223-225531_877424851",
+      "dateCreated": "Feb 23, 2017 10:55:31 PM",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "CPSTest",
+  "id": "2CC6G5FMQ",
+  "angularObjects": {
+    "2C8PNVW4G:shared_process": [],
+    "2C9M4A84U:shared_process": [],
+    "2C8JB5J2A:shared_process": [],
+    "2C8UPVAV8:shared_process": [],
+    "2CB6QSJQK:shared_process": [],
+    "2CB4GRYA4:shared_process": [],
+    "2CAZ1XA1G:shared_process": [],
+    "2CBGUDB9H:shared_process": [],
+    "2C9VT2CHD:shared_process": [],
+    "2CBBPS1GQ:shared_process": [],
+    "2CAYF7YMG:shared_process": [],
+    "2C9WWVYVN::2CC6G5FMQ": [],
+    "2C7NS2RPM:shared_process": [],
+    "2CB55MCKF:shared_process": [],
+    "2C9P6TDB4:shared_process": [],
+    "2C7YD2D51:shared_process": [],
+    "2C9UAC7QR:shared_process": [],
+    "2C8K1VZ6J:shared_process": [],
+    "2CA9JMF94:shared_process": []
+  },
+  "config": {},
+  "info": {}
+}
