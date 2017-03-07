@@ -39,7 +39,7 @@
     {
       "text": "%pyspark\nfrom string import Template\nfrom collections import defaultdict\nfrom SPARQLWrapper import SPARQLWrapper2, JSON\nimport matplotlib.pyplot as plt\nimport seaborn as sns\n\nimport urllib2\nproxy \u003d urllib2.ProxyHandler({\u0027http\u0027: \u0027gateway.ad.renci.org:8080\u0027})\nopener \u003d urllib2.build_opener(proxy)\nurllib2.install_opener(opener)\n\nblazegraph_uri \u003d \"http://stars-blazegraph.renci.org/bigdata/sparql\"\nblazegraph \u003d SPARQLWrapper2 (blazegraph_uri)\ndef query_sparql (query, service\u003dblazegraph):\n    service.setQuery (query)\n    service.setReturnFormat (JSON)\n    return service.query().convert ()\n",
       "user": "ad\\ruhirai",
-      "dateUpdated": "Mar 2, 2017 2:43:55 PM",
+      "dateUpdated": "Mar 7, 2017 2:52:25 PM",
       "config": {
         "enabled": true,
         "tableHide": false,
@@ -64,8 +64,8 @@
       "jobName": "paragraph_1488397315133_-1172979829",
       "id": "20170220-205005_1359367316",
       "dateCreated": "Mar 1, 2017 2:41:55 PM",
-      "dateStarted": "Mar 2, 2017 2:43:55 PM",
-      "dateFinished": "Mar 2, 2017 2:43:59 PM",
+      "dateStarted": "Mar 7, 2017 2:52:25 PM",
+      "dateFinished": "Mar 7, 2017 2:52:26 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -122,15 +122,15 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%pyspark\r\nquery \u003d Template (\"\"\"\r\nPREFIX db_resource: \u003chttp://chem2bio2rdf.org/drugbank/resource/\u003e\r\nPREFIX omim:        \u003chttp://chem2bio2rdf.org/omim/resource/\u003e\r\nPREFIX db_resource: \u003chttp://ht1.renci.org/projects/stars/m2m/var/diseaseontology/dis.xml/\u003e\r\nSELECT DISTINCT ?disease ?drug ?disease_rec ?generic_name\r\nWHERE {\r\n  ?drug        db_resource:Generic_Name ?generic_name .\r\n  ?interaction db_resource:DOID ?disease .\r\n  ?interaction db_resource:DBID         ?drug .\r\n  ?disease_rec omim:drug                ?drug ;\r\n               omim:Name                ?disease .\r\n  \r\n}\"\"\"\r\ndrug_disease \u003d defaultdict(list)\r\ndisease_drug \u003d defaultdict(list)\r\ndrug_list \u003d query\r\nresults \u003d query_sparql (query)\r\n#print (map (lambda b : b[\u0027generic_name\u0027].value, results.bindings))\r\n\r\nfor bind in results.bindings:\r\n    print (bind)\r\n    print (\"\"\"disease: {0} drug: {1} disease_rec: {2} generic_name: {3} \"\"\".format (\r\n            bind[\u0027disease\u0027].value,\r\n            bind[\u0027drug\u0027].value,\r\n            bind[\u0027disease_rec\u0027].value,\r\n            bind[\u0027generic_name\u0027].value))\r\n   ",
+      "text": "%pyspark\r\nquery \u003d Template (\"\"\"\r\nPREFIX db_resource: \u003chttp://chem2bio2rdf.org/drugbank/resource/\u003e\r\nPREFIX omim:        \u003chttp://chem2bio2rdf.org/omim/resource/\u003e\r\nSELECT DISTINCT ?disease ?drug ?disease_rec ?generic_name\r\nWHERE {\r\n  ?drug        db_resource:Generic_Name ?generic_name .\r\n  ?disease_rec omim:drug                ?drug ;\r\n               omim:Name                ?disease .\r\n}\"\"\")\r\nresults \u003d query_sparql (query)\r\n#print (map (lambda b : b[\u0027generic_name\u0027].value, results.bindings))\r\nfor bind in results.bindings:\r\n    print (bind)\r\n    print (\"\"\"disease: {0} drug: {1} disease_rec: {2} generic_name: {3} \"\"\".format (\r\n            bind[\u0027disease\u0027].value,\r\n            bind[\u0027drug\u0027].value,\r\n            bind[\u0027disease_rec\u0027].value,\r\n            bind[\u0027generic_name\u0027].value))\r\n   ",
       "user": "ad\\ruhirai",
-      "dateUpdated": "Mar 7, 2017 2:39:27 PM",
+      "dateUpdated": "Mar 7, 2017 2:52:31 PM",
       "config": {
         "enabled": true,
-        "tableHide": true,
+        "tableHide": false,
         "editorMode": "ace/mode/python",
         "results": {},
-        "editorHide": false,
+        "editorHide": true,
         "editorSetting": {
           "language": "python",
           "editOnDblClick": true
@@ -146,7 +146,7 @@
         "msg": [
           {
             "type": "TEXT",
-            "data": "Traceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-4372457901887265010.py\", line 323, in \u003cmodule\u003e\n    code \u003d compile(\u0027\\n\u0027.join(final_code), \u0027\u003cstdin\u003e\u0027, \u0027exec\u0027, ast.PyCF_ONLY_AST, 1)\n  File \"\u003cstdin\u003e\", line 13\n    drug_disease \u003d defaultdict(list)\n               ^\nSyntaxError: invalid syntax\n"
+            "data": "Traceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-4372457901887265010.py\", line 346, in \u003cmodule\u003e\n    raise Exception(traceback.format_exc())\nException: Traceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-4372457901887265010.py\", line 334, in \u003cmodule\u003e\n    exec(code)\n  File \"\u003cstdin\u003e\", line 10, in \u003cmodule\u003e\n  File \"\u003cstdin\u003e\", line 13, in query_sparql\n  File \"/projects/stars/venv/lib/python2.7/site-packages/SPARQLWrapper/Wrapper.py\", line 352, in setQuery\n    raise TypeError(\u0027setQuery takes either unicode-strings or utf-8 encoded byte-strings\u0027)\nTypeError: setQuery takes either unicode-strings or utf-8 encoded byte-strings\n\n"
           }
         ]
       },
@@ -154,8 +154,8 @@
       "jobName": "paragraph_1488397315134_-1171825582",
       "id": "20170220-205037_1655435298",
       "dateCreated": "Mar 1, 2017 2:41:55 PM",
-      "dateStarted": "Mar 7, 2017 2:39:21 PM",
-      "dateFinished": "Mar 7, 2017 2:39:21 PM",
+      "dateStarted": "Mar 7, 2017 2:52:31 PM",
+      "dateFinished": "Mar 7, 2017 2:52:31 PM",
       "status": "ERROR",
       "progressUpdateIntervalMs": 500
     },
@@ -196,8 +196,8 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%pyspark\n\nquery \u003d Template (\"\"\"\nPREFIX db_resource: \u003chttp://chem2bio2rdf.org/drugbank/resource/\u003e\nSELECT ?generic_name ?protein\nWHERE {\n  ?interaction db_resource:SwissProt_ID ?protein .\n  ?interaction db_resource:DBID         ?drug .\n  ?drug        db_resource:Generic_Name ?generic_name .\n  FILTER regex(?generic_name, \"${drugs}\", \"i\")\n}\"\"\")\ndrug_protein \u003d defaultdict(list)\nprotein_drug \u003d defaultdict(list)\ndrug_list \u003d \"Creatine|Baclofen|Amlodipine|Brimonidine|Acetaminophen|Aspirin\"\nresults \u003d query_sparql (query.substitute (drugs\u003ddrug_list))\nfor bind in results.bindings:\n    drug \u003d bind[\u0027generic_name\u0027].value\n    protein \u003d bind[\u0027protein\u0027].value.rsplit(\u0027/\u0027, 1)[-1]\n    protein_drug[protein].append (drug)\n    drug_protein[drug].append (protein)\n\nx_labels \u003d drug_list.split (\"|\")\ndata\u003d{ \u0027x\u0027 : x_labels, \u0027y\u0027 : map (lambda k : len(drug_protein[k]), x_labels) }\nsns.set_style(\"whitegrid\")\nsns.plt.title(\u0027Protein Targets By Drug\u0027, weight\u003d\u0027bold\u0027).set_fontsize(\u002718\u0027)\nax \u003d sns.barplot(x\u003d\"x\", y\u003d\"y\", data\u003ddata). \\\n    set(xlabel\u003d\u0027Drug\u0027, ylabel\u003d\u0027#Protein Targets\u0027)\n",
-      "dateUpdated": "Mar 2, 2017 2:56:43 PM",
+      "text": "%pyspark\n\nquery \u003d Template (\"\"\"\nPREFIX db_resource: \u003chttp://chem2bio2rdf.org/drugbank/resource/\u003e\nPREFIX db_resource: \u003chttp://ht1.renci.org/projects/stars/m2m/var/diseaseontology/dis.xml/\u003e\nSELECT ?drug ?disease\nWHERE {\n  ?interaction db_resource:DOID ?disease .\n  ?interaction db_resource:DBID         ?drug .\n  ?drug        db_resource:Disease ?disease .\n  FILTER regex(?disease, \"${drugs}\", \"i\")\n}\"\"\")\ndrug_disease \u003d defaultdict(list)\ndisease_drug \u003d defaultdict(list)\ndrug_list \u003d \"query\"\nresults \u003d query_sparql (query.substitute (drugs\u003ddrug_list))\nfor bind in results.bindings:\n    drug \u003d bind[\u0027generic_name\u0027].value\n    protein \u003d bind[\u0027protein\u0027].value.rsplit(\u0027/\u0027, 1)[-1]\n    protein_drug[protein].append (drug)\n    drug_protein[drug].append (protein)\n\nx_labels \u003d drug_list.split (\"|\")\ndata\u003d{ \u0027x\u0027 : x_labels, \u0027y\u0027 : map (lambda k : len(drug_protein[k]), x_labels) }\nsns.set_style(\"whitegrid\")\nsns.plt.title(\u0027Protein Targets By Drug\u0027, weight\u003d\u0027bold\u0027).set_fontsize(\u002718\u0027)\nax \u003d sns.barplot(x\u003d\"x\", y\u003d\"y\", data\u003ddata). \\\n    set(xlabel\u003d\u0027Drug\u0027, ylabel\u003d\u0027#Protein Targets\u0027)\n",
+      "dateUpdated": "Mar 7, 2017 2:41:08 PM",
       "config": {
         "enabled": true,
         "tableHide": true,
