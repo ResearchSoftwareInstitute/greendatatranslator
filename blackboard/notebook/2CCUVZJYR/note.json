@@ -39,7 +39,7 @@
     {
       "text": "%pyspark\nfrom string import Template\nfrom collections import defaultdict\nfrom SPARQLWrapper import SPARQLWrapper2, JSON\nimport matplotlib.pyplot as plt\nimport seaborn as sns\n\nimport urllib2\nproxy \u003d urllib2.ProxyHandler({\u0027http\u0027: \u0027gateway.ad.renci.org:8080\u0027})\nopener \u003d urllib2.build_opener(proxy)\nurllib2.install_opener(opener)\n\nblazegraph_uri \u003d \"http://stars-blazegraph.renci.org/bigdata/sparql\"\nblazegraph \u003d SPARQLWrapper2 (blazegraph_uri)\ndef query_sparql (query, service\u003dblazegraph):\n    service.setQuery (query)\n    service.setReturnFormat (JSON)\n    return service.query().convert ()\n",
       "user": "ad\\ruhirai",
-      "dateUpdated": "Mar 7, 2017 2:52:25 PM",
+      "dateUpdated": "Mar 7, 2017 3:10:09 PM",
       "config": {
         "enabled": true,
         "tableHide": false,
@@ -64,8 +64,8 @@
       "jobName": "paragraph_1488397315133_-1172979829",
       "id": "20170220-205005_1359367316",
       "dateCreated": "Mar 1, 2017 2:41:55 PM",
-      "dateStarted": "Mar 7, 2017 2:52:25 PM",
-      "dateFinished": "Mar 7, 2017 2:52:26 PM",
+      "dateStarted": "Mar 7, 2017 3:10:09 PM",
+      "dateFinished": "Mar 7, 2017 3:10:09 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -122,15 +122,15 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%pyspark\r\nquery \u003d Template (\"\"\"\r\nPREFIX db_resource: \u003chttp://chem2bio2rdf.org/drugbank/resource/\u003e\r\nPREFIX omim:        \u003chttp://chem2bio2rdf.org/omim/resource/\u003e\r\nSELECT DISTINCT ?disease ?drug ?disease_rec ?generic_name\r\nWHERE {\r\n  ?drug        db_resource:Generic_Name ?generic_name .\r\n  ?disease_rec omim:drug                ?drug ;\r\n               omim:Name                ?disease .\r\n}\"\"\")\r\nresults \u003d query_sparql (query)\r\n#print (map (lambda b : b[\u0027generic_name\u0027].value, results.bindings))\r\nfor bind in results.bindings:\r\n    print (bind)\r\n    print (\"\"\"disease: {0} drug: {1} disease_rec: {2} generic_name: {3} \"\"\".format (\r\n            bind[\u0027disease\u0027].value,\r\n            bind[\u0027drug\u0027].value,\r\n            bind[\u0027disease_rec\u0027].value,\r\n            bind[\u0027generic_name\u0027].value))\r\n   ",
+      "text": "%pyspark\r\nquery \u003d Template (\"\"\"\r\nPREFIX db_resource: \u003chttp://chem2bio2rdf.org/drugbank/resource/\u003e\r\nPREFIX omim:        \u003chttp://chem2bio2rdf.org/omim/resource/\u003e\r\nSELECT DISTINCT ?disease ?drug ?disease_rec ?generic_name\r\nWHERE {\r\n  ?drug        db_resource:Generic_Name ?generic_name .\r\n  ?disease_rec omim:drug                ?drug ;\r\n               omim:Name                ?disease .\r\n}\"\"\")\r\n\r\nresults \u003d query_sparql (query)\r\n#print (map (lambda b : b[\u0027generic_name\u0027].value, results.bindings))\r\nfor bind in results.bindings:\r\n    print (bind)\r\n    print (\"\"\"disease: {0} drug: {1} disease_rec: {2} generic_name: {3} \"\"\".format (\r\n            bind[\u0027disease\u0027].value,\r\n            bind[\u0027drug\u0027].value,\r\n            bind[\u0027disease_rec\u0027].value,\r\n            bind[\u0027generic_name\u0027].value))\r\n   ",
       "user": "ad\\ruhirai",
-      "dateUpdated": "Mar 7, 2017 2:52:31 PM",
+      "dateUpdated": "Mar 7, 2017 3:27:06 PM",
       "config": {
         "enabled": true,
-        "tableHide": false,
+        "tableHide": true,
         "editorMode": "ace/mode/python",
         "results": {},
-        "editorHide": true,
+        "editorHide": false,
         "editorSetting": {
           "language": "python",
           "editOnDblClick": true
@@ -154,8 +154,8 @@
       "jobName": "paragraph_1488397315134_-1171825582",
       "id": "20170220-205037_1655435298",
       "dateCreated": "Mar 1, 2017 2:41:55 PM",
-      "dateStarted": "Mar 7, 2017 2:52:31 PM",
-      "dateFinished": "Mar 7, 2017 2:52:31 PM",
+      "dateStarted": "Mar 7, 2017 3:27:03 PM",
+      "dateFinished": "Mar 7, 2017 3:27:03 PM",
       "status": "ERROR",
       "progressUpdateIntervalMs": 500
     },
