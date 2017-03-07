@@ -422,7 +422,7 @@
     {
       "text": "%pyspark\n",
       "user": "admin",
-      "dateUpdated": "Mar 1, 2017 6:17:10 AM",
+      "dateUpdated": "Mar 7, 2017 4:06:52 PM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -431,7 +431,7 @@
           "language": "python"
         },
         "editorMode": "ace/mode/python",
-        "editorHide": true,
+        "editorHide": false,
         "tableHide": false
       },
       "settings": {
