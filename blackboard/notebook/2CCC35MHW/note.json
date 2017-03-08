@@ -2,19 +2,18 @@
   "paragraphs": [
     {
       "text": "%md\n## Problem\nWe\u0027d like to know how reflective the [disease ontology](http://disease-ontology.org/) is of chemical realities. Do diseases classified together by the ontology respond to treatment by the same chemical compounds?\n\n## Approach\n\nFirst we\u0027ll build \n\n* a data structure for the disease ontology\n* a map of associations between diseases and compounds\n\n### 1.0 : Build the Disease Ontology Data Structure\n* Downloaded the disease ontology in the [OBO](https://en.wikipedia.org/wiki/Open_Biomedical_Ontologies) format.\n* Installed the pronto Python library that includes an OBO parser.\n* Parsed the ontology and encoded each element as Element.ID\u003d\u003e[ MESH.ID, Lineage ].\n* That is, a map of element id to an object containing mesh id and the list of ancestors of each node up the ontology hierarchy.\n\n### 1.1 : Build the Graph of Disease to Chemical Compound \n* Query Blazegraph, for now, focusing on CTD to get disease -\u003e compound associations\n* Create a map of disease id to compound\n\n",
-      "user": "ad\\scox",
-      "dateUpdated": "Mar 7, 2017 8:50:07 PM",
+      "dateUpdated": "Mar 8, 2017 1:56:24 PM",
       "config": {
-        "colWidth": 12.0,
         "enabled": true,
+        "tableHide": false,
+        "editorMode": "ace/mode/markdown",
         "results": {},
+        "editorHide": true,
         "editorSetting": {
           "language": "markdown",
           "editOnDblClick": true
         },
-        "editorMode": "ace/mode/markdown",
-        "editorHide": true,
-        "tableHide": false
+        "colWidth": 12.0
       },
       "settings": {
         "params": {},
@@ -30,29 +29,27 @@
         ]
       },
       "apps": [],
-      "jobName": "paragraph_1488936940977_2009426181",
+      "jobName": "paragraph_1488999384830_-1604394944",
       "id": "20170307-203540_90526252",
-      "dateCreated": "Mar 7, 2017 8:35:40 PM",
-      "dateStarted": "Mar 7, 2017 8:50:07 PM",
-      "dateFinished": "Mar 7, 2017 8:50:07 PM",
-      "status": "FINISHED",
+      "dateCreated": "Mar 8, 2017 1:56:24 PM",
+      "status": "READY",
+      "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%md\nFirst, define a class for interacting with a triplestore.",
-      "user": "ad\\scox",
-      "dateUpdated": "Mar 8, 2017 9:28:35 AM",
+      "dateUpdated": "Mar 8, 2017 1:56:24 PM",
       "config": {
-        "colWidth": 12.0,
         "enabled": true,
+        "tableHide": true,
+        "editorMode": "ace/mode/markdown",
         "results": {},
+        "editorHide": false,
         "editorSetting": {
           "language": "markdown",
           "editOnDblClick": true
         },
-        "editorMode": "ace/mode/markdown",
-        "editorHide": false,
-        "tableHide": true
+        "colWidth": 12.0
       },
       "settings": {
         "params": {},
@@ -68,26 +65,24 @@
         ]
       },
       "apps": [],
-      "jobName": "paragraph_1488937835532_43595742",
+      "jobName": "paragraph_1488999384831_-1604779693",
       "id": "20170307-205035_346909513",
-      "dateCreated": "Mar 7, 2017 8:50:35 PM",
-      "dateStarted": "Mar 7, 2017 8:51:09 PM",
-      "dateFinished": "Mar 7, 2017 8:51:09 PM",
-      "status": "FINISHED",
+      "dateCreated": "Mar 8, 2017 1:56:24 PM",
+      "status": "READY",
+      "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%pyspark\nfrom SPARQLWrapper import SPARQLWrapper2, JSON\nfrom collections import defaultdict\n\nclass TripleStore(object):\n    def __init__(self, hostname):\n        self.service \u003d  SPARQLWrapper2 (hostname)\n    def execute_query (self, query):\n        self.service.setQuery (query)\n        self.service.setReturnFormat (JSON)\n        return self.service.query().convert ()\n    def execute_query_file (self, query_file):\n        result \u003d None\n        with open (query_file, \"r\") as stream:\n            query \u003d stream.read ()\n            result \u003d self.execute_query (query)\n        return result\n",
-      "user": "ad\\ruhirai",
-      "dateUpdated": "Mar 8, 2017 12:20:46 PM",
+      "dateUpdated": "Mar 8, 2017 1:56:24 PM",
       "config": {
-        "colWidth": 12.0,
         "enabled": true,
+        "editorMode": "ace/mode/python",
         "results": {},
         "editorSetting": {
           "language": "python"
         },
-        "editorMode": "ace/mode/python"
+        "colWidth": 12.0
       },
       "settings": {
         "params": {},
@@ -98,29 +93,27 @@
         "msg": []
       },
       "apps": [],
-      "jobName": "paragraph_1488936514367_766072622",
+      "jobName": "paragraph_1488999384832_-1520519684",
       "id": "20170307-202834_465623601",
-      "dateCreated": "Mar 7, 2017 8:28:34 PM",
-      "dateStarted": "Mar 8, 2017 12:20:46 PM",
-      "dateFinished": "Mar 8, 2017 12:20:46 PM",
-      "status": "FINISHED",
+      "dateCreated": "Mar 8, 2017 1:56:24 PM",
+      "status": "READY",
+      "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%md\nThen load the disease ontology and turn it into a map of term ids to pairs of mesh ids and ontological lineages.",
-      "user": "ad\\scox",
-      "dateUpdated": "Mar 7, 2017 8:52:44 PM",
+      "dateUpdated": "Mar 8, 2017 1:56:24 PM",
       "config": {
-        "colWidth": 12.0,
         "enabled": true,
+        "tableHide": false,
+        "editorMode": "ace/mode/markdown",
         "results": {},
+        "editorHide": true,
         "editorSetting": {
           "language": "markdown",
           "editOnDblClick": true
         },
-        "editorMode": "ace/mode/markdown",
-        "editorHide": true,
-        "tableHide": false
+        "colWidth": 12.0
       },
       "settings": {
         "params": {},
@@ -136,26 +129,24 @@
         ]
       },
       "apps": [],
-      "jobName": "paragraph_1488937873771_1133650673",
+      "jobName": "paragraph_1488999384832_-1520519684",
       "id": "20170307-205113_1015121974",
-      "dateCreated": "Mar 7, 2017 8:51:13 PM",
-      "dateStarted": "Mar 7, 2017 8:52:44 PM",
-      "dateFinished": "Mar 7, 2017 8:52:44 PM",
-      "status": "FINISHED",
+      "dateCreated": "Mar 8, 2017 1:56:24 PM",
+      "status": "READY",
+      "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%pyspark\nimport pronto\n\nclass Disease(object):\n    def __init__ (self, xref, lineage):\n        self.xref \u003d xref\n        self.lineage \u003d lineage\n\ndef parse_ontology ():\n    ont \u003d pronto.Ontology (\u0027/projects/stars/m2m/var/diseaseontology/dis.obo\u0027)\n    \u0027\u0027\u0027 print (ont.json) \u0027\u0027\u0027\n    hierarchy_map \u003d {}\n    for term in ont:\n        xref \u003d None\n        if \u0027xref\u0027 in term.other:\n            for x in term.other[\u0027xref\u0027]:\n                if x.startswith (\"MESH:\"):\n                    xref \u003d x\n                    break\n        lineage \u003d map ( lambda t : t.id, term.rparents ())\n        sorted_lineage \u003d sorted (lineage, key\u003dlambda e : int(e.split(\u0027:\u0027)[1]))\n        disease \u003d Disease (xref\u003dxref, lineage\u003dsorted_lineage)\n        hierarchy_map[term.id.upper ()] \u003d disease\n\n    for k in hierarchy_map:\n        print (\"{0} {1} {2}\".format (k, hierarchy_map[k].xref, hierarchy_map[k].lineage))\n\n    return hierarchy_map",
-      "user": "ad\\ruhirai",
-      "dateUpdated": "Mar 8, 2017 12:20:49 PM",
+      "dateUpdated": "Mar 8, 2017 1:56:24 PM",
       "config": {
-        "colWidth": 12.0,
         "enabled": true,
+        "editorMode": "ace/mode/python",
         "results": {},
         "editorSetting": {
           "language": "python"
         },
-        "editorMode": "ace/mode/python"
+        "colWidth": 12.0
       },
       "settings": {
         "params": {},
@@ -166,29 +157,27 @@
         "msg": []
       },
       "apps": [],
-      "jobName": "paragraph_1488936556844_-1129923985",
+      "jobName": "paragraph_1488999384833_-1520904433",
       "id": "20170307-202916_1288718618",
-      "dateCreated": "Mar 7, 2017 8:29:16 PM",
-      "dateStarted": "Mar 8, 2017 12:20:49 PM",
-      "dateFinished": "Mar 8, 2017 12:20:49 PM",
-      "status": "FINISHED",
+      "dateCreated": "Mar 8, 2017 1:56:24 PM",
+      "status": "READY",
+      "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%md\nDefine our [blazegraph](http://stars-blazegraph.renci.org/blazegraph/#query) query.",
-      "user": "ad\\scox",
-      "dateUpdated": "Mar 8, 2017 9:35:46 AM",
+      "dateUpdated": "Mar 8, 2017 1:56:24 PM",
       "config": {
-        "colWidth": 12.0,
         "enabled": true,
+        "tableHide": true,
+        "editorMode": "ace/mode/markdown",
         "results": {},
+        "editorHide": false,
         "editorSetting": {
           "language": "markdown",
           "editOnDblClick": true
         },
-        "editorMode": "ace/mode/markdown",
-        "editorHide": false,
-        "tableHide": true
+        "colWidth": 12.0
       },
       "settings": {
         "params": {},
@@ -204,26 +193,24 @@
         ]
       },
       "apps": [],
-      "jobName": "paragraph_1488937972969_-697599206",
+      "jobName": "paragraph_1488999384834_-1519750186",
       "id": "20170307-205252_117835410",
-      "dateCreated": "Mar 7, 2017 8:52:52 PM",
-      "dateStarted": "Mar 7, 2017 8:53:17 PM",
-      "dateFinished": "Mar 7, 2017 8:53:17 PM",
-      "status": "FINISHED",
+      "dateCreated": "Mar 8, 2017 1:56:24 PM",
+      "status": "READY",
+      "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%pyspark\nquery \u003d \"\"\"\nPREFIX db_resource:      \u003chttp://chem2bio2rdf.org/drugbank/resource/\u003e\nPREFIX ctd_chem_disease: \u003chttp://chem2bio2rdf.org/ctd/resource/ctd_chem_disease/\u003e \nPREFIX biordf:           \u003chttp://bio2rdf.org/\u003e\nPREFIX ctd:              \u003chttp://chem2bio2rdf.org/ctd/resource/\u003e\nPREFIX pubchem:          \u003chttp://chem2bio2rdf.org/ctd/resource/\u003e\nSELECT DISTINCT ?chem_disease ?meshid ?compound\nWHERE {\n  ?chem_disease ctd:diseaseid ?meshid .\n  ?chem_disease ctd:cid       ?compound .\n}\n\"\"\"",
-      "user": "ad\\ruhirai",
-      "dateUpdated": "Mar 8, 2017 12:20:54 PM",
+      "dateUpdated": "Mar 8, 2017 1:56:24 PM",
       "config": {
-        "colWidth": 12.0,
         "enabled": true,
+        "editorMode": "ace/mode/python",
         "results": {},
         "editorSetting": {
           "language": "python"
         },
-        "editorMode": "ace/mode/python"
+        "colWidth": 12.0
       },
       "settings": {
         "params": {},
@@ -234,29 +221,27 @@
         "msg": []
       },
       "apps": [],
-      "jobName": "paragraph_1488936572727_-1322836426",
+      "jobName": "paragraph_1488999384834_-1519750186",
       "id": "20170307-202932_2073115934",
-      "dateCreated": "Mar 7, 2017 8:29:32 PM",
-      "dateStarted": "Mar 8, 2017 12:20:54 PM",
-      "dateFinished": "Mar 8, 2017 12:20:54 PM",
-      "status": "FINISHED",
+      "dateCreated": "Mar 8, 2017 1:56:24 PM",
+      "status": "READY",
+      "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%md\nDefine a function to run the query, parse the response, and return a map of disease to compound where the key is a MESH id.",
-      "user": "ad\\scox",
-      "dateUpdated": "Mar 7, 2017 8:54:05 PM",
+      "dateUpdated": "Mar 8, 2017 1:56:24 PM",
       "config": {
-        "colWidth": 12.0,
         "enabled": true,
+        "tableHide": false,
+        "editorMode": "ace/mode/markdown",
         "results": {},
+        "editorHide": true,
         "editorSetting": {
           "language": "markdown",
           "editOnDblClick": true
         },
-        "editorMode": "ace/mode/markdown",
-        "editorHide": true,
-        "tableHide": false
+        "colWidth": 12.0
       },
       "settings": {
         "params": {},
@@ -272,26 +257,24 @@
         ]
       },
       "apps": [],
-      "jobName": "paragraph_1488938001966_2076886410",
+      "jobName": "paragraph_1488999384835_-1520134935",
       "id": "20170307-205321_210744016",
-      "dateCreated": "Mar 7, 2017 8:53:21 PM",
-      "dateStarted": "Mar 7, 2017 8:54:05 PM",
-      "dateFinished": "Mar 7, 2017 8:54:05 PM",
-      "status": "FINISHED",
+      "dateCreated": "Mar 8, 2017 1:56:24 PM",
+      "status": "READY",
+      "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%pyspark\ndef get_disease_drug_associations (triplestore):\n    disease_compound \u003d {}\n    result \u003d triplestore.execute_query (query)\n    for bind in result.bindings:\n        chem_disease \u003d bind[\u0027chem_disease\u0027].value.rsplit(\u0027/\u0027, 1)[-1]\n        mesh_id \u003d bind[\u0027meshid\u0027].value.rsplit(\u0027/\u0027, 1)[-1].upper ()\n        compound \u003d bind[\u0027compound\u0027].value.rsplit(\u0027/\u0027, 1)[-1]\n        disease_compound[mesh_id] \u003d compound\n    return disease_compound",
-      "user": "ad\\ruhirai",
-      "dateUpdated": "Mar 8, 2017 1:46:02 PM",
+      "dateUpdated": "Mar 8, 2017 1:56:24 PM",
       "config": {
-        "colWidth": 12.0,
         "enabled": true,
+        "editorMode": "ace/mode/python",
         "results": {},
         "editorSetting": {
           "language": "python"
         },
-        "editorMode": "ace/mode/python"
+        "colWidth": 12.0
       },
       "settings": {
         "params": {},
@@ -302,29 +285,27 @@
         "msg": []
       },
       "apps": [],
-      "jobName": "paragraph_1488936692113_1694364449",
+      "jobName": "paragraph_1488999384835_-1520134935",
       "id": "20170307-203132_2103117686",
-      "dateCreated": "Mar 7, 2017 8:31:32 PM",
-      "dateStarted": "Mar 8, 2017 1:46:02 PM",
-      "dateFinished": "Mar 8, 2017 1:46:02 PM",
-      "status": "FINISHED",
+      "dateCreated": "Mar 8, 2017 1:56:24 PM",
+      "status": "READY",
+      "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%md\n* Define the triplestore.\n* Build the disease compound map.\n* Build the disease ontology hierarchy map.",
-      "user": "ad\\scox",
-      "dateUpdated": "Mar 7, 2017 8:55:10 PM",
+      "dateUpdated": "Mar 8, 2017 1:56:24 PM",
       "config": {
-        "colWidth": 12.0,
         "enabled": true,
+        "tableHide": false,
+        "editorMode": "ace/mode/markdown",
         "results": {},
+        "editorHide": true,
         "editorSetting": {
           "language": "markdown",
           "editOnDblClick": true
         },
-        "editorMode": "ace/mode/markdown",
-        "editorHide": true,
-        "tableHide": false
+        "colWidth": 12.0
       },
       "settings": {
         "params": {},
@@ -340,26 +321,24 @@
         ]
       },
       "apps": [],
-      "jobName": "paragraph_1488938050737_-508364043",
+      "jobName": "paragraph_1488999384836_-1522058680",
       "id": "20170307-205410_646587966",
-      "dateCreated": "Mar 7, 2017 8:54:10 PM",
-      "dateStarted": "Mar 7, 2017 8:55:10 PM",
-      "dateFinished": "Mar 7, 2017 8:55:10 PM",
-      "status": "FINISHED",
+      "dateCreated": "Mar 8, 2017 1:56:24 PM",
+      "status": "READY",
+      "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%pyspark\ntriplestore_uri \u003d \"http://stars-blazegraph.renci.org/bigdata/sparql\"\ntriplestore \u003d TripleStore (triplestore_uri)\n\ndisease_compound \u003d get_disease_drug_associations (triplestore)\nhierarchy_map \u003d parse_ontology ()\n\nfor term_id in hierarchy_map:\n    disease \u003d hierarchy_map [term_id]\n    if disease.xref in disease_compund:\n        compound \u003d disease_compound [disease.xref]\n        print (\"disease item: {0} is treated by: {1}\".format (term_id, compound))",
-      "user": "ad\\ruhirai",
-      "dateUpdated": "Mar 8, 2017 1:53:57 PM",
+      "dateUpdated": "Mar 8, 2017 1:56:24 PM",
       "config": {
-        "colWidth": 12.0,
         "enabled": true,
+        "editorMode": "ace/mode/python",
         "results": {},
         "editorSetting": {
           "language": "python"
         },
-        "editorMode": "ace/mode/python"
+        "colWidth": 12.0
       },
       "settings": {
         "params": {},
@@ -379,27 +358,25 @@
         ]
       },
       "apps": [],
-      "jobName": "paragraph_1488936727241_1320635349",
+      "jobName": "paragraph_1488999384837_-1522443429",
       "id": "20170307-203207_1627629988",
-      "dateCreated": "Mar 7, 2017 8:32:07 PM",
-      "dateStarted": "Mar 8, 2017 1:46:55 PM",
-      "dateFinished": "Mar 8, 2017 1:47:07 PM",
-      "status": "ERROR",
+      "dateCreated": "Mar 8, 2017 1:56:24 PM",
+      "status": "READY",
+      "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%pyspark\ndisease_matrix \u003d defaultdict(dict)\nfor disease_id in disease_compound:\n    for disease_id2 in disease_compound:\n        disease_matrix [disease_id][disease_id2] \u003d 0\nprint (len (disease_matrix))",
-      "user": "ad\\ruhirai",
-      "dateUpdated": "Mar 8, 2017 1:44:57 PM",
+      "dateUpdated": "Mar 8, 2017 1:56:24 PM",
       "config": {
-        "colWidth": 12.0,
         "enabled": true,
+        "editorMode": "ace/mode/python",
         "results": {},
         "editorSetting": {
           "language": "python",
           "editOnDblClick": false
         },
-        "editorMode": "ace/mode/python"
+        "colWidth": 12.0
       },
       "settings": {
         "params": {},
@@ -415,27 +392,25 @@
         ]
       },
       "apps": [],
-      "jobName": "paragraph_1488936743772_-633873739",
+      "jobName": "paragraph_1488999384857_-1517826442",
       "id": "20170307-203223_871947982",
-      "dateCreated": "Mar 7, 2017 8:32:23 PM",
-      "dateStarted": "Mar 8, 2017 1:44:57 PM",
-      "dateFinished": "Mar 8, 2017 1:44:59 PM",
-      "status": "FINISHED",
+      "dateCreated": "Mar 8, 2017 1:56:24 PM",
+      "status": "READY",
+      "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%pyspark\r\nimport pandas as pd\r\nfrom scipy.spatial.distance import euclidean, pdist, squareform\r\n\r\n\r\ndef similarity_func(u, v):\r\n    return 1/(1+euclidean(u,v))\r\n\r\nDF_var \u003d pd.DataFrame.from_dict(disease_compound).T\r\nDF_var.index \u003d [\"D1:D3015\"]\r\n\r\ndists \u003d pdist(DF_var, similarity_func)\r\nDF_euclid \u003d pd.DataFrame(squareform(dists), columns\u003dDF_var.index, index\u003dDF_var.index)",
-      "user": "ad\\ruhirai",
-      "dateUpdated": "Mar 8, 2017 1:53:24 PM",
+      "dateUpdated": "Mar 8, 2017 1:56:24 PM",
       "config": {
-        "colWidth": 12.0,
         "enabled": true,
+        "editorMode": "ace/mode/python",
         "results": {},
         "editorSetting": {
           "language": "python",
           "editOnDblClick": false
         },
-        "editorMode": "ace/mode/python"
+        "colWidth": 12.0
       },
       "settings": {
         "params": {},
@@ -451,37 +426,35 @@
         ]
       },
       "apps": [],
-      "jobName": "paragraph_1488989000801_924790862",
+      "jobName": "paragraph_1488999384858_-1516672195",
       "id": "20170308-110320_1712021252",
-      "dateCreated": "Mar 8, 2017 11:03:20 AM",
-      "dateStarted": "Mar 8, 2017 1:53:24 PM",
-      "dateFinished": "Mar 8, 2017 1:53:24 PM",
-      "status": "ERROR",
+      "dateCreated": "Mar 8, 2017 1:56:24 PM",
+      "status": "READY",
+      "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%pyspark\n",
-      "user": "ad\\ruhirai",
-      "dateUpdated": "Mar 8, 2017 1:48:18 PM",
+      "dateUpdated": "Mar 8, 2017 1:56:24 PM",
       "config": {},
       "settings": {
         "params": {},
         "forms": {}
       },
       "apps": [],
-      "jobName": "paragraph_1488998898018_565835684",
+      "jobName": "paragraph_1488999384858_-1516672195",
       "id": "20170308-134818_1626412406",
-      "dateCreated": "Mar 8, 2017 1:48:18 PM",
+      "dateCreated": "Mar 8, 2017 1:56:24 PM",
       "status": "READY",
+      "errorMessage": "",
       "progressUpdateIntervalMs": 500
     }
   ],
-  "name": "/M2M/DiseaseOntologyChem2Bio2RDF",
-  "id": "2CA23SKUS",
+  "name": "/M2M/DiseaseOntologyChem2Bio2RDF_ruhi",
+  "id": "2CCC35MHW",
   "angularObjects": {
     "2C8PNVW4G:shared_process": [],
     "2C9M4A84U:shared_process": [],
-    "2C9WWVYVN::2CA23SKUS": [],
     "2C8JB5J2A:shared_process": [],
     "2C8UPVAV8:shared_process": [],
     "2CB6QSJQK:shared_process": [],
@@ -492,6 +465,7 @@
     "2CBBPS1GQ:shared_process": [],
     "2CAYF7YMG:shared_process": [],
     "2C7NS2RPM:shared_process": [],
+    "2C9WWVYVN::2CCC35MHW": [],
     "2CB55MCKF:shared_process": [],
     "2C9P6TDB4:shared_process": [],
     "2C7YD2D51:shared_process": [],
