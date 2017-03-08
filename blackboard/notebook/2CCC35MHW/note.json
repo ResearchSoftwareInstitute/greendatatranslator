@@ -422,9 +422,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%pyspark\r\nimport pandas as pd\r\nfrom scipy.spatial.distance import euclidean, pdist, squareform\r\n\r\n\r\ndef similarity_func(u, v):\r\n    return 1/(1+euclidean(u,v))\r\n\r\nDF_var \u003d pd.DataFrame.from_dict(triplestore)\r\nDF_var.index \u003d [\"D1:D3015\"]\r\n\r\ndists \u003d pdist(DF_var, similarity_func)\r\nDF_euclid \u003d pd.DataFrame(squareform(dists), columns\u003dDF_var.index, index\u003dDF_var.index)",
+      "text": "%pyspark\r\nimport pandas as pd\r\nfrom scipy.spatial.distance import euclidean, pdist, squareform\r\n\r\n\r\ndef similarity_func(u, v):\r\n    return 1/(1+euclidean(u,v))\r\n\r\nDF_var \u003d pd.DataFrame.from_dict(disease_matrix)\r\nDF_var.index \u003d [\"D1:D3015\"]\r\n\r\ndists \u003d pdist(DF_var, similarity_func)\r\nDF_euclid \u003d pd.DataFrame(squareform(dists), columns\u003dDF_var.index, index\u003dDF_var.index)",
       "user": "ad\\ruhirai",
-      "dateUpdated": "Mar 8, 2017 3:07:42 PM",
+      "dateUpdated": "Mar 8, 2017 3:20:48 PM",
       "config": {
         "enabled": true,
         "editorMode": "ace/mode/python",
@@ -444,7 +444,7 @@
         "msg": [
           {
             "type": "TEXT",
-            "data": "Traceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-8507565010035725218.py\", line 346, in \u003cmodule\u003e\n    raise Exception(traceback.format_exc())\nException: Traceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-8507565010035725218.py\", line 334, in \u003cmodule\u003e\n    exec(code)\n  File \"\u003cstdin\u003e\", line 5, in \u003cmodule\u003e\n  File \"/projects/stars/venv/lib/python2.7/site-packages/pandas/core/frame.py\", line 809, in from_dict\n    return cls(data, index\u003dindex, columns\u003dcolumns, dtype\u003ddtype)\n  File \"/projects/stars/venv/lib/python2.7/site-packages/pandas/core/frame.py\", line 303, in __init__\n    raise PandasError(\u0027DataFrame constructor not properly called!\u0027)\nPandasError: DataFrame constructor not properly called!\n\n"
+            "data": "Traceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-8507565010035725218.py\", line 346, in \u003cmodule\u003e\n    raise Exception(traceback.format_exc())\nException: Traceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-8507565010035725218.py\", line 334, in \u003cmodule\u003e\n    exec(code)\n  File \"\u003cstdin\u003e\", line 5, in \u003cmodule\u003e\nNameError: name \u0027disease_matrix\u0027 is not defined\n\n"
           }
         ]
       },
@@ -452,8 +452,8 @@
       "jobName": "paragraph_1488999384858_-1516672195",
       "id": "20170308-110320_1712021252",
       "dateCreated": "Mar 8, 2017 1:56:24 PM",
-      "dateStarted": "Mar 8, 2017 3:07:42 PM",
-      "dateFinished": "Mar 8, 2017 3:07:42 PM",
+      "dateStarted": "Mar 8, 2017 3:20:48 PM",
+      "dateFinished": "Mar 8, 2017 3:20:48 PM",
       "status": "ERROR",
       "progressUpdateIntervalMs": 500
     },
