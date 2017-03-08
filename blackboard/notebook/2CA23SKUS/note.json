@@ -281,9 +281,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%pyspark\ndef get_disease_drug_associations (triplestore):\n    disease_compound \u003d {}\n    result \u003d triplestore.execute_query (query)\n    for bind in result.bindings:\n        chem_disease \u003d bind[\u0027chem_disease\u0027].value.rsplit(\u0027/\u0027, 1)[-1]\n        mesh_id \u003d bind[\u0027meshid\u0027].value.rsplit(\u0027/\u0027, 1)[-1].upper ()\n        compound \u003d bind[\u0027compound\u0027].value.rsplit(\u0027/\u0027, 1)[-1]\n        disease_compound [mesh_id] \u003d compound\n    return disease_compund",
-      "user": "ad\\ruhirai",
-      "dateUpdated": "Mar 8, 2017 12:21:05 PM",
+      "text": "%pyspark\ndef get_disease_drug_associations (triplestore):\n    disease_compound \u003d {}\n    result \u003d triplestore.execute_query (query)\n    for bind in result.bindings:\n        chem_disease \u003d bind[\u0027chem_disease\u0027].value.rsplit(\u0027/\u0027, 1)[-1]\n        mesh_id \u003d bind[\u0027meshid\u0027].value.rsplit(\u0027/\u0027, 1)[-1].upper ()\n        compound \u003d bind[\u0027compound\u0027].value.rsplit(\u0027/\u0027, 1)[-1]\n        disease_compound [mesh_id] \u003d compound\n    return disease_compound",
+      "user": "ad\\scox",
+      "dateUpdated": "Mar 8, 2017 1:38:05 PM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -305,8 +305,8 @@
       "jobName": "paragraph_1488936692113_1694364449",
       "id": "20170307-203132_2103117686",
       "dateCreated": "Mar 7, 2017 8:31:32 PM",
-      "dateStarted": "Mar 8, 2017 12:21:05 PM",
-      "dateFinished": "Mar 8, 2017 12:21:05 PM",
+      "dateStarted": "Mar 8, 2017 1:38:05 PM",
+      "dateFinished": "Mar 8, 2017 1:38:05 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -350,8 +350,8 @@
     },
     {
       "text": "%pyspark\ntriplestore_uri \u003d \"http://stars-blazegraph.renci.org/bigdata/sparql\"\ntriplestore \u003d TripleStore (triplestore_uri)\n\ndisease_compound \u003d get_disease_drug_associations (triplestore)\nhierarchy_map \u003d parse_ontology ()\n\nfor term_id in hierarchy_map:\n    disease \u003d hierarchy_map [term_id]\n    if disease.xref in disease_compund:\n        compound \u003d disease_compound [disease.xref]\n        print (\"disease item: {0} is treated by: {1}\".format (term_id, compound))",
-      "user": "ad\\ruhirai",
-      "dateUpdated": "Mar 8, 2017 12:21:11 PM",
+      "user": "ad\\scox",
+      "dateUpdated": "Mar 8, 2017 1:37:22 PM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -378,8 +378,8 @@
       "jobName": "paragraph_1488936727241_1320635349",
       "id": "20170307-203207_1627629988",
       "dateCreated": "Mar 7, 2017 8:32:07 PM",
-      "dateStarted": "Mar 8, 2017 12:21:11 PM",
-      "dateFinished": "Mar 8, 2017 12:21:20 PM",
+      "dateStarted": "Mar 8, 2017 1:37:22 PM",
+      "dateFinished": "Mar 8, 2017 1:37:30 PM",
       "status": "ERROR",
       "progressUpdateIntervalMs": 500
     },
