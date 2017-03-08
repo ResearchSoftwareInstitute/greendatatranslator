@@ -41,7 +41,7 @@
     {
       "text": "%md\nFirst, define a class for interacting with a triplestore.",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 7, 2017 8:51:09 PM",
+      "dateUpdated": "Mar 8, 2017 9:28:35 AM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -51,8 +51,8 @@
           "editOnDblClick": true
         },
         "editorMode": "ace/mode/markdown",
-        "editorHide": true,
-        "tableHide": false
+        "editorHide": false,
+        "tableHide": true
       },
       "settings": {
         "params": {},
@@ -177,7 +177,7 @@
     {
       "text": "%md\nDefine our [blazegraph](http://stars-blazegraph.renci.org/blazegraph/#query) query.",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 7, 2017 8:53:17 PM",
+      "dateUpdated": "Mar 8, 2017 9:35:46 AM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -187,8 +187,8 @@
           "editOnDblClick": true
         },
         "editorMode": "ace/mode/markdown",
-        "editorHide": true,
-        "tableHide": false
+        "editorHide": false,
+        "tableHide": true
       },
       "settings": {
         "params": {},
