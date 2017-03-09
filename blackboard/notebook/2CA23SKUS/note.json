@@ -422,7 +422,7 @@
     {
       "text": "%pyspark\r\nimport pandas as pd\r\nfrom scipy.spatial.distance import euclidean, pdist, squareform\r\n\r\n\r\ndef similarity_func(u, v):\r\n    return 1/(1+euclidean(u,v))\r\n\r\nDF_var \u003d pd.DataFrame.from_dict(disease_matrix).T\r\nDF_var.index \u003d [\"D1:D3015\"]\r\n\r\ndists \u003d pdist(DF_var, similarity_func)\r\nDF_euclid \u003d pd.DataFrame(squareform(dists), columns\u003dDF_var.index, index\u003dDF_var.index)",
       "user": "ad\\ruhirai",
-      "dateUpdated": "Mar 9, 2017 9:47:21 AM",
+      "dateUpdated": "Mar 9, 2017 12:21:55 PM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
