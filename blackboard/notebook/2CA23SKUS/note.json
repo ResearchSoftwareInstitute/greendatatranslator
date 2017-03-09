@@ -384,9 +384,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%pyspark\ndisease_matrix \u003d defaultdict(dict)\nfor disease_id in disease_compound:\n    for disease_id2 in disease_compound:\n        disease_matrix [disease_id][disease_id2] \u003d 0\nprint (len (disease_matrix))",
-      "user": "ad\\ruhirai",
-      "dateUpdated": "Mar 8, 2017 1:44:57 PM",
+      "text": "%pyspark\ndisease_matrix \u003d defaultdict(list)\nfor disease_id in disease_compound:\n    for disease_id2 in disease_compound:\n        disease_matrix [disease_id].append (0)\nprint (len (disease_matrix))",
+      "user": "ad\\scox",
+      "dateUpdated": "Mar 8, 2017 9:47:34 PM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -414,15 +414,15 @@
       "jobName": "paragraph_1488936743772_-633873739",
       "id": "20170307-203223_871947982",
       "dateCreated": "Mar 7, 2017 8:32:23 PM",
-      "dateStarted": "Mar 8, 2017 1:44:57 PM",
-      "dateFinished": "Mar 8, 2017 1:44:59 PM",
+      "dateStarted": "Mar 8, 2017 9:47:34 PM",
+      "dateFinished": "Mar 8, 2017 9:47:36 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%pyspark\r\nimport pandas as pd\r\nfrom scipy.spatial.distance import euclidean, pdist, squareform\r\n\r\n\r\ndef similarity_func(u, v):\r\n    return 1/(1+euclidean(u,v))\r\n\r\nDF_var \u003d pd.DataFrame.from_dict(disease_compound).T\r\nDF_var.index \u003d [\"D1:D3015\"]\r\n\r\ndists \u003d pdist(DF_var, similarity_func)\r\nDF_euclid \u003d pd.DataFrame(squareform(dists), columns\u003dDF_var.index, index\u003dDF_var.index)",
-      "user": "ad\\ruhirai",
-      "dateUpdated": "Mar 8, 2017 1:53:24 PM",
+      "user": "ad\\scox",
+      "dateUpdated": "Mar 8, 2017 9:47:43 PM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -450,8 +450,8 @@
       "jobName": "paragraph_1488989000801_924790862",
       "id": "20170308-110320_1712021252",
       "dateCreated": "Mar 8, 2017 11:03:20 AM",
-      "dateStarted": "Mar 8, 2017 1:53:24 PM",
-      "dateFinished": "Mar 8, 2017 1:53:24 PM",
+      "dateStarted": "Mar 8, 2017 9:47:43 PM",
+      "dateFinished": "Mar 8, 2017 9:47:43 PM",
       "status": "ERROR",
       "progressUpdateIntervalMs": 500
     },
