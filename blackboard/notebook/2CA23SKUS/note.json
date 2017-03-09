@@ -420,9 +420,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%pyspark\r\nimport pandas as pd\r\nfrom scipy.spatial.distance import euclidean, pdist, squareform\r\n\r\n\r\ndef similarity_func(u, v):\r\n    return 1/(1+euclidean(u,v))\r\n\r\nDF_var \u003d pd.DataFrame.to_string(disease_matrix).T\r\nDF_var.index \u003d [\"D1:D3015\"]\r\n\r\ndists \u003d pdist(DF_var, similarity_func)\r\nDF_euclid \u003d pd.DataFrame(squareform(dists), columns\u003dDF_var.index, index\u003dDF_var.index)",
+      "text": "%pyspark\r\nimport pandas as pd\r\nfrom scipy.spatial.distance import euclidean, pdist, squareform\r\n\r\n\r\ndef similarity_func(u, v):\r\n    return 1/(1+euclidean(u,v))\r\n\r\nDF_var \u003d pd.DataFrame.from_dict(disease_matrix).T\r\nDF_var.index \u003d [\"D1:D3015\"]\r\n\r\ndists \u003d pdist(DF_var, similarity_func)\r\nDF_euclid \u003d pd.DataFrame(squareform(dists), columns\u003dDF_var.index, index\u003dDF_var.index)",
       "user": "ad\\ruhirai",
-      "dateUpdated": "Mar 9, 2017 1:26:49 PM",
+      "dateUpdated": "Mar 9, 2017 2:19:38 PM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -442,7 +442,7 @@
         "msg": [
           {
             "type": "TEXT",
-            "data": "Traceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-2008622411167737942.py\", line 346, in \u003cmodule\u003e\n    raise Exception(traceback.format_exc())\nException: Traceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-2008622411167737942.py\", line 334, in \u003cmodule\u003e\n    exec(code)\n  File \"\u003cstdin\u003e\", line 5, in \u003cmodule\u003e\nTypeError: unbound method to_string() must be called with DataFrame instance as first argument (got defaultdict instance instead)\n\n"
+            "data": "Traceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-2008622411167737942.py\", line 346, in \u003cmodule\u003e\n    raise Exception(traceback.format_exc())\nException: Traceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-2008622411167737942.py\", line 334, in \u003cmodule\u003e\n    exec(code)\n  File \"\u003cstdin\u003e\", line 6, in \u003cmodule\u003e\n  File \"/projects/stars/venv/lib/python2.7/site-packages/pandas/core/generic.py\", line 2685, in __setattr__\n    return object.__setattr__(self, name, value)\n  File \"pandas/src/properties.pyx\", line 65, in pandas.lib.AxisProperty.__set__ (pandas/lib.c:44748)\n  File \"/projects/stars/venv/lib/python2.7/site-packages/pandas/core/generic.py\", line 428, in _set_axis\n    self._data.set_axis(axis, labels)\n  File \"/projects/stars/venv/lib/python2.7/site-packages/pandas/core/internals.py\", line 2635, in set_axis\n    (old_len, new_len))\nValueError: Length mismatch: Expected axis has 3015 elements, new values have 1 elements\n\n"
           }
         ]
       },
@@ -450,8 +450,8 @@
       "jobName": "paragraph_1488989000801_924790862",
       "id": "20170308-110320_1712021252",
       "dateCreated": "Mar 8, 2017 11:03:20 AM",
-      "dateStarted": "Mar 9, 2017 1:26:49 PM",
-      "dateFinished": "Mar 9, 2017 1:26:49 PM",
+      "dateStarted": "Mar 9, 2017 2:19:38 PM",
+      "dateFinished": "Mar 9, 2017 2:19:39 PM",
       "status": "ERROR",
       "progressUpdateIntervalMs": 500
     },
