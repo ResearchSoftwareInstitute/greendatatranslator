@@ -3,7 +3,7 @@
     {
       "text": "%md\n## Problem\nWe\u0027d like to know how reflective the [disease ontology](http://disease-ontology.org/) is of chemical realities. Do diseases classified together by the ontology respond to treatment by the same chemical compounds? Really, this should be approved drugs rather than chemical compounds. The query below and related code should be updated to reflect this.\n\n## Approach\n\nFirst we\u0027ll build \n\n* a data structure for the disease ontology\n* a map of associations between diseases and compounds\n\n### 1.0 : Build the Disease Ontology Data Structure\n* Downloaded the disease ontology in the [OBO](https://en.wikipedia.org/wiki/Open_Biomedical_Ontologies) format.\n* Installed the pronto Python library that includes an OBO parser.\n* Parsed the ontology and encoded each element as Element.ID\u003d\u003e[ MESH.ID, Lineage ].\n* That is, a map of element id to an object containing mesh id and the list of ancestors of each node up the ontology hierarchy.\n\n### 1.1 : Build the Graph of Disease to Chemical Compound \n* Query Blazegraph, for now, focusing on CTD to get disease -\u003e compound associations\n* Create a map of disease id to compound\n\n",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 10, 2017 9:23:55 AM",
+      "dateUpdated": "Mar 10, 2017 10:08:14 AM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -33,8 +33,8 @@
       "jobName": "paragraph_1488936940977_2009426181",
       "id": "20170307-203540_90526252",
       "dateCreated": "Mar 7, 2017 8:35:40 PM",
-      "dateStarted": "Mar 10, 2017 9:23:55 AM",
-      "dateFinished": "Mar 10, 2017 9:23:55 AM",
+      "dateStarted": "Mar 10, 2017 10:08:14 AM",
+      "dateFinished": "Mar 10, 2017 10:08:14 AM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },

@@ -398,9 +398,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%pyspark\nfrom lightning import Lightning\nlgn \u003d Lightning()\nviz \u003d lgn.line([1, 1, 2, 3, 5, 8])\nprint (\"viz id: {}\".format (viz.id))\nprint (\u0027%html \u003ciframe src\u003d\"http://localhost:3000/visualizations/{0}/iframe\" width\u003d\"400\" height\u003d\"300\" \u003e\u0027.format (viz.id))",
+      "text": "%pyspark\nfrom lightning import Lightning\nlightning_host \u003d \"https://stars-lightning.renci.org\"\nlgn \u003d Lightning(host\u003dlightning_host)\nviz \u003d lgn.line([1, 1, 2, 3, 5, 8])\nprint (\"viz id: {}\".format (viz.id))\nprint (\u0027%html \u003ciframe src\u003d\"{0}/visualizations/{1}/iframe\" width\u003d\"400\" height\u003d\"300\" \u003e\u0027.format (lightning_host, viz.id))",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 9, 2017 10:27:14 PM",
+      "dateUpdated": "Mar 10, 2017 9:48:08 AM",
       "config": {
         "enabled": true,
         "tableHide": false,
@@ -417,15 +417,15 @@
         "forms": {}
       },
       "results": {
-        "code": "SUCCESS",
+        "code": "ERROR",
         "msg": [
           {
             "type": "TEXT",
-            "data": "Lightning initialized\nConnected to server at http://localhost:3000\nviz id: 116218de-d80f-4534-8ff0-da1c66dc7802\n"
+            "data": "Lightning initialized\nProblem connecting to server at https://stars-lightning.renci.org\nerror: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed (_ssl.c:579)\n"
           },
           {
-            "type": "HTML",
-            "data": "\u003ciframe src\u003d\"http://localhost:3000/visualizations/116218de-d80f-4534-8ff0-da1c66dc7802/iframe\" width\u003d\"400\" height\u003d\"300\" \u003e\n"
+            "type": "TEXT",
+            "data": "Traceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-2523370729103614770.py\", line 346, in \u003cmodule\u003e\n    raise Exception(traceback.format_exc())\nException: Traceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-2523370729103614770.py\", line 334, in \u003cmodule\u003e\n    exec(code)\n  File \"\u003cstdin\u003e\", line 3, in \u003cmodule\u003e\n  File \"/projects/stars/venv/lib/python2.7/site-packages/lightning/main.py\", line 28, in __init__\n    raise ValueError(\"Could not access server\")\nValueError: Could not access server\n\n"
           }
         ]
       },
@@ -433,9 +433,9 @@
       "jobName": "paragraph_1488943872587_872170776",
       "id": "20170220-205421_2062798440",
       "dateCreated": "Mar 7, 2017 10:31:12 PM",
-      "dateStarted": "Mar 9, 2017 10:27:15 PM",
-      "dateFinished": "Mar 9, 2017 10:27:15 PM",
-      "status": "FINISHED",
+      "dateStarted": "Mar 10, 2017 9:48:08 AM",
+      "dateFinished": "Mar 10, 2017 9:48:08 AM",
+      "status": "ERROR",
       "progressUpdateIntervalMs": 500
     },
     {
