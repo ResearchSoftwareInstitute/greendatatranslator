@@ -398,8 +398,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%pyspark\n",
-      "dateUpdated": "Mar 7, 2017 10:31:12 PM",
+      "text": "%pyspark\nfrom lightning import Lightning\nlgn \u003d Lightning()\nviz \u003d lgn.line([1, 1, 2, 3, 5, 8])\nprint (\"viz id: {}\".format (viz.id))\nprint (\u0027%html \u003ciframe src\u003d\"http://localhost:3000/visualizations/{0}/iframe\" width\u003d\"400\" height\u003d\"300\" \u003e\u0027.format (viz.id))",
+      "user": "ad\\scox",
+      "dateUpdated": "Mar 9, 2017 10:27:14 PM",
       "config": {
         "enabled": true,
         "tableHide": false,
@@ -415,12 +416,42 @@
         "params": {},
         "forms": {}
       },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Lightning initialized\nConnected to server at http://localhost:3000\nviz id: 116218de-d80f-4534-8ff0-da1c66dc7802\n"
+          },
+          {
+            "type": "HTML",
+            "data": "\u003ciframe src\u003d\"http://localhost:3000/visualizations/116218de-d80f-4534-8ff0-da1c66dc7802/iframe\" width\u003d\"400\" height\u003d\"300\" \u003e\n"
+          }
+        ]
+      },
       "apps": [],
       "jobName": "paragraph_1488943872587_872170776",
       "id": "20170220-205421_2062798440",
       "dateCreated": "Mar 7, 2017 10:31:12 PM",
+      "dateStarted": "Mar 9, 2017 10:27:15 PM",
+      "dateFinished": "Mar 9, 2017 10:27:15 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%pyspark\n",
+      "user": "ad\\scox",
+      "dateUpdated": "Mar 9, 2017 10:15:07 PM",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1489115707597_-1509094631",
+      "id": "20170309-221507_1516042989",
+      "dateCreated": "Mar 9, 2017 10:15:07 PM",
       "status": "READY",
-      "errorMessage": "",
       "progressUpdateIntervalMs": 500
     }
   ],
