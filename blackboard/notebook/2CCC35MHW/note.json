@@ -424,9 +424,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%pyspark\r\nimport pandas as pd\r\nimport re\r\nfrom scipy.spatial.distance import euclidean, pdist, squareform\r\ndisease_matrix_a \u003d disease_matrix.split(\u0027[\u0027, 1)[0].replace(\u0027.\u0027, \u0027\u0027).upper()\r\nprint disease_matrix_a\r\n\r\n#def similarity_func(u, v):\r\n#    return 1/(1+euclidean(u,v))\r\n\r\n#DF_var \u003d pd.DataFrame.from_dict(disease_matrix)\r\n#DF_var.index \u003d [\"D1:D3015\"]\r\n\r\n#dists \u003d pdist(DF_var, similarity_func)\r\n#DF_euclid \u003d pd.DataFrame(squareform(dists), columns\u003dDF_var.index, index\u003dDF_var.index)",
+      "text": "%pyspark\r\nimport pandas as pd\r\nimport re\r\nfrom scipy.spatial.distance import euclidean, pdist, squareform\r\n#disease_matrix_a \u003d disease_matrix.split(\u0027[\u0027, 1)[0].replace(\u0027.\u0027, \u0027\u0027).upper()\r\nprint disease_matrix.rsplit(\u0027[\u0027,1)[0]\r\n\r\n\r\n#def similarity_func(u, v):\r\n#    return 1/(1+euclidean(u,v))\r\n\r\n#DF_var \u003d pd.DataFrame.from_dict(disease_matrix)\r\n#DF_var.index \u003d [\"D1:D3015\"]\r\n\r\n#dists \u003d pdist(DF_var, similarity_func)\r\n#DF_euclid \u003d pd.DataFrame(squareform(dists), columns\u003dDF_var.index, index\u003dDF_var.index)",
       "user": "ad\\ruhirai",
-      "dateUpdated": "Mar 10, 2017 11:55:35 AM",
+      "dateUpdated": "Mar 10, 2017 1:08:04 PM",
       "config": {
         "enabled": true,
         "editorMode": "ace/mode/python",
@@ -446,7 +446,7 @@
         "msg": [
           {
             "type": "TEXT",
-            "data": "Traceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-8507565010035725218.py\", line 346, in \u003cmodule\u003e\n    raise Exception(traceback.format_exc())\nException: Traceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-8507565010035725218.py\", line 334, in \u003cmodule\u003e\n    exec(code)\n  File \"\u003cstdin\u003e\", line 4, in \u003cmodule\u003e\nAttributeError: \u0027collections.defaultdict\u0027 object has no attribute \u0027split\u0027\n\n"
+            "data": "Traceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-8507565010035725218.py\", line 346, in \u003cmodule\u003e\n    raise Exception(traceback.format_exc())\nException: Traceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-8507565010035725218.py\", line 339, in \u003cmodule\u003e\n    exec(code)\n  File \"\u003cstdin\u003e\", line 4, in \u003cmodule\u003e\nAttributeError: \u0027collections.defaultdict\u0027 object has no attribute \u0027rsplit\u0027\n\n"
           }
         ]
       },
@@ -454,8 +454,8 @@
       "jobName": "paragraph_1488999384858_-1516672195",
       "id": "20170308-110320_1712021252",
       "dateCreated": "Mar 8, 2017 1:56:24 PM",
-      "dateStarted": "Mar 10, 2017 11:55:35 AM",
-      "dateFinished": "Mar 10, 2017 11:55:35 AM",
+      "dateStarted": "Mar 10, 2017 1:08:04 PM",
+      "dateFinished": "Mar 10, 2017 1:08:04 PM",
       "status": "ERROR",
       "progressUpdateIntervalMs": 500
     },
