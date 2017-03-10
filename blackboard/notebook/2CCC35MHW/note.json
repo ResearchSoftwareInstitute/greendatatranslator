@@ -424,9 +424,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%pyspark\r\nimport pandas as pd\r\nfrom scipy.spatial.distance import euclidean, pdist, squareform\r\n\r\n\r\ndef similarity_func(u, v):\r\n    return 1/(1+euclidean(u,v))\r\n\r\nDF_var \u003d pd.DataFrame.from_dict(disease_matrix)\r\nDF_var.index \u003d [\"D1:D3015\"]\r\n\r\ndists \u003d pdist(DF_var, similarity_func)\r\nDF_euclid \u003d pd.DataFrame(squareform(dists), columns\u003dDF_var.index, index\u003dDF_var.index)",
+      "text": "%pyspark\r\nimport pandas as pd\r\nfrom scipy.spatial.distance import euclidean, pdist, squareform\r\ndisease_matrix_a \u003d disease_matrix[ , , :]\r\nprint disease_matrix_a\r\n\r\n#def similarity_func(u, v):\r\n#    return 1/(1+euclidean(u,v))\r\n\r\n#DF_var \u003d pd.DataFrame.from_dict(disease_matrix)\r\n#DF_var.index \u003d [\"D1:D3015\"]\r\n\r\n#dists \u003d pdist(DF_var, similarity_func)\r\n#DF_euclid \u003d pd.DataFrame(squareform(dists), columns\u003dDF_var.index, index\u003dDF_var.index)",
       "user": "ad\\ruhirai",
-      "dateUpdated": "Mar 9, 2017 2:21:48 PM",
+      "dateUpdated": "Mar 10, 2017 11:39:40 AM",
       "config": {
         "enabled": true,
         "editorMode": "ace/mode/python",
@@ -446,7 +446,7 @@
         "msg": [
           {
             "type": "TEXT",
-            "data": "Traceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-8507565010035725218.py\", line 346, in \u003cmodule\u003e\n    raise Exception(traceback.format_exc())\nException: Traceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-8507565010035725218.py\", line 334, in \u003cmodule\u003e\n    exec(code)\n  File \"\u003cstdin\u003e\", line 6, in \u003cmodule\u003e\n  File \"/projects/stars/venv/lib/python2.7/site-packages/pandas/core/generic.py\", line 2685, in __setattr__\n    return object.__setattr__(self, name, value)\n  File \"pandas/src/properties.pyx\", line 65, in pandas.lib.AxisProperty.__set__ (pandas/lib.c:44748)\n  File \"/projects/stars/venv/lib/python2.7/site-packages/pandas/core/generic.py\", line 428, in _set_axis\n    self._data.set_axis(axis, labels)\n  File \"/projects/stars/venv/lib/python2.7/site-packages/pandas/core/internals.py\", line 2635, in set_axis\n    (old_len, new_len))\nValueError: Length mismatch: Expected axis has 3015 elements, new values have 1 elements\n\n"
+            "data": "Traceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-8507565010035725218.py\", line 323, in \u003cmodule\u003e\n    code \u003d compile(\u0027\\n\u0027.join(final_code), \u0027\u003cstdin\u003e\u0027, \u0027exec\u0027, ast.PyCF_ONLY_AST, 1)\n  File \"\u003cstdin\u003e\", line 3\n    disease_matrix_a \u003d disease_matrix[ , , :]\n                                       ^\nSyntaxError: invalid syntax\n"
           }
         ]
       },
@@ -454,8 +454,8 @@
       "jobName": "paragraph_1488999384858_-1516672195",
       "id": "20170308-110320_1712021252",
       "dateCreated": "Mar 8, 2017 1:56:24 PM",
-      "dateStarted": "Mar 9, 2017 2:21:48 PM",
-      "dateFinished": "Mar 9, 2017 2:21:49 PM",
+      "dateStarted": "Mar 10, 2017 11:39:40 AM",
+      "dateFinished": "Mar 10, 2017 11:39:40 AM",
       "status": "ERROR",
       "progressUpdateIntervalMs": 500
     },
