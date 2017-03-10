@@ -400,7 +400,7 @@
     {
       "text": "%pyspark\nfrom lightning import Lightning\nlightning_host \u003d \"https://stars-lightning.renci.org\"\nlgn \u003d Lightning(host\u003dlightning_host)\nviz \u003d lgn.line([1, 1, 2, 3, 5, 8])\nprint (\"viz id: {}\".format (viz.id))\nprint (\u0027%html \u003ciframe src\u003d\"{0}/visualizations/{1}/iframe\" width\u003d\"400\" height\u003d\"300\" \u003e\u0027.format (lightning_host, viz.id))",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 10, 2017 9:48:08 AM",
+      "dateUpdated": "Mar 10, 2017 10:18:33 AM",
       "config": {
         "enabled": true,
         "tableHide": false,
@@ -433,8 +433,8 @@
       "jobName": "paragraph_1488943872587_872170776",
       "id": "20170220-205421_2062798440",
       "dateCreated": "Mar 7, 2017 10:31:12 PM",
-      "dateStarted": "Mar 10, 2017 9:48:08 AM",
-      "dateFinished": "Mar 10, 2017 9:48:08 AM",
+      "dateStarted": "Mar 10, 2017 10:18:33 AM",
+      "dateFinished": "Mar 10, 2017 10:18:33 AM",
       "status": "ERROR",
       "progressUpdateIntervalMs": 500
     },
