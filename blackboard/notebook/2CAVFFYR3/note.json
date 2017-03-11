@@ -527,7 +527,7 @@
     {
       "text": "%pyspark\nfrom numpy import random\nmat \u003d random.rand(50,50)\nmat[mat \u003c 0.75] \u003d 0\ngroup \u003d (random.rand(10) * 5).astype(\u0027int\u0027)\n\nlabels\u003d[str(t) for t in range(0,50)]\nviz \u003d lgn.adjacency(mat, group\u003dgroup, labels\u003dlabels, numbers\u003dTrue, sort\u003d\"group\", height\u003d700, width\u003d700)\nprint (\"viz id: {}\".format (viz.id))\nprint (\u0027%html \u003ciframe src\u003d\"{0}/visualizations/{1}/iframe\" width\u003d\"800\" height\u003d\"800\" \u003e\u0027.format (lightning_host, viz.id))\n\n",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 11, 2017 7:58:31 AM",
+      "dateUpdated": "Mar 11, 2017 9:16:55 AM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
