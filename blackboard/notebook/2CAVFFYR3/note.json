@@ -486,7 +486,7 @@
     {
       "text": "%pyspark\nfrom lightning import Lightning\nlightning_host \u003d \"https://stars-lightning.renci.org\"\nlgn \u003d Lightning(host\u003dlightning_host)\nviz \u003d lgn.line([1, 1, 2, 3, 5, 8])\nprint (\"viz id: {}\".format (viz.id))\nprint (\u0027%html \u003ciframe src\u003d\"{0}/visualizations/{1}/iframe\" width\u003d\"400\" height\u003d\"300\" \u003e\u0027.format (lightning_host, viz.id))",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 11, 2017 7:20:11 AM",
+      "dateUpdated": "Mar 11, 2017 7:49:55 AM",
       "config": {
         "enabled": true,
         "tableHide": false,
@@ -507,11 +507,11 @@
         "msg": [
           {
             "type": "TEXT",
-            "data": "Lightning initialized\nConnected to server at https://stars-lightning.renci.org\nviz id: 7364d7ed-14dc-4f2c-b491-b516a3097599\n"
+            "data": "Lightning initialized\nConnected to server at https://stars-lightning.renci.org\nviz id: 949a96ed-c02b-49ce-ad59-75853b0d4024\n"
           },
           {
             "type": "HTML",
-            "data": "\u003ciframe src\u003d\"https://stars-lightning.renci.org/visualizations/7364d7ed-14dc-4f2c-b491-b516a3097599/iframe\" width\u003d\"400\" height\u003d\"300\" \u003e\n"
+            "data": "\u003ciframe src\u003d\"https://stars-lightning.renci.org/visualizations/949a96ed-c02b-49ce-ad59-75853b0d4024/iframe\" width\u003d\"400\" height\u003d\"300\" \u003e\n"
           }
         ]
       },
@@ -519,15 +519,15 @@
       "jobName": "paragraph_1488943872587_872170776",
       "id": "20170220-205421_2062798440",
       "dateCreated": "Mar 7, 2017 10:31:12 PM",
-      "dateStarted": "Mar 11, 2017 7:20:11 AM",
-      "dateFinished": "Mar 11, 2017 7:20:11 AM",
+      "dateStarted": "Mar 11, 2017 7:49:55 AM",
+      "dateFinished": "Mar 11, 2017 7:49:55 AM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%pyspark\nimport socket\nfrom OpenSSL import SSL\n#https://wiki.python.org/moin/SSL\ndef verify_cb(conn, x509, errno, errdepth, retcode):\n    return True\ncontext \u003d SSL.Context(SSL.SSLv23_METHOD)\ncontext.set_verify(SSL.VERIFY_PEER | SSL.VERIFY_FAIL_IF_NO_PEER_CERT, verify_cb)\ncontext.load_verify_locations(\"/projects/stars/stack/jdk/current/jre/lib/security/cacerts\")\n\n\n\n",
+      "text": "%pyspark\nfrom numpy import random\nmat \u003d random.rand(50,50)\nmat[mat \u003c 0.75] \u003d 0\ngroup \u003d (random.rand(10) * 5).astype(\u0027int\u0027)\n\nlabels\u003d[str(t) for t in range(0,50)]\nviz \u003d lgn.adjacency(mat, group\u003dgroup, labels\u003dlabels, numbers\u003dTrue, sort\u003d\"group\", height\u003d700, width\u003d700)\nprint (\"viz id: {}\".format (viz.id))\nprint (\u0027%html \u003ciframe src\u003d\"{0}/visualizations/{1}/iframe\" width\u003d\"800\" height\u003d\"800\" \u003e\u0027.format (lightning_host, viz.id))\n\n",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 10, 2017 2:58:40 PM",
+      "dateUpdated": "Mar 11, 2017 7:58:31 AM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -542,11 +542,15 @@
         "forms": {}
       },
       "results": {
-        "code": "ERROR",
+        "code": "SUCCESS",
         "msg": [
           {
             "type": "TEXT",
-            "data": "Traceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-3887908839584107827.py\", line 346, in \u003cmodule\u003e\n    raise Exception(traceback.format_exc())\nException: Traceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-3887908839584107827.py\", line 339, in \u003cmodule\u003e\n    exec(code)\n  File \"\u003cstdin\u003e\", line 7, in \u003cmodule\u003e\n  File \"/projects/stars/venv/lib/python2.7/site-packages/OpenSSL/SSL.py\", line 525, in load_verify_locations\n    _raise_current_error()\n  File \"/projects/stars/venv/lib/python2.7/site-packages/OpenSSL/_util.py\", line 48, in exception_from_error_queue\n    raise exception_type(errors)\nError: []\n\n"
+            "data": "viz id: 29528f50-47ff-45cb-b312-a9a39de17fb3\n"
+          },
+          {
+            "type": "HTML",
+            "data": "\u003ciframe src\u003d\"https://stars-lightning.renci.org/visualizations/29528f50-47ff-45cb-b312-a9a39de17fb3/iframe\" width\u003d\"800\" height\u003d\"800\" \u003e\n"
           }
         ]
       },
@@ -554,9 +558,9 @@
       "jobName": "paragraph_1489115707597_-1509094631",
       "id": "20170309-221507_1516042989",
       "dateCreated": "Mar 9, 2017 10:15:07 PM",
-      "dateStarted": "Mar 10, 2017 2:58:41 PM",
-      "dateFinished": "Mar 10, 2017 2:58:41 PM",
-      "status": "ERROR",
+      "dateStarted": "Mar 11, 2017 7:58:31 AM",
+      "dateFinished": "Mar 11, 2017 7:58:31 AM",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
