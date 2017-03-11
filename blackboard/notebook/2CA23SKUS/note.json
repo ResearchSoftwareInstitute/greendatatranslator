@@ -384,9 +384,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%pyspark\ndisease_matrix \u003d defaultdict(list)\nfor disease_id in disease_drug:\n    for disease_id2 in disease_drug:\n        disease_matrix [disease_id].append (0)\nprint (len (disease_matrix))",
+      "text": "%pyspark\ndisease_matrix \u003d defaultdict(list)\nfor disease_id in disease_drug:\n    for disease_id2 in disease_drug:\n        disease_matrix [disease_id].append (0)\nprint (len (disease_matrix))\n\nnodes \u003d defaultdict(int)\nfor mesh_id,disease in hierarchy_map.iteritems ():\n#    for node in disease.lineage:\n#        nodes[node] \u003d nodes[node] + 1\n    if len(disease.lineage) \u003c 5:\n        continue\n    node \u003d disease.lineage[-1]\n    nodes[node] \u003d nodes[node] + 1\nprint (\"nodes: {}\".format (len(nodes)))\nfor n in nodes:\n    if nodes[n] \u003e 50:\n        print (\"   {0} -\u003e {1}\".format (n, nodes[n]))    \n    ",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 11, 2017 1:38:37 PM",
+      "dateUpdated": "Mar 11, 2017 1:52:26 PM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -406,7 +406,7 @@
         "msg": [
           {
             "type": "TEXT",
-            "data": "2404\n"
+            "data": "2404\nnodes: 440\n   DOID:1289 -\u003e 55\n   DOID:0014667 -\u003e 87\n   DOID:0060116 -\u003e 72\n   DOID:2476 -\u003e 66\n   DOID:0050338 -\u003e 74\n   DOID:0050687 -\u003e 174\n   DOID:0050686 -\u003e 1253\n   DOID:0050828 -\u003e 111\n   DOID:0050155 -\u003e 629\n   DOID:0050161 -\u003e 86\n   DOID:0060100 -\u003e 201\n   DOID:0060083 -\u003e 149\n   DOID:0060084 -\u003e 92\n   DOID:0060085 -\u003e 167\n   DOID:0050564 -\u003e 54\n   DOID:0050565 -\u003e 79\n   DOID:0060036 -\u003e 98\n   DOID:0060038 -\u003e 59\n   DOID:2914 -\u003e 118\n   DOID:0050739 -\u003e 218\n   DOID:0080006 -\u003e 84\n   DOID:0080000 -\u003e 80\n   DOID:0080001 -\u003e 61\n   DOID:0050815 -\u003e 58\n   DOID:0060122 -\u003e 66\n   DOID:0060121 -\u003e 51\n   DOID:0060056 -\u003e 96\n   DOID:0050951 -\u003e 72\n   DOID:0060158 -\u003e 74\n"
           }
         ]
       },
@@ -414,8 +414,8 @@
       "jobName": "paragraph_1488936743772_-633873739",
       "id": "20170307-203223_871947982",
       "dateCreated": "Mar 7, 2017 8:32:23 PM",
-      "dateStarted": "Mar 11, 2017 1:38:37 PM",
-      "dateFinished": "Mar 11, 2017 1:38:38 PM",
+      "dateStarted": "Mar 11, 2017 1:52:26 PM",
+      "dateFinished": "Mar 11, 2017 1:52:27 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
