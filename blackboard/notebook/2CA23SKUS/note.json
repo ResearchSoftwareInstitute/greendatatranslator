@@ -456,9 +456,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%pyspark\n#http://lightning-viz.org/lightning-python/generated/lightning.Lightning.adjacency.html#lightning.Lightning.adjacency\n#https://stars-lightning.renci.org/visualization-types/edit/4d02e1ec-98af-4881-b016-81cfa98a64d9/\n#http://lightning-viz.org/usage/#creating\n\nimport numpy as np\nfrom lightning import Lightning\nlightning_host \u003d \"https://stars-lightning.renci.org\"\nlgn \u003d Lightning(host\u003dlightning_host)\n\n#from numpy import random\n#mat \u003d random.rand(50,50)\n#mat[mat \u003c 0.75] \u003d 0\n#group \u003d (random.rand(10) * 5).astype(\u0027int\u0027)\n\ntable \u003d []\nfor disease in disease_drug:\n    row \u003d []\n    for disease2 in disease_drug:\n        row.append (len(disease) + (len(disease2) * 8) )\n    table.append (row)\ngroup \u003d np.array (table)\n\nside \u003d len (table[0])\nconn \u003d random.rand (side, side)\nconn[conn \u003c 0.75] \u003d [0, 2, 9]\n\nviz \u003d lgn.adjacency(conn\u003dconn, group\u003dgroup, labels\u003ddisease_drug.keys (), numbers\u003dTrue, sort\u003d\"group\", height\u003d700, width\u003d700)\nprint (\"viz id: {}\".format (viz.id))\nprint (\u0027%html \u003ciframe src\u003d\"{0}/visualizations/{1}/iframe\" width\u003d\"800\" height\u003d\"800\" \u003e\u0027.format (lightning_host, viz.id))\n",
+      "text": "%pyspark\n#http://lightning-viz.org/lightning-python/generated/lightning.Lightning.adjacency.html#lightning.Lightning.adjacency\n#https://stars-lightning.renci.org/visualization-types/edit/4d02e1ec-98af-4881-b016-81cfa98a64d9/\n#http://lightning-viz.org/usage/#creating\n\nimport numpy as np\nfrom lightning import Lightning\nlightning_host \u003d \"https://stars-lightning.renci.org\"\nlgn \u003d Lightning(host\u003dlightning_host)\n\n#from numpy import random\n#mat \u003d random.rand(50,50)\n#mat[mat \u003c 0.75] \u003d 0\n#group \u003d (random.rand(10) * 5).astype(\u0027int\u0027)\nmat \u003d random.rand(10,10)\nmat[mat \u003c 0.75] \u003d 0\ngroup \u003d (random.rand(10) * 5).astype(\u0027int\u0027)\n\n\ntable \u003d []\nfor disease in disease_drug:\n    row \u003d []\n    for disease2 in disease_drug:\n        row.append (len(disease) + (len(disease2) * 8) )\n    table.append (row)\nmat \u003d np.array (table)\ngroup \u003d random.rand(len(disease_drug))\nprint (mat)\nprint (group)\nlgn.adjacency(mat, group\u003dgroup)\n\n#viz \u003d lgn.adjacency(conn\u003dconn, group\u003dgroup, labels\u003ddisease_drug.keys (), numbers\u003dTrue, sort\u003d\"group\", height\u003d700, width\u003d700)\nviz \u003d lgn.adjacency(conn\u003dmat, group\u003dgroup, labels\u003dmap(lambda v : \"x-%s\" % str(len(v)), mat), numbers\u003dTrue, sort\u003d\"group\", height\u003d700, width\u003d700)\nprint (\"viz id: {}\".format (viz.id))\nprint (\u0027%html \u003ciframe src\u003d\"{0}/visualizations/{1}/iframe\" width\u003d\"800\" height\u003d\"800\" \u003e\u0027.format (lightning_host, viz.id))\n",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 11, 2017 12:31:53 PM",
+      "dateUpdated": "Mar 11, 2017 1:08:25 PM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -477,11 +477,11 @@
         "msg": [
           {
             "type": "TEXT",
-            "data": "Lightning initialized\nConnected to server at https://stars-lightning.renci.org\n"
+            "data": "Lightning initialized\nConnected to server at https://stars-lightning.renci.org\n[[ 99 107 107 ..., 107  99  99]\n [100 108 108 ..., 108 100 100]\n [100 108 108 ..., 108 100 100]\n ..., \n [100 108 108 ..., 108 100 100]\n [ 99 107 107 ..., 107  99  99]\n [ 99 107 107 ..., 107  99  99]]\n[ 0.2233908   0.31845158  0.3821038  ...,  0.67891351  0.9879661\n  0.31703832]\n"
           },
           {
             "type": "TEXT",
-            "data": "Traceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-4706430729271099420.py\", line 346, in \u003cmodule\u003e\n    raise Exception(traceback.format_exc())\nException: Traceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-4706430729271099420.py\", line 334, in \u003cmodule\u003e\n    exec(code)\n  File \"\u003cstdin\u003e\", line 14, in \u003cmodule\u003e\nValueError: NumPy boolean array indexing assignment cannot assign 3 input values to the 4334618 output values where the mask is true\n\n"
+            "data": "Traceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-4706430729271099420.py\", line 346, in \u003cmodule\u003e\n    raise Exception(traceback.format_exc())\nException: Traceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-4706430729271099420.py\", line 334, in \u003cmodule\u003e\n    exec(code)\n  File \"\u003cstdin\u003e\", line 18, in \u003cmodule\u003e\n  File \"\u003cstring\u003e\", line 1, in \u003clambda\u003e\n  File \"/projects/stars/venv/lib/python2.7/site-packages/lightning/types/decorators.py\", line 36, in plotter\n    viz \u003d VizType._baseplot(self.session, VizType._name, *args, **kwargs)\n  File \"/projects/stars/venv/lib/python2.7/site-packages/lightning/types/base.py\", line 177, in _baseplot\n    viz \u003d cls._create(session, data\u003ddata, type\u003dtype, options\u003doptions, description\u003ddescription)\n  File \"/projects/stars/venv/lib/python2.7/site-packages/lightning/visualization.py\", line 114, in _create\n    raise Exception(\u0027Problem uploading data\u0027)\nException: Problem uploading data\n\n"
           }
         ]
       },
@@ -489,8 +489,8 @@
       "jobName": "paragraph_1488998898018_565835684",
       "id": "20170308-134818_1626412406",
       "dateCreated": "Mar 8, 2017 1:48:18 PM",
-      "dateStarted": "Mar 11, 2017 12:31:53 PM",
-      "dateFinished": "Mar 11, 2017 12:31:55 PM",
+      "dateStarted": "Mar 11, 2017 1:08:25 PM",
+      "dateFinished": "Mar 11, 2017 1:08:37 PM",
       "status": "ERROR",
       "progressUpdateIntervalMs": 500
     },
