@@ -485,8 +485,8 @@
     },
     {
       "text": "%pyspark\nfrom lightning import Lightning\nlightning_host \u003d \"https://stars-lightning.renci.org\"\nlgn \u003d Lightning(host\u003dlightning_host)\nviz \u003d lgn.line([1, 1, 2, 3, 5, 8])\nprint (\"viz id: {}\".format (viz.id))\nprint (\u0027%html \u003ciframe src\u003d\"{0}/visualizations/{1}/iframe\" width\u003d\"400\" height\u003d\"300\" \u003e\u0027.format (lightning_host, viz.id))",
-      "user": "ad\\scox",
-      "dateUpdated": "Mar 10, 2017 2:20:10 PM",
+      "user": "ad\\crutledge",
+      "dateUpdated": "Mar 11, 2017 6:30:38 AM",
       "config": {
         "enabled": true,
         "tableHide": false,
@@ -507,11 +507,11 @@
         "msg": [
           {
             "type": "TEXT",
-            "data": "Lightning initialized\nProblem connecting to server at https://stars-lightning.renci.org\nerror: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed (_ssl.c:579)\n"
+            "data": "Lightning initialized\nProblem connecting to server at https://stars-lightning.renci.org\nstatus code: 502\n"
           },
           {
             "type": "TEXT",
-            "data": "Traceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-3887908839584107827.py\", line 346, in \u003cmodule\u003e\n    raise Exception(traceback.format_exc())\nException: Traceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-3887908839584107827.py\", line 334, in \u003cmodule\u003e\n    exec(code)\n  File \"\u003cstdin\u003e\", line 3, in \u003cmodule\u003e\n  File \"/projects/stars/venv/lib/python2.7/site-packages/lightning/main.py\", line 28, in __init__\n    raise ValueError(\"Could not access server\")\nValueError: Could not access server\n\n"
+            "data": "Traceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-3024067490131316479.py\", line 346, in \u003cmodule\u003e\n    raise Exception(traceback.format_exc())\nException: Traceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-3024067490131316479.py\", line 334, in \u003cmodule\u003e\n    exec(code)\n  File \"\u003cstdin\u003e\", line 3, in \u003cmodule\u003e\n  File \"/projects/stars/venv/lib/python2.7/site-packages/lightning/main.py\", line 28, in __init__\n    raise ValueError(\"Could not access server\")\nValueError: Could not access server\n\n"
           }
         ]
       },
@@ -519,8 +519,8 @@
       "jobName": "paragraph_1488943872587_872170776",
       "id": "20170220-205421_2062798440",
       "dateCreated": "Mar 7, 2017 10:31:12 PM",
-      "dateStarted": "Mar 10, 2017 2:22:33 PM",
-      "dateFinished": "Mar 10, 2017 2:24:41 PM",
+      "dateStarted": "Mar 11, 2017 6:30:38 AM",
+      "dateFinished": "Mar 11, 2017 6:30:39 AM",
       "status": "ERROR",
       "progressUpdateIntervalMs": 500
     },
