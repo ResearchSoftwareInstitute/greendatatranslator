@@ -385,9 +385,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%pyspark\ndisease_matrix \u003d defaultdict(list)\nfor disease_id in disease_drug:\n    for disease_id2 in disease_drug:\n        disease_matrix [disease_id].append (0)\nprint (len (disease_matrix))\n\n\u0027\u0027\u0027 Build a map of Disease Ontology IDs to counts of the number of children. \u0027\u0027\u0027\nnodes \u003d defaultdict(int)\nfor mesh_id,disease in hierarchy_map.iteritems ():\n    if len(disease.lineage) \u003c 5:\n        continue\n\n    key \u003d \"/\".join (disease.lineage)\n    nodes[key] \u003d nodes[key] + 1\n#    node \u003d disease.lineage[-1]\n#    nodes[node] \u003d nodes[node] + 1\n#print (nodes)\n#print (\"nodes: {}\".format (len(nodes)))\n\n\u0027\u0027\u0027  Find nodes with more than threshold number of children. \u0027\u0027\u0027\nthreshold \u003d 60\nfor n in nodes:\n    if n in nodes and nodes[n] \u003e threshold:\n        term_id \u003d n.split (\u0027/\u0027)[-1]\n        print (\"   {0} {1} -\u003e {2}\".format (n, disease_ont[term_id].name, nodes[n]))    \n        \n\n    ",
+      "text": "%pyspark\ndisease_matrix \u003d defaultdict(list)\nfor disease_id in disease_drug:\n    for disease_id2 in disease_drug:\n        disease_matrix [disease_id].append (0)\nprint (len (disease_matrix))\n\n\u0027\u0027\u0027 Build a map of Disease Ontology IDs to counts of the number of children. \u0027\u0027\u0027\nnodes \u003d defaultdict(int)\nfor mesh_id,disease in hierarchy_map.iteritems ():\n    if len(disease.lineage) \u003c 5:\n        continue\n    key \u003d \"/\".join (disease.lineage)\n    nodes[key] \u003d nodes[key] + 1\n\ndisease_to_int \u003d {}\nindex \u003d 0\nfor k in hierarchy_map:\n    disease_to_int [k] \u003d index\n    index \u003d index + 1\n\n\u0027\u0027\u0027  Find nodes with more than threshold number of children. \u0027\u0027\u0027\nthreshold \u003d 60\nfor n in nodes:\n    if n in nodes and nodes[n] \u003e threshold:\n        term_id \u003d n.split (\u0027/\u0027)[-1]\n        print (\"   {0} {1} -\u003e {2}\".format (n, disease_ont[term_id].name, nodes[n]))    \n\n\u0027\u0027\u0027 Make a map st: ont_path \u003d\u003e [ d0-\u003e[g0..gn], d1-\u003e[g0..gn] ... dn[g0..gn] ] \u0027\u0027\u0027\n    \n",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 13, 2017 2:33:11 PM",
+      "dateUpdated": "Mar 13, 2017 2:54:15 PM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -408,7 +408,7 @@
         "msg": [
           {
             "type": "TEXT",
-            "data": "2404\n   DOID:4/DOID:7/DOID:331/DOID:607/DOID:863/DOID:2476 hereditary spastic paraplegia -\u003e 66\n   DOID:4/DOID:630/DOID:0050177/DOID:0050737/DOID:0050739 autosomal genetic disease -\u003e 74\n   DOID:4/DOID:630/DOID:0050177/DOID:0050736/DOID:0050739 autosomal genetic disease -\u003e 76\n   DOID:4/DOID:7/DOID:863/DOID:1492/DOID:5614/DOID:5679/DOID:8466/DOID:10584/DOID:0050155 sensory system disease -\u003e 71\n   DOID:4/DOID:7/DOID:863/DOID:2742/DOID:0050155/DOID:0050563/DOID:0050565 autosomal recessive nonsyndromic deafness -\u003e 79\n"
+            "data": "2404\n   DOID:4/DOID:7/DOID:331/DOID:607/DOID:863/DOID:2476 hereditary spastic paraplegia -\u003e 66\n   DOID:4/DOID:630/DOID:0050177/DOID:0050737/DOID:0050739 autosomal genetic disease -\u003e 74\n   DOID:4/DOID:630/DOID:0050177/DOID:0050736/DOID:0050739 autosomal genetic disease -\u003e 76\n   DOID:4/DOID:7/DOID:863/DOID:1492/DOID:5614/DOID:5679/DOID:8466/DOID:10584/DOID:0050155 sensory system disease -\u003e 71\n   DOID:4/DOID:7/DOID:863/DOID:2742/DOID:0050155/DOID:0050563/DOID:0050565 autosomal recessive nonsyndromic deafness -\u003e 79\n\u0027 Make a map st: ont_path \u003d\u003e [ d0-\u003e[g0..gn], d1-\u003e[g0..gn] ... dn[g0..gn] ] \u0027\n"
           }
         ]
       },
@@ -416,9 +416,25 @@
       "jobName": "paragraph_1488936743772_-633873739",
       "id": "20170307-203223_871947982",
       "dateCreated": "Mar 7, 2017 8:32:23 PM",
-      "dateStarted": "Mar 13, 2017 2:33:11 PM",
-      "dateFinished": "Mar 13, 2017 2:33:13 PM",
+      "dateStarted": "Mar 13, 2017 2:54:15 PM",
+      "dateFinished": "Mar 13, 2017 2:54:16 PM",
       "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%pyspark\n",
+      "user": "ad\\scox",
+      "dateUpdated": "Mar 13, 2017 2:45:04 PM",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1489430704652_-1313685869",
+      "id": "20170313-144504_1177418515",
+      "dateCreated": "Mar 13, 2017 2:45:04 PM",
+      "status": "READY",
       "progressUpdateIntervalMs": 500
     },
     {

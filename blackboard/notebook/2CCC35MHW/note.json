@@ -388,9 +388,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%pyspark\n#disease_matrix \u003d defaultdict(list)\n#for disease_id in disease_drug:\n#    for disease_id2 in disease_drug:\n#        disease_matrix [disease_id].append (0)\n#print (len (disease_matrix))\n\ndef cooccurrence_matrix(disease_drug):\n    disease_matrix \u003d defaultdict(lambda : defaultdict(list))\n    for disease_id in disease_drug:\n        for i in xrange(len(disease_id)-1):            \n            for j in xrange(i+1, len(disease_id)):\n                w1, w2 \u003d sorted([disease_id[i], disease_id[j]])                \n                disease_matrix[w1][w2] +\u003d 1\n    return disease_matrix\nprint (len (disease_matrix))\n\ndef get_sorted_vocab(disease_matrix):\n    vocab \u003d set([])\n    for w1, val_dict in disease_matrix.iteritems():\n        vocab.add(w1)\n        for w2 in val_dict.iterkeys():\n            vocab.add(w2)\n    vocab \u003d sorted(list(vocab))\n    return vocab\n    \ndef cosine_similarity_matrix(vocab, disease_matrix):\n    cm \u003d defaultdict(dict)\n    vectors \u003d get_vectors(disease_matrix, vocab)\n    for w1 in vocab:\n        for w2 in vocab:\n            cm[w1][w2] \u003d cosim(vectors[w1], vectors[w2])\n    return cm\n\ndef get_vectors(disease_matrix, vocab):\n    vecs \u003d {}\n    for w1 in vocab:\n        v \u003d []\n        for w2 in vocab:\n            wA, wB \u003d sorted([w1, w2])\n            v.append(d[wA][wB])\n        vecs[w1] \u003d array(v)\n    return vecs    \n\ndef cosim(v1, v2):\n    \"\"\"Cosine similarity between the two vectors v1 and v2.\"\"\"\n    num \u003d dot(v1, v2)\n    den \u003d sqrt(dot(v1, v1)) * sqrt(dot(v2, v2))\n    if den:\n        return num/den\n    else:\n        return 0.0",
+      "text": "%pyspark\n#disease_matrix \u003d defaultdict(list)\n#for disease_id in disease_drug:\n#    for disease_id2 in disease_drug:\n#        disease_matrix [disease_id].append (0)\n#print (len (disease_matrix))\n\ndef cooccurrence_matrix(disease_drug):\n    disease_matrix \u003d defaultdict(lambda : defaultdict(list))\n    for disease_id in disease_drug:\n        for i in xrange(len(disease_id)-1):            \n            for j in xrange(i+1, len(disease_id)):\n                w1, w2 \u003d sorted([disease_id[i], disease_id[j]])                \n                disease_matrix[w1][w2] +\u003d 1\n    return disease_matrix\nprint (len (disease_matrix))\n#print disease_matrix\n\ndef get_sorted_vocab(disease_matrix):\n    vocab \u003d set([])\n    for w1, val_dict in disease_matrix.iteritems():\n        vocab.add(w1)\n        for w2 in val_dict.iterkeys():\n            vocab.add(w2)\n    vocab \u003d sorted(list(vocab))\n    return vocab\n\ndef cosine_similarity_matrix(vocab, disease_matrix):\n    cm \u003d defaultdict(dict)\n    vectors \u003d get_vectors(disease_matrix, vocab)\n    for w1 in vocab:\n        for w2 in vocab:\n            cm[w1][w2] \u003d cosim(vectors[w1], vectors[w2])\n    return cm\n\ndef get_vectors(disease_matrix, vocab):\n    vecs \u003d {}\n    for w1 in vocab:\n        v \u003d []\n        for w2 in vocab:\n            wA, wB \u003d sorted([w1, w2])\n            v.append(d[wA][wB])\n        vecs[w1] \u003d array(v)\n    return vecs    \n\ndef cosim(v1, v2):\n    \"\"\"Cosine similarity between the two vectors v1 and v2.\"\"\"\n    num \u003d dot(v1, v2)\n    den \u003d sqrt(dot(v1, v1)) * sqrt(dot(v2, v2))\n    if den:\n        return num/den\n    else:\n        return 0.0\n     \ndef graph_propagation(cm, vocab, positive, negative, iterations):\n    pol \u003d {}    \n    # Initialize a.\n    a \u003d defaultdict(lambda : defaultdict(int))\n    for w1, val_dict in cm.iteritems():\n        for w2 in val_dict.iterkeys():\n            if w1 \u003d\u003d w2:\n                a[w1][w2] \u003d 1.0                    \n    # Propagation.\n    pol_positive, a \u003d propagate(positive, cm, vocab, a, iterations)\n    pol_negative, a \u003d propagate(negative, cm, vocab, a, iterations)\n    beta \u003d sum(pol_positive.values()) / sum(pol_negative.values())\n    for w in vocab:\n        pol[w] \u003d pol_positive[w] - (beta * pol_negative[w])\n    return pol\n    \n    \ndef propagate(seedset, cm, vocab, a, iterations):\n    for w_i in seedset:\n        f \u003d {}\n        f[w_i] \u003d True\n        for t in range(iterations):\n            for w_k in cm.keys():\n                if w_k in f:\n                    for w_j, val in cm[w_k].items():\n                        # New value is max{ old-value, cos(k, j) } --- so strength\n                        # can come from somewhere other th\n                        a[w_i][w_j] \u003d max([a[w_i][w_j], a[w_i][w_k] * cm[w_k][w_j]])\n                        f[w_j] \u003d True\n    # Score tally.\n    pol \u003d {}\n    for w in vocab:\n        pol[w] \u003d sum(a[w_i][w] for a_i in seedset)\n    return [pol, a]\n    \ndef format_matrix(vocab, m):\n    s \u003d \"\"\n    sep \u003d \"\"\n    col_width \u003d 15\n    s +\u003d \" \".rjust(col_width) + sep.join(map((lambda x : x.rjust(col_width)), vocab)) + \"\\n\"\n    for w1 in vocab:\n        row \u003d [w1]\n        row +\u003d [round(m[w1][w2], 2) for w2 in vocab]\n        s +\u003d sep.join(map((lambda x : str(x).rjust(col_width)), row)) + \"\\n\"\n    return s \n    \nprint format_matrix(cm, disease_matrix)\n    \n\n\n",
       "user": "ad\\ruhirai",
-      "dateUpdated": "Mar 13, 2017 2:28:03 PM",
+      "dateUpdated": "Mar 13, 2017 3:09:26 PM",
       "config": {
         "enabled": true,
         "editorMode": "ace/mode/python",
@@ -406,11 +406,15 @@
         "forms": {}
       },
       "results": {
-        "code": "SUCCESS",
+        "code": "ERROR",
         "msg": [
           {
             "type": "TEXT",
             "data": "2404\n"
+          },
+          {
+            "type": "TEXT",
+            "data": "Traceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-3146807549941764549.py\", line 346, in \u003cmodule\u003e\n    raise Exception(traceback.format_exc())\nException: Traceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-3146807549941764549.py\", line 339, in \u003cmodule\u003e\n    exec(code)\n  File \"\u003cstdin\u003e\", line 79, in \u003cmodule\u003e\nNameError: name \u0027cm\u0027 is not defined\n\n"
           }
         ]
       },
@@ -418,9 +422,9 @@
       "jobName": "paragraph_1488999384857_-1517826442",
       "id": "20170307-203223_871947982",
       "dateCreated": "Mar 8, 2017 1:56:24 PM",
-      "dateStarted": "Mar 13, 2017 2:28:03 PM",
-      "dateFinished": "Mar 13, 2017 2:28:03 PM",
-      "status": "FINISHED",
+      "dateStarted": "Mar 13, 2017 3:09:26 PM",
+      "dateFinished": "Mar 13, 2017 3:09:26 PM",
+      "status": "ERROR",
       "progressUpdateIntervalMs": 500
     },
     {
