@@ -424,9 +424,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%pyspark\r\nimport pandas as pd\r\nfrom scipy.spatial.distance import euclidean, pdist, squareform\r\n\r\ndef similarity_func(u, v):\r\n    return 1/(1+euclidean(u,v))\r\n\r\nDF_var \u003d pd.DataFrame.from_dict(disease_matrix)\r\n#DF_var.index \u003d [\"D0:D10389\"]\r\ndists \u003d pdist(DF_var, similarity_func)\r\nDF_euclid \u003d pd.DataFrame(squareform(dists))#, columns\u003dDF_var.index, index\u003dDF_var.index)\r\nprint DF_euclid",
+      "text": "%pyspark\r\nimport pandas as pd\r\nfrom scipy.spatial.distance import euclidean, pdist, squareform\r\n\r\ndef similarity_func(u, v):\r\n    return 1/(1+euclidean(u,v))\r\n\r\nDF_var \u003d pd.DataFrame.from_dict(disease_matrix).T\r\n#DF_var.index \u003d [\"D0:D10389\"]\r\ndists \u003d pdist(DF_var, similarity_func)\r\nDF_euclid \u003d pd.DataFrame(squareform(dists))#, columns\u003dDF_var.index, index\u003dDF_var.index)\r\nprint DF_euclid",
       "user": "ad\\ruhirai",
-      "dateUpdated": "Mar 10, 2017 4:12:01 PM",
+      "dateUpdated": "Mar 13, 2017 9:10:35 AM",
       "config": {
         "enabled": true,
         "editorMode": "ace/mode/python",
@@ -454,8 +454,8 @@
       "jobName": "paragraph_1488999384858_-1516672195",
       "id": "20170308-110320_1712021252",
       "dateCreated": "Mar 8, 2017 1:56:24 PM",
-      "dateStarted": "Mar 10, 2017 4:12:01 PM",
-      "dateFinished": "Mar 10, 2017 4:14:28 PM",
+      "dateStarted": "Mar 13, 2017 9:10:35 AM",
+      "dateFinished": "Mar 13, 2017 9:13:01 AM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
