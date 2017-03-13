@@ -527,7 +527,7 @@
     {
       "text": "%pyspark\nfrom lightning import Lightning\nlightning_host \u003d \"https://stars-lightning.renci.org\"\nlgn \u003d Lightning(host\u003dlightning_host)\nfrom numpy import random\nmat \u003d random.rand(50,50)\nmat[mat \u003c 0.75] \u003d 0\ngroup \u003d (random.rand(10) * 5).astype(\u0027int\u0027)\n\nlabels\u003d[str(t) for t in range(0,50)]\nviz \u003d lgn.adjacency(mat, group\u003dgroup, labels\u003dlabels, numbers\u003dTrue, sort\u003d\"group\", height\u003d700, width\u003d700)\nprint (\"viz id: {}\".format (viz.id))\nprint (\u0027%html \u003ciframe src\u003d\"{0}/visualizations/{1}/iframe\" width\u003d\"800\" height\u003d\"800\" \u003e\u0027.format (lightning_host, viz.id))\n\n",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 11, 2017 10:18:50 AM",
+      "dateUpdated": "Mar 13, 2017 1:29:16 PM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -546,11 +546,11 @@
         "msg": [
           {
             "type": "TEXT",
-            "data": "Lightning initialized\nConnected to server at https://stars-lightning.renci.org\nviz id: 9130c607-5311-47da-912c-02d959bb0ee9\n"
+            "data": "Lightning initialized\nConnected to server at https://stars-lightning.renci.org\nviz id: 7bfc9a15-d132-4085-b9b0-51a0bb124326\n"
           },
           {
             "type": "HTML",
-            "data": "\u003ciframe src\u003d\"https://stars-lightning.renci.org/visualizations/9130c607-5311-47da-912c-02d959bb0ee9/iframe\" width\u003d\"800\" height\u003d\"800\" \u003e\n"
+            "data": "\u003ciframe src\u003d\"https://stars-lightning.renci.org/visualizations/7bfc9a15-d132-4085-b9b0-51a0bb124326/iframe\" width\u003d\"800\" height\u003d\"800\" \u003e\n"
           }
         ]
       },
@@ -558,8 +558,8 @@
       "jobName": "paragraph_1489115707597_-1509094631",
       "id": "20170309-221507_1516042989",
       "dateCreated": "Mar 9, 2017 10:15:07 PM",
-      "dateStarted": "Mar 11, 2017 10:18:50 AM",
-      "dateFinished": "Mar 11, 2017 10:18:50 AM",
+      "dateStarted": "Mar 13, 2017 1:29:16 PM",
+      "dateFinished": "Mar 13, 2017 1:29:16 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
