@@ -388,9 +388,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%pyspark\ndisease_matrix \u003d defaultdict(list)\nfor disease_id in disease_compound:\n    for disease_id2 in disease_compound:\n        disease_matrix [disease_id].append (0)\nprint (len (disease_matrix))",
+      "text": "%pyspark\n#disease_matrix \u003d defaultdict(list)\n#for disease_id in disease_drug:\n#    for disease_id2 in disease_drug:\n#        disease_matrix [disease_id].append (0)\n#print (len (disease_matrix))\n\ndef cooccurrence_matrix(disease_drug):\n    disease_matrix \u003d defaultdict(lambda : defaultdict(list))\n    for disease_id in disease_drug:\n        for i in xrange(len(disease_id)-1):            \n            for j in xrange(i+1, len(disease_id)):\n                w1, w2 \u003d sorted([disease_id[i], disease_id[j]])                \n                disease_matrix[w1][w2] +\u003d 1\n    return disease_matrix\nprint (len (disease_matrix))\n\ndef get_sorted_vocab(disease_matrix):\n    vocab \u003d set([])\n    for w1, val_dict in disease_matrix.iteritems():\n        vocab.add(w1)\n        for w2 in val_dict.iterkeys():\n            vocab.add(w2)\n    vocab \u003d sorted(list(vocab))\n    return vocab\n    \ndef cosine_similarity_matrix(vocab, disease_matrix):\n    cm \u003d defaultdict(dict)\n    vectors \u003d get_vectors(disease_matrix, vocab)\n    for w1 in vocab:\n        for w2 in vocab:\n            cm[w1][w2] \u003d cosim(vectors[w1], vectors[w2])\n    return cm\n\ndef get_vectors(disease_matrix, vocab):\n    vecs \u003d {}\n    for w1 in vocab:\n        v \u003d []\n        for w2 in vocab:\n            wA, wB \u003d sorted([w1, w2])\n            v.append(d[wA][wB])\n        vecs[w1] \u003d array(v)\n    return vecs    \n\ndef cosim(v1, v2):\n    \"\"\"Cosine similarity between the two vectors v1 and v2.\"\"\"\n    num \u003d dot(v1, v2)\n    den \u003d sqrt(dot(v1, v1)) * sqrt(dot(v2, v2))\n    if den:\n        return num/den\n    else:\n        return 0.0",
       "user": "ad\\ruhirai",
-      "dateUpdated": "Mar 10, 2017 4:07:49 PM",
+      "dateUpdated": "Mar 13, 2017 2:28:03 PM",
       "config": {
         "enabled": true,
         "editorMode": "ace/mode/python",
@@ -410,7 +410,7 @@
         "msg": [
           {
             "type": "TEXT",
-            "data": "3015\n"
+            "data": "2404\n"
           }
         ]
       },
@@ -418,15 +418,15 @@
       "jobName": "paragraph_1488999384857_-1517826442",
       "id": "20170307-203223_871947982",
       "dateCreated": "Mar 8, 2017 1:56:24 PM",
-      "dateStarted": "Mar 10, 2017 4:07:49 PM",
-      "dateFinished": "Mar 10, 2017 4:07:51 PM",
+      "dateStarted": "Mar 13, 2017 2:28:03 PM",
+      "dateFinished": "Mar 13, 2017 2:28:03 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%pyspark\r\nimport pandas as pd\r\nimport numpy as np\r\nfrom scipy.spatial.distance import euclidean, pdist, squareform\r\n\r\ndef similarity_func(u, v):\r\n    return 1/(1+euclidean(u,v))\r\n\r\nDF_var \u003d pd.DataFrame.from_dict(disease_matrix)\r\n#DF_var.index \u003d [\"D0:D10389\"]\r\ndists \u003d pdist(DF_var, similarity_func)#DF_euclid \u003d pd.DataFrame(squareform(dists))#, columns\u003dDF_var.index, index\u003dDF_var.index)\r\nprint DF_euclid",
       "user": "ad\\ruhirai",
-      "dateUpdated": "Mar 13, 2017 1:47:55 PM",
+      "dateUpdated": "Mar 13, 2017 2:12:23 PM",
       "config": {
         "enabled": true,
         "editorMode": "ace/mode/python",
@@ -454,8 +454,8 @@
       "jobName": "paragraph_1488999384858_-1516672195",
       "id": "20170308-110320_1712021252",
       "dateCreated": "Mar 8, 2017 1:56:24 PM",
-      "dateStarted": "Mar 13, 2017 1:47:55 PM",
-      "dateFinished": "Mar 13, 2017 1:50:19 PM",
+      "dateStarted": "Mar 13, 2017 2:12:23 PM",
+      "dateFinished": "Mar 13, 2017 2:13:51 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
