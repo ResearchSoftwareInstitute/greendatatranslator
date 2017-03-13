@@ -283,7 +283,7 @@
     {
       "text": "%pyspark\ndef get_disease_drug_associations (triplestore):\n    disease_drug \u003d {}\n    result \u003d triplestore.execute_query (query)\n    for bind in result.bindings:\n        mesh_id \u003d bind[\u0027meshid\u0027].value.rsplit(\u0027/\u0027, 1)[-1].upper ()\n        drug \u003d bind[\u0027drug\u0027].value.rsplit(\u0027/\u0027, 1)[-1]\n        disease_drug[mesh_id] \u003d drug\n    return disease_drug",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 11, 2017 10:24:01 AM",
+      "dateUpdated": "Mar 13, 2017 10:42:40 AM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -305,8 +305,8 @@
       "jobName": "paragraph_1488936692113_1694364449",
       "id": "20170307-203132_2103117686",
       "dateCreated": "Mar 7, 2017 8:31:32 PM",
-      "dateStarted": "Mar 11, 2017 10:24:01 AM",
-      "dateFinished": "Mar 11, 2017 10:24:01 AM",
+      "dateStarted": "Mar 13, 2017 10:42:40 AM",
+      "dateFinished": "Mar 13, 2017 10:42:40 AM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -386,7 +386,7 @@
     {
       "text": "%pyspark\ndisease_matrix \u003d defaultdict(list)\nfor disease_id in disease_drug:\n    for disease_id2 in disease_drug:\n        disease_matrix [disease_id].append (0)\nprint (len (disease_matrix))\n\nnodes \u003d defaultdict(int)\nfor mesh_id,disease in hierarchy_map.iteritems ():\n#    for node in disease.lineage:\n#        nodes[node] \u003d nodes[node] + 1\n    if len(disease.lineage) \u003c 5:\n        continue\n    node \u003d disease.lineage[-1]\n    nodes[node] \u003d nodes[node] + 1\nprint (\"nodes: {}\".format (len(nodes)))\nfor n in nodes:\n    if nodes[n] \u003e 50:\n        print (\"   {0} -\u003e {1}\".format (n, nodes[n]))    \n    ",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 11, 2017 1:52:26 PM",
+      "dateUpdated": "Mar 13, 2017 10:42:47 AM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -414,8 +414,8 @@
       "jobName": "paragraph_1488936743772_-633873739",
       "id": "20170307-203223_871947982",
       "dateCreated": "Mar 7, 2017 8:32:23 PM",
-      "dateStarted": "Mar 11, 2017 1:52:26 PM",
-      "dateFinished": "Mar 11, 2017 1:52:27 PM",
+      "dateStarted": "Mar 13, 2017 10:42:47 AM",
+      "dateFinished": "Mar 13, 2017 10:42:49 AM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },

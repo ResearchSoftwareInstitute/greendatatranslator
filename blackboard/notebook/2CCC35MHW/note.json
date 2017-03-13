@@ -424,9 +424,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%pyspark\r\nimport pandas as pd\r\n#from scipy.spatial.distance import euclidean, pdist, squareform\r\nfrom Levenshtein import distance\r\nimport numpy as np\r\n\r\n#def similarity_func(u, v):\r\n#    return 1/(1+euclidean(u,v))\r\n\r\n#DF_var \u003d pd.DataFrame.from_dict(disease_matrix)\r\n#DF_var.index \u003d [\"D0:D10389\"]\r\n#dists \u003d pdist(DF_var, similarity_func)\r\n#DF_euclid \u003d pd.DataFrame(squareform(dists))#, columns\u003dDF_var.index, index\u003dDF_var.index)\r\n#print DF_euclid",
+      "text": "%pyspark\r\nimport pandas as pd\r\nimport numpy as np\r\nfrom Levenshtein import distance\r\n#from scipy.spatial.distance import euclidean, pdist, squareform\r\nlevenshtein_uri \u003d \"https://pypi.python.org/pypi/python-Levenshtein\"\r\nlevenshtein \u003d Levenshtein(levenshtein_uri)\r\n\r\n\r\n\r\n#def similarity_func(u, v):\r\n#    return 1/(1+euclidean(u,v))\r\n\r\n#DF_var \u003d pd.DataFrame.from_dict(disease_matrix)\r\n#DF_var.index \u003d [\"D0:D10389\"]\r\n#dists \u003d pdist(DF_var, similarity_func)\r\n#DF_euclid \u003d pd.DataFrame(squareform(dists))#, columns\u003dDF_var.index, index\u003dDF_var.index)\r\n#print DF_euclid",
       "user": "ad\\ruhirai",
-      "dateUpdated": "Mar 13, 2017 10:31:04 AM",
+      "dateUpdated": "Mar 13, 2017 10:44:13 AM",
       "config": {
         "enabled": true,
         "editorMode": "ace/mode/python",
@@ -446,7 +446,7 @@
         "msg": [
           {
             "type": "TEXT",
-            "data": "Traceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-3146807549941764549.py\", line 346, in \u003cmodule\u003e\n    raise Exception(traceback.format_exc())\nException: Traceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-3146807549941764549.py\", line 334, in \u003cmodule\u003e\n    exec(code)\n  File \"\u003cstdin\u003e\", line 2, in \u003cmodule\u003e\nImportError: No module named Levenshtein\n\n"
+            "data": "Traceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-3146807549941764549.py\", line 346, in \u003cmodule\u003e\n    raise Exception(traceback.format_exc())\nException: Traceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-3146807549941764549.py\", line 334, in \u003cmodule\u003e\n    exec(code)\n  File \"\u003cstdin\u003e\", line 3, in \u003cmodule\u003e\nImportError: No module named Levenshtein\n\n"
           }
         ]
       },
@@ -454,8 +454,8 @@
       "jobName": "paragraph_1488999384858_-1516672195",
       "id": "20170308-110320_1712021252",
       "dateCreated": "Mar 8, 2017 1:56:24 PM",
-      "dateStarted": "Mar 13, 2017 10:31:04 AM",
-      "dateFinished": "Mar 13, 2017 10:31:04 AM",
+      "dateStarted": "Mar 13, 2017 10:44:13 AM",
+      "dateFinished": "Mar 13, 2017 10:44:13 AM",
       "status": "ERROR",
       "progressUpdateIntervalMs": 500
     },
