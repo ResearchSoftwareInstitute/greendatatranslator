@@ -1,0 +1,123 @@
+{
+  "paragraphs": [
+    {
+      "text": "%pyspark\nfrom lightning import Lightning\nlightning_host \u003d \"https://stars-lightning.renci.org\"\nlgn \u003d Lightning(host\u003dlightning_host)\nviz \u003d lgn.line([1, 1, 2, 3, 5, 8])\nprint (\"viz id: {}\".format (viz.id))\nprint (\u0027%html \u003ciframe src\u003d\"{0}/visualizations/{1}/iframe\" width\u003d\"400\" height\u003d\"300\" \u003e\u0027.format (lightning_host, viz.id))\n",
+      "user": "ad\\scox",
+      "dateUpdated": "Mar 14, 2017 2:32:30 PM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python"
+        },
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Lightning initialized\nConnected to server at https://stars-lightning.renci.org\nviz id: 9e6a4f2e-4775-4da2-a501-52fc5eb0f6f7\n"
+          },
+          {
+            "type": "HTML",
+            "data": "\u003ciframe src\u003d\"https://stars-lightning.renci.org/visualizations/9e6a4f2e-4775-4da2-a501-52fc5eb0f6f7/iframe\" width\u003d\"400\" height\u003d\"300\" \u003e\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1489516334094_-1062008347",
+      "id": "20170314-143214_1064555866",
+      "dateCreated": "Mar 14, 2017 2:32:14 PM",
+      "dateStarted": "Mar 14, 2017 2:32:30 PM",
+      "dateFinished": "Mar 14, 2017 2:32:30 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%pyspark\nfrom lightning import Lightning\nlightning_host \u003d \"https://stars-lightning.renci.org\"\nlgn \u003d Lightning(host\u003dlightning_host)\nfrom numpy import random\nmat \u003d random.rand(50,50)\nmat[mat \u003c 0.75] \u003d 0\ngroup \u003d (random.rand(10) * 5).astype(\u0027int\u0027)\n\nlabels\u003d[str(t) for t in range(0,50)]\nviz \u003d lgn.adjacency(mat, group\u003dgroup, labels\u003dlabels, numbers\u003dTrue, sort\u003d\"group\", height\u003d700, width\u003d700)\nprint (\"viz id: {}\".format (viz.id))\nprint (\u0027%html \u003ciframe src\u003d\"{0}/visualizations/{1}/iframe\" width\u003d\"800\" height\u003d\"800\" \u003e\u0027.format (lightning_host, viz.id))\n",
+      "user": "ad\\scox",
+      "dateUpdated": "Mar 14, 2017 2:31:21 PM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python"
+        },
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Lightning initialized\nConnected to server at https://stars-lightning.renci.org\nviz id: dd21387d-cd46-4c6b-9555-b0bf5abf9977\n"
+          },
+          {
+            "type": "HTML",
+            "data": "\u003ciframe src\u003d\"https://stars-lightning.renci.org/visualizations/dd21387d-cd46-4c6b-9555-b0bf5abf9977/iframe\" width\u003d\"800\" height\u003d\"800\" \u003e\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1489516243330_904889327",
+      "id": "20170314-143043_998819232",
+      "dateCreated": "Mar 14, 2017 2:30:43 PM",
+      "dateStarted": "Mar 14, 2017 2:31:21 PM",
+      "dateFinished": "Mar 14, 2017 2:31:40 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%pyspark\n",
+      "user": "ad\\scox",
+      "dateUpdated": "Mar 14, 2017 2:31:21 PM",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1489516281987_1438597348",
+      "id": "20170314-143121_1101388370",
+      "dateCreated": "Mar 14, 2017 2:31:21 PM",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "/Tutorial/Visualization/Lightning",
+  "id": "2CDV1G9QR",
+  "angularObjects": {
+    "2C8PNVW4G:shared_process": [],
+    "2C9M4A84U:shared_process": [],
+    "2C8JB5J2A:shared_process": [],
+    "2C8UPVAV8:shared_process": [],
+    "2CB6QSJQK:shared_process": [],
+    "2CB4GRYA4:shared_process": [],
+    "2CAZ1XA1G:shared_process": [],
+    "2CBGUDB9H:shared_process": [],
+    "2C9VT2CHD:shared_process": [],
+    "2CBBPS1GQ:shared_process": [],
+    "2CAYF7YMG:shared_process": [],
+    "2C7NS2RPM:shared_process": [],
+    "2CB55MCKF:shared_process": [],
+    "2C9P6TDB4:shared_process": [],
+    "2C9WWVYVN::2CDV1G9QR": [],
+    "2C7YD2D51:shared_process": [],
+    "2C9UAC7QR:shared_process": [],
+    "2C8K1VZ6J:shared_process": [],
+    "2CA9JMF94:shared_process": []
+  },
+  "config": {},
+  "info": {}
+}

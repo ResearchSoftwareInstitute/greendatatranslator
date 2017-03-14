@@ -489,7 +489,7 @@
     {
       "text": "%pyspark\n\ndef print_groups ():\n    for g in groups:\n        print (g)\n        print (\"{0} -\u003e \".format (g))\n        for d in groups[g]:\n            print (\"  \u003e {0}\".format (d.drugs))\ngroups_to_drugs \u003d map (lambda p : (p[0], map (lambda disease : disease.drugs, p[1])), groups.iteritems ())\nfor g in groups_to_drugs:\n    print (\"{0} -\u003e \".format (g[0]))\n    for d in g[1]:\n        print (\"  \u003e {0}\".format (sorted (d)))",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 14, 2017 6:58:39 AM",
+      "dateUpdated": "Mar 14, 2017 2:27:53 PM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -516,15 +516,15 @@
       "jobName": "paragraph_1489456560506_1148452341",
       "id": "20170313-215600_1833550478",
       "dateCreated": "Mar 13, 2017 9:56:00 PM",
-      "dateStarted": "Mar 14, 2017 6:58:39 AM",
-      "dateFinished": "Mar 14, 2017 6:58:40 AM",
+      "dateStarted": "Mar 14, 2017 2:29:30 PM",
+      "dateFinished": "Mar 14, 2017 2:29:31 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%pyspark\n\nanalysis \u003d map (lambda p : (p[0], average_treatment_set_similarity (p[1]) ), groups_to_drugs)\nanalysis \u003d map (lambda p : (p[0], p[1] ), groups_to_drugs)\nprint analysis\n#analysis \u003d map (lambda p : (p[0], average_treatment_set_similarity (p[1]) ), groups_to_drugs)\n#for g in enumerate (analysis):\n#    print (\"  group:{0}\u003d\u003e{1}\".format (g[0], g[1]))",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 14, 2017 6:59:36 AM",
+      "dateUpdated": "Mar 14, 2017 2:27:46 PM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -551,8 +551,8 @@
       "jobName": "paragraph_1489457728515_1011347104",
       "id": "20170313-221528_730811933",
       "dateCreated": "Mar 13, 2017 10:15:28 PM",
-      "dateStarted": "Mar 14, 2017 6:59:36 AM",
-      "dateFinished": "Mar 14, 2017 7:01:23 AM",
+      "dateStarted": "Mar 14, 2017 2:27:46 PM",
+      "dateFinished": "Mar 14, 2017 2:29:30 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
