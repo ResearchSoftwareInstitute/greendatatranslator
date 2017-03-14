@@ -398,9 +398,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%pyspark\n#disease_matrix \u003d defaultdict(list)\n#for disease_id in disease_drug:\n#    for disease_id2 in disease_drug:\n#        disease_matrix [disease_id].append (0)\n#print (len (disease_matrix))\nimport pandas as pd\nfrom Levenshtein import distance\nimport numpy as np\n\nList1 \u003d disease_drug\nList2 \u003d hierarchy_map\n\nMatrix \u003d np.zeros((len(List1),len(List2)),dtype\u003dnp.int)\n\nfor i in range(0,len(List1)):\n  for j in range(0,len(List2)):\n      Matrix[i,j] \u003d distance(List1[i],List2[j])\n\nprint Matrix\n                 \n\n\n",
+      "text": "%pyspark\n#disease_matrix \u003d defaultdict(list)\n#for disease_id in disease_drug:\n#    for disease_id2 in disease_drug:\n#        disease_matrix [disease_id].append (0)\n#print (len (disease_matrix))\nimport pandas as pd\nfrom Levenshtein import distance\nimport numpy as np\n\n\n                 \n\n\n",
       "user": "ad\\ruhirai",
-      "dateUpdated": "Mar 14, 2017 11:56:53 AM",
+      "dateUpdated": "Mar 14, 2017 3:12:45 PM",
       "config": {
         "enabled": true,
         "editorMode": "ace/mode/python",
@@ -416,21 +416,16 @@
         "forms": {}
       },
       "results": {
-        "code": "ERROR",
-        "msg": [
-          {
-            "type": "TEXT",
-            "data": "Traceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-3146807549941764549.py\", line 346, in \u003cmodule\u003e\n    raise Exception(traceback.format_exc())\nException: Traceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-3146807549941764549.py\", line 334, in \u003cmodule\u003e\n    exec(code)\n  File \"\u003cstdin\u003e\", line 9, in \u003cmodule\u003e\nKeyError: 0\n\n"
-          }
-        ]
+        "code": "SUCCESS",
+        "msg": []
       },
       "apps": [],
       "jobName": "paragraph_1488999384857_-1517826442",
       "id": "20170307-203223_871947982",
       "dateCreated": "Mar 8, 2017 1:56:24 PM",
-      "dateStarted": "Mar 14, 2017 11:56:53 AM",
-      "dateFinished": "Mar 14, 2017 11:56:53 AM",
-      "status": "ERROR",
+      "dateStarted": "Mar 14, 2017 3:12:45 PM",
+      "dateFinished": "Mar 14, 2017 3:12:45 PM",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
