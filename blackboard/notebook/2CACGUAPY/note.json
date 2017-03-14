@@ -40,8 +40,8 @@
     },
     {
       "text": "%pyspark\nfrom string import Template\nfrom collections import defaultdict\nfrom SPARQLWrapper import SPARQLWrapper, JSON\nimport matplotlib.pyplot as plt\nimport seaborn as sns\n\nimport urllib2\nproxy \u003d urllib2.ProxyHandler({\u0027http\u0027: \u0027gateway.ad.renci.org:8080\u0027})\nopener \u003d urllib2.build_opener(proxy)\nurllib2.install_opener(opener)\n\nblazegraph_uri \u003d \"http://stars-blazegraph.renci.org/bigdata/sparql\"\nblazegraph \u003d SPARQLWrapper (blazegraph_uri)\ndef query_sparql (query, service\u003dblazegraph):\n    service.setQuery (query)\n    service.setReturnFormat (JSON)\n    return service.query().convert ()",
-      "user": "admin",
-      "dateUpdated": "Feb 22, 2017 2:18:21 PM",
+      "user": "ad\\hongyi",
+      "dateUpdated": "Mar 14, 2017 11:49:47 AM",
       "config": {
         "enabled": true,
         "editorMode": "ace/mode/python",
@@ -65,8 +65,8 @@
       "jobName": "paragraph_1487214778111_-2103118945",
       "id": "20170215-153208_2102201076",
       "dateCreated": "Feb 15, 2017 10:12:58 PM",
-      "dateStarted": "Feb 22, 2017 2:18:21 PM",
-      "dateFinished": "Feb 22, 2017 2:18:21 PM",
+      "dateStarted": "Mar 14, 2017 11:49:48 AM",
+      "dateFinished": "Mar 14, 2017 11:50:07 AM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
