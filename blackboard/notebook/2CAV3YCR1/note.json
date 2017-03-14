@@ -1,0 +1,74 @@
+{
+  "paragraphs": [
+    {
+      "text": "%pyspark\nfrom bokeh.plotting import figure, output_file, show\n\n# prepare some data\nx \u003d [1, 2, 3, 4, 5]\ny \u003d [6, 7, 2, 4, 5]\n\n# output to static HTML file\n#output_file(\"/projects/stars/m2m/var/bokeh/lines.html\")\n\n# create a new plot with a title and axis labels\np \u003d figure(title\u003d\"simple line example\", x_axis_label\u003d\u0027x\u0027, y_axis_label\u003d\u0027y\u0027)\n\n# add a line renderer with legend and line thickness\np.line(x, y, legend\u003d\"Temp.\", line_width\u003d2)\n\n# show the results\nshow(p)",
+      "user": "ad\\scox",
+      "dateUpdated": "Mar 14, 2017 3:49:43 PM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false
+        },
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "jobName": "paragraph_1489520791577_-795034247",
+      "id": "20170314-154631_1221298606",
+      "dateCreated": "Mar 14, 2017 3:46:31 PM",
+      "dateStarted": "Mar 14, 2017 3:49:43 PM",
+      "dateFinished": "Mar 14, 2017 3:49:43 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "user": "ad\\scox",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1489520797691_-1707258565",
+      "id": "20170314-154637_232552879",
+      "dateCreated": "Mar 14, 2017 3:46:37 PM",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "/Tutorial/Visualization/Bokeh",
+  "id": "2CAV3YCR1",
+  "angularObjects": {
+    "2C8PNVW4G:shared_process": [],
+    "2C9M4A84U:shared_process": [],
+    "2C8JB5J2A:shared_process": [],
+    "2C8UPVAV8:shared_process": [],
+    "2CB6QSJQK:shared_process": [],
+    "2CB4GRYA4:shared_process": [],
+    "2CAZ1XA1G:shared_process": [],
+    "2CBGUDB9H:shared_process": [],
+    "2C9VT2CHD:shared_process": [],
+    "2CBBPS1GQ:shared_process": [],
+    "2CAYF7YMG:shared_process": [],
+    "2C7NS2RPM:shared_process": [],
+    "2CB55MCKF:shared_process": [],
+    "2C9P6TDB4:shared_process": [],
+    "2C7YD2D51:shared_process": [],
+    "2C9UAC7QR:shared_process": [],
+    "2C8K1VZ6J:shared_process": [],
+    "2C9WWVYVN::2CAV3YCR1": [],
+    "2CA9JMF94:shared_process": []
+  },
+  "config": {},
+  "info": {}
+}
