@@ -559,7 +559,7 @@
     {
       "text": "%pyspark\n#http://lightning-viz.org/lightning-python/generated/lightning.Lightning.adjacency.html#lightning.Lightning.adjacency\n#https://stars-lightning.renci.org/visualization-types/edit/4d02e1ec-98af-4881-b016-81cfa98a64d9/\n#http://lightning-viz.org/usage/#creating\n\nimport numpy as np\nfrom lightning import Lightning\nlightning_host \u003d \"https://stars-lightning.renci.org\"\nlgn \u003d Lightning(host\u003dlightning_host)\n\ntable \u003d []\n\ndisease_drug2 \u003d {}\ncount \u003d 0\nfor d in disease_drug:\n    if count \u003e 250:\n        break\n    count \u003d count + 1\n    disease_drug2[d] \u003d disease_drug\n    \nfor disease in disease_drug2:\n    row \u003d []\n    for disease2 in disease_drug2:\n        row.append (len(disease) + (len(disease2) * 8) )\n    table.append (row)\nmatrix \u003d np.array (table)\ngroup \u003d random.rand (len(disease_drug2))\n#print (mat)\n#print (group)\nlgn.adjacency (mat, group\u003dgroup)\nviz \u003d lgn.adjacency(conn\u003dmat, group\u003dgroup, labels\u003ddisease_drug2.keys (), numbers\u003dTrue, sort\u003d\"group\", height\u003d1100, width\u003d1100)\nprint (\"viz id: {}\".format (viz.id))\nprint (\u0027%html \u003ciframe src\u003d\"{0}/visualizations/{1}/iframe\" width\u003d\"1200\" height\u003d\"1200\" \u003e\u0027.format (lightning_host, viz.id))\n",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 11, 2017 1:25:47 PM",
+      "dateUpdated": "Mar 14, 2017 10:29:19 PM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -578,11 +578,11 @@
         "msg": [
           {
             "type": "TEXT",
-            "data": "Lightning initialized\nConnected to server at https://stars-lightning.renci.org\nviz id: 79636873-8160-4518-975e-b3e5f35fae82\n"
+            "data": "Lightning initialized\nConnected to server at https://stars-lightning.renci.org\nviz id: 62e8e41c-493d-46e5-be40-a8b5f324989d\n"
           },
           {
             "type": "HTML",
-            "data": "\u003ciframe src\u003d\"https://stars-lightning.renci.org/visualizations/79636873-8160-4518-975e-b3e5f35fae82/iframe\" width\u003d\"1200\" height\u003d\"1200\" \u003e\n"
+            "data": "\u003ciframe src\u003d\"https://stars-lightning.renci.org/visualizations/62e8e41c-493d-46e5-be40-a8b5f324989d/iframe\" width\u003d\"1200\" height\u003d\"1200\" \u003e\n"
           }
         ]
       },
@@ -590,8 +590,8 @@
       "jobName": "paragraph_1488998898018_565835684",
       "id": "20170308-134818_1626412406",
       "dateCreated": "Mar 8, 2017 1:48:18 PM",
-      "dateStarted": "Mar 11, 2017 1:25:47 PM",
-      "dateFinished": "Mar 11, 2017 1:25:48 PM",
+      "dateStarted": "Mar 14, 2017 10:29:19 PM",
+      "dateFinished": "Mar 14, 2017 10:29:21 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
