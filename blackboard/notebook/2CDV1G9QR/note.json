@@ -1,9 +1,9 @@
 {
   "paragraphs": [
     {
-      "text": "%pyspark\nfrom lightning import Lightning\nlightning_host \u003d \"https://stars-lightning.renci.org\"\nlgn \u003d Lightning(host\u003dlightning_host)\nviz \u003d lgn.line([1, 1, 2, 3, 5, 8])\nprint (\"viz id: {}\".format (viz.id))\nprint (\u0027%html \u003ciframe src\u003d\"{0}/visualizations/{1}/iframe\" width\u003d\"400\" height\u003d\"300\" \u003e\u0027.format (lightning_host, viz.id))\n",
+      "text": "%pyspark\nfrom lightning import Lightning\n\nclass StarsLightning (object):\n    def __init__(self, host\u003d\"https://stars-lightning.renci.org\"):\n        self.host \u003d host\n        self.service \u003d Lightning(host\u003dself.host)\n    def render (self, vis, width\u003d400, height\u003d300):\n        print (\u0027%html \u003ciframe src\u003d\"{0}/visualizations/{1}/iframe\" width\u003d\"{2}\" height\u003d\"{3}\" \u003e\u0027.format (self.host, vis.id, width, height))\n        \nstarlight \u003d StarsLightning ()",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 14, 2017 2:32:30 PM",
+      "dateUpdated": "Mar 15, 2017 10:09:55 AM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -22,11 +22,50 @@
         "msg": [
           {
             "type": "TEXT",
-            "data": "Lightning initialized\nConnected to server at https://stars-lightning.renci.org\nviz id: 9e6a4f2e-4775-4da2-a501-52fc5eb0f6f7\n"
-          },
+            "data": "Lightning initialized\nConnected to server at https://stars-lightning.renci.org\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1489586243684_-1929472760",
+      "id": "20170315-095723_1855116549",
+      "dateCreated": "Mar 15, 2017 9:57:23 AM",
+      "dateStarted": "Mar 15, 2017 10:09:55 AM",
+      "dateFinished": "Mar 15, 2017 10:09:55 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%pyspark\nstarlight.render (vis \u003d starlight.service.line([1, 1, 2, 3, 5, 8]))",
+      "user": "ad\\scox",
+      "dateUpdated": "Mar 15, 2017 10:09:32 AM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {
+          "1": {
+            "graph": {
+              "mode": "table",
+              "height": 147.22222900390625,
+              "optionOpen": false
+            }
+          }
+        },
+        "editorSetting": {
+          "language": "python"
+        },
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
           {
             "type": "HTML",
-            "data": "\u003ciframe src\u003d\"https://stars-lightning.renci.org/visualizations/9e6a4f2e-4775-4da2-a501-52fc5eb0f6f7/iframe\" width\u003d\"400\" height\u003d\"300\" \u003e\n"
+            "data": "\u003ciframe src\u003d\"https://stars-lightning.renci.org/visualizations/08d11f93-76d7-4393-8c23-108d8b6fd6a3/iframe\" width\u003d\"400\" height\u003d\"300\" \u003e\n"
           }
         ]
       },
@@ -34,15 +73,50 @@
       "jobName": "paragraph_1489516334094_-1062008347",
       "id": "20170314-143214_1064555866",
       "dateCreated": "Mar 14, 2017 2:32:14 PM",
-      "dateStarted": "Mar 14, 2017 2:32:30 PM",
-      "dateFinished": "Mar 14, 2017 2:32:30 PM",
+      "dateStarted": "Mar 15, 2017 10:09:32 AM",
+      "dateFinished": "Mar 15, 2017 10:09:32 AM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%pyspark\nfrom lightning import Lightning\nlightning_host \u003d \"https://stars-lightning.renci.org\"\nlgn \u003d Lightning(host\u003dlightning_host)\nfrom numpy import random\nmat \u003d random.rand(50,50)\nmat[mat \u003c 0.75] \u003d 0\ngroup \u003d (random.rand(10) * 5).astype(\u0027int\u0027)\n\nlabels\u003d[str(t) for t in range(0,50)]\nviz \u003d lgn.adjacency(mat, group\u003dgroup, labels\u003dlabels, numbers\u003dTrue, sort\u003d\"group\", height\u003d700, width\u003d700)\nprint (\"viz id: {}\".format (viz.id))\nprint (\u0027%html \u003ciframe src\u003d\"{0}/visualizations/{1}/iframe\" width\u003d\"800\" height\u003d\"800\" \u003e\u0027.format (lightning_host, viz.id))\n",
+      "text": "%pyspark\n#from lightning import Lightning\n#lightning_host \u003d \"https://stars-lightning.renci.org\"\n#lgn \u003d Lightning(host\u003dlightning_host)\nfrom numpy import random\nmat \u003d random.rand(50,50)\nmat[mat \u003c 0.75] \u003d 0\ngroup \u003d (random.rand(10) * 5).astype(\u0027int\u0027)\n\nlabels\u003d[str(t) for t in range(0,50)]\n#viz \u003d lgn.adjacency(mat, group\u003dgroup, labels\u003dlabels, numbers\u003dTrue, sort\u003d\"group\", height\u003d700, width\u003d700)\n#print (\"viz id: {}\".format (viz.id))\n#print (\u0027%html \u003ciframe src\u003d\"{0}/visualizations/{1}/iframe\" width\u003d\"800\" height\u003d\"800\" \u003e\u0027.format (lightning_host, viz.id))\nstarlight.render (\n    vis \u003d starlight.service.adjacency(mat, group\u003dgroup, labels\u003dlabels, numbers\u003dTrue, sort\u003d\"group\", height\u003d700, width\u003d700),\n    width \u003d 800, height\u003d800)",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 14, 2017 2:31:21 PM",
+      "dateUpdated": "Mar 15, 2017 10:09:58 AM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python"
+        },
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003ciframe src\u003d\"https://stars-lightning.renci.org/visualizations/60ad05e1-6f16-4f57-ac1e-a1fb3690fe2c/iframe\" width\u003d\"800\" height\u003d\"800\" \u003e\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1489516243330_904889327",
+      "id": "20170314-143043_998819232",
+      "dateCreated": "Mar 14, 2017 2:30:43 PM",
+      "dateStarted": "Mar 15, 2017 10:09:58 AM",
+      "dateFinished": "Mar 15, 2017 10:09:58 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%pyspark\nfrom lightning import Lightning\nfrom numpy import random\n\nlightning_host \u003d \"https://stars-lightning.renci.org\"\nlgn \u003d Lightning(host\u003dlightning_host)\n\nconnections \u003d random.rand(50,50)\nconnections[connections\u003c0.98] \u003d 0\n\ng1 \u003d (random.rand(50) * 3).astype(\u0027int\u0027)\ng2 \u003d (random.rand(50) * 3).astype(\u0027int\u0027)\ngroup \u003d [g2, g1]\n\nviz \u003d lgn.circle(connections, group\u003dgroup)\n\nprint (\"viz id: {}\".format (viz.id))\nprint (\u0027%html \u003ciframe src\u003d\"{0}/visualizations/{1}/iframe\" width\u003d\"800\" height\u003d\"800\" \u003e\u0027.format (lightning_host, viz.id))",
+      "user": "ad\\scox",
+      "dateUpdated": "Mar 15, 2017 9:57:06 AM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -61,20 +135,20 @@
         "msg": [
           {
             "type": "TEXT",
-            "data": "Lightning initialized\nConnected to server at https://stars-lightning.renci.org\nviz id: dd21387d-cd46-4c6b-9555-b0bf5abf9977\n"
+            "data": "Lightning initialized\nConnected to server at https://stars-lightning.renci.org\nviz id: 5f9530ae-708a-47fb-bbeb-7cc107decdf8\n"
           },
           {
             "type": "HTML",
-            "data": "\u003ciframe src\u003d\"https://stars-lightning.renci.org/visualizations/dd21387d-cd46-4c6b-9555-b0bf5abf9977/iframe\" width\u003d\"800\" height\u003d\"800\" \u003e\n"
+            "data": "\u003ciframe src\u003d\"https://stars-lightning.renci.org/visualizations/5f9530ae-708a-47fb-bbeb-7cc107decdf8/iframe\" width\u003d\"800\" height\u003d\"800\" \u003e\n"
           }
         ]
       },
       "apps": [],
-      "jobName": "paragraph_1489516243330_904889327",
-      "id": "20170314-143043_998819232",
-      "dateCreated": "Mar 14, 2017 2:30:43 PM",
-      "dateStarted": "Mar 14, 2017 2:31:21 PM",
-      "dateFinished": "Mar 14, 2017 2:31:40 PM",
+      "jobName": "paragraph_1489586164749_1061641810",
+      "id": "20170315-095604_1237904721",
+      "dateCreated": "Mar 15, 2017 9:56:04 AM",
+      "dateStarted": "Mar 15, 2017 9:57:06 AM",
+      "dateFinished": "Mar 15, 2017 9:57:06 AM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
