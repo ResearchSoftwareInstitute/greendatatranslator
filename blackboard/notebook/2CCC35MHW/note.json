@@ -398,9 +398,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%pyspark\n#disease_matrix \u003d defaultdict(list)\n#for disease_id in disease_drug:\n#    for disease_id2 in disease_drug:\n#        disease_matrix [disease_id].append (0)\n#print (len (disease_matrix))\n#import pandas as pd\n#from Levenshtein import distance\n#from Levenshtein import levenshtein\n#disease_matrix \u003d defaultdict(int)\n\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport scipy.cluster.hierarchy\nimport scipy.spatial.distance\nfrom scipy.spatial.distance import pdist\nfrom sklearn.metrics.pairwise import cosine_similarity\n#hierarchy_map, disease_drug\n\n \n\n\n                 \n\n\n",
+      "text": "%pyspark\n#disease_matrix \u003d defaultdict(list)\n#for disease_id in disease_drug:\n#    for disease_id2 in disease_drug:\n#        disease_matrix [disease_id].append (0)\n#print (len (disease_matrix))\n#import pandas as pd\n#from Levenshtein import distance\n#from Levenshtein import levenshtein\n#disease_matrix \u003d defaultdict(int)\n\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport scipy.cluster.hierarchy\nimport scipy.spatial.distance\nfrom scipy.spatial.distance import pdist\nfrom sklearn.metrics.pairwise import cosine_similarity\n#hierarchy_map, disease_drug\n\nhierarchy_map \u003d []\ndisease_drug \u003d []\nrng \u003d range(1,)\nfor i in rng:\n    astr \u003d \u0027{}\u0027.format(i)\n    hierarchy_map.append(list(map(int,astr)))\n    disease_drug.append(astr)\n    \nc \u003d cosine_similarity(hierarchy_map, disease_drug)\nc \u003d np.nan_to_num(c)\nc \u003d 1.0 - c  # Invert the similarity so that 0 is close and 1 is far.\nnp.fill_diagonal(c, 0)\nc \u003d np.clip(c, 0, 1)\n\n# Now make a distance matrix to pass into the clustering method.\npdist \u003d scipy.spatial.distance.squareform(pdist(c, \u0027sqeuclidean\u0027))\n\nprint pdist\n \n\n\n                 \n\n\n",
       "user": "ad\\ruhirai",
-      "dateUpdated": "Mar 15, 2017 12:34:37 PM",
+      "dateUpdated": "Mar 15, 2017 1:58:27 PM",
       "config": {
         "enabled": true,
         "editorMode": "ace/mode/python",
@@ -417,14 +417,19 @@
       },
       "results": {
         "code": "SUCCESS",
-        "msg": []
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "/projects/stars/venv/lib/python2.7/site-packages/sklearn/utils/validation.py:395: DeprecationWarning: Passing 1d arrays as data is deprecated in 0.17 and will raise ValueError in 0.19. Reshape your data either using X.reshape(-1, 1) if your data has a single feature or X.reshape(1, -1) if it contains a single sample.\n  DeprecationWarning)\n[[ 0.]]\n"
+          }
+        ]
       },
       "apps": [],
       "jobName": "paragraph_1488999384857_-1517826442",
       "id": "20170307-203223_871947982",
       "dateCreated": "Mar 8, 2017 1:56:24 PM",
-      "dateStarted": "Mar 15, 2017 12:34:37 PM",
-      "dateFinished": "Mar 15, 2017 12:34:37 PM",
+      "dateStarted": "Mar 15, 2017 1:58:27 PM",
+      "dateFinished": "Mar 15, 2017 1:58:27 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
