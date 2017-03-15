@@ -1,6 +1,36 @@
 {
   "paragraphs": [
     {
+      "text": "%pyspark\nimport os\nfrom bokeh.plotting import figure, output_file, show\nclass StarsBokeh(object):\n    def __init__(self, data_dir\u003d\"/projects/stars/m2m/var/bokeh\"):\n        self.data_dir \u003d data_dir\n    def output_file (self, file_name):\n        output_file (os.path.join (self.data_dir, file_name))\n    def show (self, p, file_name):\n        show (p)\n        path \u003d os.path.join (self.data_dir, file_name)\n        print (\"%html {0}\".format (open(path).read ()))",
+      "user": "ad\\scox",
+      "dateUpdated": "Mar 15, 2017 10:39:19 AM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python"
+        },
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "jobName": "paragraph_1489588532177_1037188614",
+      "id": "20170315-103532_1809164645",
+      "dateCreated": "Mar 15, 2017 10:35:32 AM",
+      "dateStarted": "Mar 15, 2017 10:39:19 AM",
+      "dateFinished": "Mar 15, 2017 10:39:19 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
       "text": "%pyspark\nfrom bokeh.plotting import figure, output_file, show\n\n# prepare some data\nx \u003d [1, 2, 3, 4, 5]\ny \u003d [6, 7, 2, 4, 5]\n\n# output to static HTML file\nout_file \u003d \"/projects/stars/m2m/var/bokeh/lines.html\"\noutput_file(out_file)\n\n# create a new plot with a title and axis labels\np \u003d figure(title\u003d\"simple line example\", x_axis_label\u003d\u0027x\u0027, y_axis_label\u003d\u0027y\u0027)\n\n# add a line renderer with legend and line thickness\np.line(x, y, legend\u003d\"Temp.\", line_width\u003d2)\n\n# show the results\nshow(p)\n\ns \u003d \"%html \"\ntxt \u003d open(out_file).read()\ns +\u003d txt\nprint(s)",
       "user": "ad\\scox",
       "dateUpdated": "Mar 14, 2017 10:29:58 PM",
@@ -38,6 +68,45 @@
       "dateStarted": "Mar 14, 2017 10:29:58 PM",
       "dateFinished": "Mar 14, 2017 10:29:58 PM",
       "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%pyspark\nfrom bokeh.plotting import figure, show, output_file\nfrom bokeh.sampledata.us_counties import data as counties\nfrom bokeh.sampledata.us_states import data as states\nfrom bokeh.sampledata.unemployment import data as unemployment\n\ndel states[\"HI\"]\ndel states[\"AK\"]\n\nEXCLUDED \u003d (\"ak\", \"hi\", \"pr\", \"gu\", \"vi\", \"mp\", \"as\")\n\nstate_xs \u003d [states[code][\"lons\"] for code in states]\nstate_ys \u003d [states[code][\"lats\"] for code in states]\n\ncounty_xs\u003d[counties[code][\"lons\"] for code in counties if counties[code][\"state\"] not in EXCLUDED]\ncounty_ys\u003d[counties[code][\"lats\"] for code in counties if counties[code][\"state\"] not in EXCLUDED]\n\ncolors \u003d [\"#F1EEF6\", \"#D4B9DA\", \"#C994C7\", \"#DF65B0\", \"#DD1C77\", \"#980043\"]\n\ncounty_colors \u003d []\nfor county_id in counties:\n    if counties[county_id][\"state\"] in EXCLUDED:\n        continue\n    try:\n        rate \u003d unemployment[county_id]\n        idx \u003d int(rate/6)\n        county_colors.append(colors[idx])\n    except KeyError:\n        county_colors.append(\"black\")\n\np \u003d figure(title\u003d\"US Unemployment 2009\", toolbar_location\u003d\"left\",\n           plot_width\u003d1100, plot_height\u003d700)\n\np.patches(county_xs, county_ys,\n          fill_color\u003dcounty_colors, fill_alpha\u003d0.7,\n          line_color\u003d\"white\", line_width\u003d0.5)\n\np.patches(state_xs, state_ys, fill_alpha\u003d0.0,\n          line_color\u003d\"#884444\", line_width\u003d2, line_alpha\u003d0.3)\n\noutput_file(\"choropleth.html\", title\u003d\"choropleth.py example\")\n\nshow(p)",
+      "user": "ad\\scox",
+      "dateUpdated": "Mar 15, 2017 10:35:02 AM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python"
+        },
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "ERROR",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "WARNING:/projects/stars/venv/lib/python2.7/site-packages/bokeh/core/validation/check.pyc:W-1005 (SNAPPED_TOOLBAR_ANNOTATIONS): Snapped toolbars and annotations on the same side MAY overlap visually: Figure(id\u003d\u00274721be6d-dac9-4a14-a5a8-7097d7e966a3\u0027, ...)\n"
+          },
+          {
+            "type": "TEXT",
+            "data": "Traceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-7658062392409905660.py\", line 346, in \u003cmodule\u003e\n    raise Exception(traceback.format_exc())\nException: Traceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-7658062392409905660.py\", line 339, in \u003cmodule\u003e\n    exec(code)\n  File \"\u003cstdin\u003e\", line 31, in \u003cmodule\u003e\n  File \"/projects/stars/venv/lib/python2.7/site-packages/bokeh/io.py\", line 300, in show\n    return _show_with_state(obj, _state, browser, new, notebook_handle\u003dnotebook_handle)\n  File \"/projects/stars/venv/lib/python2.7/site-packages/bokeh/io.py\", line 318, in _show_with_state\n    _show_file_with_state(obj, state, new, controller)\n  File \"/projects/stars/venv/lib/python2.7/site-packages/bokeh/io.py\", line 323, in _show_file_with_state\n    filename \u003d save(obj, state\u003dstate)\n  File \"/projects/stars/venv/lib/python2.7/site-packages/bokeh/io.py\", line 382, in save\n    _save_helper(obj, filename, resources, title, validate)\n  File \"/projects/stars/venv/lib/python2.7/site-packages/bokeh/io.py\", line 449, in _save_helper\n    with io.open(filename, \"w\", encoding\u003d\"utf-8\") as f:\nIOError: [Errno 13] Permission denied: \u0027choropleth.html\u0027\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1489588454860_-1334326985",
+      "id": "20170315-103414_1306660721",
+      "dateCreated": "Mar 15, 2017 10:34:14 AM",
+      "dateStarted": "Mar 15, 2017 10:35:02 AM",
+      "dateFinished": "Mar 15, 2017 10:35:19 AM",
+      "status": "ERROR",
       "progressUpdateIntervalMs": 500
     },
     {
