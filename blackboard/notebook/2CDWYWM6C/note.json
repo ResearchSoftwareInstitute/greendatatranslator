@@ -1,0 +1,80 @@
+{
+  "paragraphs": [
+    {
+      "text": "%pyspark\nx \u003d \u0027Initial Test\u0027\nprint(x)\n",
+      "user": "ad\\hongyi",
+      "dateUpdated": "Mar 15, 2017 2:29:12 PM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python"
+        },
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Initial Test\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1489601742444_-1567579308",
+      "id": "20170315-141542_341696490",
+      "dateCreated": "Mar 15, 2017 2:15:42 PM",
+      "dateStarted": "Mar 15, 2017 2:29:12 PM",
+      "dateFinished": "Mar 15, 2017 2:29:12 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%pyspark\n",
+      "user": "ad\\hongyi",
+      "dateUpdated": "Mar 15, 2017 2:28:00 PM",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1489602480905_-1025798662",
+      "id": "20170315-142800_1734082603",
+      "dateCreated": "Mar 15, 2017 2:28:00 PM",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "NCATSTranslator/SemanticDataVisualization",
+  "id": "2CDWYWM6C",
+  "angularObjects": {
+    "2C8PNVW4G:shared_process": [],
+    "2C9M4A84U:shared_process": [],
+    "2C8JB5J2A:shared_process": [],
+    "2C8UPVAV8:shared_process": [],
+    "2CB6QSJQK:shared_process": [],
+    "2CB4GRYA4:shared_process": [],
+    "2CAZ1XA1G:shared_process": [],
+    "2CBGUDB9H:shared_process": [],
+    "2C9VT2CHD:shared_process": [],
+    "2CBBPS1GQ:shared_process": [],
+    "2CAYF7YMG:shared_process": [],
+    "2C7NS2RPM:shared_process": [],
+    "2CB55MCKF:shared_process": [],
+    "2C9P6TDB4:shared_process": [],
+    "2C9WWVYVN::2CDWYWM6C": [],
+    "2C7YD2D51:shared_process": [],
+    "2C9UAC7QR:shared_process": [],
+    "2C8K1VZ6J:shared_process": [],
+    "2CA9JMF94:shared_process": []
+  },
+  "config": {},
+  "info": {}
+}
