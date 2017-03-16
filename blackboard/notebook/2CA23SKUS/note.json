@@ -422,9 +422,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%pyspark\nimport numpy as np\nfrom sklearn.metrics import jaccard_similarity_score\n\ndef reshape_array (source, target):\n    N \u003d np.zeros (target.shape)\n    N[:source.shape[0]] \u003d source\n    return N\n\ndef reshape_arrays (L, R):\n    bigger \u003d max (L.size, R.size)\n    if bigger \u003d\u003d L.size:\n        R \u003d reshape_array (R, L)\n    else:\n        L \u003d reshape_array (L, R)\n    return L, R\n\ndef make_arrays (A, B):\n    L \u003d np.array (ref_disease.drugs)\n    R \u003d np.array (this_disease.drugs)\n    return reshape_arrays (L, R)\n    \ndef average_treatment_set_similarity (drug_lists):\n    import numpy as np\n    from sklearn.metrics import jaccard_similarity_score\n    similarities \u003d []\n    for index, drug_list in enumerate (drug_lists):\n        for index2, drug_list2 in enumerate (drug_lists):\n            if index \u003d\u003d index2 or len(drug_list) \u003d\u003d 0 or len(drug_list2) \u003d\u003d 0:\n                continue\n            L, R \u003d make_arrays (drug_list, drug_list2)\n            similarity \u003d 0 #jaccard_similarity_score (L, R)\n            #print (\"   s\u003e {0}\".format (similarity))\n            print (\"L: {0}\".format (L))\n            print (\"R: {0}\".format (R))\n            similarities.append (similarity)\n    return np.mean (np.array (similarities))",
+      "text": "%pyspark\nimport numpy as np\nfrom sklearn.metrics import jaccard_similarity_score\n\ndef reshape_array (source, target):\n    N \u003d np.zeros (target.shape)\n    N[:source.shape[0]] \u003d source\n    return N\n\ndef reshape_arrays (L, R):\n    bigger \u003d max (L.size, R.size)\n    if bigger \u003d\u003d L.size:\n        R \u003d reshape_array (R, L)\n    else:\n        L \u003d reshape_array (L, R)\n    return L, R\n\ndef make_arrays (A, B):\n    L \u003d np.array (ref_disease.drugs)\n    R \u003d np.array (this_disease.drugs)\n    return reshape_arrays (L, R)\n    \ndef average_treatment_set_similarity (drug_lists):\n    import numpy as np\n    from sklearn.metrics import jaccard_similarity_score\n    similarities \u003d []\n    for index, drug_list in enumerate (drug_lists):\n        for index2, drug_list2 in enumerate (drug_lists):\n            if index \u003d\u003d index2 or len(drug_list) \u003d\u003d 0 or len(drug_list2) \u003d\u003d 0:\n                continue\n            L, R \u003d make_arrays (drug_list, drug_list2)\n            similarity \u003d jaccard_similarity_score (L, R)\n            print (\"   s\u003e {0}\".format (similarity))\n            print (\"L: {0}\".format (L))\n            print (\"R: {0}\".format (R))\n            similarities.append (similarity)\n    return np.mean (np.array (similarities))",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 13, 2017 10:10:05 PM",
+      "dateUpdated": "Mar 16, 2017 11:55:39 AM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -446,8 +446,8 @@
       "jobName": "paragraph_1489430704652_-1313685869",
       "id": "20170313-144504_1177418515",
       "dateCreated": "Mar 13, 2017 2:45:04 PM",
-      "dateStarted": "Mar 13, 2017 10:10:05 PM",
-      "dateFinished": "Mar 13, 2017 10:10:05 PM",
+      "dateStarted": "Mar 16, 2017 11:55:39 AM",
+      "dateFinished": "Mar 16, 2017 11:55:39 AM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },

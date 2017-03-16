@@ -1,0 +1,79 @@
+{
+  "paragraphs": [
+    {
+      "text": "import os\nprint(os.getcwd())\nprint(os.listdir(\".\"))",
+      "user": "ad\\cbc",
+      "dateUpdated": "Mar 16, 2017 12:02:46 PM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false
+        },
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "/\n[\u0027boot\u0027, \u0027dev\u0027, \u0027home\u0027, \u0027opt\u0027, \u0027proc\u0027, \u0027run\u0027, \u0027sys\u0027, \u0027var\u0027, \u0027etc\u0027, \u0027root\u0027, \u0027tmp\u0027, \u0027usr\u0027, \u0027bin\u0027, \u0027sbin\u0027, \u0027lib\u0027, \u0027lib64\u0027, \u0027media\u0027, \u0027mnt\u0027, \u0027srv\u0027, \u0027.autorelabel\u0027, \u0027projects\u0027, \u0027zookeeper_server.pid\u0027, \u0027scratch\u0027, \u0027ssdscratch\u0027]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1489679960711_-2100260225",
+      "id": "20170316-115920_1937511387",
+      "dateCreated": "Mar 16, 2017 11:59:20 AM",
+      "dateStarted": "Mar 16, 2017 12:02:46 PM",
+      "dateFinished": "Mar 16, 2017 12:02:46 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "user": "ad\\cbc",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1489679990076_-1547345407",
+      "id": "20170316-115950_295255310",
+      "dateCreated": "Mar 16, 2017 11:59:50 AM",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "/Scratch/Test",
+  "id": "2CC2SCWN4",
+  "angularObjects": {
+    "2C8PNVW4G:shared_process": [],
+    "2C9M4A84U:shared_process": [],
+    "2C8JB5J2A:shared_process": [],
+    "2C8UPVAV8:shared_process": [],
+    "2C9WWVYVN::2CC2SCWN4": [],
+    "2CB6QSJQK:shared_process": [],
+    "2CB4GRYA4:shared_process": [],
+    "2CAZ1XA1G:shared_process": [],
+    "2CBGUDB9H:shared_process": [],
+    "2C9VT2CHD:shared_process": [],
+    "2CBBPS1GQ:shared_process": [],
+    "2CAYF7YMG:shared_process": [],
+    "2C7NS2RPM:shared_process": [],
+    "2CB55MCKF:shared_process": [],
+    "2C9P6TDB4:shared_process": [],
+    "2C7YD2D51:shared_process": [],
+    "2C9UAC7QR:shared_process": [],
+    "2C8K1VZ6J:shared_process": [],
+    "2CA9JMF94:shared_process": []
+  },
+  "config": {},
+  "info": {}
+}
