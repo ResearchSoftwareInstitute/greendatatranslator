@@ -79,7 +79,7 @@
     {
       "text": "%pyspark\nimport traceback\nfrom SPARQLWrapper import SPARQLWrapper2, JSON\nfrom collections import defaultdict\n\nclass TripleStore(object):\n    def __init__(self, hostname):\n        self.service \u003d  SPARQLWrapper2 (hostname)\n    def execute_query (self, query):\n        self.service.setQuery (query)\n        self.service.setReturnFormat (JSON)\n        return self.service.query().convert ()\n    def execute_query_file (self, query_file):\n        result \u003d None\n        with open (query_file, \"r\") as stream:\n            query \u003d stream.read ()\n            result \u003d self.execute_query (query)\n        return result\n",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 14, 2017 6:55:30 AM",
+      "dateUpdated": "Mar 16, 2017 6:47:48 PM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -101,8 +101,8 @@
       "jobName": "paragraph_1488936514367_766072622",
       "id": "20170307-202834_465623601",
       "dateCreated": "Mar 7, 2017 8:28:34 PM",
-      "dateStarted": "Mar 14, 2017 6:55:30 AM",
-      "dateFinished": "Mar 14, 2017 6:55:30 AM",
+      "dateStarted": "Mar 16, 2017 6:47:48 PM",
+      "dateFinished": "Mar 16, 2017 6:48:05 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -141,37 +141,6 @@
       "dateCreated": "Mar 7, 2017 8:51:13 PM",
       "dateStarted": "Mar 10, 2017 9:39:16 AM",
       "dateFinished": "Mar 10, 2017 9:39:16 AM",
-      "status": "FINISHED",
-      "progressUpdateIntervalMs": 500
-    },
-    {
-      "text": "%pyspark\nimport pronto\n\nclass Disease(object):\n    def __init__ (self, term, xref, lineage):\n        self.xref \u003d xref\n        self.lineage \u003d lineage\n        self.drugs \u003d []\n        self.term \u003d term\n\ndisease_ont \u003d {}\n\ndef parse_ontology ():\n    ont \u003d pronto.Ontology (\u0027/projects/stars/m2m/var/diseaseontology/dis.obo\u0027)\n    \u0027\u0027\u0027 print (ont.json) \u0027\u0027\u0027\n    hierarchy_map \u003d {}\n    for term in ont:\n        xref \u003d None\n        if \u0027xref\u0027 in term.other:\n            for x in term.other[\u0027xref\u0027]:\n                if x.startswith (\"MESH:\"):\n                    xref \u003d x\n                    #disease_ont[term.id.upper()] \u003d term\n                    lineage \u003d map ( lambda t : t.id, term.rparents ())\n                    sorted_lineage \u003d sorted (lineage, key\u003dlambda e : int(e.split(\u0027:\u0027)[1]))\n                    disease \u003d Disease (term\u003dterm, xref\u003dxref, lineage\u003dsorted_lineage)\n                    hierarchy_map[term.id.upper ()] \u003d disease\n                    break\n    for k in hierarchy_map:\n        print (\"{0} {1} {2}\".format (k, hierarchy_map[k].xref, hierarchy_map[k].lineage))\n\n    return hierarchy_map",
-      "user": "ad\\scox",
-      "dateUpdated": "Mar 13, 2017 5:43:20 PM",
-      "config": {
-        "colWidth": 12.0,
-        "enabled": true,
-        "results": {},
-        "editorSetting": {
-          "language": "python"
-        },
-        "editorMode": "ace/mode/python",
-        "tableHide": false
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "results": {
-        "code": "SUCCESS",
-        "msg": []
-      },
-      "apps": [],
-      "jobName": "paragraph_1488936556844_-1129923985",
-      "id": "20170307-202916_1288718618",
-      "dateCreated": "Mar 7, 2017 8:29:16 PM",
-      "dateStarted": "Mar 13, 2017 5:30:24 PM",
-      "dateFinished": "Mar 13, 2017 5:30:24 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -216,7 +185,7 @@
     {
       "text": "%pyspark\nquery \u003d \"\"\"\nPREFIX db_resource:      \u003chttp://chem2bio2rdf.org/drugbank/resource/\u003e\nPREFIX ctd_chem_disease: \u003chttp://chem2bio2rdf.org/ctd/resource/ctd_chem_disease/\u003e \nPREFIX biordf:           \u003chttp://bio2rdf.org/\u003e\nPREFIX ctd:              \u003chttp://chem2bio2rdf.org/ctd/resource/\u003e\nPREFIX pubchem:          \u003chttp://chem2bio2rdf.org/ctd/resource/\u003e\nSELECT DISTINCT ?chem_disease ?meshid ?compound ?drug\nWHERE {\n  ?chem_disease ctd:diseaseid ?meshid .\n  ?chem_disease ctd:cid       ?compound .\n  ?drug         db_resource:CID ?compound\n}\n\"\"\"",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 11, 2017 10:23:58 AM",
+      "dateUpdated": "Mar 16, 2017 6:48:08 PM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -238,8 +207,8 @@
       "jobName": "paragraph_1488936572727_-1322836426",
       "id": "20170307-202932_2073115934",
       "dateCreated": "Mar 7, 2017 8:29:32 PM",
-      "dateStarted": "Mar 11, 2017 10:23:58 AM",
-      "dateFinished": "Mar 11, 2017 10:23:58 AM",
+      "dateStarted": "Mar 16, 2017 6:48:08 PM",
+      "dateFinished": "Mar 16, 2017 6:48:08 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -553,6 +522,238 @@
       "dateCreated": "Mar 13, 2017 10:15:28 PM",
       "dateStarted": "Mar 14, 2017 2:27:46 PM",
       "dateFinished": "Mar 14, 2017 2:29:30 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%pyspark\ntriplestore_uri \u003d \"http://stars-blazegraph.renci.org/bigdata/sparql\"\ntriplestore \u003d TripleStore (triplestore_uri)\n\nimport pronto\nimport pandas as pd\nimport sys\nfrom collections import defaultdict\nfrom operator import itemgetter\nfrom numpy import dot, sqrt, array\n\nclass Disease(object):\n    def __init__ (self, term, xref, lineage):\n        self.mesh_id \u003d xref\n        self.lineage \u003d lineage\n        self.drugs \u003d []\n        self.term \u003d term\n\n#disease_ont \u003d {}\n\ndef parse_ontology ():\n    ont \u003d pronto.Ontology (\u0027/projects/stars/m2m/var/diseaseontology/dis.obo\u0027)\n    \u0027\u0027\u0027 print (ont.json) \u0027\u0027\u0027\n    hierarchy_map \u003d {}\n    for term in ont:\n        xref \u003d None\n        if \u0027xref\u0027 in term.other:\n            for x in term.other[\u0027xref\u0027]:\n                if x.startswith (\"MESH:\"):\n                    xref \u003d x\n                    #disease_ont[term.id.upper()] \u003d term\n                    lineage \u003d map ( lambda t : t.id, term.rparents ())\n                    sorted_lineage \u003d sorted (lineage, key\u003dlambda e : int(e.split(\u0027:\u0027)[1]))\n                    disease \u003d Disease (term\u003dterm, xref\u003dxref, lineage\u003dsorted_lineage)\n                    hierarchy_map[term.id.upper ()] \u003d disease\n                    break\n    #for k in hierarchy_map:\n    #    print (\"{0} {1} {2}\".format (k, hierarchy_map[k].mesh_id, hierarchy_map[k].lineage))\n    return hierarchy_map\n    \ndef get_disease_drug_associations (triplestore):\n    disease_drug \u003d defaultdict(list)\n    result \u003d triplestore.execute_query (query)\n    for bind in result.bindings:\n        mesh_id \u003d bind[\u0027meshid\u0027].value.rsplit(\u0027/\u0027, 1)[-1].upper ()\n        drug \u003d bind[\u0027drug\u0027].value.rsplit(\u0027/\u0027, 1)[-1]\n        drug_id \u003d int(drug.replace (\u0027DB\u0027, \u0027\u0027))\n        if not drug_id in disease_drug[mesh_id]:\n            disease_drug[mesh_id].append (drug_id)\n    return disease_drug\n\ndef print_groups (groups):\n    for path in groups:\n        print (\"path {0}\".format (path))\n        for disease in groups[path]:\n            try:\n                print (\"  \u003e {0}({1})\u003c-({2} drugs)\".format (disease.term.name, disease.mesh_id, len(disease.drugs)))\n            except Exception:\n                traceback.print_exc ()\n\ndef cooccurrence_matrix():\n    disease_matrix \u003d defaultdict(list)\n    disease_drug \u003d get_disease_drug_associations (triplestore)\n    disease_ontology \u003d parse_ontology ()\n    for term_id in disease_ontology:\n        disease \u003d disease_ontology [term_id]\n        if disease.mesh_id in disease_drug:\n            drug \u003d disease_drug [disease.mesh_id]\n\n    \u0027\u0027\u0027 Bind Disease Ontology data to Disease Drug associations. \u0027\u0027\u0027\n    nodes \u003d defaultdict(int)\n    for mesh_id, disease in disease_ontology.iteritems ():\n        if len(disease.lineage) \u003c 5:\n            continue\n        key \u003d \"/\".join (disease.lineage)\n        nodes[key] \u003d nodes[key] + 1\n\n    \u0027\u0027\u0027 For nodes with more than some threshold number of children: \u0027\u0027\u0027\n    threshold \u003d 3\n    groups \u003d defaultdict(list)\n    for path in nodes:\n        if nodes[path] \u003e threshold:\n            term_id \u003d path.split(\u0027/\u0027)[-1]\n            for doid, disease in disease_ontology.iteritems ():\n                # Match appropriate drug indications to disease object:\n                if len(disease.lineage) \u003e 0 and term_id \u003d\u003d disease.lineage[-1] and disease.mesh_id in disease_drug:\n                    disease.drugs \u003d disease_drug [disease.mesh_id]\n                    groups[path].append (disease)\n                    #print (\"{0}: {1} arity:{2} ({3}) drugs:{4}\".format (path, disease.term.name, nodes[n], disease.xref, disease.drugs))\n    return groups\n    \ngroups \u003d cooccurrence_matrix()\n\n\n\n\n\n",
+      "user": "ad\\scox",
+      "dateUpdated": "Mar 16, 2017 6:49:33 PM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python"
+        },
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "jobName": "paragraph_1489704530583_1022268562",
+      "id": "20170316-184850_2069438963",
+      "dateCreated": "Mar 16, 2017 6:48:50 PM",
+      "dateStarted": "Mar 16, 2017 6:49:33 PM",
+      "dateFinished": "Mar 16, 2017 6:49:38 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%pyspark\nimport numpy as np\nfrom sklearn.metrics import jaccard_similarity_score\n\ndef reshape_array (source, target):\n    N \u003d np.zeros (target.shape)\n    N[:source.shape[0]] \u003d source\n    return N\n\ndef reshape_arrays (L, R):\n    bigger \u003d max (L.size, R.size)\n    if bigger \u003d\u003d L.size:\n        R \u003d reshape_array (R, L)\n    else:\n        L \u003d reshape_array (L, R)\n    return L, R\n\ndef make_arrays (A, B):\n    L \u003d np.array (A)\n    R \u003d np.array (B)\n    return reshape_arrays (L, R)\n    \ndef average_treatment_set_similarity (drug_lists):\n    import numpy as np\n    from sklearn.metrics import jaccard_similarity_score\n    similarities \u003d []\n    for index, drug_list in enumerate (drug_lists):\n        for index2, drug_list2 in enumerate (drug_lists):\n            if index \u003d\u003d index2 or len(drug_list) \u003d\u003d 0 or len(drug_list2) \u003d\u003d 0:\n                continue\n            L, R \u003d make_arrays (drug_list, drug_list2)\n            similarity \u003d jaccard_similarity_score (L, R)\n            #print (\"   s\u003e {0}\".format (similarity))\n            #print (\"L: {0}\".format (L))\n            #print (\"R: {0}\".format (R))\n            similarities.append (similarity)\n    return np.mean (np.array (similarities)).item ()",
+      "user": "ad\\scox",
+      "dateUpdated": "Mar 16, 2017 6:55:43 PM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python"
+        },
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "jobName": "paragraph_1489704605784_2086939932",
+      "id": "20170316-185005_1904620776",
+      "dateCreated": "Mar 16, 2017 6:50:05 PM",
+      "dateStarted": "Mar 16, 2017 6:55:43 PM",
+      "dateFinished": "Mar 16, 2017 6:55:43 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\nWe need to stop trying to print every drug array. The browser just can\u0027t take it.\nSo here\u0027s what the output of average_treatment_set_similarity() looks like for one iteration of a drug array comparison:\nThis is a case where there is intersection. The majority of the cases I\u0027ve seen have none.\n\n   s\u003e 0.0166666666667\nL: [1136 2877 1592  472  749  291 1166   14  841 1093 1143  431  381 4115  412\n 3895  262 3320 1181 4665  445  163  531  657  544 4827  898  695 1214  461\n 1017 1183 1064  252  816  541  203 1104  316  799  277 4499  255  997  755\n  982 3496 2656 1196  683  325 1174  727  312  481 1645  818  834 2546 2375]\nR: [ 2699.  2877.  4253.  1592.  1093.   431.   974.   412.   262.   304.\n   163.  1101.   544.   531.  1779.  4827.   898.  2757.  1275.   763.\n   252.  1039.   910.   550.   316.  3587.  1030.   255.  4348.   997.\n  1164.   755.   982.   759.  2656.  1759.   481.  1645.  4652.     0.\n     0.     0.     0.     0.     0.     0.     0.     0.     0.     0.\n     0.     0.     0.     0.     0.     0.     0.     0.     0.     0.]\n",
+      "user": "ad\\scox",
+      "dateUpdated": "Mar 16, 2017 6:50:44 PM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003eWe need to stop trying to print every drug array. The browser just can\u0026rsquo;t take it.\u003cbr/\u003eSo here\u0026rsquo;s what the output of average_treatment_set_similarity() looks like for one iteration of a drug array comparison:\u003cbr/\u003eThis is a case where there is intersection. The majority of the cases I\u0026rsquo;ve seen have none.\u003c/p\u003e\n\u003cp\u003es\u0026gt; 0.0166666666667\u003cbr/\u003eL: [1136 2877 1592 472 749 291 1166 14 841 1093 1143 431 381 4115 412\u003cbr/\u003e 3895 262 3320 1181 4665 445 163 531 657 544 4827 898 695 1214 461\u003cbr/\u003e 1017 1183 1064 252 816 541 203 1104 316 799 277 4499 255 997 755\u003cbr/\u003e 982 3496 2656 1196 683 325 1174 727 312 481 1645 818 834 2546 2375]\u003cbr/\u003eR: [ 2699. 2877. 4253. 1592. 1093. 431. 974. 412. 262. 304.\u003cbr/\u003e 163. 1101. 544. 531. 1779. 4827. 898. 2757. 1275. 763.\u003cbr/\u003e 252. 1039. 910. 550. 316. 3587. 1030. 255. 4348. 997.\u003cbr/\u003e 1164. 755. 982. 759. 2656. 1759. 481. 1645. 4652. 0.\u003cbr/\u003e 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.\u003cbr/\u003e 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.]\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1489704634830_929276464",
+      "id": "20170316-185034_1153216356",
+      "dateCreated": "Mar 16, 2017 6:50:34 PM",
+      "dateStarted": "Mar 16, 2017 6:50:44 PM",
+      "dateFinished": "Mar 16, 2017 6:50:45 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%pyspark\n#analysis \u003d map (lambda p : (p[0], average_treatment_set_similarity (p[1]) ), groups_to_drugs[:15])\n\ndata \u003d map (lambda p : ( p[0], map (lambda d : d.drugs, p[1]) ), groups.iteritems ())\nspark_groups \u003d sc.parallelize (data)\nspark_groups.\\\n    map (lambda p : ( p[0], average_treatment_set_similarity (p[1]) )).\\\n    toDF().registerTempTable(\"diseases\")\n",
+      "user": "ad\\scox",
+      "dateUpdated": "Mar 16, 2017 6:55:53 PM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python"
+        },
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "jobName": "paragraph_1489704663666_183479854",
+      "id": "20170316-185103_1286426319",
+      "dateCreated": "Mar 16, 2017 6:51:03 PM",
+      "dateStarted": "Mar 16, 2017 6:55:53 PM",
+      "dateFinished": "Mar 16, 2017 6:55:53 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%sql select * from diseases",
+      "user": "ad\\scox",
+      "dateUpdated": "Mar 16, 2017 7:02:12 PM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "multiBarChart",
+              "height": 376.66668701171875,
+              "optionOpen": false,
+              "setting": {
+                "stackedAreaChart": {
+                  "style": "stack"
+                }
+              },
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "_1",
+                  "index": 0.0,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": [
+                {
+                  "name": "_2",
+                  "index": 1.0,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
+          }
+        },
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false
+        },
+        "editorMode": "ace/mode/sql"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "_1\t_2\nDOID:4/DOID:4844/DOID:14566/DOID:0060072/DOID:0060084/DOID:0060101\tNaN\nDOID:4/DOID:1564/DOID:2473/DOID:0050117/DOID:0050136\t0.16666666666666666\nDOID:4/DOID:162/DOID:3119/DOID:14566/DOID:0050686\t0.016111280561860723\nDOID:4/DOID:7/DOID:863/DOID:1492/DOID:5614/DOID:5679/DOID:0050155\t0.008217976242877205\nDOID:4/DOID:655/DOID:9252/DOID:0014667/DOID:0060159\tNaN\nDOID:4/DOID:14566/DOID:0060072/DOID:0060085/DOID:0060089\t0.023581572881141846\nDOID:4/DOID:7/DOID:17/DOID:65/DOID:381/DOID:3342/DOID:0080001\t0.06018518518518518\nDOID:4/DOID:150/DOID:8670/DOID:0060037/DOID:0060038\t0.14285714285714285\nDOID:4/DOID:7/DOID:850/DOID:1579/DOID:3082/DOID:0050161\t0.015434293173206257\nDOID:4/DOID:7/DOID:863/DOID:2742/DOID:2952/DOID:0050155\t0.008217976242877205\nDOID:4/DOID:655/DOID:3133/DOID:13268/DOID:0014667\t0.05700567354057659\nDOID:4/DOID:7/DOID:178/DOID:1287/DOID:6713/DOID:0050828\t0.015397783293924125\nDOID:4/DOID:162/DOID:3069/DOID:3070/DOID:14566/DOID:0050687\t0.08640494158200265\nDOID:4/DOID:7/DOID:74/DOID:2914/DOID:9500\t0.1\nDOID:4/DOID:655/DOID:1168/DOID:3146/DOID:0014667\t0.05700567354057659\nDOID:4/DOID:7/DOID:74/DOID:583/DOID:589/DOID:720/DOID:2355/DOID:2914\t0.03140344411685875\nDOID:4/DOID:7/DOID:17/DOID:66/DOID:423/DOID:0080000\t0.0784313725490196\nDOID:4/DOID:7/DOID:574/DOID:863/DOID:870/DOID:1756/DOID:5656\t0.0\nDOID:4/DOID:120/DOID:162/DOID:193/DOID:14566/DOID:0050686\t0.016111280561860723\nDOID:4/DOID:14566/DOID:0060072/DOID:0060082/DOID:0060085/DOID:0060097\tNaN\nDOID:4/DOID:7/DOID:863/DOID:1492/DOID:5614/DOID:10124/DOID:0050155\t0.008217976242877205\nDOID:4/DOID:7/DOID:17/DOID:65/DOID:2256/DOID:0080001/DOID:0080006\t0.09157509157509158\nDOID:4/DOID:630/DOID:0050177/DOID:0050736/DOID:0050739\t0.043193599208091966\nDOID:4/DOID:162/DOID:201/DOID:14566/DOID:0050686/DOID:0060100\t0.05871735102504333\nDOID:4/DOID:162/DOID:2531/DOID:8567/DOID:14566/DOID:0050686/DOID:0060058/DOID:0060083\t0.04742158277952947\nDOID:4/DOID:3165/DOID:14566/DOID:0060072/DOID:0060085/DOID:0060121\t0.0\nDOID:4/DOID:162/DOID:3996/DOID:14566/DOID:0050686\t0.016111280561860723\nDOID:4/DOID:7/DOID:440/DOID:574/DOID:863/DOID:870\t0.08333333333333333\nDOID:4/DOID:7/DOID:231/DOID:331/DOID:863/DOID:1289\t0.04444444444444444\nDOID:4/DOID:104/DOID:4166/DOID:0050117/DOID:0050338\t0.041666666666666664\nDOID:4/DOID:7/DOID:16/DOID:37/DOID:2723\t0.0\nDOID:4/DOID:7/DOID:17/DOID:65/DOID:3342/DOID:0080001\t0.06018518518518518\nDOID:4/DOID:883/DOID:1080/DOID:1398/DOID:0050117\t0.03297332485807717\nDOID:4/DOID:7/DOID:574/DOID:863/DOID:870/DOID:1891/DOID:5656\t0.0\nDOID:4/DOID:4610/DOID:14566/DOID:0050624/DOID:0060072/DOID:0060085\t1.8896447467876037E-4\nDOID:4/DOID:7/DOID:77/DOID:214/DOID:403/DOID:1091\tNaN\nDOID:4/DOID:7/DOID:18/DOID:447/DOID:557\t0.0\nDOID:4/DOID:471/DOID:3165/DOID:14566/DOID:0060072/DOID:0060085/DOID:0060121\t0.0\nDOID:4/DOID:162/DOID:1319/DOID:3093/DOID:3620/DOID:4706/DOID:14566/DOID:0050686/DOID:0050902\t1.0\nDOID:4/DOID:7/DOID:331/DOID:480/DOID:863/DOID:936\t0.0634018759018759\nDOID:4/DOID:7/DOID:178/DOID:1287/DOID:2349/DOID:0050828\t0.015397783293924125\nDOID:4/DOID:7/DOID:77/DOID:3118/DOID:4138/DOID:9741\tNaN\nDOID:4/DOID:7/DOID:17/DOID:65/DOID:1934/DOID:11971/DOID:0080001/DOID:0080006\t0.09157509157509158\nDOID:4/DOID:7/DOID:74/DOID:1247/DOID:2214/DOID:2914\t0.03140344411685875\nDOID:4/DOID:7/DOID:863/DOID:1432/DOID:1492/DOID:5614/DOID:5679/DOID:13399/DOID:0050155\t0.008217976242877205\nDOID:4/DOID:655/DOID:1387/DOID:3146/DOID:0014667\t0.05700567354057659\nDOID:4/DOID:7/DOID:16/DOID:37/DOID:161\t0.0\nDOID:4/DOID:7/DOID:331/DOID:863/DOID:936\t0.0634018759018759\nDOID:4/DOID:2615/DOID:14566/DOID:0060072/DOID:0060084\t0.10773304076875506\nDOID:4/DOID:162/DOID:305/DOID:14566/DOID:0050687\t0.08640494158200265\nDOID:4/DOID:1398/DOID:2789/DOID:12365/DOID:0050117\t0.03297332485807717\nDOID:4/DOID:162/DOID:184/DOID:201/DOID:14566/DOID:0050686/DOID:0060100\t0.05871735102504333\nDOID:4/DOID:7/DOID:17/DOID:65/DOID:1934/DOID:11971/DOID:12960/DOID:0080001/DOID:0080006\t0.09157509157509158\nDOID:4/DOID:162/DOID:170/DOID:14566/DOID:0050686\t0.016111280561860723\nDOID:4/DOID:7/DOID:77/DOID:409/DOID:3118\t0.0\nDOID:4/DOID:7/DOID:17/DOID:66/DOID:423/DOID:9884/DOID:0080000\t0.0784313725490196\nDOID:4/DOID:630/DOID:0050177/DOID:0050737/DOID:0050739\t0.043193599208091966\nDOID:4/DOID:7/DOID:331/DOID:863/DOID:1289/DOID:2377/DOID:3213\t0.3090909090909091\nDOID:4/DOID:7/DOID:74/DOID:2355/DOID:2914\t0.03140344411685875\nDOID:4/DOID:7/DOID:74/DOID:1247/DOID:2213/DOID:2218/DOID:2914\t0.03140344411685875\nDOID:4/DOID:7/DOID:841/DOID:850/DOID:1579/DOID:3082/DOID:0050161\t0.015434293173206257\nDOID:4/DOID:7/DOID:863/DOID:1492/DOID:5614/DOID:0050155\t0.008217976242877205\nDOID:4/DOID:7/DOID:530/DOID:863/DOID:1492/DOID:0050155/DOID:0050815\tNaN\nDOID:4/DOID:7/DOID:850/DOID:1579/DOID:0050161\t0.015434293173206257\nDOID:4/DOID:7/DOID:863/DOID:1492/DOID:5614/DOID:9835/DOID:0050155\t0.008217976242877205\nDOID:4/DOID:7/DOID:178/DOID:865/DOID:1287\t0.005778007306020888\nDOID:4/DOID:7/DOID:331/DOID:863/DOID:936/DOID:1443/DOID:10579\t0.0\nDOID:4/DOID:1398/DOID:2113/DOID:2789/DOID:0050117\t0.03297332485807717\nDOID:4/DOID:7/DOID:15/DOID:229/DOID:345/DOID:780\tNaN\nDOID:4/DOID:14566/DOID:0050621/DOID:0060072/DOID:0060085\t1.8896447467876037E-4\nDOID:4/DOID:7/DOID:863/DOID:1400/DOID:1492/DOID:5614/DOID:0050155\t0.008217976242877205\nDOID:4/DOID:7/DOID:74/DOID:1247/DOID:2914\t0.03140344411685875\nDOID:4/DOID:7/DOID:178/DOID:1287/DOID:3393/DOID:0050828\t0.015397783293924125\nDOID:4/DOID:7/DOID:331/DOID:863/DOID:1289\t0.04444444444444444\nDOID:4/DOID:655/DOID:1927/DOID:3211/DOID:9455/DOID:0014667\t0.05700567354057659\nDOID:4/DOID:162/DOID:1240/DOID:2531/DOID:14566/DOID:0050686/DOID:0060083\t0.04742158277952947\nDOID:4/DOID:7/DOID:17/DOID:66/DOID:423/DOID:633/DOID:0080000\t0.0784313725490196\nDOID:4/DOID:7/DOID:77/DOID:403/DOID:1091/DOID:1483/DOID:3388\t0.0\nDOID:4/DOID:1508/DOID:1564/DOID:2473/DOID:0050117/DOID:0050136\t0.16666666666666666\nDOID:4/DOID:7/DOID:178/DOID:341/DOID:1287\t0.005778007306020888\nDOID:4/DOID:655/DOID:2747/DOID:2978/DOID:0014667/DOID:0050728\t0.10873015873015872\nDOID:4/DOID:7/DOID:417/DOID:2914/DOID:0060056\t0.025343915343915342\nDOID:4/DOID:7/DOID:331/DOID:649/DOID:863/DOID:936\t0.0634018759018759\nDOID:4/DOID:162/DOID:3093/DOID:3620/DOID:14566/DOID:0050686\t0.016111280561860723\nDOID:4/DOID:7/DOID:1205/DOID:2914/DOID:3044/DOID:0060056\t0.025343915343915342\nDOID:4/DOID:162/DOID:299/DOID:305/DOID:14566/DOID:0050687\t0.08640494158200265\nDOID:4/DOID:7/DOID:114/DOID:1287/DOID:1682\t0.0\nDOID:4/DOID:655/DOID:3211/DOID:9455/DOID:0014667\t0.05700567354057659\nDOID:4/DOID:4194/DOID:9351/DOID:0014667/DOID:0050013/DOID:0060158\t0.007212330654821292\nDOID:4/DOID:7/DOID:574/DOID:863/DOID:870\t0.08333333333333333\nDOID:4/DOID:7/DOID:178/DOID:1287/DOID:3393/DOID:5844/DOID:0050828\t0.015397783293924125\nDOID:4/DOID:7/DOID:114/DOID:1287/DOID:0050700/DOID:0060036\t0.006060606060606061\nDOID:4/DOID:7/DOID:28/DOID:1923/DOID:2277\t0.10936644772851668\nDOID:4/DOID:162/DOID:2994/DOID:14566/DOID:0050687\t0.08640494158200265\nDOID:4/DOID:7/DOID:178/DOID:1287/DOID:0050828\t0.015397783293924125\nDOID:4/DOID:7/DOID:178/DOID:1287/DOID:10763/DOID:0050828\t0.015397783293924125\nDOID:4/DOID:7/DOID:15/DOID:229/DOID:1100\t0.0\nDOID:4/DOID:7/DOID:16/DOID:37/DOID:2730/DOID:2731\tNaN\nDOID:4/DOID:7/DOID:114/DOID:1287/DOID:10273\t0.1111111111111111\nDOID:4/DOID:7/DOID:16/DOID:37/DOID:10123\tNaN\nDOID:4/DOID:162/DOID:263/DOID:3996/DOID:4450/DOID:4451/DOID:14566/DOID:0050686\t0.016111280561860723\nDOID:4/DOID:7/DOID:574/DOID:863/DOID:870/DOID:3418/DOID:5656\t0.0\nDOID:4/DOID:7/DOID:540/DOID:574/DOID:863/DOID:870/DOID:1279/DOID:1492/DOID:5614/DOID:5656/DOID:9834/DOID:9835/DOID:0050155\t0.008217976242877205\nDOID:4/DOID:374/DOID:5113/DOID:0014667/DOID:0060158\t0.007212330654821292\nDOID:4/DOID:7/DOID:77/DOID:5295/DOID:0050589/DOID:0060180\tNaN\nDOID:4/DOID:162/DOID:3093/DOID:3565/DOID:3620/DOID:14566/DOID:0050686\t0.016111280561860723\nDOID:4/DOID:7/DOID:74/DOID:2355/DOID:2914/DOID:12449\t0.0\nDOID:4/DOID:7/DOID:17/DOID:65/DOID:848/DOID:3342/DOID:0080001\t0.06018518518518518\nDOID:4/DOID:162/DOID:169/DOID:170/DOID:14566/DOID:0050686\t0.016111280561860723\nDOID:4/DOID:162/DOID:2531/DOID:14566/DOID:0050686/DOID:0060083\t0.04742158277952947\nDOID:4/DOID:7/DOID:850/DOID:1579/DOID:3082/DOID:10316/DOID:0050161\t0.015434293173206257\nDOID:4/DOID:7/DOID:17/DOID:65/DOID:4254/DOID:0080001/DOID:0080005\t0.0\nDOID:4/DOID:7/DOID:2914/DOID:2916/DOID:0060056\t0.025343915343915342\nDOID:4/DOID:7/DOID:574/DOID:863/DOID:870/DOID:5656\t0.0\nDOID:4/DOID:162/DOID:14566/DOID:0050686/DOID:0060073/DOID:0060083\t0.04742158277952947\nDOID:4/DOID:7/DOID:552/DOID:850/DOID:1579/DOID:0050161\t0.015434293173206257\nDOID:4/DOID:7/DOID:18/DOID:557/DOID:2921/DOID:10952\t0.004166666666666667\nDOID:4/DOID:7/DOID:77/DOID:403/DOID:1091\tNaN\nDOID:4/DOID:162/DOID:1115/DOID:14566/DOID:0050687\t0.08640494158200265\nDOID:4/DOID:655/DOID:3211/DOID:12798/DOID:0014667\t0.05700567354057659\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1489704959772_-1878375822",
+      "id": "20170316-185559_1521372110",
+      "dateCreated": "Mar 16, 2017 6:55:59 PM",
+      "dateStarted": "Mar 16, 2017 6:59:33 PM",
+      "dateFinished": "Mar 16, 2017 6:59:43 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n[medulloblastoma](http://disease-ontology.org/term/DOID%3A0050902/)\n",
+      "user": "ad\\scox",
+      "dateUpdated": "Mar 16, 2017 6:59:23 PM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": false,
+        "tableHide": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003e\u003ca href\u003d\"http://disease-ontology.org/term/DOID%3A0050902/\"\u003emedulloblastoma\u003c/a\u003e\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1489705129098_1117708191",
+      "id": "20170316-185849_970181603",
+      "dateCreated": "Mar 16, 2017 6:58:49 PM",
+      "dateStarted": "Mar 16, 2017 6:59:20 PM",
+      "dateFinished": "Mar 16, 2017 6:59:20 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
