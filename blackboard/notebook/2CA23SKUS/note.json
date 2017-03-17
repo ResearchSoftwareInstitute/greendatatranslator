@@ -107,44 +107,6 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\nDefine our [blazegraph](http://stars-blazegraph.renci.org/blazegraph/#query) query.",
-      "user": "ad\\scox",
-      "dateUpdated": "Mar 8, 2017 3:06:35 PM",
-      "config": {
-        "colWidth": 12.0,
-        "enabled": true,
-        "results": {},
-        "editorSetting": {
-          "language": "markdown",
-          "editOnDblClick": true
-        },
-        "editorMode": "ace/mode/markdown",
-        "editorHide": true,
-        "tableHide": false
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003eDefine our \u003ca href\u003d\"http://stars-blazegraph.renci.org/blazegraph/#query\"\u003eblazegraph\u003c/a\u003e query.\u003c/p\u003e\n\u003c/div\u003e"
-          }
-        ]
-      },
-      "apps": [],
-      "jobName": "paragraph_1488937972969_-697599206",
-      "id": "20170307-205252_117835410",
-      "dateCreated": "Mar 7, 2017 8:52:52 PM",
-      "dateStarted": "Mar 8, 2017 3:06:35 PM",
-      "dateFinished": "Mar 8, 2017 3:06:37 PM",
-      "status": "FINISHED",
-      "progressUpdateIntervalMs": 500
-    },
-    {
       "text": "%pyspark\nquery \u003d \"\"\"\nPREFIX db_resource:      \u003chttp://chem2bio2rdf.org/drugbank/resource/\u003e\nPREFIX ctd_chem_disease: \u003chttp://chem2bio2rdf.org/ctd/resource/ctd_chem_disease/\u003e \nPREFIX biordf:           \u003chttp://bio2rdf.org/\u003e\nPREFIX ctd:              \u003chttp://chem2bio2rdf.org/ctd/resource/\u003e\nPREFIX pubchem:          \u003chttp://chem2bio2rdf.org/ctd/resource/\u003e\nSELECT DISTINCT ?chem_disease ?meshid ?compound ?drug\nWHERE {\n  ?chem_disease ctd:diseaseid ?meshid .\n  ?chem_disease ctd:cid       ?compound .\n  ?drug         db_resource:CID ?compound\n}\n\"\"\"",
       "user": "ad\\scox",
       "dateUpdated": "Mar 16, 2017 6:48:08 PM",
@@ -213,41 +175,11 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%pyspark\ndef get_disease_drug_associations (triplestore):\n    disease_drug \u003d defaultdict(list)\n    result \u003d triplestore.execute_query (query)\n    for bind in result.bindings:\n        mesh_id \u003d bind[\u0027meshid\u0027].value.rsplit(\u0027/\u0027, 1)[-1].upper ()\n        drug \u003d bind[\u0027drug\u0027].value.rsplit(\u0027/\u0027, 1)[-1]\n        drug_id \u003d int(drug.replace (\u0027DB\u0027, \u0027\u0027))\n        if not drug_id in disease_drug[mesh_id]:\n            disease_drug[mesh_id].append (drug_id)\n#    for k, v in disease_drug:\n#        disease_drug[k] \u003d sorted (v)\n    return disease_drug\n    ",
-      "user": "ad\\scox",
-      "dateUpdated": "Mar 13, 2017 3:17:09 PM",
-      "config": {
-        "colWidth": 12.0,
-        "enabled": true,
-        "results": {},
-        "editorSetting": {
-          "language": "python"
-        },
-        "editorMode": "ace/mode/python"
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "results": {
-        "code": "SUCCESS",
-        "msg": []
-      },
-      "apps": [],
-      "jobName": "paragraph_1488936692113_1694364449",
-      "id": "20170307-203132_2103117686",
-      "dateCreated": "Mar 7, 2017 8:31:32 PM",
-      "dateStarted": "Mar 13, 2017 3:17:09 PM",
-      "dateFinished": "Mar 13, 2017 3:17:09 PM",
-      "status": "FINISHED",
-      "progressUpdateIntervalMs": 500
-    },
-    {
       "text": "%md\nNow we create a data structure that maps paths through the hierarchy to the lists of diseases under those nodes.\nAnd we include this example instead of printing every item since that bogs down our notebook.\n~~~~~~~\npath DOID:4/DOID:4844/DOID:14566/DOID:0060072/DOID:0060084/DOID:0060101\n    \u003e subependymal giant cell astrocytoma(MESH:D001254)\u003c-(1 drugs)\npath DOID:4/DOID:1564/DOID:2473/DOID:0050117/DOID:0050136\n    \u003e candidiasis(MESH:D002177)\u003c-(1 drugs)\n    \u003e vulvovaginal candidiasis(MESH:D002181)\u003c-(5 drugs)\n    \u003e pneumocystosis(MESH:D011020)\u003c-(1 drugs)\n    \u003e oral candidiasis(MESH:D002180)\u003c-(5 drugs)\npath DOID:4/DOID:162/DOID:3119/DOID:14566/DOID:0050686\n    \u003e gallbladder cancer(MESH:D005706)\u003c-(60 drugs)\n    \u003e cribriform carcinoma(MESH:D000230)\u003c-(148 drugs)\n    \u003e thyroid carcinoma(MESH:D013964)\u003c-(66 drugs)\n    \u003e cerebral primitive neuroectodermal tumor(MESH:D018242)\u003c-(15 drugs)\n    \u003e pharynx cancer(MESH:D010610)\u003c-(1 drugs)\n~~~~~~~",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 17, 2017 9:56:35 AM",
+      "dateUpdated": "Mar 17, 2017 3:33:05 PM",
       "config": {
-        "colWidth": 12.0,
+        "colWidth": 4.0,
         "enabled": true,
         "results": {},
         "editorSetting": {
@@ -255,8 +187,8 @@
           "editOnDblClick": true
         },
         "editorMode": "ace/mode/markdown",
-        "editorHide": false,
-        "tableHide": true
+        "editorHide": true,
+        "tableHide": false
       },
       "settings": {
         "params": {},
@@ -275,8 +207,8 @@
       "jobName": "paragraph_1489748136300_-968050499",
       "id": "20170317-065536_1949387075",
       "dateCreated": "Mar 17, 2017 6:55:36 AM",
-      "dateStarted": "Mar 17, 2017 7:09:04 AM",
-      "dateFinished": "Mar 17, 2017 7:09:04 AM",
+      "dateStarted": "Mar 17, 2017 3:33:05 PM",
+      "dateFinished": "Mar 17, 2017 3:33:05 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -409,11 +341,11 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%pyspark\nimport math\nfrom pyspark.sql.types import *\n\npath_key \u003d {}\nfor k, v in groups.iteritems ():\n    path_key [k] \u003d k.split (\u0027/\u0027)[-1]\nfor k in path_key:\n    v \u003d groups[k]\n    del groups[k]\n    groups[path_key[k]] \u003d v\n\ndata \u003d map (lambda p : ( p[0], map (lambda d : d.drugs, p[1]) ), groups.iteritems ())\nspark_groups \u003d sc.parallelize (data). \\\n    map (lambda p : ( p[0].split (\u0027/\u0027)[-1], average_treatment_set_similarity (p[1]) )). \\\n    filter (lambda p : not math.isnan (float(p[1])))\n\nspark_groups.toDF().registerTempTable(\"diseases\")\n    \nschemaString \u003d \"path sim\"\nfields \u003d [StructField(field_name, StringType(), True) for field_name in schemaString.split()]\nschema \u003d StructType(fields)\nschema_diseases \u003d sqlContext.\\\n    createDataFrame(spark_groups, schema). \\\n    registerTempTable(\"diseases_s\")",
+      "text": "%pyspark\nimport math\nfrom pyspark.sql.types import *\n\npath_key \u003d {}\nfor k, v in groups.iteritems ():\n    path_key [k] \u003d k.split (\u0027/\u0027)[-1]\nfor k in path_key:\n    v \u003d groups[k]\n    del groups[k]\n    groups[path_key[k]] \u003d v\n\ndata \u003d map (lambda p : ( p[0], map (lambda d : d.drugs, p[1]) ),\n    groups.iteritems ())\nspark_groups \u003d sc.parallelize (data). \\\n    map (lambda p : ( p[0].split (\u0027/\u0027)[-1],\n        average_treatment_set_similarity (p[1]) )). \\\n    filter (lambda p : not math.isnan (float(p[1])))\n\nspark_groups.toDF().registerTempTable(\"diseases\")\n    \nschemaString \u003d \"path sim\"\nfields \u003d [StructField(field_name, StringType(), True) for field_name in schemaString.split()]\nschema \u003d StructType(fields)\nschema_diseases \u003d sqlContext.\\\n    createDataFrame(spark_groups, schema). \\\n    registerTempTable(\"diseases_s\")",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 17, 2017 7:16:27 AM",
+      "dateUpdated": "Mar 17, 2017 3:30:52 PM",
       "config": {
-        "colWidth": 12.0,
+        "colWidth": 4.0,
         "enabled": true,
         "results": {},
         "editorSetting": {
@@ -433,8 +365,8 @@
       "jobName": "paragraph_1489704663666_183479854",
       "id": "20170316-185103_1286426319",
       "dateCreated": "Mar 16, 2017 6:51:03 PM",
-      "dateStarted": "Mar 17, 2017 7:16:27 AM",
-      "dateFinished": "Mar 17, 2017 7:16:28 AM",
+      "dateStarted": "Mar 17, 2017 3:30:52 PM",
+      "dateFinished": "Mar 17, 2017 3:30:53 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
