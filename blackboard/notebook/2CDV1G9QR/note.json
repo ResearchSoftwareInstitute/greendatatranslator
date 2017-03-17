@@ -2,8 +2,8 @@
   "paragraphs": [
     {
       "text": "%pyspark\nfrom lightning import Lightning\n\nclass StarsLightning (object):\n    def __init__(self, host\u003d\"https://stars-lightning.renci.org\"):\n        self.host \u003d host\n        self.service \u003d Lightning(host\u003dself.host)\n    def render (self, vis, width\u003d400, height\u003d300):\n        print (\u0027%html \u003ciframe src\u003d\"{0}/visualizations/{1}/iframe\" width\u003d\"{2}\" height\u003d\"{3}\" \u003e\u0027.format (self.host, vis.id, width, height))\n        \nstarlight \u003d StarsLightning ()",
-      "user": "ad\\scox",
-      "dateUpdated": "Mar 15, 2017 10:09:55 AM",
+      "user": "ad\\hongyi",
+      "dateUpdated": "Mar 17, 2017 3:49:34 PM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -30,8 +30,8 @@
       "jobName": "paragraph_1489586243684_-1929472760",
       "id": "20170315-095723_1855116549",
       "dateCreated": "Mar 15, 2017 9:57:23 AM",
-      "dateStarted": "Mar 15, 2017 10:09:55 AM",
-      "dateFinished": "Mar 15, 2017 10:09:55 AM",
+      "dateStarted": "Mar 17, 2017 3:49:34 PM",
+      "dateFinished": "Mar 17, 2017 3:49:34 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -223,18 +223,63 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%pyspark\n",
-      "user": "ad\\scox",
-      "dateUpdated": "Mar 15, 2017 10:26:27 AM",
-      "config": {},
+      "text": "%pyspark\n\nfrom numpy import random\n\nstates \u003d [\"NA\", \"AK\", \"AL\", \"AR\", \"AZ\", \"CA\", \"NC\", \"CO\",\"CT\",\"DC\",\"DE\"]\nvalues \u003d random.randn(len(states))\n\nstarlight.render(starlight.service.map (states, values, colormap\u003d\"Blues\"), width\u003d950, height\u003d600)\n        ",
+      "user": "ad\\hongyi",
+      "dateUpdated": "Mar 17, 2017 4:01:55 PM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python"
+        },
+        "editorMode": "ace/mode/python",
+        "lineNumbers": true
+      },
       "settings": {
         "params": {},
         "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003ciframe src\u003d\"https://stars-lightning.renci.org/visualizations/0e423387-833a-47a7-a885-512edf439451/iframe\" width\u003d\"950\" height\u003d\"600\" \u003e\n"
+          }
+        ]
       },
       "apps": [],
       "jobName": "paragraph_1489587987126_1772089138",
       "id": "20170315-102627_1916107279",
       "dateCreated": "Mar 15, 2017 10:26:27 AM",
+      "dateStarted": "Mar 17, 2017 4:01:55 PM",
+      "dateFinished": "Mar 17, 2017 4:01:55 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%pyspark\n",
+      "user": "ad\\hongyi",
+      "dateUpdated": "Mar 17, 2017 3:48:18 PM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python"
+        },
+        "editorMode": "ace/mode/python",
+        "lineNumbers": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1489780070639_-1618846718",
+      "id": "20170317-154750_798737610",
+      "dateCreated": "Mar 17, 2017 3:47:50 PM",
       "status": "READY",
       "progressUpdateIntervalMs": 500
     }

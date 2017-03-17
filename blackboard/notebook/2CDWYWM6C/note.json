@@ -3,7 +3,7 @@
     {
       "text": "%pyspark\n\nimport os\n\ndata_path \u003d \u0027/projects/stars/m2m/var/chem2bio2rdf\u0027\ndata_file_name \u003d \u0027drugbank.n3\u0027\nfile_name \u003d os.path.join(data_path, data_file_name)\nsearch_term \u003d \u0027Compound\u0027\nnode_dict \u003d {}\nnode_list \u003d []\nnode_labels \u003d []\nlink_dict \u003d {}\nlink_list \u003d []\nwith open(file_name, \u0027r\u0027) as f:\n    node_idx \u003d 0\n    for line in f:\n        if line.find(search_term) \u003e\u003d 0:\n            print line\n            tokens \u003d line.split()\n            if tokens[0] not in node_dict:\n                node_dict[tokens[0]] \u003d node_idx\n                node_list.append(node_idx)\n                node_labels.append(tokens[0])\n                node_idx +\u003d 1\n            print tokens[2]    \n            if tokens[2] not in node_dict:\n                node_dict[tokens[2]] \u003d node_idx\n                node_list.append(node_idx)\n                node_labels.append(tokens[2])\n                node_idx +\u003d 1\n            \n            link_str \u003d str(node_dict[tokens[0]]) + \u0027_\u0027 + str(node_dict[tokens[2]]) + \u0027_\u0027 + str(node_dict[tokens[1]])\n            print link_str\n            if link_str not in link_dict:\n                link_dict[link_str] \u003d 1\n            else:\n                link_dict[link_str] +\u003d 1\n\nfor key, value in link_dict.items():\n    tokens \u003d key.split(\u0027_\u0027)\n    source \u003d node_dict[tokens[0]]\n    target \u003d node_dict[tokens[1]]\n    link_list.append([source, target, value])\n    ",
       "user": "ad\\hongyi",
-      "dateUpdated": "Mar 17, 2017 12:11:12 PM",
+      "dateUpdated": "Mar 17, 2017 3:41:43 PM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -11,7 +11,8 @@
         "editorSetting": {
           "language": "python"
         },
-        "editorMode": "ace/mode/python"
+        "editorMode": "ace/mode/python",
+        "lineNumbers": true
       },
       "settings": {
         "params": {},
