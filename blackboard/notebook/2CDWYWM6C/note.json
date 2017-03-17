@@ -36,20 +36,54 @@
       "progressUpdateIntervalMs": 500
     },
     {
+      "text": "%pyspark\nfrom lightning import Lightning\n\nclass StarsLightning(object):\n    def __init__(self, host\u003d\"https://stars-lightning.renci.org\"):\n        self.host \u003d host\n        self.service \u003d Lightning(host\u003dself.host)\n        \n    def render(self, vis, width\u003d400, height\u003d300):\n        print (\u0027%html \u003ciframe src\u003d\"{}/visualizations/{}/iframe\" width\u003d\"{}\" height\u003d\"{}\"\u003e\u0027.format(self.host, vis.id, width, height))\n\nstarlight \u003d StarsLightning()        \n",
+      "user": "ad\\hongyi",
+      "dateUpdated": "Mar 17, 2017 9:33:03 AM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python"
+        },
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Lightning initialized\nConnected to server at https://stars-lightning.renci.org\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1489602480905_-1025798662",
+      "id": "20170315-142800_1734082603",
+      "dateCreated": "Mar 15, 2017 2:28:00 PM",
+      "dateStarted": "Mar 17, 2017 9:33:03 AM",
+      "dateFinished": "Mar 17, 2017 9:33:03 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
       "text": "%pyspark\n",
       "user": "ad\\hongyi",
-      "dateUpdated": "Mar 15, 2017 2:28:00 PM",
+      "dateUpdated": "Mar 17, 2017 9:32:24 AM",
       "config": {},
       "settings": {
         "params": {},
         "forms": {}
       },
       "apps": [],
-      "jobName": "paragraph_1489602480905_-1025798662",
-      "id": "20170315-142800_1734082603",
-      "dateCreated": "Mar 15, 2017 2:28:00 PM",
+      "jobName": "paragraph_1489757544674_937939345",
+      "id": "20170317-093224_884856700",
+      "dateCreated": "Mar 17, 2017 9:32:24 AM",
       "status": "READY",
-      "errorMessage": "",
       "progressUpdateIntervalMs": 500
     }
   ],
