@@ -181,9 +181,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%pyspark\nmain ()",
+      "text": "%pyspark\n",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 17, 2017 6:28:14 PM",
+      "dateUpdated": "Mar 17, 2017 6:48:19 PM",
       "config": {
         "enabled": true,
         "editorMode": "ace/mode/python",
