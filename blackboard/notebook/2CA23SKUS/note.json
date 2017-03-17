@@ -373,7 +373,7 @@
     {
       "text": "%md\nWe need to stop trying to print every drug array. The browser just can\u0027t take it.\nSo here\u0027s what the output of average_treatment_set_similarity() looks like for one iteration of a drug array comparison:\nThis is a case where there is some intersection.\n~~~~~~~\ns\u003e 0.0166666666667\nL: [1136 2877 1592  472  749  291 1166   14  841 1093 1143  431  381 4115  412\n 3895  262 3320 1181 4665  445  163  531  657  544 4827  898  695 1214  461\n 1017 1183 1064  252  816  541  203 1104  316  799  277 4499  255  997  755\n  982 3496 2656 1196  683  325 1174  727  312  481 1645  818  834 2546 2375]\nR: [ 2699.  2877.  4253.  1592.  1093.   431.   974.   412.   262.   304.\n   163.  1101.   544.   531.  1779.  4827.   898.  2757.  1275.   763.\n   252.  1039.   910.   550.   316.  3587.  1030.   255.  4348.   997.\n  1164.   755.   982.   759.  2656.  1759.   481.  1645.  4652.     0.\n     0.     0.     0.     0.     0.     0.     0.     0.     0.     0.\n     0.     0.     0.     0.     0.     0.     0.     0.     0.     0.]\n~~~~~~~",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 17, 2017 9:58:41 AM",
+      "dateUpdated": "Mar 17, 2017 10:55:28 AM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -403,8 +403,8 @@
       "jobName": "paragraph_1489704634830_929276464",
       "id": "20170316-185034_1153216356",
       "dateCreated": "Mar 16, 2017 6:50:34 PM",
-      "dateStarted": "Mar 17, 2017 9:58:41 AM",
-      "dateFinished": "Mar 17, 2017 9:58:41 AM",
+      "dateStarted": "Mar 17, 2017 10:55:28 AM",
+      "dateFinished": "Mar 17, 2017 10:55:28 AM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
