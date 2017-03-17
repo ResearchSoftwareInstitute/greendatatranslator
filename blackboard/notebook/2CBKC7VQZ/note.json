@@ -1,9 +1,9 @@
 {
   "paragraphs": [
     {
-      "text": "%pyspark\nfrom lightning import Lightning\n\nclass StarsLightning (object):\n    def __init__(self, host\u003d\"https://stars-lightning.renci.org\"):\n        self.host \u003d host\n        self.service \u003d Lightning(host\u003dself.host)\n    def render (self, vis, width\u003d400, height\u003d300):\n        print (\u0027%html \u003ciframe src\u003d\"{0}/visualizations/{1}/iframe\" width\u003d\"{2}\" height\u003d\"{3}\" \u003e\u0027.format (self.host, vis.id, width, height))\n        \nstarlight \u003d StarsLightning ()",
-      "user": "ad\\hongyi",
-      "dateUpdated": "Mar 17, 2017 5:55:23 PM",
+      "text": "%pyspark\nfrom lightning import Lightning\n\nclass StarsLightning (object):\n    def __init__(self, host\u003d\"https://stars-lightning.renci.org\"):\n        self.host \u003d host\n        self.service \u003d Lightning(host\u003dself.host)\n    def render (self, vis, width\u003d400, height\u003d300):\n        print (\u0027%html \u003ciframe src\u003d\"{0}/visualizations/{1}/iframe\" width\u003d\"{2}\" height\u003d\"{3}\" \u003e\u0027.format (self.host, vis.id, width, height))\n        \nstarlight \u003d StarsLightning ()\n",
+      "user": "ad\\scox",
+      "dateUpdated": "Mar 17, 2017 6:33:58 PM",
       "config": {
         "enabled": true,
         "editorMode": "ace/mode/python",
@@ -18,11 +18,11 @@
         "forms": {}
       },
       "results": {
-        "code": "ERROR",
+        "code": "SUCCESS",
         "msg": [
           {
             "type": "TEXT",
-            "data": "Traceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-6869159579205281385.py\", line 346, in \u003cmodule\u003e\n    raise Exception(traceback.format_exc())\nException: Traceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-6869159579205281385.py\", line 334, in \u003cmodule\u003e\n    exec(code)\n  File \"\u003cstdin\u003e\", line 2, in \u003cmodule\u003e\nTypeError: Error when calling the metaclass bases\n    str() takes at most 1 argument (3 given)\n\n"
+            "data": "Lightning initialized\nConnected to server at https://stars-lightning.renci.org\n"
           }
         ]
       },
@@ -30,15 +30,45 @@
       "jobName": "paragraph_1489786791862_-1081455208",
       "id": "20170315-095723_1855116549",
       "dateCreated": "Mar 17, 2017 5:39:51 PM",
-      "dateStarted": "Mar 17, 2017 5:55:23 PM",
-      "dateFinished": "Mar 17, 2017 5:55:23 PM",
-      "status": "ERROR",
+      "dateStarted": "Mar 17, 2017 6:33:58 PM",
+      "dateFinished": "Mar 17, 2017 6:33:58 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%pyspark\nclass Test(object):\n    def __init__(self):\n        pass\n        #self.x \u003d 0",
+      "user": "ad\\scox",
+      "dateUpdated": "Mar 17, 2017 6:23:39 PM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python"
+        },
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "jobName": "paragraph_1489789237324_1936224528",
+      "id": "20170317-182037_298035163",
+      "dateCreated": "Mar 17, 2017 6:20:37 PM",
+      "dateStarted": "Mar 17, 2017 6:23:39 PM",
+      "dateFinished": "Mar 17, 2017 6:23:39 PM",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%pyspark\nimport os\n\ndata_path \u003d \u0027/projects/stars/m2m/var/chem2bio2rdf\u0027\ndata_file_name \u003d \u0027drugbank.n3\u0027\nfile_name \u003d os.path.join(data_path, data_file_name)\nsearch_term \u003d \u0027Compound\u0027\nnode_dict \u003d {}\nnode_list \u003d []\nnode_labels \u003d []\nlink_dict \u003d {}\nlink_list \u003d []\n\n\ndef extract_triple_item_from_tokens(tokens, start_idx):\n    quotes \u003d [\u0027\"\u0027, \"\u0027\"]\n    item \u003d tokens[start_idx]\n    end_idx \u003d start_idx + 1\n    for quote in quotes:\n        if item.startswith(quote):\n            if item.endswith(quote):\n                # this item is a quoted literal that does not contain spaces\n                # no need for further quote processing\n                break\n            breakout \u003d False\n            while end_idx \u003c len(tokens):\n                item +\u003d \u0027 \u0027 + tokens[end_idx]\n                if tokens[end_idx].endswith(quote):\n                    end_idx +\u003d 1\n                    breakout \u003d True\n                    break\n                else:\n                    end_idx +\u003d 1\n                \n            if breakout:\n                break;\n    return item, end_idx\n    \n\nwith open(file_name, \u0027r\u0027) as f:\n    node_idx \u003d 0\n    for line in f:\n        if line.find(search_term) \u003e\u003d 0:\n            print line\n            tokens \u003d line.split()\n            subject, idx \u003d extract_triple_item_from_tokens(tokens, 0)\n            if subject not in node_dict:\n                node_dict[subject] \u003d node_idx\n                node_list.append(node_idx)\n                node_labels.append(subject)\n                node_idx +\u003d 1\n            \n            predicate, idx2 \u003d extract_triple_item_from_tokens(tokens, idx)\n            \n            object, idx3 \u003d extract_triple_item_from_tokens(tokens, idx2)\n            \n            if object not in node_dict:\n                node_dict[object] \u003d node_idx\n                node_list.append(node_idx)\n                node_labels.append(object)\n                node_idx +\u003d 1\n            \n            link_str \u003d str(node_dict[subject]) + \u0027_\u0027 + str(node_dict[object]) + \u0027_\u0027 + str(predicate)\n            \n            if link_str not in link_dict:\n                link_dict[link_str] \u003d 1\n            else:\n                link_dict[link_str] +\u003d 1\n\nfor key, value in link_dict.items():\n    print \"key\u003d\" + key + \", value\u003d\"+str(value)\n    tokens \u003d key.split(\u0027_\u0027)\n    source \u003d int(tokens[0])\n    target \u003d int(tokens[1])\n    link_list.append([source, target, value])\n",
-      "user": "ad\\hongyi",
-      "dateUpdated": "Mar 17, 2017 5:54:40 PM",
+      "user": "ad\\scox",
+      "dateUpdated": "Mar 17, 2017 6:23:45 PM",
       "config": {
         "enabled": true,
         "editorMode": "ace/mode/python",
@@ -73,15 +103,15 @@
       "jobName": "paragraph_1489786791863_-1081839957",
       "id": "20170314-143214_1064555866",
       "dateCreated": "Mar 17, 2017 5:39:51 PM",
-      "dateStarted": "Mar 17, 2017 5:54:40 PM",
-      "dateFinished": "Mar 17, 2017 5:54:40 PM",
+      "dateStarted": "Mar 17, 2017 6:23:45 PM",
+      "dateFinished": "Mar 17, 2017 6:23:45 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%pyspark\nstarlight.render (\n    starlight.service.force (\n        conn\u003dlink_list,\n        labels\u003dnode_labels),\n    width\u003d900, height\u003d600)",
-      "user": "ad\\hongyi",
-      "dateUpdated": "Mar 17, 2017 5:54:54 PM",
+      "user": "ad\\scox",
+      "dateUpdated": "Mar 17, 2017 6:35:27 PM",
       "config": {
         "enabled": true,
         "editorMode": "ace/mode/python",
@@ -90,18 +120,18 @@
           "language": "python"
         },
         "colWidth": 12.0,
-        "tableHide": true
+        "tableHide": false
       },
       "settings": {
         "params": {},
         "forms": {}
       },
       "results": {
-        "code": "ERROR",
+        "code": "SUCCESS",
         "msg": [
           {
-            "type": "TEXT",
-            "data": "Traceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-6869159579205281385.py\", line 346, in \u003cmodule\u003e\n    raise Exception(traceback.format_exc())\nException: Traceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-6869159579205281385.py\", line 339, in \u003cmodule\u003e\n    exec(code)\n  File \"\u003cstdin\u003e\", line 1, in \u003cmodule\u003e\nNameError: name \u0027starlight\u0027 is not defined\n\n"
+            "type": "HTML",
+            "data": "\u003ciframe src\u003d\"https://stars-lightning.renci.org/visualizations/3a9f074c-6e7c-41be-9f31-5131362d6982/iframe\" width\u003d\"900\" height\u003d\"600\" \u003e\n"
           }
         ]
       },
@@ -109,14 +139,15 @@
       "jobName": "paragraph_1489786791864_-1083763702",
       "id": "20170314-143043_998819232",
       "dateCreated": "Mar 17, 2017 5:39:51 PM",
-      "dateStarted": "Mar 17, 2017 5:54:54 PM",
-      "dateFinished": "Mar 17, 2017 5:54:54 PM",
-      "status": "ERROR",
+      "dateStarted": "Mar 17, 2017 6:35:27 PM",
+      "dateFinished": "Mar 17, 2017 6:35:27 PM",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%pyspark\n",
-      "dateUpdated": "Mar 17, 2017 6:05:59 PM",
+      "text": "%pyspark\nimport os\n\ndef extract_triple_item_from_tokens(tokens, start_idx):\n    quotes \u003d [\u0027\"\u0027, \"\u0027\"]\n    item \u003d tokens[start_idx]\n    end_idx \u003d start_idx + 1\n    for quote in quotes:\n        if item.startswith(quote):\n            if item.endswith(quote):\n                # this item is a quoted literal that does not contain spaces\n                # no need for further quote processing\n                break\n            breakout \u003d False\n            while end_idx \u003c len(tokens):\n                item +\u003d \u0027 \u0027 + tokens[end_idx]\n                if tokens[end_idx].endswith(quote):\n                    end_idx +\u003d 1\n                    breakout \u003d True\n                    break\n                else:\n                    end_idx +\u003d 1\n                \n            if breakout:\n                break;\n    return item, end_idx\n    \ndef get_link_list ():\n    data_path \u003d \u0027/projects/stars/m2m/var/chem2bio2rdf\u0027\n    data_file_name \u003d \u0027drugbank.n3\u0027\n    file_name \u003d os.path.join(data_path, data_file_name)\n    search_term \u003d \u0027Compound\u0027\n    node_dict \u003d {}\n    node_list \u003d []\n    node_labels \u003d []\n    link_dict \u003d {}\n    link_list \u003d []\n\n    with open(file_name, \u0027r\u0027) as f:\n        node_idx \u003d 0\n        for line in f:\n            if line.find(search_term) \u003e\u003d 0:\n                print line\n                tokens \u003d line.split()\n                subject, idx \u003d extract_triple_item_from_tokens(tokens, 0)\n                if subject not in node_dict:\n                    node_dict[subject] \u003d node_idx\n                    node_list.append(node_idx)\n                    node_labels.append(subject)\n                    node_idx +\u003d 1\n                \n                predicate, idx2 \u003d extract_triple_item_from_tokens(tokens, idx)\n                \n                object, idx3 \u003d extract_triple_item_from_tokens(tokens, idx2)\n                \n                if object not in node_dict:\n                    node_dict[object] \u003d node_idx\n                    node_list.append(node_idx)\n                    node_labels.append(object)\n                    node_idx +\u003d 1\n                \n                link_str \u003d str(node_dict[subject]) + \u0027_\u0027 + str(node_dict[object]) + \u0027_\u0027 + str(predicate)\n                \n                if link_str not in link_dict:\n                    link_dict[link_str] \u003d 1\n                else:\n                    link_dict[link_str] +\u003d 1\n    \n    for key, value in link_dict.items():\n        print \"key\u003d\" + key + \", value\u003d\"+str(value)\n        tokens \u003d key.split(\u0027_\u0027)\n        source \u003d int(tokens[0])\n        target \u003d int(tokens[1])\n        link_list.append([source, target, value])\n    return link_list, node_labels\n    \nlink_list, node_labels \u003d get_link_list ()",
+      "user": "ad\\scox",
+      "dateUpdated": "Mar 17, 2017 6:35:24 PM",
       "config": {
         "enabled": true,
         "editorMode": "ace/mode/python",
@@ -125,7 +156,7 @@
           "language": "python"
         },
         "colWidth": 12.0,
-        "tableHide": true
+        "tableHide": false
       },
       "settings": {
         "params": {},
@@ -135,8 +166,8 @@
         "code": "SUCCESS",
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003ciframe src\u003d\"https://stars-lightning.renci.org/visualizations/4c80a02b-96d0-4a68-9d26-62419aacfbd6/iframe\" width\u003d\"600\" height\u003d\"600\" \u003e\n"
+            "type": "TEXT",
+            "data": "\u003chttp://chem2bio2rdf.org/drugbank/resource/drugbank_drug/DB01820\u003e \u003chttp://www.w3.org/2000/01/rdf-schema#label\u003e \"Compound 12, N-Acetyl-4-[(Carboxycarbonyl)(2-Carboxyphenyl)Amino]-N-Pentyl-1-Napthylalaniamide\" .\n\n\u003chttp://chem2bio2rdf.org/drugbank/resource/drugbank_drug/DB01820\u003e \u003chttp://chem2bio2rdf.org/drugbank/resource/Generic_Name\u003e \"Compound 12, N-Acetyl-4-[(Carboxycarbonyl)(2-Carboxyphenyl)Amino]-N-Pentyl-1-Napthylalaniamide\" .\n\n\u003chttp://chem2bio2rdf.org/drugbank/resource/drugbank_drug/DB01820\u003e \u003chttp://www.w3.org/2002/07/owl#sameAs\u003e \u003chttp://www.dbpedia.org/resource/Compound_12,_N-Acetyl-4-[(Carboxycarbonyl)(2-Carboxyphenyl)Amino]-N-Pentyl-1-Napthylalaniamide\u003e .\n\n\u003chttp://chem2bio2rdf.org/drugbank/resource/drugbank_drug/DB01820\u003e \u003chttp://www.w3.org/2002/07/owl#sameAs\u003e \u003chttp://www4.wiwiss.fu-berlin.de/dailymed/resource/ingredient/Compound_12,_N-Acetyl-4-[(Carboxycarbonyl)(2-Carboxyphenyl)Amino]-N-Pentyl-1-Napthylalaniamide\u003e .\n\n\u003chttp://chem2bio2rdf.org/drugbank/resource/drugbank_drug/DB01943\u003e \u003chttp://www.w3.org/2000/01/rdf-schema#label\u003e \"Compound 15\" .\n\n\u003chttp://chem2bio2rdf.org/drugbank/resource/drugbank_drug/DB01943\u003e \u003chttp://chem2bio2rdf.org/drugbank/resource/Generic_Name\u003e \"Compound 15\" .\n\n\u003chttp://chem2bio2rdf.org/drugbank/resource/drugbank_drug/DB01943\u003e \u003chttp://www.w3.org/2002/07/owl#sameAs\u003e \u003chttp://www.dbpedia.org/resource/Compound_15\u003e .\n\n\u003chttp://chem2bio2rdf.org/drugbank/resource/drugbank_drug/DB01943\u003e \u003chttp://www.w3.org/2002/07/owl#sameAs\u003e \u003chttp://www4.wiwiss.fu-berlin.de/dailymed/resource/ingredient/Compound_15\u003e .\n\n\u003chttp://chem2bio2rdf.org/drugbank/resource/drugbank_drug/DB02014\u003e \u003chttp://www.w3.org/2000/01/rdf-schema#label\u003e \"Compound 9\" .\n\n\u003chttp://chem2bio2rdf.org/drugbank/resource/drugbank_drug/DB02014\u003e \u003chttp://chem2bio2rdf.org/drugbank/resource/Generic_Name\u003e \"Compound 9\" .\n\n\u003chttp://chem2bio2rdf.org/drugbank/resource/drugbank_drug/DB02014\u003e \u003chttp://www.w3.org/2002/07/owl#sameAs\u003e \u003chttp://www.dbpedia.org/resource/Compound_9\u003e .\n\n\u003chttp://chem2bio2rdf.org/drugbank/resource/drugbank_drug/DB02014\u003e \u003chttp://www.w3.org/2002/07/owl#sameAs\u003e \u003chttp://www4.wiwiss.fu-berlin.de/dailymed/resource/ingredient/Compound_9\u003e .\n\n\u003chttp://chem2bio2rdf.org/drugbank/resource/drugbank_drug/DB02615\u003e \u003chttp://www.w3.org/2000/01/rdf-schema#label\u003e \"Compound 19\" .\n\n\u003chttp://chem2bio2rdf.org/drugbank/resource/drugbank_drug/DB02615\u003e \u003chttp://chem2bio2rdf.org/drugbank/resource/Generic_Name\u003e \"Compound 19\" .\n\n\u003chttp://chem2bio2rdf.org/drugbank/resource/drugbank_drug/DB02615\u003e \u003chttp://www.w3.org/2002/07/owl#sameAs\u003e \u003chttp://www.dbpedia.org/resource/Compound_19\u003e .\n\n\u003chttp://chem2bio2rdf.org/drugbank/resource/drugbank_drug/DB02615\u003e \u003chttp://www.w3.org/2002/07/owl#sameAs\u003e \u003chttp://www4.wiwiss.fu-berlin.de/dailymed/resource/ingredient/Compound_19\u003e .\n\n\u003chttp://chem2bio2rdf.org/drugbank/resource/drugbank_drug/DB02634\u003e \u003chttp://www.w3.org/2000/01/rdf-schema#label\u003e \"Compound 16\" .\n\n\u003chttp://chem2bio2rdf.org/drugbank/resource/drugbank_drug/DB02634\u003e \u003chttp://chem2bio2rdf.org/drugbank/resource/Generic_Name\u003e \"Compound 16\" .\n\n\u003chttp://chem2bio2rdf.org/drugbank/resource/drugbank_drug/DB02634\u003e \u003chttp://www.w3.org/2002/07/owl#sameAs\u003e \u003chttp://www.dbpedia.org/resource/Compound_16\u003e .\n\n\u003chttp://chem2bio2rdf.org/drugbank/resource/drugbank_drug/DB02634\u003e \u003chttp://www.w3.org/2002/07/owl#sameAs\u003e \u003chttp://www4.wiwiss.fu-berlin.de/dailymed/resource/ingredient/Compound_16\u003e .\n\n\u003chttp://chem2bio2rdf.org/drugbank/resource/drugbank_drug/DB02662\u003e \u003chttp://www.w3.org/2000/01/rdf-schema#label\u003e \"Novo Nordisk a/S Compound\" .\n\n\u003chttp://chem2bio2rdf.org/drugbank/resource/drugbank_drug/DB02662\u003e \u003chttp://chem2bio2rdf.org/drugbank/resource/Generic_Name\u003e \"Novo Nordisk a/S Compound\" .\n\n\u003chttp://chem2bio2rdf.org/drugbank/resource/drugbank_drug/DB02662\u003e \u003chttp://www.w3.org/2002/07/owl#sameAs\u003e \u003chttp://www.dbpedia.org/resource/Novo_Nordisk_a/S_Compound\u003e .\n\n\u003chttp://chem2bio2rdf.org/drugbank/resource/drugbank_drug/DB02662\u003e \u003chttp://www.w3.org/2002/07/owl#sameAs\u003e \u003chttp://www4.wiwiss.fu-berlin.de/dailymed/resource/ingredient/Novo_Nordisk_a/S_Compound\u003e .\n\n\u003chttp://chem2bio2rdf.org/drugbank/resource/drugbank_drug/DB02715\u003e \u003chttp://www.w3.org/2000/01/rdf-schema#label\u003e \"Compound 18\" .\n\n\u003chttp://chem2bio2rdf.org/drugbank/resource/drugbank_drug/DB02715\u003e \u003chttp://chem2bio2rdf.org/drugbank/resource/Generic_Name\u003e \"Compound 18\" .\n\n\u003chttp://chem2bio2rdf.org/drugbank/resource/drugbank_drug/DB02715\u003e \u003chttp://www.w3.org/2002/07/owl#sameAs\u003e \u003chttp://www.dbpedia.org/resource/Compound_18\u003e .\n\n\u003chttp://chem2bio2rdf.org/drugbank/resource/drugbank_drug/DB02715\u003e \u003chttp://www.w3.org/2002/07/owl#sameAs\u003e \u003chttp://www4.wiwiss.fu-berlin.de/dailymed/resource/ingredient/Compound_18\u003e .\n\n\u003chttp://chem2bio2rdf.org/drugbank/resource/drugbank_drug/DB03742\u003e \u003chttp://www.w3.org/2000/01/rdf-schema#label\u003e \"Compound 4-D\" .\n\n\u003chttp://chem2bio2rdf.org/drugbank/resource/drugbank_drug/DB03742\u003e \u003chttp://chem2bio2rdf.org/drugbank/resource/Generic_Name\u003e \"Compound 4-D\" .\n\n\u003chttp://chem2bio2rdf.org/drugbank/resource/drugbank_drug/DB03742\u003e \u003chttp://www.w3.org/2002/07/owl#sameAs\u003e \u003chttp://www.dbpedia.org/resource/Compound_4-D\u003e .\n\n\u003chttp://chem2bio2rdf.org/drugbank/resource/drugbank_drug/DB03742\u003e \u003chttp://www.w3.org/2002/07/owl#sameAs\u003e \u003chttp://www4.wiwiss.fu-berlin.de/dailymed/resource/ingredient/Compound_4-D\u003e .\n\n\u003chttp://chem2bio2rdf.org/drugbank/resource/drugbank_drug/DB03982\u003e \u003chttp://www.w3.org/2000/01/rdf-schema#label\u003e \"Compound 5, 2-(Naphthalen-1-Yl-Oxalyl-Amino)-Benzoicacid\" .\n\n\u003chttp://chem2bio2rdf.org/drugbank/resource/drugbank_drug/DB03982\u003e \u003chttp://chem2bio2rdf.org/drugbank/resource/Generic_Name\u003e \"Compound 5, 2-(Naphthalen-1-Yl-Oxalyl-Amino)-Benzoicacid\" .\n\n\u003chttp://chem2bio2rdf.org/drugbank/resource/drugbank_drug/DB03982\u003e \u003chttp://www.w3.org/2002/07/owl#sameAs\u003e \u003chttp://www.dbpedia.org/resource/Compound_5,_2-(Naphthalen-1-Yl-Oxalyl-Amino)-Benzoicacid\u003e .\n\n\u003chttp://chem2bio2rdf.org/drugbank/resource/drugbank_drug/DB03982\u003e \u003chttp://www.w3.org/2002/07/owl#sameAs\u003e \u003chttp://www4.wiwiss.fu-berlin.de/dailymed/resource/ingredient/Compound_5,_2-(Naphthalen-1-Yl-Oxalyl-Amino)-Benzoicacid\u003e .\n\nkey\u003d12_15_\u003chttp://www.w3.org/2002/07/owl#sameAs\u003e, value\u003d1\nkey\u003d8_11_\u003chttp://www.w3.org/2002/07/owl#sameAs\u003e, value\u003d1\nkey\u003d12_14_\u003chttp://www.w3.org/2002/07/owl#sameAs\u003e, value\u003d1\nkey\u003d32_34_\u003chttp://www.w3.org/2002/07/owl#sameAs\u003e, value\u003d1\nkey\u003d12_13_\u003chttp://www.w3.org/2000/01/rdf-schema#label\u003e, value\u003d1\nkey\u003d0_1_\u003chttp://www.w3.org/2000/01/rdf-schema#label\u003e, value\u003d1\nkey\u003d0_1_\u003chttp://chem2bio2rdf.org/drugbank/resource/Generic_Name\u003e, value\u003d1\nkey\u003d24_25_\u003chttp://www.w3.org/2000/01/rdf-schema#label\u003e, value\u003d1\nkey\u003d4_7_\u003chttp://www.w3.org/2002/07/owl#sameAs\u003e, value\u003d1\nkey\u003d28_31_\u003chttp://www.w3.org/2002/07/owl#sameAs\u003e, value\u003d1\nkey\u003d8_9_\u003chttp://www.w3.org/2000/01/rdf-schema#label\u003e, value\u003d1\nkey\u003d24_27_\u003chttp://www.w3.org/2002/07/owl#sameAs\u003e, value\u003d1\nkey\u003d4_5_\u003chttp://chem2bio2rdf.org/drugbank/resource/Generic_Name\u003e, value\u003d1\nkey\u003d20_22_\u003chttp://www.w3.org/2002/07/owl#sameAs\u003e, value\u003d1\nkey\u003d32_33_\u003chttp://www.w3.org/2000/01/rdf-schema#label\u003e, value\u003d1\nkey\u003d12_13_\u003chttp://chem2bio2rdf.org/drugbank/resource/Generic_Name\u003e, value\u003d1\nkey\u003d20_23_\u003chttp://www.w3.org/2002/07/owl#sameAs\u003e, value\u003d1\nkey\u003d0_3_\u003chttp://www.w3.org/2002/07/owl#sameAs\u003e, value\u003d1\nkey\u003d24_26_\u003chttp://www.w3.org/2002/07/owl#sameAs\u003e, value\u003d1\nkey\u003d4_5_\u003chttp://www.w3.org/2000/01/rdf-schema#label\u003e, value\u003d1\nkey\u003d24_25_\u003chttp://chem2bio2rdf.org/drugbank/resource/Generic_Name\u003e, value\u003d1\nkey\u003d20_21_\u003chttp://www.w3.org/2000/01/rdf-schema#label\u003e, value\u003d1\nkey\u003d4_6_\u003chttp://www.w3.org/2002/07/owl#sameAs\u003e, value\u003d1\nkey\u003d32_35_\u003chttp://www.w3.org/2002/07/owl#sameAs\u003e, value\u003d1\nkey\u003d16_17_\u003chttp://chem2bio2rdf.org/drugbank/resource/Generic_Name\u003e, value\u003d1\nkey\u003d32_33_\u003chttp://chem2bio2rdf.org/drugbank/resource/Generic_Name\u003e, value\u003d1\nkey\u003d16_19_\u003chttp://www.w3.org/2002/07/owl#sameAs\u003e, value\u003d1\nkey\u003d20_21_\u003chttp://chem2bio2rdf.org/drugbank/resource/Generic_Name\u003e, value\u003d1\nkey\u003d28_29_\u003chttp://www.w3.org/2000/01/rdf-schema#label\u003e, value\u003d1\nkey\u003d16_18_\u003chttp://www.w3.org/2002/07/owl#sameAs\u003e, value\u003d1\nkey\u003d8_10_\u003chttp://www.w3.org/2002/07/owl#sameAs\u003e, value\u003d1\nkey\u003d28_30_\u003chttp://www.w3.org/2002/07/owl#sameAs\u003e, value\u003d1\nkey\u003d28_29_\u003chttp://chem2bio2rdf.org/drugbank/resource/Generic_Name\u003e, value\u003d1\nkey\u003d0_2_\u003chttp://www.w3.org/2002/07/owl#sameAs\u003e, value\u003d1\nkey\u003d16_17_\u003chttp://www.w3.org/2000/01/rdf-schema#label\u003e, value\u003d1\nkey\u003d8_9_\u003chttp://chem2bio2rdf.org/drugbank/resource/Generic_Name\u003e, value\u003d1\n"
           }
         ]
       },
@@ -144,13 +175,15 @@
       "jobName": "paragraph_1489786791865_-1084148451",
       "id": "20170315-095604_1237904721",
       "dateCreated": "Mar 17, 2017 5:39:51 PM",
-      "status": "READY",
-      "errorMessage": "",
+      "dateStarted": "Mar 17, 2017 6:35:24 PM",
+      "dateFinished": "Mar 17, 2017 6:35:24 PM",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%pyspark\n",
-      "dateUpdated": "Mar 17, 2017 6:05:59 PM",
+      "text": "%pyspark\nmain ()",
+      "user": "ad\\scox",
+      "dateUpdated": "Mar 17, 2017 6:28:14 PM",
       "config": {
         "enabled": true,
         "editorMode": "ace/mode/python",
@@ -169,12 +202,8 @@
         "code": "SUCCESS",
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003ciframe src\u003d\"https://stars-lightning.renci.org/visualizations/9e31a6c0-414d-4528-be60-0a45237d0ba7/iframe\" width\u003d\"900\" height\u003d\"600\" \u003e\n"
-          },
-          {
-            "type": "HTML",
-            "data": "\u003ciframe src\u003d\"https://stars-lightning.renci.org/visualizations/4be20d68-33e0-4cef-9096-6b3a2da59501/iframe\" width\u003d\"900\" height\u003d\"600\" \u003e\n"
+            "type": "TEXT",
+            "data": "\u003chttp://chem2bio2rdf.org/drugbank/resource/drugbank_drug/DB01820\u003e \u003chttp://www.w3.org/2000/01/rdf-schema#label\u003e \"Compound 12, N-Acetyl-4-[(Carboxycarbonyl)(2-Carboxyphenyl)Amino]-N-Pentyl-1-Napthylalaniamide\" .\n\n\u003chttp://chem2bio2rdf.org/drugbank/resource/drugbank_drug/DB01820\u003e \u003chttp://chem2bio2rdf.org/drugbank/resource/Generic_Name\u003e \"Compound 12, N-Acetyl-4-[(Carboxycarbonyl)(2-Carboxyphenyl)Amino]-N-Pentyl-1-Napthylalaniamide\" .\n\n\u003chttp://chem2bio2rdf.org/drugbank/resource/drugbank_drug/DB01820\u003e \u003chttp://www.w3.org/2002/07/owl#sameAs\u003e \u003chttp://www.dbpedia.org/resource/Compound_12,_N-Acetyl-4-[(Carboxycarbonyl)(2-Carboxyphenyl)Amino]-N-Pentyl-1-Napthylalaniamide\u003e .\n\n\u003chttp://chem2bio2rdf.org/drugbank/resource/drugbank_drug/DB01820\u003e \u003chttp://www.w3.org/2002/07/owl#sameAs\u003e \u003chttp://www4.wiwiss.fu-berlin.de/dailymed/resource/ingredient/Compound_12,_N-Acetyl-4-[(Carboxycarbonyl)(2-Carboxyphenyl)Amino]-N-Pentyl-1-Napthylalaniamide\u003e .\n\n\u003chttp://chem2bio2rdf.org/drugbank/resource/drugbank_drug/DB01943\u003e \u003chttp://www.w3.org/2000/01/rdf-schema#label\u003e \"Compound 15\" .\n\n\u003chttp://chem2bio2rdf.org/drugbank/resource/drugbank_drug/DB01943\u003e \u003chttp://chem2bio2rdf.org/drugbank/resource/Generic_Name\u003e \"Compound 15\" .\n\n\u003chttp://chem2bio2rdf.org/drugbank/resource/drugbank_drug/DB01943\u003e \u003chttp://www.w3.org/2002/07/owl#sameAs\u003e \u003chttp://www.dbpedia.org/resource/Compound_15\u003e .\n\n\u003chttp://chem2bio2rdf.org/drugbank/resource/drugbank_drug/DB01943\u003e \u003chttp://www.w3.org/2002/07/owl#sameAs\u003e \u003chttp://www4.wiwiss.fu-berlin.de/dailymed/resource/ingredient/Compound_15\u003e .\n\n\u003chttp://chem2bio2rdf.org/drugbank/resource/drugbank_drug/DB02014\u003e \u003chttp://www.w3.org/2000/01/rdf-schema#label\u003e \"Compound 9\" .\n\n\u003chttp://chem2bio2rdf.org/drugbank/resource/drugbank_drug/DB02014\u003e \u003chttp://chem2bio2rdf.org/drugbank/resource/Generic_Name\u003e \"Compound 9\" .\n\n\u003chttp://chem2bio2rdf.org/drugbank/resource/drugbank_drug/DB02014\u003e \u003chttp://www.w3.org/2002/07/owl#sameAs\u003e \u003chttp://www.dbpedia.org/resource/Compound_9\u003e .\n\n\u003chttp://chem2bio2rdf.org/drugbank/resource/drugbank_drug/DB02014\u003e \u003chttp://www.w3.org/2002/07/owl#sameAs\u003e \u003chttp://www4.wiwiss.fu-berlin.de/dailymed/resource/ingredient/Compound_9\u003e .\n\n\u003chttp://chem2bio2rdf.org/drugbank/resource/drugbank_drug/DB02615\u003e \u003chttp://www.w3.org/2000/01/rdf-schema#label\u003e \"Compound 19\" .\n\n\u003chttp://chem2bio2rdf.org/drugbank/resource/drugbank_drug/DB02615\u003e \u003chttp://chem2bio2rdf.org/drugbank/resource/Generic_Name\u003e \"Compound 19\" .\n\n\u003chttp://chem2bio2rdf.org/drugbank/resource/drugbank_drug/DB02615\u003e \u003chttp://www.w3.org/2002/07/owl#sameAs\u003e \u003chttp://www.dbpedia.org/resource/Compound_19\u003e .\n\n\u003chttp://chem2bio2rdf.org/drugbank/resource/drugbank_drug/DB02615\u003e \u003chttp://www.w3.org/2002/07/owl#sameAs\u003e \u003chttp://www4.wiwiss.fu-berlin.de/dailymed/resource/ingredient/Compound_19\u003e .\n\n\u003chttp://chem2bio2rdf.org/drugbank/resource/drugbank_drug/DB02634\u003e \u003chttp://www.w3.org/2000/01/rdf-schema#label\u003e \"Compound 16\" .\n\n\u003chttp://chem2bio2rdf.org/drugbank/resource/drugbank_drug/DB02634\u003e \u003chttp://chem2bio2rdf.org/drugbank/resource/Generic_Name\u003e \"Compound 16\" .\n\n\u003chttp://chem2bio2rdf.org/drugbank/resource/drugbank_drug/DB02634\u003e \u003chttp://www.w3.org/2002/07/owl#sameAs\u003e \u003chttp://www.dbpedia.org/resource/Compound_16\u003e .\n\n\u003chttp://chem2bio2rdf.org/drugbank/resource/drugbank_drug/DB02634\u003e \u003chttp://www.w3.org/2002/07/owl#sameAs\u003e \u003chttp://www4.wiwiss.fu-berlin.de/dailymed/resource/ingredient/Compound_16\u003e .\n\n\u003chttp://chem2bio2rdf.org/drugbank/resource/drugbank_drug/DB02662\u003e \u003chttp://www.w3.org/2000/01/rdf-schema#label\u003e \"Novo Nordisk a/S Compound\" .\n\n\u003chttp://chem2bio2rdf.org/drugbank/resource/drugbank_drug/DB02662\u003e \u003chttp://chem2bio2rdf.org/drugbank/resource/Generic_Name\u003e \"Novo Nordisk a/S Compound\" .\n\n\u003chttp://chem2bio2rdf.org/drugbank/resource/drugbank_drug/DB02662\u003e \u003chttp://www.w3.org/2002/07/owl#sameAs\u003e \u003chttp://www.dbpedia.org/resource/Novo_Nordisk_a/S_Compound\u003e .\n\n\u003chttp://chem2bio2rdf.org/drugbank/resource/drugbank_drug/DB02662\u003e \u003chttp://www.w3.org/2002/07/owl#sameAs\u003e \u003chttp://www4.wiwiss.fu-berlin.de/dailymed/resource/ingredient/Novo_Nordisk_a/S_Compound\u003e .\n\n\u003chttp://chem2bio2rdf.org/drugbank/resource/drugbank_drug/DB02715\u003e \u003chttp://www.w3.org/2000/01/rdf-schema#label\u003e \"Compound 18\" .\n\n\u003chttp://chem2bio2rdf.org/drugbank/resource/drugbank_drug/DB02715\u003e \u003chttp://chem2bio2rdf.org/drugbank/resource/Generic_Name\u003e \"Compound 18\" .\n\n\u003chttp://chem2bio2rdf.org/drugbank/resource/drugbank_drug/DB02715\u003e \u003chttp://www.w3.org/2002/07/owl#sameAs\u003e \u003chttp://www.dbpedia.org/resource/Compound_18\u003e .\n\n\u003chttp://chem2bio2rdf.org/drugbank/resource/drugbank_drug/DB02715\u003e \u003chttp://www.w3.org/2002/07/owl#sameAs\u003e \u003chttp://www4.wiwiss.fu-berlin.de/dailymed/resource/ingredient/Compound_18\u003e .\n\n\u003chttp://chem2bio2rdf.org/drugbank/resource/drugbank_drug/DB03742\u003e \u003chttp://www.w3.org/2000/01/rdf-schema#label\u003e \"Compound 4-D\" .\n\n\u003chttp://chem2bio2rdf.org/drugbank/resource/drugbank_drug/DB03742\u003e \u003chttp://chem2bio2rdf.org/drugbank/resource/Generic_Name\u003e \"Compound 4-D\" .\n\n\u003chttp://chem2bio2rdf.org/drugbank/resource/drugbank_drug/DB03742\u003e \u003chttp://www.w3.org/2002/07/owl#sameAs\u003e \u003chttp://www.dbpedia.org/resource/Compound_4-D\u003e .\n\n\u003chttp://chem2bio2rdf.org/drugbank/resource/drugbank_drug/DB03742\u003e \u003chttp://www.w3.org/2002/07/owl#sameAs\u003e \u003chttp://www4.wiwiss.fu-berlin.de/dailymed/resource/ingredient/Compound_4-D\u003e .\n\n\u003chttp://chem2bio2rdf.org/drugbank/resource/drugbank_drug/DB03982\u003e \u003chttp://www.w3.org/2000/01/rdf-schema#label\u003e \"Compound 5, 2-(Naphthalen-1-Yl-Oxalyl-Amino)-Benzoicacid\" .\n\n\u003chttp://chem2bio2rdf.org/drugbank/resource/drugbank_drug/DB03982\u003e \u003chttp://chem2bio2rdf.org/drugbank/resource/Generic_Name\u003e \"Compound 5, 2-(Naphthalen-1-Yl-Oxalyl-Amino)-Benzoicacid\" .\n\n\u003chttp://chem2bio2rdf.org/drugbank/resource/drugbank_drug/DB03982\u003e \u003chttp://www.w3.org/2002/07/owl#sameAs\u003e \u003chttp://www.dbpedia.org/resource/Compound_5,_2-(Naphthalen-1-Yl-Oxalyl-Amino)-Benzoicacid\u003e .\n\n\u003chttp://chem2bio2rdf.org/drugbank/resource/drugbank_drug/DB03982\u003e \u003chttp://www.w3.org/2002/07/owl#sameAs\u003e \u003chttp://www4.wiwiss.fu-berlin.de/dailymed/resource/ingredient/Compound_5,_2-(Naphthalen-1-Yl-Oxalyl-Amino)-Benzoicacid\u003e .\n\nkey\u003d12_15_\u003chttp://www.w3.org/2002/07/owl#sameAs\u003e, value\u003d1\nkey\u003d8_11_\u003chttp://www.w3.org/2002/07/owl#sameAs\u003e, value\u003d1\nkey\u003d12_14_\u003chttp://www.w3.org/2002/07/owl#sameAs\u003e, value\u003d1\nkey\u003d32_34_\u003chttp://www.w3.org/2002/07/owl#sameAs\u003e, value\u003d1\nkey\u003d12_13_\u003chttp://www.w3.org/2000/01/rdf-schema#label\u003e, value\u003d1\nkey\u003d0_1_\u003chttp://www.w3.org/2000/01/rdf-schema#label\u003e, value\u003d1\nkey\u003d0_1_\u003chttp://chem2bio2rdf.org/drugbank/resource/Generic_Name\u003e, value\u003d1\nkey\u003d24_25_\u003chttp://www.w3.org/2000/01/rdf-schema#label\u003e, value\u003d1\nkey\u003d4_7_\u003chttp://www.w3.org/2002/07/owl#sameAs\u003e, value\u003d1\nkey\u003d28_31_\u003chttp://www.w3.org/2002/07/owl#sameAs\u003e, value\u003d1\nkey\u003d8_9_\u003chttp://www.w3.org/2000/01/rdf-schema#label\u003e, value\u003d1\nkey\u003d24_27_\u003chttp://www.w3.org/2002/07/owl#sameAs\u003e, value\u003d1\nkey\u003d4_5_\u003chttp://chem2bio2rdf.org/drugbank/resource/Generic_Name\u003e, value\u003d1\nkey\u003d20_22_\u003chttp://www.w3.org/2002/07/owl#sameAs\u003e, value\u003d1\nkey\u003d32_33_\u003chttp://www.w3.org/2000/01/rdf-schema#label\u003e, value\u003d1\nkey\u003d12_13_\u003chttp://chem2bio2rdf.org/drugbank/resource/Generic_Name\u003e, value\u003d1\nkey\u003d20_23_\u003chttp://www.w3.org/2002/07/owl#sameAs\u003e, value\u003d1\nkey\u003d0_3_\u003chttp://www.w3.org/2002/07/owl#sameAs\u003e, value\u003d1\nkey\u003d24_26_\u003chttp://www.w3.org/2002/07/owl#sameAs\u003e, value\u003d1\nkey\u003d4_5_\u003chttp://www.w3.org/2000/01/rdf-schema#label\u003e, value\u003d1\nkey\u003d24_25_\u003chttp://chem2bio2rdf.org/drugbank/resource/Generic_Name\u003e, value\u003d1\nkey\u003d20_21_\u003chttp://www.w3.org/2000/01/rdf-schema#label\u003e, value\u003d1\nkey\u003d4_6_\u003chttp://www.w3.org/2002/07/owl#sameAs\u003e, value\u003d1\nkey\u003d32_35_\u003chttp://www.w3.org/2002/07/owl#sameAs\u003e, value\u003d1\nkey\u003d16_17_\u003chttp://chem2bio2rdf.org/drugbank/resource/Generic_Name\u003e, value\u003d1\nkey\u003d32_33_\u003chttp://chem2bio2rdf.org/drugbank/resource/Generic_Name\u003e, value\u003d1\nkey\u003d16_19_\u003chttp://www.w3.org/2002/07/owl#sameAs\u003e, value\u003d1\nkey\u003d20_21_\u003chttp://chem2bio2rdf.org/drugbank/resource/Generic_Name\u003e, value\u003d1\nkey\u003d28_29_\u003chttp://www.w3.org/2000/01/rdf-schema#label\u003e, value\u003d1\nkey\u003d16_18_\u003chttp://www.w3.org/2002/07/owl#sameAs\u003e, value\u003d1\nkey\u003d8_10_\u003chttp://www.w3.org/2002/07/owl#sameAs\u003e, value\u003d1\nkey\u003d28_30_\u003chttp://www.w3.org/2002/07/owl#sameAs\u003e, value\u003d1\nkey\u003d28_29_\u003chttp://chem2bio2rdf.org/drugbank/resource/Generic_Name\u003e, value\u003d1\nkey\u003d0_2_\u003chttp://www.w3.org/2002/07/owl#sameAs\u003e, value\u003d1\nkey\u003d16_17_\u003chttp://www.w3.org/2000/01/rdf-schema#label\u003e, value\u003d1\nkey\u003d8_9_\u003chttp://chem2bio2rdf.org/drugbank/resource/Generic_Name\u003e, value\u003d1\n[[12, 15, 1], [8, 11, 1], [12, 14, 1], [32, 34, 1], [12, 13, 1], [0, 1, 1], [0, 1, 1], [24, 25, 1], [4, 7, 1], [28, 31, 1], [8, 9, 1], [24, 27, 1], [4, 5, 1], [20, 22, 1], [32, 33, 1], [12, 13, 1], [20, 23, 1], [0, 3, 1], [24, 26, 1], [4, 5, 1], [24, 25, 1], [20, 21, 1], [4, 6, 1], [32, 35, 1], [16, 17, 1], [32, 33, 1], [16, 19, 1], [20, 21, 1], [28, 29, 1], [16, 18, 1], [8, 10, 1], [28, 30, 1], [28, 29, 1], [0, 2, 1], [16, 17, 1], [8, 9, 1]]\n"
           }
         ]
       },
@@ -182,8 +211,9 @@
       "jobName": "paragraph_1489786791865_-1084148451",
       "id": "20170315-101336_504343305",
       "dateCreated": "Mar 17, 2017 5:39:51 PM",
-      "status": "READY",
-      "errorMessage": "",
+      "dateStarted": "Mar 17, 2017 6:28:14 PM",
+      "dateFinished": "Mar 17, 2017 6:28:14 PM",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
