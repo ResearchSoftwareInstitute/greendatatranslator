@@ -1,9 +1,9 @@
 {
   "paragraphs": [
     {
-      "text": "%md\n## Problem\nWe\u0027d like to know how reflective the [disease ontology](http://disease-ontology.org/) is of chemical realities. Do diseases classified together by the ontology respond to treatment by the same chemical compounds? Really, this should be approved drugs rather than chemical compounds. The query below and related code should be updated to reflect this.\n\n## Approach\n\nFirst we\u0027ll build \n\n* a data structure for the disease ontology\n* a map of associations between diseases and compounds\n\n### 1.0 : Build the Disease Ontology Data Structure\n* Downloaded the disease ontology in the [OBO](https://en.wikipedia.org/wiki/Open_Biomedical_Ontologies) format.\n* Installed the pronto Python library that includes an OBO parser.\n* Parsed the ontology and encoded each element as Element.ID\u003d\u003e[ MESH.ID, Lineage ].\n* That is, a map of element id to an object containing mesh id and the list of ancestors of each node up the ontology hierarchy.\n\n### 1.1 : Build the Graph of Disease to Chemical Compound \n* Query Blazegraph, for now, focusing on CTD to get disease -\u003e compound associations\n* Create a map of disease id to compound\n\n",
+      "text": "%md\n\n## Context\n\nM2M: Generate hypotheses of any level of certainty concerning new therapeutic activity of existing drugs.\n\n\n## Problem\nWe\u0027d like to know how reflective the [disease ontology](http://disease-ontology.org/) is of chemical realities. Do diseases classified together by the ontology respond to treatment by the same chemical compounds? Really, this should be approved drugs rather than chemical compounds. The query below and related code should be updated to reflect this.\n\n## Approach\n\nFirst we\u0027ll build \n\n* a data structure for the disease ontology\n* a map of associations between diseases and compounds\n\n### 1.0 : Build the Disease Ontology Data Structure\n* Downloaded the disease ontology in the [OBO](https://en.wikipedia.org/wiki/Open_Biomedical_Ontologies) format.\n* Installed the pronto Python library that includes an OBO parser.\n* Parsed the ontology and encoded each element as Element.ID\u003d\u003e[ MESH.ID, Lineage ].\n* That is, a map of element id to an object containing mesh id and the list of ancestors of each node up the ontology hierarchy.\n\n### 1.1 : Build the Graph of Disease to Chemical Compound \n* Query Blazegraph, for now, focusing on CTD to get disease -\u003e compound associations\n* Create a map of disease id to compound\n\n",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 10, 2017 10:08:14 AM",
+      "dateUpdated": "Mar 17, 2017 10:09:42 AM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -25,7 +25,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eProblem\u003c/h2\u003e\n\u003cp\u003eWe\u0026rsquo;d like to know how reflective the \u003ca href\u003d\"http://disease-ontology.org/\"\u003edisease ontology\u003c/a\u003e is of chemical realities. Do diseases classified together by the ontology respond to treatment by the same chemical compounds? Really, this should be approved drugs rather than chemical compounds. The query below and related code should be updated to reflect this.\u003c/p\u003e\n\u003ch2\u003eApproach\u003c/h2\u003e\n\u003cp\u003eFirst we\u0026rsquo;ll build \u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003ea data structure for the disease ontology\u003c/li\u003e\n  \u003cli\u003ea map of associations between diseases and compounds\u003c/li\u003e\n\u003c/ul\u003e\n\u003ch3\u003e1.0 : Build the Disease Ontology Data Structure\u003c/h3\u003e\n\u003cul\u003e\n  \u003cli\u003eDownloaded the disease ontology in the \u003ca href\u003d\"https://en.wikipedia.org/wiki/Open_Biomedical_Ontologies\"\u003eOBO\u003c/a\u003e format.\u003c/li\u003e\n  \u003cli\u003eInstalled the pronto Python library that includes an OBO parser.\u003c/li\u003e\n  \u003cli\u003eParsed the ontology and encoded each element as Element.ID\u003d\u0026gt;[ MESH.ID, Lineage ].\u003c/li\u003e\n  \u003cli\u003eThat is, a map of element id to an object containing mesh id and the list of ancestors of each node up the ontology hierarchy.\u003c/li\u003e\n\u003c/ul\u003e\n\u003ch3\u003e1.1 : Build the Graph of Disease to Chemical Compound\u003c/h3\u003e\n\u003cul\u003e\n  \u003cli\u003eQuery Blazegraph, for now, focusing on CTD to get disease -\u0026gt; compound associations\u003c/li\u003e\n  \u003cli\u003eCreate a map of disease id to compound\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eContext\u003c/h2\u003e\n\u003cp\u003eM2M: Generate hypotheses of any level of certainty concerning new therapeutic activity of existing drugs.\u003c/p\u003e\n\u003ch2\u003eProblem\u003c/h2\u003e\n\u003cp\u003eWe\u0026rsquo;d like to know how reflective the \u003ca href\u003d\"http://disease-ontology.org/\"\u003edisease ontology\u003c/a\u003e is of chemical realities. Do diseases classified together by the ontology respond to treatment by the same chemical compounds? Really, this should be approved drugs rather than chemical compounds. The query below and related code should be updated to reflect this.\u003c/p\u003e\n\u003ch2\u003eApproach\u003c/h2\u003e\n\u003cp\u003eFirst we\u0026rsquo;ll build \u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003ea data structure for the disease ontology\u003c/li\u003e\n  \u003cli\u003ea map of associations between diseases and compounds\u003c/li\u003e\n\u003c/ul\u003e\n\u003ch3\u003e1.0 : Build the Disease Ontology Data Structure\u003c/h3\u003e\n\u003cul\u003e\n  \u003cli\u003eDownloaded the disease ontology in the \u003ca href\u003d\"https://en.wikipedia.org/wiki/Open_Biomedical_Ontologies\"\u003eOBO\u003c/a\u003e format.\u003c/li\u003e\n  \u003cli\u003eInstalled the pronto Python library that includes an OBO parser.\u003c/li\u003e\n  \u003cli\u003eParsed the ontology and encoded each element as Element.ID\u003d\u0026gt;[ MESH.ID, Lineage ].\u003c/li\u003e\n  \u003cli\u003eThat is, a map of element id to an object containing mesh id and the list of ancestors of each node up the ontology hierarchy.\u003c/li\u003e\n\u003c/ul\u003e\n\u003ch3\u003e1.1 : Build the Graph of Disease to Chemical Compound\u003c/h3\u003e\n\u003cul\u003e\n  \u003cli\u003eQuery Blazegraph, for now, focusing on CTD to get disease -\u0026gt; compound associations\u003c/li\u003e\n  \u003cli\u003eCreate a map of disease id to compound\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -33,8 +33,8 @@
       "jobName": "paragraph_1488936940977_2009426181",
       "id": "20170307-203540_90526252",
       "dateCreated": "Mar 7, 2017 8:35:40 PM",
-      "dateStarted": "Mar 10, 2017 10:08:14 AM",
-      "dateFinished": "Mar 10, 2017 10:08:14 AM",
+      "dateStarted": "Mar 17, 2017 10:09:42 AM",
+      "dateFinished": "Mar 17, 2017 10:09:42 AM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -245,7 +245,7 @@
     {
       "text": "%md\nNow we create a data structure that maps paths through the hierarchy to the lists of diseases under those nodes.\nAnd we include this example instead of printing every item since that bogs down our notebook.\n~~~~~~~\npath DOID:4/DOID:4844/DOID:14566/DOID:0060072/DOID:0060084/DOID:0060101\n    \u003e subependymal giant cell astrocytoma(MESH:D001254)\u003c-(1 drugs)\npath DOID:4/DOID:1564/DOID:2473/DOID:0050117/DOID:0050136\n    \u003e candidiasis(MESH:D002177)\u003c-(1 drugs)\n    \u003e vulvovaginal candidiasis(MESH:D002181)\u003c-(5 drugs)\n    \u003e pneumocystosis(MESH:D011020)\u003c-(1 drugs)\n    \u003e oral candidiasis(MESH:D002180)\u003c-(5 drugs)\npath DOID:4/DOID:162/DOID:3119/DOID:14566/DOID:0050686\n    \u003e gallbladder cancer(MESH:D005706)\u003c-(60 drugs)\n    \u003e cribriform carcinoma(MESH:D000230)\u003c-(148 drugs)\n    \u003e thyroid carcinoma(MESH:D013964)\u003c-(66 drugs)\n    \u003e cerebral primitive neuroectodermal tumor(MESH:D018242)\u003c-(15 drugs)\n    \u003e pharynx cancer(MESH:D010610)\u003c-(1 drugs)\n~~~~~~~",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 17, 2017 7:09:04 AM",
+      "dateUpdated": "Mar 17, 2017 9:56:35 AM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -255,8 +255,8 @@
           "editOnDblClick": true
         },
         "editorMode": "ace/mode/markdown",
-        "editorHide": true,
-        "tableHide": false
+        "editorHide": false,
+        "tableHide": true
       },
       "settings": {
         "params": {},
@@ -311,47 +311,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\nx-\u003ey\n",
-      "user": "ad\\scox",
-      "dateUpdated": "Mar 17, 2017 9:38:37 AM",
-      "config": {
-        "colWidth": 12.0,
-        "enabled": true,
-        "results": {},
-        "editorSetting": {
-          "language": "markdown",
-          "editOnDblClick": true
-        },
-        "editorMode": "ace/mode/markdown",
-        "editorHide": true,
-        "tableHide": false
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003ex-\u0026gt;y\u003c/p\u003e\n\u003c/div\u003e"
-          }
-        ]
-      },
-      "apps": [],
-      "jobName": "paragraph_1489757910448_-104423691",
-      "id": "20170317-093830_1383276687",
-      "dateCreated": "Mar 17, 2017 9:38:30 AM",
-      "dateStarted": "Mar 17, 2017 9:38:37 AM",
-      "dateFinished": "Mar 17, 2017 9:38:37 AM",
-      "status": "FINISHED",
-      "progressUpdateIntervalMs": 500
-    },
-    {
       "text": "%pyspark\ntriplestore_uri \u003d \"http://stars-blazegraph.renci.org/bigdata/sparql\"\ntriplestore \u003d TripleStore (triplestore_uri)\n\nimport pronto\nimport pandas as pd\nimport sys\nfrom collections import defaultdict\nfrom operator import itemgetter\nfrom numpy import dot, sqrt, array\n\nclass Disease(object):\n    def __init__ (self, term, xref, lineage):\n        self.mesh_id \u003d xref\n        self.lineage \u003d lineage\n        self.drugs \u003d []\n        self.term \u003d term\n\n#disease_ont \u003d {}\n\ndef parse_ontology ():\n    ont \u003d pronto.Ontology (\u0027/projects/stars/m2m/var/diseaseontology/dis.obo\u0027)\n    \u0027\u0027\u0027 print (ont.json) \u0027\u0027\u0027\n    hierarchy_map \u003d {}\n    for term in ont:\n        xref \u003d None\n        if \u0027xref\u0027 in term.other:\n            for x in term.other[\u0027xref\u0027]:\n                if x.startswith (\"MESH:\"):\n                    xref \u003d x\n                    #disease_ont[term.id.upper()] \u003d term\n                    lineage \u003d map ( lambda t : t.id, term.rparents ())\n                    sorted_lineage \u003d sorted (lineage, key\u003dlambda e : int(e.split(\u0027:\u0027)[1]))\n                    disease \u003d Disease (term\u003dterm, xref\u003dxref, lineage\u003dsorted_lineage)\n                    hierarchy_map[term.id.upper ()] \u003d disease\n                    break\n    #for k in hierarchy_map:\n    #    print (\"{0} {1} {2}\".format (k, hierarchy_map[k].mesh_id, hierarchy_map[k].lineage))\n    return hierarchy_map\n    \ndef get_disease_drug_associations (triplestore):\n    disease_drug \u003d defaultdict(list)\n    result \u003d triplestore.execute_query (query)\n    for bind in result.bindings:\n        mesh_id \u003d bind[\u0027meshid\u0027].value.rsplit(\u0027/\u0027, 1)[-1].upper ()\n        drug \u003d bind[\u0027drug\u0027].value.rsplit(\u0027/\u0027, 1)[-1]\n        drug_id \u003d int(drug.replace (\u0027DB\u0027, \u0027\u0027))\n        if not drug_id in disease_drug[mesh_id]:\n            disease_drug[mesh_id].append (drug_id)\n    return disease_drug\n\ndef print_groups (groups):\n    for path in groups:\n        print (\"path {0}\".format (path))\n        for disease in groups[path]:\n            try:\n                print (\"  \u003e {0}({1})\u003c-({2} drugs)\".format (disease.term.name, disease.mesh_id, len(disease.drugs)))\n            except Exception:\n                traceback.print_exc ()\n\ndef cooccurrence_matrix():\n    disease_matrix \u003d defaultdict(list)\n    disease_drug \u003d get_disease_drug_associations (triplestore)\n    disease_ontology \u003d parse_ontology ()\n    for term_id in disease_ontology:\n        disease \u003d disease_ontology [term_id]\n        if disease.mesh_id in disease_drug:\n            drug \u003d disease_drug [disease.mesh_id]\n\n    \u0027\u0027\u0027 Bind Disease Ontology data to Disease Drug associations. \u0027\u0027\u0027\n    nodes \u003d defaultdict(int)\n    for mesh_id, disease in disease_ontology.iteritems ():\n        if len(disease.lineage) \u003c 5:\n            continue\n        key \u003d \"/\".join (disease.lineage)\n        nodes[key] \u003d nodes[key] + 1\n\n    \u0027\u0027\u0027 For nodes with more than some threshold number of children: \u0027\u0027\u0027\n    threshold \u003d 3\n    groups \u003d defaultdict(list)\n    for path in nodes:\n        if nodes[path] \u003e threshold:\n            term_id \u003d path.split(\u0027/\u0027)[-1]\n            for doid, disease in disease_ontology.iteritems ():\n                # Match appropriate drug indications to disease object:\n                if len(disease.lineage) \u003e 0 and term_id \u003d\u003d disease.lineage[-1] and disease.mesh_id in disease_drug:\n                    disease.drugs \u003d disease_drug [disease.mesh_id]\n                    groups[path].append (disease)\n                    #print (\"{0}: {1} arity:{2} ({3}) drugs:{4}\".format (path, disease.term.name, nodes[n], disease.xref, disease.drugs))\n    return groups\n    \ngroups \u003d cooccurrence_matrix()",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 17, 2017 9:35:34 AM",
+      "dateUpdated": "Mar 17, 2017 9:45:25 AM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -409,9 +371,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\nWe need to stop trying to print every drug array. The browser just can\u0027t take it.\nSo here\u0027s what the output of average_treatment_set_similarity() looks like for one iteration of a drug array comparison:\nThis is a case where there is intersection. The majority of the cases I\u0027ve seen have none.\n\n   s\u003e 0.0166666666667\nL: [1136 2877 1592  472  749  291 1166   14  841 1093 1143  431  381 4115  412\n 3895  262 3320 1181 4665  445  163  531  657  544 4827  898  695 1214  461\n 1017 1183 1064  252  816  541  203 1104  316  799  277 4499  255  997  755\n  982 3496 2656 1196  683  325 1174  727  312  481 1645  818  834 2546 2375]\nR: [ 2699.  2877.  4253.  1592.  1093.   431.   974.   412.   262.   304.\n   163.  1101.   544.   531.  1779.  4827.   898.  2757.  1275.   763.\n   252.  1039.   910.   550.   316.  3587.  1030.   255.  4348.   997.\n  1164.   755.   982.   759.  2656.  1759.   481.  1645.  4652.     0.\n     0.     0.     0.     0.     0.     0.     0.     0.     0.     0.\n     0.     0.     0.     0.     0.     0.     0.     0.     0.     0.]\n",
+      "text": "%md\nWe need to stop trying to print every drug array. The browser just can\u0027t take it.\nSo here\u0027s what the output of average_treatment_set_similarity() looks like for one iteration of a drug array comparison:\nThis is a case where there is some intersection.\n~~~~~~~\ns\u003e 0.0166666666667\nL: [1136 2877 1592  472  749  291 1166   14  841 1093 1143  431  381 4115  412\n 3895  262 3320 1181 4665  445  163  531  657  544 4827  898  695 1214  461\n 1017 1183 1064  252  816  541  203 1104  316  799  277 4499  255  997  755\n  982 3496 2656 1196  683  325 1174  727  312  481 1645  818  834 2546 2375]\nR: [ 2699.  2877.  4253.  1592.  1093.   431.   974.   412.   262.   304.\n   163.  1101.   544.   531.  1779.  4827.   898.  2757.  1275.   763.\n   252.  1039.   910.   550.   316.  3587.  1030.   255.  4348.   997.\n  1164.   755.   982.   759.  2656.  1759.   481.  1645.  4652.     0.\n     0.     0.     0.     0.     0.     0.     0.     0.     0.     0.\n     0.     0.     0.     0.     0.     0.     0.     0.     0.     0.]\n~~~~~~~",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 16, 2017 6:50:44 PM",
+      "dateUpdated": "Mar 17, 2017 9:58:41 AM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -433,7 +395,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003eWe need to stop trying to print every drug array. The browser just can\u0026rsquo;t take it.\u003cbr/\u003eSo here\u0026rsquo;s what the output of average_treatment_set_similarity() looks like for one iteration of a drug array comparison:\u003cbr/\u003eThis is a case where there is intersection. The majority of the cases I\u0026rsquo;ve seen have none.\u003c/p\u003e\n\u003cp\u003es\u0026gt; 0.0166666666667\u003cbr/\u003eL: [1136 2877 1592 472 749 291 1166 14 841 1093 1143 431 381 4115 412\u003cbr/\u003e 3895 262 3320 1181 4665 445 163 531 657 544 4827 898 695 1214 461\u003cbr/\u003e 1017 1183 1064 252 816 541 203 1104 316 799 277 4499 255 997 755\u003cbr/\u003e 982 3496 2656 1196 683 325 1174 727 312 481 1645 818 834 2546 2375]\u003cbr/\u003eR: [ 2699. 2877. 4253. 1592. 1093. 431. 974. 412. 262. 304.\u003cbr/\u003e 163. 1101. 544. 531. 1779. 4827. 898. 2757. 1275. 763.\u003cbr/\u003e 252. 1039. 910. 550. 316. 3587. 1030. 255. 4348. 997.\u003cbr/\u003e 1164. 755. 982. 759. 2656. 1759. 481. 1645. 4652. 0.\u003cbr/\u003e 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.\u003cbr/\u003e 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.]\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003eWe need to stop trying to print every drug array. The browser just can\u0026rsquo;t take it.\u003cbr/\u003eSo here\u0026rsquo;s what the output of average_treatment_set_similarity() looks like for one iteration of a drug array comparison:\u003cbr/\u003eThis is a case where there is some intersection.\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003es\u0026gt; 0.0166666666667\nL: [1136 2877 1592  472  749  291 1166   14  841 1093 1143  431  381 4115  412\n 3895  262 3320 1181 4665  445  163  531  657  544 4827  898  695 1214  461\n 1017 1183 1064  252  816  541  203 1104  316  799  277 4499  255  997  755\n  982 3496 2656 1196  683  325 1174  727  312  481 1645  818  834 2546 2375]\nR: [ 2699.  2877.  4253.  1592.  1093.   431.   974.   412.   262.   304.\n   163.  1101.   544.   531.  1779.  4827.   898.  2757.  1275.   763.\n   252.  1039.   910.   550.   316.  3587.  1030.   255.  4348.   997.\n  1164.   755.   982.   759.  2656.  1759.   481.  1645.  4652.     0.\n     0.     0.     0.     0.     0.     0.     0.     0.     0.     0.\n     0.     0.     0.     0.     0.     0.     0.     0.     0.     0.]\n\u003c/code\u003e\u003c/pre\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -441,8 +403,8 @@
       "jobName": "paragraph_1489704634830_929276464",
       "id": "20170316-185034_1153216356",
       "dateCreated": "Mar 16, 2017 6:50:34 PM",
-      "dateStarted": "Mar 16, 2017 6:50:44 PM",
-      "dateFinished": "Mar 16, 2017 6:50:45 PM",
+      "dateStarted": "Mar 17, 2017 9:58:41 AM",
+      "dateFinished": "Mar 17, 2017 9:58:41 AM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -479,14 +441,14 @@
     {
       "text": "%sql select * from diseases_s",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 16, 2017 10:14:27 PM",
+      "dateUpdated": "Mar 17, 2017 9:59:00 AM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
         "results": {
           "0": {
             "graph": {
-              "mode": "multiBarChart",
+              "mode": "table",
               "height": 376.66668701171875,
               "optionOpen": false,
               "setting": {
@@ -543,9 +505,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%sql select * from diseases where _2 \u003e 0.1\n",
+      "text": "%sql select * from diseases where _2 \u003e 0.05 order by _2\n",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 16, 2017 10:14:39 PM",
+      "dateUpdated": "Mar 17, 2017 10:01:46 AM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -573,7 +535,7 @@
         "msg": [
           {
             "type": "TABLE",
-            "data": "_1\t_2\nDOID:0060101\tNaN\nDOID:0050136\t0.16666666666666666\nDOID:0060159\tNaN\nDOID:0060038\t0.14285714285714285\nDOID:0060097\tNaN\nDOID:1091\tNaN\nDOID:0050902\t1.0\nDOID:9741\tNaN\nDOID:0060084\t0.10773304076875506\nDOID:3213\t0.3090909090909091\nDOID:0050815\tNaN\nDOID:780\tNaN\nDOID:0050136\t0.16666666666666666\nDOID:0050728\t0.10873015873015872\nDOID:2277\t0.10936644772851668\nDOID:2731\tNaN\nDOID:10273\t0.1111111111111111\nDOID:10123\tNaN\nDOID:0060180\tNaN\nDOID:1091\tNaN\n"
+            "data": "_1\t_2\nDOID:936\t0.055699855699855694\nDOID:0060100\t0.05731725539417848\nDOID:0014667\t0.0575818714097962\nDOID:0080001\t0.06018518518518518\nDOID:0080000\t0.0784313725490196\nDOID:870\t0.08333333333333333\nDOID:0050687\t0.08740365066277832\nDOID:0050728\t0.08968253968253968\nDOID:0080006\t0.09584859584859586\nDOID:9500\t0.1\nDOID:0060084\t0.10727952602952605\nDOID:2277\t0.10813492063492063\nDOID:10273\t0.1111111111111111\nDOID:0060038\t0.14285714285714285\nDOID:0050136\t0.16666666666666666\nDOID:3213\t0.3\nDOID:0050902\t1.0\n"
           }
         ]
       },
@@ -581,8 +543,8 @@
       "jobName": "paragraph_1489707425619_654382383",
       "id": "20170316-193705_1455286457",
       "dateCreated": "Mar 16, 2017 7:37:05 PM",
-      "dateStarted": "Mar 16, 2017 7:43:33 PM",
-      "dateFinished": "Mar 16, 2017 7:43:42 PM",
+      "dateStarted": "Mar 17, 2017 10:01:46 AM",
+      "dateFinished": "Mar 17, 2017 10:01:47 AM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
