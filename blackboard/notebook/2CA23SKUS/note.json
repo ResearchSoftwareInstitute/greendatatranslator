@@ -656,14 +656,14 @@
     {
       "text": "%sql select * from diseases_s",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 16, 2017 7:45:33 PM",
+      "dateUpdated": "Mar 16, 2017 10:14:27 PM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
         "results": {
           "0": {
             "graph": {
-              "mode": "table",
+              "mode": "multiBarChart",
               "height": 376.66668701171875,
               "optionOpen": false,
               "setting": {
@@ -722,14 +722,14 @@
     {
       "text": "%sql select * from diseases where _2 \u003e 0.1\n",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 16, 2017 7:43:45 PM",
+      "dateUpdated": "Mar 16, 2017 10:14:39 PM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
         "results": {
           "0": {
             "graph": {
-              "mode": "pieChart",
+              "mode": "multiBarChart",
               "height": 300.0,
               "optionOpen": false
             },
