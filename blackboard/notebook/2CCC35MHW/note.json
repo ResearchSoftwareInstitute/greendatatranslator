@@ -566,9 +566,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%pyspark\nanalysis \u003d map (lambda p : (p[0], average_treatment_set_similarity (p[1]) ), groups_to_drugs[:15])\nprint analysis\n\n#nan \u003d float(\u0027nan\u0027)\n#analysis_nonzero \u003d [i for i in analysis if \u0027nan\u0027 not in i]\n#analysis_nonzero \u003d analysis((k, v) for k, v in analysis.iteritems() if v \u003e 0)\n#analysis_nonzero \u003d filter(lambda x : nan not in x[1], analysis_nonzero)\n#analysis_nonzero \u003d filter(lambda x : analysis[x] !\u003d \u0027nan\u0027, analysis_nonzero)\n#analysis_nonzero \u003d [x for x in analysis if str(x) !\u003d nan]\n#print analysis_nonzero\n",
+      "text": "%pyspark\nanalysis \u003d map (lambda p : (p[0], average_treatment_set_similarity (p[1]) ), groups_to_drugs[:20])\nprint analysis[0:10]\n\n\n#nan \u003d float(\u0027nan\u0027)\n#analysis_nonzero \u003d [i for i in analysis if \u0027nan\u0027 not in i]\n#analysis_nonzero \u003d analysis((k, v) for k, v in analysis.iteritems() if v \u003e 0)\n#analysis_nonzero \u003d filter(lambda x : nan not in x[1], analysis_nonzero)\n#analysis_nonzero \u003d filter(lambda x : analysis[x] !\u003d nan, analysis_nonzero)\n#analysis_nonzero \u003d [x for x in analysis if str(x) !\u003d nan]\n#print analysis_nonzero\n",
       "user": "ad\\ruhirai",
-      "dateUpdated": "Mar 20, 2017 1:09:58 PM",
+      "dateUpdated": "Mar 20, 2017 1:36:03 PM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -587,7 +587,7 @@
         "msg": [
           {
             "type": "TEXT",
-            "data": "[(u\u0027DOID:4/DOID:4844/DOID:14566/DOID:0060072/DOID:0060084/DOID:0060101\u0027, nan), (u\u0027DOID:4/DOID:1564/DOID:2473/DOID:0050117/DOID:0050136\u0027, 0.16666666666666666), (u\u0027DOID:4/DOID:162/DOID:3119/DOID:14566/DOID:0050686\u0027, 0.015715917246326469), (u\u0027DOID:4/DOID:7/DOID:863/DOID:1492/DOID:5614/DOID:5679/DOID:0050155\u0027, 0.0087496083534566831), (u\u0027DOID:4/DOID:655/DOID:9252/DOID:0014667/DOID:0060159\u0027, nan), (u\u0027DOID:4/DOID:14566/DOID:0060072/DOID:0060085/DOID:0060089\u0027, 0.024441076165214098), (u\u0027DOID:4/DOID:7/DOID:17/DOID:65/DOID:381/DOID:3342/DOID:0080001\u0027, 0.060185185185185182), (u\u0027DOID:4/DOID:150/DOID:8670/DOID:0060037/DOID:0060038\u0027, 0.14285714285714285), (u\u0027DOID:4/DOID:7/DOID:850/DOID:1579/DOID:3082/DOID:0050161\u0027, 0.015758812556427439), (u\u0027DOID:4/DOID:7/DOID:863/DOID:2742/DOID:2952/DOID:0050155\u0027, 0.0087496083534566831), (u\u0027DOID:4/DOID:655/DOID:3133/DOID:13268/DOID:0014667\u0027, 0.057672037052269268), (u\u0027DOID:4/DOID:7/DOID:178/DOID:1287/DOID:6713/DOID:0050828\u0027, 0.015836676676044718), (u\u0027DOID:4/DOID:162/DOID:3069/DOID:3070/DOID:14566/DOID:0050687\u0027, 0.086610856742929343), (u\u0027DOID:4/DOID:7/DOID:74/DOID:2914/DOID:9500\u0027, 0.10000000000000001), (u\u0027DOID:4/DOID:655/DOID:1168/DOID:3146/DOID:0014667\u0027, 0.057672037052269268)]\n"
+            "data": "[(u\u0027DOID:4/DOID:4844/DOID:14566/DOID:0060072/DOID:0060084/DOID:0060101\u0027, nan), (u\u0027DOID:4/DOID:1564/DOID:2473/DOID:0050117/DOID:0050136\u0027, 0.16666666666666666), (u\u0027DOID:4/DOID:162/DOID:3119/DOID:14566/DOID:0050686\u0027, 0.015715917246326469), (u\u0027DOID:4/DOID:7/DOID:863/DOID:1492/DOID:5614/DOID:5679/DOID:0050155\u0027, 0.0087496083534566831), (u\u0027DOID:4/DOID:655/DOID:9252/DOID:0014667/DOID:0060159\u0027, nan), (u\u0027DOID:4/DOID:14566/DOID:0060072/DOID:0060085/DOID:0060089\u0027, 0.024441076165214098), (u\u0027DOID:4/DOID:7/DOID:17/DOID:65/DOID:381/DOID:3342/DOID:0080001\u0027, 0.060185185185185182), (u\u0027DOID:4/DOID:150/DOID:8670/DOID:0060037/DOID:0060038\u0027, 0.14285714285714285), (u\u0027DOID:4/DOID:7/DOID:850/DOID:1579/DOID:3082/DOID:0050161\u0027, 0.015758812556427439), (u\u0027DOID:4/DOID:7/DOID:863/DOID:2742/DOID:2952/DOID:0050155\u0027, 0.0087496083534566831)]\n"
           }
         ]
       },
@@ -595,8 +595,8 @@
       "jobName": "paragraph_1489680059422_1674480586",
       "id": "20170316-120059_1677981891",
       "dateCreated": "Mar 16, 2017 12:00:59 PM",
-      "dateStarted": "Mar 20, 2017 1:09:58 PM",
-      "dateFinished": "Mar 20, 2017 1:10:00 PM",
+      "dateStarted": "Mar 20, 2017 1:36:03 PM",
+      "dateFinished": "Mar 20, 2017 1:36:06 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
