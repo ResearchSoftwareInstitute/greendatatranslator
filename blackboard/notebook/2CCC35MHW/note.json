@@ -566,9 +566,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%pyspark\nanalysis \u003d map (lambda p : (p[0], average_treatment_set_similarity (p[1]) ), groups_to_drugs[:15])\nprint analysis\n\nanalysis_nonzero \u003d dict((k, v) for k, v in average_treatment_set_similarity.iteritems() if v \u003e 0)\n#analysis_nonzero \u003d filter (lambda p : (p[0], analysis (p[1] \u003e 0.0) ), groups_to_drugs[:15])\n#analysis_nonzero \u003d filter(lambda x : analysis[x] \u003e 0.0, analysis[0])\n#print analysis_nonzero",
+      "text": "%pyspark\nanalysis \u003d map (lambda p : (p[0], average_treatment_set_similarity (p[1]) ), groups_to_drugs[:15])\n#print analysis\n\nnan \u003d float(\u0027nan\u0027)\n#analysis_nonzero \u003d [i for i in analysis if \u0027nan\u0027 not in i]\n#analysis_nonzero \u003d dict((k, v) for k, v in average_treatment_set_similarity.iteritems() if v \u003e 0)\n#analysis_nonzero \u003d filter (lambda p : (p[0], analysis (p[1] \u003e 0.0) ), groups_to_drugs[:15])\nanalysis_nonzero \u003d filter(lambda x : nan not in x, analysis_nonzero)\n#analysis_nonzero \u003d filter(lambda x : analysis[x] !\u003d \u0027nan\u0027, analysis_nonzero)\n#analysis_nonzero \u003d [x for x in analysis if str(x) !\u003d \u0027nan\u0027]\nprint analysis_nonzero",
       "user": "ad\\ruhirai",
-      "dateUpdated": "Mar 20, 2017 12:09:25 PM",
+      "dateUpdated": "Mar 20, 2017 12:38:55 PM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -583,15 +583,11 @@
         "forms": {}
       },
       "results": {
-        "code": "ERROR",
+        "code": "SUCCESS",
         "msg": [
           {
             "type": "TEXT",
             "data": "[(u\u0027DOID:4/DOID:4844/DOID:14566/DOID:0060072/DOID:0060084/DOID:0060101\u0027, nan), (u\u0027DOID:4/DOID:1564/DOID:2473/DOID:0050117/DOID:0050136\u0027, 0.16666666666666666), (u\u0027DOID:4/DOID:162/DOID:3119/DOID:14566/DOID:0050686\u0027, 0.016010098796763701), (u\u0027DOID:4/DOID:7/DOID:863/DOID:1492/DOID:5614/DOID:5679/DOID:0050155\u0027, 0.0093155393098799995), (u\u0027DOID:4/DOID:655/DOID:9252/DOID:0014667/DOID:0060159\u0027, nan), (u\u0027DOID:4/DOID:14566/DOID:0060072/DOID:0060085/DOID:0060089\u0027, 0.024813099974737907), (u\u0027DOID:4/DOID:7/DOID:17/DOID:65/DOID:381/DOID:3342/DOID:0080001\u0027, 0.060185185185185182), (u\u0027DOID:4/DOID:150/DOID:8670/DOID:0060037/DOID:0060038\u0027, 0.14285714285714285), (u\u0027DOID:4/DOID:7/DOID:850/DOID:1579/DOID:3082/DOID:0050161\u0027, 0.015194806053232467), (u\u0027DOID:4/DOID:7/DOID:863/DOID:2742/DOID:2952/DOID:0050155\u0027, 0.0093155393098799995), (u\u0027DOID:4/DOID:655/DOID:3133/DOID:13268/DOID:0014667\u0027, 0.057367110421127042), (u\u0027DOID:4/DOID:7/DOID:178/DOID:1287/DOID:6713/DOID:0050828\u0027, 0.016690765331020208), (u\u0027DOID:4/DOID:162/DOID:3069/DOID:3070/DOID:14566/DOID:0050687\u0027, 0.085676493807491552), (u\u0027DOID:4/DOID:7/DOID:74/DOID:2914/DOID:9500\u0027, 0.10000000000000001), (u\u0027DOID:4/DOID:655/DOID:1168/DOID:3146/DOID:0014667\u0027, 0.057367110421127042)]\n"
-          },
-          {
-            "type": "TEXT",
-            "data": "Traceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-7509758736875787090.py\", line 346, in \u003cmodule\u003e\n    raise Exception(traceback.format_exc())\nException: Traceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-7509758736875787090.py\", line 339, in \u003cmodule\u003e\n    exec(code)\n  File \"\u003cstdin\u003e\", line 3, in \u003cmodule\u003e\nAttributeError: \u0027function\u0027 object has no attribute \u0027iteritems\u0027\n\n"
           }
         ]
       },
@@ -599,9 +595,9 @@
       "jobName": "paragraph_1489680059422_1674480586",
       "id": "20170316-120059_1677981891",
       "dateCreated": "Mar 16, 2017 12:00:59 PM",
-      "dateStarted": "Mar 20, 2017 12:09:25 PM",
-      "dateFinished": "Mar 20, 2017 12:09:27 PM",
-      "status": "ERROR",
+      "dateStarted": "Mar 20, 2017 12:38:55 PM",
+      "dateFinished": "Mar 20, 2017 12:38:57 PM",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
