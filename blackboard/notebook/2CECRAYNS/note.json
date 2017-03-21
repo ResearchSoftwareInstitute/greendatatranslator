@@ -1,9 +1,40 @@
 {
   "paragraphs": [
     {
+      "text": "%spark.dep\nz.load(\"org.phenoscape:scowl:1.2.1\")",
+      "user": "ad\\scox",
+      "dateUpdated": "Mar 21, 2017 7:19:54 PM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "ERROR",
+        "msg": []
+      },
+      "apps": [],
+      "jobName": "paragraph_1490132380396_-493558097",
+      "id": "20170321-173940_994747591",
+      "dateCreated": "Mar 21, 2017 5:39:40 PM",
+      "dateStarted": "Mar 21, 2017 7:19:54 PM",
+      "dateFinished": "Mar 21, 2017 7:24:18 PM",
+      "status": "ERROR",
+      "progressUpdateIntervalMs": 500
+    },
+    {
       "text": "%spark\nvar x \u003d sc.parallelize (Array(0, 4, 3)).collect ()\n",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 21, 2017 5:40:32 PM",
+      "dateUpdated": "Mar 21, 2017 7:17:16 PM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -30,24 +61,33 @@
       "jobName": "paragraph_1490132356969_28515512",
       "id": "20170321-173916_931028472",
       "dateCreated": "Mar 21, 2017 5:39:16 PM",
-      "dateStarted": "Mar 21, 2017 5:40:32 PM",
-      "dateFinished": "Mar 21, 2017 5:40:34 PM",
+      "dateStarted": "Mar 21, 2017 7:17:16 PM",
+      "dateFinished": "Mar 21, 2017 7:17:33 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%spark\n",
+      "text": "%md\n\n",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 21, 2017 5:39:40 PM",
-      "config": {},
+      "dateUpdated": "Mar 21, 2017 7:19:31 PM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "editorMode": "ace/mode/markdown"
+      },
       "settings": {
         "params": {},
         "forms": {}
       },
       "apps": [],
-      "jobName": "paragraph_1490132380396_-493558097",
-      "id": "20170321-173940_994747591",
-      "dateCreated": "Mar 21, 2017 5:39:40 PM",
+      "jobName": "paragraph_1490138255511_1383701003",
+      "id": "20170321-191735_1946820153",
+      "dateCreated": "Mar 21, 2017 7:17:35 PM",
       "status": "READY",
       "progressUpdateIntervalMs": 500
     }
