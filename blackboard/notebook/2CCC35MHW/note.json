@@ -237,6 +237,22 @@
       "progressUpdateIntervalMs": 500
     },
     {
+      "text": "%pyspark\n",
+      "user": "ad\\ruhirai",
+      "dateUpdated": "Mar 21, 2017 9:31:31 AM",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1490103091753_-1277403744",
+      "id": "20170321-093131_160041978",
+      "dateCreated": "Mar 21, 2017 9:31:31 AM",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
       "text": "%md\nDefine a function to run the query, parse the response, and return a map of disease to compound where the key is a MESH id.",
       "user": "ad\\ruhirai",
       "dateUpdated": "Mar 20, 2017 2:08:21 PM",
