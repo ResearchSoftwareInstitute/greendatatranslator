@@ -273,9 +273,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%pyspark\nimport numpy as np\nfrom sklearn.metrics import jaccard_similarity_score\n\ndef reshape_array (source, target):\n    N \u003d np.zeros (target.shape)\n    N[:source.shape[0]] \u003d source\n    return N\n\ndef reshape_arrays (L, R):\n    bigger \u003d max (L.size, R.size)\n    if bigger \u003d\u003d L.size:\n        R \u003d reshape_array (R, L)\n    else:\n        L \u003d reshape_array (L, R)\n    return L, R\n\ndef make_arrays (A, B):\n    L \u003d np.array (A)\n    R \u003d np.array (B)\n    return reshape_arrays (L, R)\n    \ndef average_treatment_set_similarity (drug_lists):\n    import numpy as np\n    from sklearn.metrics import jaccard_similarity_score\n    similarities \u003d []\n    for index, drug_list in enumerate (drug_lists):\n        for index2, drug_list2 in enumerate (drug_lists):\n            if index \u003d\u003d index2 or len(drug_list) \u003d\u003d 0 or len(drug_list2) \u003d\u003d 0:\n                continue\n            L, R \u003d make_arrays (drug_list, drug_list2)\n            similarity \u003d jaccard_similarity_score (L, R)\n            #print (\"   s\u003e {0}\".format (similarity))\n            #print (\"L: {0}\".format (L))\n            #print (\"R: {0}\".format (R))\n            similarities.append (similarity)\n    return np.mean (np.array (similarities)).item ()",
+      "text": "%pyspark\nimport numpy as np\nfrom sklearn.metrics import jaccard_similarity_score\n\ndef reshape_array (source, target):\n    N \u003d np.zeros (target.shape)\n    N[:source.shape[0]] \u003d source\n    return N\n\ndef reshape_arrays (L, R):\n    bigger \u003d max (L.size, R.size)\n    if bigger \u003d\u003d L.size:\n        R \u003d reshape_array (R, L)\n    else:\n        L \u003d reshape_array (L, R)\n    return L, R\n\ndef make_arrays (A, B):\n    L \u003d np.array (A)\n    R \u003d np.array (B)\n    return reshape_arrays (L, R)\n    \ndef average_treatment_set_similarity (drug_lists):\n    import numpy as np\n    from sklearn.metrics import jaccard_similarity_score\n    similarities \u003d []\n    for index, drug_list in enumerate (drug_lists):\n        for index2, drug_list2 in enumerate (drug_lists):\n            if index \u003d\u003d index2:\n                continue\n            L, R \u003d make_arrays (drug_list, drug_list2)\n            similarity \u003d jaccard_similarity_score (L, R)\n            #print (\"   s\u003e {0}\".format (similarity))\n            #print (\"L: {0}\".format (L))\n            #print (\"R: {0}\".format (R))\n            similarities.append (similarity)\n    return np.mean (np.array (similarities)).item ()",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 20, 2017 10:37:55 AM",
+      "dateUpdated": "Mar 21, 2017 6:42:28 AM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -297,15 +297,15 @@
       "jobName": "paragraph_1489704605784_2086939932",
       "id": "20170316-185005_1904620776",
       "dateCreated": "Mar 16, 2017 6:50:05 PM",
-      "dateStarted": "Mar 20, 2017 10:37:55 AM",
-      "dateFinished": "Mar 20, 2017 10:37:56 AM",
+      "dateStarted": "Mar 21, 2017 6:42:28 AM",
+      "dateFinished": "Mar 21, 2017 6:42:28 AM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%md\nWe need to stop trying to print every drug array. The browser just can\u0027t take it.\nSo here\u0027s what the output of average_treatment_set_similarity() looks like for one iteration of a drug array comparison:\nThis is a case where there is some intersection.\n~~~~~~~\ns\u003e 0.0166666666667\nL: [1136 2877 1592  472  749  291 1166   14  841 1093 1143  431  381 4115  412\n 3895  262 3320 1181 4665  445  163  531  657  544 4827  898  695 1214  461\n 1017 1183 1064  252  816  541  203 1104  316  799  277 4499  255  997  755\n  982 3496 2656 1196  683  325 1174  727  312  481 1645  818  834 2546 2375]\nR: [ 2699.  2877.  4253.  1592.  1093.   431.   974.   412.   262.   304.\n   163.  1101.   544.   531.  1779.  4827.   898.  2757.  1275.   763.\n   252.  1039.   910.   550.   316.  3587.  1030.   255.  4348.   997.\n  1164.   755.   982.   759.  2656.  1759.   481.  1645.  4652.     0.\n     0.     0.     0.     0.     0.     0.     0.     0.     0.     0.\n     0.     0.     0.     0.     0.     0.     0.     0.     0.     0.]\n~~~~~~~",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 20, 2017 11:11:27 AM",
+      "dateUpdated": "Mar 21, 2017 6:42:34 AM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -315,8 +315,8 @@
           "editOnDblClick": true
         },
         "editorMode": "ace/mode/markdown",
-        "editorHide": false,
-        "tableHide": true
+        "editorHide": true,
+        "tableHide": false
       },
       "settings": {
         "params": {},
@@ -335,15 +335,15 @@
       "jobName": "paragraph_1489704634830_929276464",
       "id": "20170316-185034_1153216356",
       "dateCreated": "Mar 16, 2017 6:50:34 PM",
-      "dateStarted": "Mar 17, 2017 11:13:17 AM",
-      "dateFinished": "Mar 17, 2017 11:13:17 AM",
+      "dateStarted": "Mar 21, 2017 6:42:34 AM",
+      "dateFinished": "Mar 21, 2017 6:42:34 AM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%pyspark\nimport math\nfrom pyspark.sql.types import *\n\npath_key \u003d {}\nfor k, v in groups.iteritems ():\n    path_key [k] \u003d k.split (\u0027/\u0027)[-1]\nfor k in path_key:\n    v \u003d groups[k]\n    del groups[k]\n    groups[path_key[k]] \u003d v\n\ndata \u003d map (lambda p : ( p[0], map (lambda d : d.drugs, p[1]) ),\n    groups.iteritems ())\nspark_groups \u003d sc.parallelize (data). \\\n    map (lambda p : ( p[0].split (\u0027/\u0027)[-1],\n        average_treatment_set_similarity (p[1]) )). \\\n    filter (lambda p : not math.isnan (float(p[1])))\n\nspark_groups.toDF().registerTempTable(\"diseases\")\n    \nschemaString \u003d \"path sum\"\nfields \u003d [StructField(field_name, StringType(), True) for field_name in schemaString.split()]\nschema \u003d StructType(fields)\nschema_diseases \u003d sqlContext.\\\n    createDataFrame(spark_groups, schema). \\\n    registerTempTable(\"diseases_s\")",
+      "text": "%pyspark\nimport math\nfrom pyspark.sql.types import *\n\npath_key \u003d {}\nfor k, v in groups.iteritems ():\n    path_key [k] \u003d k.split (\u0027/\u0027)[-1]\nfor k in path_key:\n    v \u003d groups[k]\n    del groups[k]\n    groups[path_key[k]] \u003d v\n\ndata \u003d map (lambda p : (p[0], map(lambda d : d.drugs, p[1])),\n    groups.iteritems ())\nspark_groups \u003d sc.parallelize (data). \\\n    map (lambda p : ( p[0].split (\u0027/\u0027)[-1],\n        average_treatment_set_similarity (p[1]) )). \\\n    filter (lambda p : not math.isnan (float(p[1])))\n\nspark_groups.toDF().registerTempTable(\"diseases\")\n    \nschemaString \u003d \"path sum\"\nfields \u003d [StructField(field_name, StringType(), True) for field_name in schemaString.split()]\nschema \u003d StructType(fields)\nschema_diseases \u003d sqlContext.\\\n    createDataFrame(spark_groups, schema). \\\n    registerTempTable(\"diseases_s\")",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 20, 2017 10:38:34 AM",
+      "dateUpdated": "Mar 21, 2017 6:45:00 AM",
       "config": {
         "colWidth": 4.0,
         "enabled": true,
@@ -365,8 +365,8 @@
       "jobName": "paragraph_1489704663666_183479854",
       "id": "20170316-185103_1286426319",
       "dateCreated": "Mar 16, 2017 6:51:03 PM",
-      "dateStarted": "Mar 20, 2017 10:38:34 AM",
-      "dateFinished": "Mar 20, 2017 10:38:35 AM",
+      "dateStarted": "Mar 21, 2017 6:45:00 AM",
+      "dateFinished": "Mar 21, 2017 6:45:01 AM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -439,7 +439,7 @@
     {
       "text": "%sql select * from diseases where _2 \u003e 0.05 order by _2\n",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 20, 2017 10:38:54 AM",
+      "dateUpdated": "Mar 21, 2017 6:45:17 AM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -475,8 +475,8 @@
       "jobName": "paragraph_1489707425619_654382383",
       "id": "20170316-193705_1455286457",
       "dateCreated": "Mar 16, 2017 7:37:05 PM",
-      "dateStarted": "Mar 20, 2017 10:38:54 AM",
-      "dateFinished": "Mar 20, 2017 10:38:56 AM",
+      "dateStarted": "Mar 21, 2017 6:45:17 AM",
+      "dateFinished": "Mar 21, 2017 6:45:19 AM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
