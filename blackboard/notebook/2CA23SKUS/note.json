@@ -41,7 +41,7 @@
     {
       "text": "%md\nFirst, define a class for interacting with a triplestore.",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 8, 2017 3:06:41 PM",
+      "dateUpdated": "Mar 21, 2017 11:29:08 AM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -58,28 +58,20 @@
         "params": {},
         "forms": {}
       },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003eFirst, define a class for interacting with a triplestore.\u003c/p\u003e\n\u003c/div\u003e"
-          }
-        ]
-      },
       "apps": [],
       "jobName": "paragraph_1488937835532_43595742",
       "id": "20170307-205035_346909513",
       "dateCreated": "Mar 7, 2017 8:50:35 PM",
-      "dateStarted": "Mar 8, 2017 3:06:41 PM",
-      "dateFinished": "Mar 8, 2017 3:06:41 PM",
+      "dateStarted": "Mar 21, 2017 11:29:11 AM",
+      "dateFinished": "Mar 21, 2017 11:29:11 AM",
       "status": "FINISHED",
+      "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%pyspark\nimport traceback\nfrom SPARQLWrapper import SPARQLWrapper2, JSON\nfrom collections import defaultdict\n\nclass TripleStore(object):\n    def __init__(self, hostname):\n        self.service \u003d  SPARQLWrapper2 (hostname)\n    def execute_query (self, query):\n        self.service.setQuery (query)\n        self.service.setReturnFormat (JSON)\n        return self.service.query().convert ()\n    def execute_query_file (self, query_file):\n        result \u003d None\n        with open (query_file, \"r\") as stream:\n            query \u003d stream.read ()\n            result \u003d self.execute_query (query)\n        return result\n",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 21, 2017 10:06:38 AM",
+      "dateUpdated": "Mar 21, 2017 11:29:41 AM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -93,20 +85,23 @@
         "params": {},
         "forms": {}
       },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
       "apps": [],
       "jobName": "paragraph_1488936514367_766072622",
       "id": "20170307-202834_465623601",
       "dateCreated": "Mar 7, 2017 8:28:34 PM",
-      "dateStarted": "Mar 21, 2017 10:06:38 AM",
-      "dateFinished": "Mar 20, 2017 10:37:26 AM",
-      "status": "RUNNING",
-      "errorMessage": "",
+      "dateStarted": "Mar 21, 2017 11:29:41 AM",
+      "dateFinished": "Mar 21, 2017 11:29:41 AM",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%pyspark\nquery \u003d \"\"\"\nPREFIX db_resource:      \u003chttp://chem2bio2rdf.org/drugbank/resource/\u003e\nPREFIX ctd_chem_disease: \u003chttp://chem2bio2rdf.org/ctd/resource/ctd_chem_disease/\u003e \nPREFIX biordf:           \u003chttp://bio2rdf.org/\u003e\nPREFIX ctd:              \u003chttp://chem2bio2rdf.org/ctd/resource/\u003e\nPREFIX pubchem:          \u003chttp://chem2bio2rdf.org/ctd/resource/\u003e\nSELECT DISTINCT ?chem_disease ?meshid ?compound ?drug\nWHERE {\n  ?chem_disease ctd:diseaseid ?meshid .\n  ?chem_disease ctd:cid       ?compound .\n  ?drug         db_resource:CID ?compound\n}\n\"\"\"",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 21, 2017 10:08:45 AM",
+      "dateUpdated": "Mar 21, 2017 11:29:45 AM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -128,15 +123,15 @@
       "jobName": "paragraph_1488936572727_-1322836426",
       "id": "20170307-202932_2073115934",
       "dateCreated": "Mar 7, 2017 8:29:32 PM",
-      "dateStarted": "Mar 20, 2017 10:37:36 AM",
-      "dateFinished": "Mar 20, 2017 10:37:36 AM",
+      "dateStarted": "Mar 21, 2017 11:29:45 AM",
+      "dateFinished": "Mar 21, 2017 11:29:45 AM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%md\nDefine a function to run the query, parse the response, and return a map of disease to compound where the key is a MESH id.",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 21, 2017 9:59:07 AM",
+      "dateUpdated": "Mar 21, 2017 11:29:49 AM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -146,8 +141,8 @@
           "editOnDblClick": true
         },
         "editorMode": "ace/mode/markdown",
-        "editorHide": false,
-        "tableHide": true
+        "editorHide": true,
+        "tableHide": false
       },
       "settings": {
         "params": {},
@@ -166,15 +161,15 @@
       "jobName": "paragraph_1488938001966_2076886410",
       "id": "20170307-205321_210744016",
       "dateCreated": "Mar 7, 2017 8:53:21 PM",
-      "dateStarted": "Mar 20, 2017 10:37:39 AM",
-      "dateFinished": "Mar 20, 2017 10:37:41 AM",
+      "dateStarted": "Mar 21, 2017 11:29:49 AM",
+      "dateFinished": "Mar 21, 2017 11:29:49 AM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%md\nNow we create a data structure that maps paths through the hierarchy to the lists of diseases under those nodes.\nAnd we include this example instead of printing every item since that bogs down our notebook.\n~~~~~~~\npath DOID:4/DOID:4844/DOID:14566/DOID:0060072/DOID:0060084/DOID:0060101\n    \u003e subependymal giant cell astrocytoma(MESH:D001254)\u003c-(1 drugs)\npath DOID:4/DOID:1564/DOID:2473/DOID:0050117/DOID:0050136\n    \u003e candidiasis(MESH:D002177)\u003c-(1 drugs)\n    \u003e vulvovaginal candidiasis(MESH:D002181)\u003c-(5 drugs)\n    \u003e pneumocystosis(MESH:D011020)\u003c-(1 drugs)\n    \u003e oral candidiasis(MESH:D002180)\u003c-(5 drugs)\npath DOID:4/DOID:162/DOID:3119/DOID:14566/DOID:0050686\n    \u003e gallbladder cancer(MESH:D005706)\u003c-(60 drugs)\n    \u003e cribriform carcinoma(MESH:D000230)\u003c-(148 drugs)\n    \u003e thyroid carcinoma(MESH:D013964)\u003c-(66 drugs)\n    \u003e cerebral primitive neuroectodermal tumor(MESH:D018242)\u003c-(15 drugs)\n    \u003e pharynx cancer(MESH:D010610)\u003c-(1 drugs)\n~~~~~~~",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 21, 2017 9:59:13 AM",
+      "dateUpdated": "Mar 21, 2017 11:29:53 AM",
       "config": {
         "colWidth": 4.0,
         "enabled": true,
@@ -184,8 +179,8 @@
           "editOnDblClick": true
         },
         "editorMode": "ace/mode/markdown",
-        "editorHide": false,
-        "tableHide": true
+        "editorHide": true,
+        "tableHide": false
       },
       "settings": {
         "params": {},
@@ -204,15 +199,15 @@
       "jobName": "paragraph_1489748136300_-968050499",
       "id": "20170317-065536_1949387075",
       "dateCreated": "Mar 17, 2017 6:55:36 AM",
-      "dateStarted": "Mar 17, 2017 3:33:05 PM",
-      "dateFinished": "Mar 17, 2017 3:33:05 PM",
+      "dateStarted": "Mar 21, 2017 11:29:53 AM",
+      "dateFinished": "Mar 21, 2017 11:29:53 AM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%pyspark\n\ndef print_groups ():\n    for g in groups:\n        print (g)\n        print (\"{0} -\u003e \".format (g))\n        for d in groups[g]:\n            print (\"  \u003e {0}\".format (d.drugs))\n",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 20, 2017 10:37:43 AM",
+      "dateUpdated": "Mar 21, 2017 11:31:07 AM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -234,15 +229,15 @@
       "jobName": "paragraph_1489456560506_1148452341",
       "id": "20170313-215600_1833550478",
       "dateCreated": "Mar 13, 2017 9:56:00 PM",
-      "dateStarted": "Mar 20, 2017 10:37:43 AM",
-      "dateFinished": "Mar 20, 2017 10:37:43 AM",
+      "dateStarted": "Mar 21, 2017 11:31:07 AM",
+      "dateFinished": "Mar 21, 2017 11:31:07 AM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%pyspark\ntriplestore_uri \u003d \"http://stars-blazegraph.renci.org/bigdata/sparql\"\ntriplestore \u003d TripleStore (triplestore_uri)\n\nimport pronto\nimport pandas as pd\nimport sys\nfrom collections import defaultdict\nfrom operator import itemgetter\nfrom numpy import dot, sqrt, array\n\nclass Disease(object):\n    def __init__ (self, term, xref, lineage):\n        self.mesh_id \u003d xref\n        self.lineage \u003d lineage\n        self.drugs \u003d []\n        self.term \u003d term\n\n#disease_ont \u003d {}\n\ndef parse_ontology ():\n    ont \u003d pronto.Ontology (\u0027/projects/stars/m2m/var/diseaseontology/dis.obo\u0027)\n    \u0027\u0027\u0027 print (ont.json) \u0027\u0027\u0027\n    hierarchy_map \u003d {}\n    for term in ont:\n        xref \u003d None\n        if \u0027xref\u0027 in term.other:\n            for x in term.other[\u0027xref\u0027]:\n                if x.startswith (\"MESH:\"):\n                    xref \u003d x\n                    #disease_ont[term.id.upper()] \u003d term\n                    lineage \u003d map ( lambda t : t.id, term.rparents ())\n                    sorted_lineage \u003d sorted (lineage, key\u003dlambda e : int(e.split(\u0027:\u0027)[1]))\n                    disease \u003d Disease (term\u003dterm, xref\u003dxref, lineage\u003dsorted_lineage)\n                    hierarchy_map[term.id.upper ()] \u003d disease\n                    break\n    #for k in hierarchy_map:\n    #    print (\"{0} {1} {2}\".format (k, hierarchy_map[k].mesh_id, hierarchy_map[k].lineage))\n    return hierarchy_map\n    \ndef get_disease_drug_associations (triplestore):\n    disease_drug \u003d defaultdict(list)\n    result \u003d triplestore.execute_query (query)\n    for bind in result.bindings:\n        mesh_id \u003d bind[\u0027meshid\u0027].value.rsplit(\u0027/\u0027, 1)[-1].upper ()\n        drug \u003d bind[\u0027drug\u0027].value.rsplit(\u0027/\u0027, 1)[-1]\n        drug_id \u003d int(drug.replace (\u0027DB\u0027, \u0027\u0027))\n        if not drug_id in disease_drug[mesh_id]:\n            disease_drug[mesh_id].append (drug_id)\n    return disease_drug\n\ndef print_groups (groups):\n    for path in groups:\n        print (\"path {0}\".format (path))\n        for disease in groups[path]:\n            try:\n                print (\"  \u003e {0}({1})\u003c-({2} drugs)\".format (disease.term.name, disease.mesh_id, len(disease.drugs)))\n            except Exception:\n                traceback.print_exc ()\n\ndef cooccurrence_matrix():\n    disease_matrix \u003d defaultdict(list)\n    disease_drug \u003d get_disease_drug_associations (triplestore)\n    disease_ontology \u003d parse_ontology ()\n    for term_id in disease_ontology:\n        disease \u003d disease_ontology [term_id]\n        if disease.mesh_id in disease_drug:\n            drug \u003d disease_drug [disease.mesh_id]\n\n    \u0027\u0027\u0027 Bind Disease Ontology data to Disease Drug associations. \u0027\u0027\u0027\n    nodes \u003d defaultdict(int)\n    for mesh_id, disease in disease_ontology.iteritems ():\n        if len(disease.lineage) \u003c 5:\n            continue\n        key \u003d \"/\".join (disease.lineage)\n        nodes[key] \u003d nodes[key] + 1\n\n    \u0027\u0027\u0027 For nodes with more than some threshold number of children: \u0027\u0027\u0027\n    threshold \u003d 3\n    groups \u003d defaultdict(list)\n    for path in nodes:\n        if nodes[path] \u003e threshold:\n            term_id \u003d path.split(\u0027/\u0027)[-1]\n            for doid, disease in disease_ontology.iteritems ():\n                # Match appropriate drug indications to disease object:\n                if len(disease.lineage) \u003e 0 and term_id \u003d\u003d disease.lineage[-1] and disease.mesh_id in disease_drug:\n                    disease.drugs \u003d disease_drug [disease.mesh_id]\n                    groups[path].append (disease)\n                    #print (\"{0}: {1} arity:{2} ({3}) drugs:{4}\".format (path, disease.term.name, nodes[n], disease.xref, disease.drugs))\n    return groups\n    \ngroups \u003d cooccurrence_matrix()",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 20, 2017 10:37:46 AM",
+      "dateUpdated": "Mar 21, 2017 11:31:09 AM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -264,15 +259,15 @@
       "jobName": "paragraph_1489704530583_1022268562",
       "id": "20170316-184850_2069438963",
       "dateCreated": "Mar 16, 2017 6:48:50 PM",
-      "dateStarted": "Mar 20, 2017 10:37:46 AM",
-      "dateFinished": "Mar 20, 2017 10:37:51 AM",
+      "dateStarted": "Mar 21, 2017 11:31:09 AM",
+      "dateFinished": "Mar 21, 2017 11:31:14 AM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%pyspark\nimport numpy as np\nfrom sklearn.metrics import jaccard_similarity_score\n\ndef reshape_array (source, target):\n    N \u003d np.zeros (target.shape)\n    N[:source.shape[0]] \u003d source\n    return N\n\ndef reshape_arrays (L, R):\n    bigger \u003d max (L.size, R.size)\n    if bigger \u003d\u003d L.size:\n        R \u003d reshape_array (R, L)\n    else:\n        L \u003d reshape_array (L, R)\n    return L, R\n\ndef make_arrays (A, B):\n    L \u003d np.array (A)\n    R \u003d np.array (B)\n    return reshape_arrays (L, R)\n    \ndef average_treatment_set_similarity (drug_lists):\n    import numpy as np\n    from sklearn.metrics import jaccard_similarity_score\n    similarities \u003d []\n    for index, drug_list in enumerate (drug_lists):\n        for index2, drug_list2 in enumerate (drug_lists):\n            if index \u003d\u003d index2:\n                continue\n            L, R \u003d make_arrays (drug_list, drug_list2)\n            similarity \u003d jaccard_similarity_score (L, R)\n            #print (\"   s\u003e {0}\".format (similarity))\n            #print (\"L: {0}\".format (L))\n            #print (\"R: {0}\".format (R))\n            similarities.append (similarity)\n    return np.mean (np.array (similarities)).item ()",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 21, 2017 6:42:28 AM",
+      "dateUpdated": "Mar 21, 2017 11:31:20 AM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -294,8 +289,8 @@
       "jobName": "paragraph_1489704605784_2086939932",
       "id": "20170316-185005_1904620776",
       "dateCreated": "Mar 16, 2017 6:50:05 PM",
-      "dateStarted": "Mar 21, 2017 6:42:28 AM",
-      "dateFinished": "Mar 21, 2017 6:42:28 AM",
+      "dateStarted": "Mar 21, 2017 11:31:20 AM",
+      "dateFinished": "Mar 21, 2017 11:31:21 AM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -340,7 +335,7 @@
     {
       "text": "%pyspark\nimport math\nfrom pyspark.sql.types import *\n\npath_key \u003d {}\nfor k, v in groups.iteritems ():\n    path_key [k] \u003d k.split (\u0027/\u0027)[-1]\nfor k in path_key:\n    v \u003d groups[k]\n    del groups[k]\n    groups[path_key[k]] \u003d v\n\ndata \u003d map (lambda p : (p[0], map(lambda d : d.drugs, p[1])),\n    groups.iteritems ())\nspark_groups \u003d sc.parallelize (data). \\\n    map (lambda p : ( p[0].split (\u0027/\u0027)[-1],\n        average_treatment_set_similarity (p[1]) )). \\\n    filter (lambda p : not math.isnan (float(p[1])))\n\nspark_groups.toDF().registerTempTable(\"diseases\")\n    \nschemaString \u003d \"path sum\"\nfields \u003d [StructField(field_name, StringType(), True) for field_name in schemaString.split()]\nschema \u003d StructType(fields)\nschema_diseases \u003d sqlContext.\\\n    createDataFrame(spark_groups, schema). \\\n    registerTempTable(\"diseases_s\")",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 21, 2017 6:45:00 AM",
+      "dateUpdated": "Mar 21, 2017 11:31:27 AM",
       "config": {
         "colWidth": 4.0,
         "enabled": true,
@@ -362,15 +357,15 @@
       "jobName": "paragraph_1489704663666_183479854",
       "id": "20170316-185103_1286426319",
       "dateCreated": "Mar 16, 2017 6:51:03 PM",
-      "dateStarted": "Mar 21, 2017 6:45:00 AM",
-      "dateFinished": "Mar 21, 2017 6:45:01 AM",
+      "dateStarted": "Mar 21, 2017 11:31:27 AM",
+      "dateFinished": "Mar 21, 2017 11:31:33 AM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%sql select path, sum from diseases_s",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 20, 2017 10:38:49 AM",
+      "dateUpdated": "Mar 21, 2017 11:31:51 AM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -420,7 +415,7 @@
         "msg": [
           {
             "type": "TABLE",
-            "data": "path\tsum\nDOID:1682\t0.0\nDOID:2723\t0.0013440860215053762\nDOID:936\t0.05317460317460317\nDOID:0060036\t0.006060606060606061\nDOID:0060038\t0.14285714285714285\nDOID:5656\t0.0\nDOID:2914\t0.03172017232992843\nDOID:0050155\t0.008827581063008341\nDOID:0060121\t0.0\nDOID:1287\t0.005314506842520425\nDOID:1289\t0.04444444444444444\nDOID:0014667\t0.0572851331581219\nDOID:10952\t0.0\nDOID:0060056\t0.023174603174603174\nDOID:3118\t0.002364066193853428\nDOID:0050136\t0.16666666666666666\nDOID:3213\t0.3\nDOID:9500\t0.1\nDOID:557\t0.0035714285714285718\nDOID:0050728\t0.10873015873015872\nDOID:0060083\t0.04675188274776047\nDOID:0060084\t0.10747030747030746\nDOID:0060085\t0.0020855999695728357\nDOID:0050902\t1.0\nDOID:0060089\t0.022891171328671328\nDOID:10579\t0.0\nDOID:0050739\t0.04299996880182197\nDOID:2277\t0.10813492063492063\nDOID:0050338\t0.041666666666666664\nDOID:0080006\t0.094993894993895\nDOID:0080005\t0.018518518518518517\nDOID:0080000\t0.0784313725490196\nDOID:0080001\t0.06018518518518518\nDOID:870\t0.08333333333333333\nDOID:0050117\t0.032072611653356994\nDOID:10273\t0.1111111111111111\nDOID:0050828\t0.017006698553964934\nDOID:0050687\t0.08749911141799346\nDOID:0050686\t0.01653766567406799\nDOID:3388\t0.0\nDOID:0050161\t0.014920109223993533\nDOID:0060158\t0.007573092889781216\nDOID:1100\t0.0\nDOID:12449\t0.0\nDOID:0060100\t0.05800433743471718\nDOID:161\t0.0\n"
+            "data": "path\tsum\nDOID:1682\t0.0\nDOID:936\t0.053450085268267084\nDOID:0060036\t0.006060606060606061\nDOID:0060038\t0.14285714285714285\nDOID:0060100\t0.05820573724663306\nDOID:5656\t0.0\nDOID:2914\t0.03211421310237666\nDOID:0050155\t0.008749608353456683\nDOID:2723\t0.0\nDOID:0060121\t0.0\nDOID:1287\t0.006000379345031297\nDOID:1289\t0.03463203463203463\nDOID:0014667\t0.05730531395918322\nDOID:10952\t0.0\nDOID:0050828\t0.0171161581183541\nDOID:0060056\t0.02374310480693459\nDOID:3118\t0.002364066193853428\nDOID:3213\t0.3\nDOID:0050136\t0.16666666666666666\nDOID:9500\t0.1\nDOID:557\t0.005952380952380953\nDOID:0050728\t0.10873015873015872\nDOID:0060083\t0.04523297119590163\nDOID:0060084\t0.10755970220255934\nDOID:0060085\t2.868617326448652E-4\nDOID:0050902\t1.0\nDOID:0060089\t0.016571341732979663\nDOID:10579\t0.0\nDOID:0050117\t0.034332836878676935\nDOID:2277\t0.1083743842364532\nDOID:0050338\t0.04558823529411765\nDOID:0080005\t0.0\nDOID:0080000\t0.07848243464052287\nDOID:0080001\t0.061942112976285636\nDOID:870\t0.08333333333333333\nDOID:10273\t0.1111111111111111\nDOID:0080006\t0.09157509157509158\nDOID:0050687\t0.08647691694492758\nDOID:0050686\t0.016336051230314886\nDOID:3388\t0.0\nDOID:0050161\t0.01586858749714906\nDOID:0050739\t0.045631265419813764\nDOID:0060158\t0.008236493103887464\nDOID:1100\t0.0\nDOID:12449\t0.0\nDOID:161\t0.0\n"
           }
         ]
       },
@@ -428,8 +423,8 @@
       "jobName": "paragraph_1489704959772_-1878375822",
       "id": "20170316-185559_1521372110",
       "dateCreated": "Mar 16, 2017 6:55:59 PM",
-      "dateStarted": "Mar 20, 2017 10:38:38 AM",
-      "dateFinished": "Mar 20, 2017 10:38:42 AM",
+      "dateStarted": "Mar 21, 2017 11:31:39 AM",
+      "dateFinished": "Mar 21, 2017 11:31:43 AM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
