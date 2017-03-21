@@ -79,7 +79,7 @@
     {
       "text": "%pyspark\nimport traceback\nfrom SPARQLWrapper import SPARQLWrapper2, JSON\nfrom collections import defaultdict\n\nclass TripleStore(object):\n    def __init__(self, hostname):\n        self.service \u003d  SPARQLWrapper2 (hostname)\n    def execute_query (self, query):\n        self.service.setQuery (query)\n        self.service.setReturnFormat (JSON)\n        return self.service.query().convert ()\n    def execute_query_file (self, query_file):\n        result \u003d None\n        with open (query_file, \"r\") as stream:\n            query \u003d stream.read ()\n            result \u003d self.execute_query (query)\n        return result\n",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 20, 2017 10:37:11 AM",
+      "dateUpdated": "Mar 21, 2017 10:06:38 AM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -93,23 +93,20 @@
         "params": {},
         "forms": {}
       },
-      "results": {
-        "code": "SUCCESS",
-        "msg": []
-      },
       "apps": [],
       "jobName": "paragraph_1488936514367_766072622",
       "id": "20170307-202834_465623601",
       "dateCreated": "Mar 7, 2017 8:28:34 PM",
-      "dateStarted": "Mar 20, 2017 10:37:11 AM",
+      "dateStarted": "Mar 21, 2017 10:06:38 AM",
       "dateFinished": "Mar 20, 2017 10:37:26 AM",
-      "status": "FINISHED",
+      "status": "RUNNING",
+      "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%pyspark\nquery \u003d \"\"\"\nPREFIX db_resource:      \u003chttp://chem2bio2rdf.org/drugbank/resource/\u003e\nPREFIX ctd_chem_disease: \u003chttp://chem2bio2rdf.org/ctd/resource/ctd_chem_disease/\u003e \nPREFIX biordf:           \u003chttp://bio2rdf.org/\u003e\nPREFIX ctd:              \u003chttp://chem2bio2rdf.org/ctd/resource/\u003e\nPREFIX pubchem:          \u003chttp://chem2bio2rdf.org/ctd/resource/\u003e\nSELECT DISTINCT ?chem_disease ?meshid ?compound ?drug\nWHERE {\n  ?chem_disease ctd:diseaseid ?meshid .\n  ?chem_disease ctd:cid       ?compound .\n  ?drug         db_resource:CID ?compound\n}\n\"\"\"",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 20, 2017 10:37:36 AM",
+      "dateUpdated": "Mar 21, 2017 10:08:45 AM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -139,7 +136,7 @@
     {
       "text": "%md\nDefine a function to run the query, parse the response, and return a map of disease to compound where the key is a MESH id.",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 20, 2017 10:37:39 AM",
+      "dateUpdated": "Mar 21, 2017 9:59:07 AM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -149,8 +146,8 @@
           "editOnDblClick": true
         },
         "editorMode": "ace/mode/markdown",
-        "editorHide": true,
-        "tableHide": false
+        "editorHide": false,
+        "tableHide": true
       },
       "settings": {
         "params": {},
@@ -177,7 +174,7 @@
     {
       "text": "%md\nNow we create a data structure that maps paths through the hierarchy to the lists of diseases under those nodes.\nAnd we include this example instead of printing every item since that bogs down our notebook.\n~~~~~~~\npath DOID:4/DOID:4844/DOID:14566/DOID:0060072/DOID:0060084/DOID:0060101\n    \u003e subependymal giant cell astrocytoma(MESH:D001254)\u003c-(1 drugs)\npath DOID:4/DOID:1564/DOID:2473/DOID:0050117/DOID:0050136\n    \u003e candidiasis(MESH:D002177)\u003c-(1 drugs)\n    \u003e vulvovaginal candidiasis(MESH:D002181)\u003c-(5 drugs)\n    \u003e pneumocystosis(MESH:D011020)\u003c-(1 drugs)\n    \u003e oral candidiasis(MESH:D002180)\u003c-(5 drugs)\npath DOID:4/DOID:162/DOID:3119/DOID:14566/DOID:0050686\n    \u003e gallbladder cancer(MESH:D005706)\u003c-(60 drugs)\n    \u003e cribriform carcinoma(MESH:D000230)\u003c-(148 drugs)\n    \u003e thyroid carcinoma(MESH:D013964)\u003c-(66 drugs)\n    \u003e cerebral primitive neuroectodermal tumor(MESH:D018242)\u003c-(15 drugs)\n    \u003e pharynx cancer(MESH:D010610)\u003c-(1 drugs)\n~~~~~~~",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 17, 2017 3:33:05 PM",
+      "dateUpdated": "Mar 21, 2017 9:59:13 AM",
       "config": {
         "colWidth": 4.0,
         "enabled": true,
@@ -187,8 +184,8 @@
           "editOnDblClick": true
         },
         "editorMode": "ace/mode/markdown",
-        "editorHide": true,
-        "tableHide": false
+        "editorHide": false,
+        "tableHide": true
       },
       "settings": {
         "params": {},
