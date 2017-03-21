@@ -264,13 +264,13 @@
     {
       "text": "%pyspark\nimport requests\nproxies \u003d {\n  \u0027http\u0027: \u0027http://gateway.ad.renci.org:8080/\u0027,\n}\nmonarch_api_base \u003d \"http://api.monarchinitiative.org/api\"\nmonarch_api__bioentity_pathway \u003d \"{0}/bioentity/pathway\".format (monarch_api_base)\nuri \u003d \"{0}/GO:0005978\".format (monarch_api__bioentity_pathway)\nresp \u003d requests.get(\n    uri,\n    proxies\u003dproxies)\nif resp.status_code !\u003d 200:\n    raise ValueError(\u0027GET {} status: {}\u0027.format(uri, resp.status_code))\n\nprint(\u0027{}\u0027.format(resp.json()))",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 21, 2017 2:19:29 PM",
+      "dateUpdated": "Mar 21, 2017 3:15:40 PM",
       "config": {
         "enabled": true,
         "tableHide": false,
         "editorMode": "ace/mode/python",
         "results": {},
-        "editorHide": false,
+        "editorHide": true,
         "editorSetting": {
           "language": "python",
           "editOnDblClick": true
@@ -286,7 +286,7 @@
         "msg": [
           {
             "type": "TEXT",
-            "data": "Traceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-3887908839584107827.py\", line 346, in \u003cmodule\u003e\n    raise Exception(traceback.format_exc())\nException: Traceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-3887908839584107827.py\", line 334, in \u003cmodule\u003e\n    exec(code)\n  File \"\u003cstdin\u003e\", line 10, in \u003cmodule\u003e\n  File \"/projects/stars/venv/lib/python2.7/site-packages/requests/api.py\", line 70, in get\n    return request(\u0027get\u0027, url, params\u003dparams, **kwargs)\n  File \"/projects/stars/venv/lib/python2.7/site-packages/requests/api.py\", line 56, in request\n    return session.request(method\u003dmethod, url\u003durl, **kwargs)\n  File \"/projects/stars/venv/lib/python2.7/site-packages/requests/sessions.py\", line 488, in request\n    resp \u003d self.send(prep, **send_kwargs)\n  File \"/projects/stars/venv/lib/python2.7/site-packages/requests/sessions.py\", line 630, in send\n    history \u003d [resp for resp in gen] if allow_redirects else []\n  File \"/projects/stars/venv/lib/python2.7/site-packages/requests/sessions.py\", line 190, in resolve_redirects\n    **adapter_kwargs\n  File \"/projects/stars/venv/lib/python2.7/site-packages/requests/sessions.py\", line 609, in send\n    r \u003d adapter.send(request, **kwargs)\n  File \"/projects/stars/venv/lib/python2.7/site-packages/requests/adapters.py\", line 487, in send\n    raise ConnectionError(e, request\u003drequest)\nConnectionError: HTTPSConnectionPool(host\u003d\u0027api.monarchinitiative.org\u0027, port\u003d443): Max retries exceeded with url: /api/bioentity/pathway/GO:0005978 (Caused by NewConnectionError(\u0027\u003crequests.packages.urllib3.connection.VerifiedHTTPSConnection object at 0x544e050\u003e: Failed to establish a new connection: [Errno 110] Connection timed out\u0027,))\n\n"
+            "data": "Traceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-3713422440567612255.py\", line 346, in \u003cmodule\u003e\n    raise Exception(traceback.format_exc())\nException: Traceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-3713422440567612255.py\", line 334, in \u003cmodule\u003e\n    exec(code)\n  File \"\u003cstdin\u003e\", line 10, in \u003cmodule\u003e\n  File \"/projects/stars/venv/lib/python2.7/site-packages/requests/api.py\", line 70, in get\n    return request(\u0027get\u0027, url, params\u003dparams, **kwargs)\n  File \"/projects/stars/venv/lib/python2.7/site-packages/requests/api.py\", line 56, in request\n    return session.request(method\u003dmethod, url\u003durl, **kwargs)\n  File \"/projects/stars/venv/lib/python2.7/site-packages/requests/sessions.py\", line 488, in request\n    resp \u003d self.send(prep, **send_kwargs)\n  File \"/projects/stars/venv/lib/python2.7/site-packages/requests/sessions.py\", line 630, in send\n    history \u003d [resp for resp in gen] if allow_redirects else []\n  File \"/projects/stars/venv/lib/python2.7/site-packages/requests/sessions.py\", line 190, in resolve_redirects\n    **adapter_kwargs\n  File \"/projects/stars/venv/lib/python2.7/site-packages/requests/sessions.py\", line 609, in send\n    r \u003d adapter.send(request, **kwargs)\n  File \"/projects/stars/venv/lib/python2.7/site-packages/requests/adapters.py\", line 487, in send\n    raise ConnectionError(e, request\u003drequest)\nConnectionError: HTTPSConnectionPool(host\u003d\u0027api.monarchinitiative.org\u0027, port\u003d443): Max retries exceeded with url: /api/bioentity/pathway/GO:0005978 (Caused by NewConnectionError(\u0027\u003crequests.packages.urllib3.connection.VerifiedHTTPSConnection object at 0x5cf2490\u003e: Failed to establish a new connection: [Errno 110] Connection timed out\u0027,))\n\n"
           }
         ]
       },
@@ -294,8 +294,8 @@
       "jobName": "paragraph_1488943872584_871786027",
       "id": "20170220-205331_987621401",
       "dateCreated": "Mar 7, 2017 10:31:12 PM",
-      "dateStarted": "Mar 10, 2017 2:20:15 PM",
-      "dateFinished": "Mar 10, 2017 2:22:32 PM",
+      "dateStarted": "Mar 21, 2017 3:15:40 PM",
+      "dateFinished": "Mar 21, 2017 3:17:48 PM",
       "status": "ERROR",
       "progressUpdateIntervalMs": 500
     },
