@@ -1,9 +1,9 @@
 {
   "paragraphs": [
     {
-      "text": "%spark\nvar x \u003d sc.parallelize (Array(0, 4, 3))\n",
+      "text": "%spark\nvar x \u003d sc.parallelize (Array(0, 4, 3)).collect ()\n",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 21, 2017 5:39:40 PM",
+      "dateUpdated": "Mar 21, 2017 5:40:32 PM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -22,7 +22,7 @@
         "msg": [
           {
             "type": "TEXT",
-            "data": "\nx: org.apache.spark.rdd.RDD[Int] \u003d ParallelCollectionRDD[0] at parallelize at \u003cconsole\u003e:24\n"
+            "data": "\nx: Array[Int] \u003d Array(0, 4, 3)\n"
           }
         ]
       },
@@ -30,8 +30,8 @@
       "jobName": "paragraph_1490132356969_28515512",
       "id": "20170321-173916_931028472",
       "dateCreated": "Mar 21, 2017 5:39:16 PM",
-      "dateStarted": "Mar 21, 2017 5:39:40 PM",
-      "dateFinished": "Mar 21, 2017 5:39:55 PM",
+      "dateStarted": "Mar 21, 2017 5:40:32 PM",
+      "dateFinished": "Mar 21, 2017 5:40:34 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
