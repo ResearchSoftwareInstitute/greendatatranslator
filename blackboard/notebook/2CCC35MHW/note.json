@@ -77,7 +77,7 @@
     {
       "text": "%pyspark\nfrom SPARQLWrapper import SPARQLWrapper2, JSON\nfrom collections import defaultdict\n\nclass TripleStore(object):\n    def __init__(self, hostname):\n        self.service \u003d  SPARQLWrapper2 (hostname)\n    def execute_query (self, query):\n        self.service.setQuery (query)\n        self.service.setReturnFormat (JSON)\n        return self.service.query().convert ()\n    def execute_query_file (self, query_file):\n        result \u003d None\n        with open (query_file, \"r\") as stream:\n            query \u003d stream.read ()\n            result \u003d self.execute_query (query)\n        return result\n",
       "user": "ad\\ruhirai",
-      "dateUpdated": "Mar 21, 2017 11:17:15 AM",
+      "dateUpdated": "Mar 21, 2017 12:34:36 PM",
       "config": {
         "enabled": true,
         "editorMode": "ace/mode/python",
@@ -91,15 +91,17 @@
         "params": {},
         "forms": {}
       },
-      "results": "org.apache.thrift.transport.TTransportException",
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
       "apps": [],
       "jobName": "paragraph_1488999384832_-1520519684",
       "id": "20170307-202834_465623601",
       "dateCreated": "Mar 8, 2017 1:56:24 PM",
-      "dateStarted": "Mar 21, 2017 11:17:16 AM",
-      "dateFinished": "Mar 21, 2017 11:29:02 AM",
+      "dateStarted": "Mar 21, 2017 12:34:36 PM",
+      "dateFinished": "Mar 21, 2017 12:34:36 PM",
       "status": "FINISHED",
-      "errorMessage": "org.apache.thrift.transport.TTransportException\n\tat org.apache.thrift.transport.TIOStreamTransport.read(TIOStreamTransport.java:132)\n\tat org.apache.thrift.transport.TTransport.readAll(TTransport.java:86)\n\tat org.apache.thrift.protocol.TBinaryProtocol.readAll(TBinaryProtocol.java:429)\n\tat org.apache.thrift.protocol.TBinaryProtocol.readI32(TBinaryProtocol.java:318)\n\tat org.apache.thrift.protocol.TBinaryProtocol.readMessageBegin(TBinaryProtocol.java:219)\n\tat org.apache.thrift.TServiceClient.receiveBase(TServiceClient.java:69)\n\tat org.apache.zeppelin.interpreter.thrift.RemoteInterpreterService$Client.recv_interpret(RemoteInterpreterService.java:266)\n\tat org.apache.zeppelin.interpreter.thrift.RemoteInterpreterService$Client.interpret(RemoteInterpreterService.java:250)\n\tat org.apache.zeppelin.interpreter.remote.RemoteInterpreter.interpret(RemoteInterpreter.java:318)\n\tat org.apache.zeppelin.interpreter.LazyOpenInterpreter.interpret(LazyOpenInterpreter.java:94)\n\tat org.apache.zeppelin.notebook.Paragraph.jobRun(Paragraph.java:384)\n\tat org.apache.zeppelin.scheduler.Job.run(Job.java:175)\n\tat org.apache.zeppelin.scheduler.RemoteScheduler$JobRunner.run(RemoteScheduler.java:329)\n\tat java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:471)\n\tat java.util.concurrent.FutureTask.run(FutureTask.java:262)\n\tat java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(ScheduledThreadPoolExecutor.java:178)\n\tat java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:292)\n\tat java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)\n\tat java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)\n\tat java.lang.Thread.run(Thread.java:745)\n",
       "progressUpdateIntervalMs": 500
     },
     {
@@ -205,9 +207,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%pyspark\nquery \u003d \"\"\"\nPREFIX db_resource:      \u003chttp://chem2bio2rdf.org/drugbank/resource/\u003e\nPREFIX ctd_chem_disease: \u003chttp://chem2bio2rdf.org/ctd/resource/ctd_chem_disease/\u003e \nPREFIX biordf:           \u003chttp://bio2rdf.org/\u003e\nPREFIX ctd:              \u003chttp://chem2bio2rdf.org/ctd/resource/\u003e\nPREFIX pubchem:          \u003chttp://chem2bio2rdf.org/ctd/resource/\u003e\nSELECT DISTINCT ?drug ?chem_disease ?meshid ?compound\nWHERE {\n  ?drug         db_resource:CID ?compound.\n  ?chem_disease ctd:diseaseid ?meshid .\n  ?chem_disease ctd:cid       ?compound \n  \n}\n\"\"\"",
+      "text": "%pyspark\nquery \u003d \"\"\"\nPREFIX db_resource:      \u003chttp://chem2bio2rdf.org/drugbank/resource/\u003e\nPREFIX ctd_chem_disease: \u003chttp://chem2bio2rdf.org/ctd/resource/ctd_chem_disease/\u003e \nPREFIX biordf:           \u003chttp://bio2rdf.org/\u003e\nPREFIX ctd:              \u003chttp://chem2bio2rdf.org/ctd/resource/\u003e\nPREFIX pubchem:          \u003chttp://chem2bio2rdf.org/ctd/resource/\u003e\nSELECT DISTINCT ?drug ?chem_disease ?meshid ?compound\nWHERE {\n  ?drug         db_resource:CID ?compound .\n  ?chem_disease ctd:diseaseid ?meshid .\n  ?chem_disease ctd:cid       ?compound \n  \n}\n\"\"\"",
       "user": "ad\\ruhirai",
-      "dateUpdated": "Mar 21, 2017 12:02:53 PM",
+      "dateUpdated": "Mar 21, 2017 12:34:44 PM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -229,8 +231,8 @@
       "jobName": "paragraph_1490103091753_-1277403744",
       "id": "20170321-093131_160041978",
       "dateCreated": "Mar 21, 2017 9:31:31 AM",
-      "dateStarted": "Mar 21, 2017 12:02:53 PM",
-      "dateFinished": "Mar 21, 2017 12:02:53 PM",
+      "dateStarted": "Mar 21, 2017 12:34:44 PM",
+      "dateFinished": "Mar 21, 2017 12:34:44 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },

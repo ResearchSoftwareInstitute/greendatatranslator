@@ -131,7 +131,7 @@
     {
       "text": "%md\nDefine a function to run the query, parse the response, and return a map of disease to compound where the key is a MESH id.",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 21, 2017 11:29:49 AM",
+      "dateUpdated": "Mar 21, 2017 12:35:32 PM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -141,7 +141,7 @@
           "editOnDblClick": true
         },
         "editorMode": "ace/mode/markdown",
-        "editorHide": true,
+        "editorHide": false,
         "tableHide": false
       },
       "settings": {
@@ -169,7 +169,7 @@
     {
       "text": "%md\nNow we create a data structure that maps paths through the hierarchy to the lists of diseases under those nodes.\nAnd we include this example instead of printing every item since that bogs down our notebook.\n~~~~~~~\npath DOID:4/DOID:4844/DOID:14566/DOID:0060072/DOID:0060084/DOID:0060101\n    \u003e subependymal giant cell astrocytoma(MESH:D001254)\u003c-(1 drugs)\npath DOID:4/DOID:1564/DOID:2473/DOID:0050117/DOID:0050136\n    \u003e candidiasis(MESH:D002177)\u003c-(1 drugs)\n    \u003e vulvovaginal candidiasis(MESH:D002181)\u003c-(5 drugs)\n    \u003e pneumocystosis(MESH:D011020)\u003c-(1 drugs)\n    \u003e oral candidiasis(MESH:D002180)\u003c-(5 drugs)\npath DOID:4/DOID:162/DOID:3119/DOID:14566/DOID:0050686\n    \u003e gallbladder cancer(MESH:D005706)\u003c-(60 drugs)\n    \u003e cribriform carcinoma(MESH:D000230)\u003c-(148 drugs)\n    \u003e thyroid carcinoma(MESH:D013964)\u003c-(66 drugs)\n    \u003e cerebral primitive neuroectodermal tumor(MESH:D018242)\u003c-(15 drugs)\n    \u003e pharynx cancer(MESH:D010610)\u003c-(1 drugs)\n~~~~~~~",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 21, 2017 11:29:53 AM",
+      "dateUpdated": "Mar 21, 2017 12:35:40 PM",
       "config": {
         "colWidth": 4.0,
         "enabled": true,
@@ -179,7 +179,7 @@
           "editOnDblClick": true
         },
         "editorMode": "ace/mode/markdown",
-        "editorHide": true,
+        "editorHide": false,
         "tableHide": false
       },
       "settings": {
