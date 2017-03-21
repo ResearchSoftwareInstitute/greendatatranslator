@@ -335,7 +335,7 @@
     {
       "text": "%pyspark\nimport math\nfrom pyspark.sql.types import *\n\npath_key \u003d {}\nfor k, v in groups.iteritems ():\n    path_key [k] \u003d k.split (\u0027/\u0027)[-1]\nfor k in path_key:\n    v \u003d groups[k]\n    del groups[k]\n    groups[path_key[k]] \u003d v\n\ndata \u003d map (lambda p : (p[0], map(lambda d : d.drugs, p[1])),\n    groups.iteritems ())\nspark_groups \u003d sc.parallelize (data). \\\n    map (lambda p : ( p[0].split (\u0027/\u0027)[-1],\n        average_treatment_set_similarity (p[1]) )). \\\n    filter (lambda p : not math.isnan (float(p[1])))\n\nspark_groups.toDF().registerTempTable(\"diseases\")\n    \nschemaString \u003d \"path sum\"\nfields \u003d [StructField(field_name, StringType(), True) for field_name in schemaString.split()]\nschema \u003d StructType(fields)\nschema_diseases \u003d sqlContext.\\\n    createDataFrame(spark_groups, schema). \\\n    registerTempTable(\"diseases_s\")",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 21, 2017 11:31:27 AM",
+      "dateUpdated": "Mar 21, 2017 12:08:53 PM",
       "config": {
         "colWidth": 4.0,
         "enabled": true,
@@ -357,8 +357,8 @@
       "jobName": "paragraph_1489704663666_183479854",
       "id": "20170316-185103_1286426319",
       "dateCreated": "Mar 16, 2017 6:51:03 PM",
-      "dateStarted": "Mar 21, 2017 11:31:27 AM",
-      "dateFinished": "Mar 21, 2017 11:31:33 AM",
+      "dateStarted": "Mar 21, 2017 12:08:53 PM",
+      "dateFinished": "Mar 21, 2017 12:08:54 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
