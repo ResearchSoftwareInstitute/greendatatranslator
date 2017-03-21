@@ -41,7 +41,7 @@
     {
       "text": "%pyspark\nfrom string import Template\nfrom collections import defaultdict\nfrom SPARQLWrapper import SPARQLWrapper2, JSON\nimport matplotlib.pyplot as plt\nimport seaborn as sns\n\nimport urllib2\nproxy \u003d urllib2.ProxyHandler({\u0027http\u0027: \u0027gateway.ad.renci.org:8080\u0027})\nopener \u003d urllib2.build_opener(proxy)\nurllib2.install_opener(opener)\n\nblazegraph_uri \u003d \"http://stars-blazegraph.renci.org/bigdata/sparql\"\nblazegraph \u003d SPARQLWrapper2 (blazegraph_uri)\ndef query_sparql (query, service\u003dblazegraph):\n    service.setQuery (query)\n    service.setReturnFormat (JSON)\n    return service.query().convert ()\n",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 21, 2017 9:44:58 AM",
+      "dateUpdated": "Mar 21, 2017 10:36:51 AM",
       "config": {
         "enabled": true,
         "tableHide": false,
