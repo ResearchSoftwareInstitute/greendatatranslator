@@ -3,7 +3,7 @@
     {
       "text": "%spark.dep\nz.load(\"org.phenoscape:scowl_2.11:1.2.1\")",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 21, 2017 8:09:07 PM",
+      "dateUpdated": "Mar 21, 2017 8:23:31 PM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -26,8 +26,8 @@
       "jobName": "paragraph_1490132380396_-493558097",
       "id": "20170321-173940_994747591",
       "dateCreated": "Mar 21, 2017 5:39:40 PM",
-      "dateStarted": "Mar 21, 2017 8:01:11 PM",
-      "dateFinished": "Mar 21, 2017 8:05:26 PM",
+      "dateStarted": "Mar 21, 2017 8:23:31 PM",
+      "dateFinished": "Mar 21, 2017 8:27:45 PM",
       "status": "ERROR",
       "progressUpdateIntervalMs": 500
     },
