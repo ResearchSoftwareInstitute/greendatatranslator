@@ -413,9 +413,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%pyspark\n\ndef get_disease_drug_associations (triplestore):\n    #ont \u003d pronto.Ontology (\u0027/projects/stars/m2m/var/diseaseontology/dis.obo\u0027)\n   # \u0027\u0027\u0027 print (ont.json) \u0027\u0027\u0027\n    disease_drug \u003d {}\n    result \u003d triplestore.execute_query (query)\n    for dterm in query:\n        if \u0027DBID\u0027 in term.other:\n            for x in term.other[\u0027DBID\u0027]:\n                if x.startswith (\"MESH:\"):\n                    DBID \u003d x\n                    #disease_ont[term.id.upper()] \u003d term\n                    lineage \u003d map ( lambda t : t.id, dterm.rparents ())\n                    sorted_lineage \u003d sorted (lineage, key\u003dlambda e : int(e.split(\u0027:\u0027)[1]))\n                    drug \u003d Drugs (dterm\u003ddterm, MESH\u003dMESH, lineage\u003dsorted_lineage)\n                    disease_drug[dterm.id.upper ()] \u003d drug\n                    break\n    #for k in hierarchy_map:\n        #print (\"{0} {1} {2}\".format (k, hierarchy_map[k].mesh_id, hierarchy_map[k].lineage))\n    return disease_drug",
+      "text": "%pyspark\n\n##change\ndef get_disease_drug_associations (triplestore):\n    #ont \u003d pronto.Ontology (\u0027/projects/stars/m2m/var/diseaseontology/dis.obo\u0027)\n   # \u0027\u0027\u0027 print (ont.json) \u0027\u0027\u0027\n    disease_drug \u003d {}\n    result \u003d triplestore.execute_query (query)\n    for dterm in query:\n        if \u0027DBID\u0027 in dterm.other:\n            for x in dterm.other[\u0027DBID\u0027]:\n                if x.startswith (\"MESH:\"):\n                    DBID \u003d x\n                    #disease_ont[term.id.upper()] \u003d term\n                    lineage \u003d map ( lambda t : t.id, dterm.rparents ())\n                    sorted_lineage \u003d sorted (lineage, key\u003dlambda e : int(e.split(\u0027:\u0027)[1]))\n                    drug \u003d Drugs (dterm\u003ddterm, MESH\u003dMESH, lineage\u003dsorted_lineage)\n                    disease_drug[dterm.id.upper ()] \u003d drug\n                    break\n    #for k in hierarchy_map:\n        #print (\"{0} {1} {2}\".format (k, hierarchy_map[k].mesh_id, hierarchy_map[k].lineage))\n    return disease_drug",
       "user": "ad\\ruhirai",
-      "dateUpdated": "Mar 22, 2017 4:06:49 PM",
+      "dateUpdated": "Mar 22, 2017 4:30:14 PM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -437,25 +437,39 @@
       "jobName": "paragraph_1490212672527_192707093",
       "id": "20170322-155752_747632129",
       "dateCreated": "Mar 22, 2017 3:57:52 PM",
-      "dateStarted": "Mar 22, 2017 4:06:49 PM",
-      "dateFinished": "Mar 22, 2017 4:06:49 PM",
+      "dateStarted": "Mar 22, 2017 4:30:14 PM",
+      "dateFinished": "Mar 22, 2017 4:30:14 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%pyspark\n",
+      "text": "%pyspark\n\n##change\n\ndef parse_ontology ():\n    ont \u003d pronto.Ontology (\u0027/projects/stars/m2m/var/diseaseontology/dis.obo\u0027)\n    \u0027\u0027\u0027 print (ont.json) \u0027\u0027\u0027\n    hierarchy_map \u003d defaultdict(list)\n    #result \u003d triplestore.execute_query (query)\n    for bind in result.bindings:\n        mesh_id \u003d bind[\u0027meshid\u0027].value.rsplit(\u0027/\u0027, 1)[-1].upper ()\n        disease \u003d bind[\u0027disease\u0027].value.rsplit(\u0027/\u0027, 1)[-1]\n        disease_id \u003d int(drug.replace (\u0027DOID\u0027, \u0027\u0027))\n        if not disease_id in hierarchy_map[mesh_id]:\n            hierarchy_map[mesh_id].append (disease_id)\n    return hierarchy_map\n \n",
       "user": "ad\\ruhirai",
-      "dateUpdated": "Mar 22, 2017 3:57:52 PM",
-      "config": {},
+      "dateUpdated": "Mar 22, 2017 4:30:18 PM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python"
+        },
+        "editorMode": "ace/mode/python"
+      },
       "settings": {
         "params": {},
         "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
       },
       "apps": [],
       "jobName": "paragraph_1490212672216_421632689",
       "id": "20170322-155752_732358232",
       "dateCreated": "Mar 22, 2017 3:57:52 PM",
-      "status": "READY",
+      "dateStarted": "Mar 22, 2017 4:30:18 PM",
+      "dateFinished": "Mar 22, 2017 4:30:18 PM",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
@@ -489,9 +503,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%pyspark\n\ndef print_groups (groups):\n    for path in groups:\n        print (\"path {0}\".format (path))\n        for diseases in groups[path]:\n            try:\n                print (\"  \u003e {0}({1})\u003c-({2} drugs)\".format (disease.term.name, disease.mesh_id, len(disease.drugs)))\n            except Exception:\n                traceback.print_exc ()\n\n",
+      "text": "%pyspark\n\ndef print_groups (groups):\n    for path in groups:\n        print (\"path {0}\".format (path))\n        for drug in groups[path]:\n            try:\n                print (\"  \u003e {0}({1})\u003c-({2} diseases)\".format (disease.drugs, disease.mesh_id, len(disease.term.name)))\n            except Exception:\n                traceback.print_exc ()\n\n",
       "user": "ad\\ruhirai",
-      "dateUpdated": "Mar 22, 2017 3:44:48 PM",
+      "dateUpdated": "Mar 22, 2017 4:14:33 PM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -513,9 +527,74 @@
       "jobName": "paragraph_1490198913202_-1364683867",
       "id": "20170322-120833_909660143",
       "dateCreated": "Mar 22, 2017 12:08:33 PM",
-      "dateStarted": "Mar 22, 2017 3:44:48 PM",
-      "dateFinished": "Mar 22, 2017 3:44:48 PM",
+      "dateStarted": "Mar 22, 2017 4:14:33 PM",
+      "dateFinished": "Mar 22, 2017 4:14:33 PM",
       "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%pyspark\n\n##change\n\ndef print_groups (groups):\n    for path in groups:\n        print (\"path {0}\".format (path))\n        for drug in groups[path]:\n            try:\n                print (\"  \u003e {0}({1})\u003c-({2} diseases)\".format ())\n            except Exception:\n                traceback.print_exc ()\n\n",
+      "user": "ad\\ruhirai",
+      "dateUpdated": "Mar 22, 2017 4:31:18 PM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python"
+        },
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "jobName": "paragraph_1490213496398_1647056815",
+      "id": "20170322-161136_1021192665",
+      "dateCreated": "Mar 22, 2017 4:11:36 PM",
+      "dateStarted": "Mar 22, 2017 4:31:18 PM",
+      "dateFinished": "Mar 22, 2017 4:31:18 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%pyspark\n\n##change\n\ndef cooccurrence_matrix():\n    disease_matrix \u003d defaultdict(list)\n    disease_drug \u003d get_disease_drug_associations (triplestore)\n    disease_ontology \u003d parse_ontology ()\n    for dterm_id in disease_drug:\n        drug \u003d disease_drug [dterm_id]\n        if disease.mesh_id in disease_ontology:\n            drug \u003d disease_ontology [disease.mesh_id]        \n\n    \u0027\u0027\u0027 Bind Disease Ontology data to Disease Drug associations. \u0027\u0027\u0027\n    nodes \u003d defaultdict(int)\n    #for mesh_id, disease in disease_ontology.iteritems ():    \n    for mesh_id, drug in disease_drug.iteritems ():  \n        if len(drug.lineage) \u003c 5:\n        #if len(disease.drugs) \u003c 5:\n            continue\n        key \u003d \"/\".join (drug.lineage)\n        #key \u003d \"/\".join (disease.drugs)\n        nodes[key] \u003d nodes[key] + 1\n\n    \u0027\u0027\u0027 For nodes with more than some threshold number of children: \u0027\u0027\u0027\n    threshold \u003d 3\n    groups \u003d defaultdict(list)\n    for path in nodes:\n        if nodes[path] \u003e threshold:\n            dterm_id \u003d path.split(\u0027/\u0027)[-1]\n            #drug_id \u003d path.split(\u0027/\u0027)[-1]\n            #for doid, disease in disease_ontology.iteritems ():\n            for dbid, drug in disease_drug.iteritems ():\n                # Match appropriate drug indications to disease object:\n                if len(drug.lineage) \u003e 0 and dterm_id \u003d\u003d drug.lineage[-1] and drug.mesh_id in disease_ontology:\n                #if len(disease.drugs) \u003e 0 and drug_id \u003d\u003d disease.drugs[-1] and disease.mesh_id in disease.lineage:\n                    disease_ontology \u003d disease_ontology [disease.mesh_id]\n                    #disease_ontology \u003d disease_ontology [term_id]\n                    groups[path].append (drug)\n                    #print (\"{0}: {1} arity:{2} ({3}) disease:{4}\".format (path, disease.drugs, nodes[n], disease.xref, disease.term.name))\n    return groups\n    \ngroups \u003d cooccurrence_matrix()\n",
+      "user": "ad\\ruhirai",
+      "dateUpdated": "Mar 22, 2017 4:31:23 PM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python"
+        },
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "ERROR",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Traceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-7823861029578108822.py\", line 346, in \u003cmodule\u003e\n    raise Exception(traceback.format_exc())\nException: Traceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-7823861029578108822.py\", line 339, in \u003cmodule\u003e\n    exec(code)\n  File \"\u003cstdin\u003e\", line 27, in \u003cmodule\u003e\n  File \"\u003cstdin\u003e\", line 3, in cooccurrence_matrix\n  File \"\u003cstdin\u003e\", line 5, in get_disease_drug_associations\nAttributeError: \u0027str\u0027 object has no attribute \u0027other\u0027\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1490213496070_1970245891",
+      "id": "20170322-161136_978589166",
+      "dateCreated": "Mar 22, 2017 4:11:36 PM",
+      "dateStarted": "Mar 22, 2017 4:31:23 PM",
+      "dateFinished": "Mar 22, 2017 4:31:25 PM",
+      "status": "ERROR",
       "progressUpdateIntervalMs": 500
     },
     {
