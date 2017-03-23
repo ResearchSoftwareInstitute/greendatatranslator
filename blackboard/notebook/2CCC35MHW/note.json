@@ -407,7 +407,7 @@
     {
       "text": "%pyspark\n##changedfor drugmatrix\nont \u003d pronto.Ontology (\u0027/projects/stars/m2m/var/diseaseontology/dis.obo\u0027)\ndef parse_ontology (ont):\n    #ont \u003d pronto.Ontology (\u0027/projects/stars/m2m/var/diseaseontology/dis.obo\u0027)\n    \u0027\u0027\u0027 print (ont.json) \u0027\u0027\u0027\n    hierarchy_map \u003d defaultdict(list)\n    for bind in ont:\n        mesh_id \u003d bind[\u0027MESH:\u0027].value.rsplit(\u0027/\u0027, 1)[-1].upper ()\n        disease \u003d bind[\u0027xref\u0027].value.rsplit(\u0027/\u0027, 1)[-1]\n        disease_id \u003d int(disease.replace (\u0027DOID\u0027, \u0027\u0027))\n        if not disease_id in hierarchy_map[mesh_id]:\n            hierarchy_map[mesh_id].append (disease_id)\n       \n    return hierarchy_map\n   ",
       "user": "ad\\ruhirai",
-      "dateUpdated": "Mar 23, 2017 3:26:29 PM",
+      "dateUpdated": "Mar 23, 2017 4:12:58 PM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -429,8 +429,8 @@
       "jobName": "paragraph_1490277613814_148203682",
       "id": "20170323-100013_1264862257",
       "dateCreated": "Mar 23, 2017 10:00:13 AM",
-      "dateStarted": "Mar 23, 2017 3:26:29 PM",
-      "dateFinished": "Mar 23, 2017 3:26:31 PM",
+      "dateStarted": "Mar 23, 2017 4:12:58 PM",
+      "dateFinished": "Mar 23, 2017 4:12:59 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
