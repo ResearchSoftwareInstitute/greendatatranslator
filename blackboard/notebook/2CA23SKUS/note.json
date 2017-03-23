@@ -439,7 +439,7 @@
     {
       "text": "%sql select * from diseases where _2 \u003e 0.05 order by _2\n",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 23, 2017 1:38:51 PM",
+      "dateUpdated": "Mar 23, 2017 2:01:07 PM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -457,7 +457,7 @@
           "language": "sql"
         },
         "editorMode": "ace/mode/sql",
-        "tableHide": true,
+        "tableHide": false,
         "editorHide": false
       },
       "settings": {
@@ -485,7 +485,7 @@
     {
       "text": "%md\n[medulloblastoma](http://disease-ontology.org/term/DOID%3A0050902/)\n",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 16, 2017 6:59:23 PM",
+      "dateUpdated": "Mar 23, 2017 2:01:03 PM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -496,7 +496,7 @@
         },
         "editorMode": "ace/mode/markdown",
         "editorHide": false,
-        "tableHide": true
+        "tableHide": false
       },
       "settings": {
         "params": {},
