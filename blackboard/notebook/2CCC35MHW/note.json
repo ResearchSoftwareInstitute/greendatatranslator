@@ -383,19 +383,63 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%pyspark\n",
+      "text": "%pyspark\n##changedfor drugmatrix\n\ndef get_disease_drug_associations ():\n    drug_assoc \u003d get_disease_drug_association(triplestore)\n   \n    disease_drug \u003d {}\n    for DBID in drug_assoc:\n        Generic_Name \u003d None\n        if \u0027Generic_Name\u0027 in DBID.other:\n            for x in DBID.other[\u0027Generic_Name\u0027]:\n                if x.startswith (\"mesh:\"):\n                    Generic_Name \u003d x\n                    #disease_ont[term.id.upper()] \u003d term\n                    lineage \u003d map ( lambda t : t.id, DBID.rparents ())\n                    sorted_lineage \u003d sorted (lineage, key\u003dlambda e : int(e.split(\u0027:\u0027)[1]))\n                    drug \u003d Drug (DBID\u003dDBID, Generic_Name\u003dGeneric_Name, lineage\u003dsorted_lineage)\n                    disease_drug[DBID.id.upper ()] \u003d drug\n                    break\n    #for k in disease_drug:\n        #print (\"{0} {1} {2}\".format (k, disease_drug[k].mesh_id, disease_drug[k].lineage))\n    return disease_drug\n",
       "user": "ad\\ruhirai",
-      "dateUpdated": "Mar 23, 2017 10:00:13 AM",
-      "config": {},
+      "dateUpdated": "Mar 23, 2017 10:39:51 AM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python"
+        },
+        "editorMode": "ace/mode/python"
+      },
       "settings": {
         "params": {},
         "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "jobName": "paragraph_1490279901668_-1058906336",
+      "id": "20170323-103821_354165981",
+      "dateCreated": "Mar 23, 2017 10:38:21 AM",
+      "dateStarted": "Mar 23, 2017 10:39:51 AM",
+      "dateFinished": "Mar 23, 2017 10:39:51 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%pyspark\n##changedfor drugmatrix\n\ndef parse_ontology ():\n    ont \u003d pronto.Ontology (\u0027/projects/stars/m2m/var/diseaseontology/dis.obo\u0027)\n    \u0027\u0027\u0027 print (ont.json) \u0027\u0027\u0027\n    hierarchy_map \u003d defaultdict(list)\n    for bind in result.bindings:\n        mesh_id \u003d bind[\u0027MESH:\u0027].value.rsplit(\u0027/\u0027, 1)[-1].upper ()\n        disease \u003d bind[\u0027DOID\u0027].value.rsplit(\u0027/\u0027, 1)[-1]\n        disease_id \u003d int(disease.replace (\u0027DOID\u0027, \u0027\u0027))\n        if not disease_id in hierarchy_map[mesh_id]:\n            hierarchy_map[mesh_id].append (disease_id)\n       \n    return hierarchy_map\n   ",
+      "user": "ad\\ruhirai",
+      "dateUpdated": "Mar 23, 2017 10:15:42 AM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python"
+        },
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
       },
       "apps": [],
       "jobName": "paragraph_1490277613814_148203682",
       "id": "20170323-100013_1264862257",
       "dateCreated": "Mar 23, 2017 10:00:13 AM",
-      "status": "READY",
+      "dateStarted": "Mar 23, 2017 10:15:42 AM",
+      "dateFinished": "Mar 23, 2017 10:15:42 AM",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
@@ -425,6 +469,36 @@
       "dateCreated": "Mar 22, 2017 12:07:59 PM",
       "dateStarted": "Mar 23, 2017 9:42:47 AM",
       "dateFinished": "Mar 23, 2017 9:42:47 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%pyspark\n##changedfor drugmatrix\n\ndef get_disease_drug_associations ():\n    drug_assoc \u003d get_disease_drug_association(triplestore)\n   \n    disease_drug \u003d {}\n    for DBID in drug_assoc:\n        Generic_Name \u003d None\n        if \u0027Generic_Name\u0027 in DBID.other:\n            for x in DBID.other[\u0027Generic_Name\u0027]:\n                if x.startswith (\"mesh:\"):\n                    Generic_Name \u003d x\n                    #disease_ont[term.id.upper()] \u003d term\n                    lineage \u003d map ( lambda t : t.id, DBID.rparents ())\n                    sorted_lineage \u003d sorted (lineage, key\u003dlambda e : int(e.split(\u0027:\u0027)[1]))\n                    drug \u003d Drug (DBID\u003dDBID, Generic_Name\u003dGeneric_Name, lineage\u003dsorted_lineage)\n                    disease_drug[DBID.id.upper ()] \u003d drug\n                    break\n    #for k in disease_drug:\n        #print (\"{0} {1} {2}\".format (k, disease_drug[k].mesh_id, disease_drug[k].lineage))\n    return disease_drug\n",
+      "user": "ad\\ruhirai",
+      "dateUpdated": "Mar 23, 2017 10:38:05 AM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python"
+        },
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "jobName": "paragraph_1490278559370_374171115",
+      "id": "20170323-101559_1916334701",
+      "dateCreated": "Mar 23, 2017 10:15:59 AM",
+      "dateStarted": "Mar 23, 2017 10:38:05 AM",
+      "dateFinished": "Mar 23, 2017 10:38:05 AM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
