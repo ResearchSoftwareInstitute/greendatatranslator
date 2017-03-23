@@ -347,7 +347,7 @@
     {
       "text": "%pyspark\n##changedfor drugmatrix\ntriplestore_uri \u003d \"http://stars-blazegraph.renci.org/bigdata/sparql\"\ntriplestore \u003d TripleStore (triplestore_uri)\n\nimport pronto\nimport pandas as pd\nimport sys\nfrom collections import defaultdict\nfrom operator import itemgetter\nfrom numpy import dot, sqrt, array\n\nclass Drug(object):\n    def __init__ (self, DBID, Generic_Name,lineage):\n        self.mesh_id \u003d Generic_Name\n        self.lineage \u003d lineage\n        self.disease \u003d []\n        self.Generic_Name \u003d Generic_Name\n       ",
       "user": "ad\\ruhirai",
-      "dateUpdated": "Mar 23, 2017 2:07:32 PM",
+      "dateUpdated": "Mar 23, 2017 3:25:59 PM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -369,15 +369,15 @@
       "jobName": "paragraph_1490277614146_-90340636",
       "id": "20170323-100014_785207467",
       "dateCreated": "Mar 23, 2017 10:00:14 AM",
-      "dateStarted": "Mar 23, 2017 2:07:32 PM",
-      "dateFinished": "Mar 23, 2017 2:07:32 PM",
+      "dateStarted": "Mar 23, 2017 3:25:59 PM",
+      "dateFinished": "Mar 23, 2017 3:25:59 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%pyspark\n##changedfor drugmatrix\n\ndef get_disease_drug_associations (triplestore):\n    #drug_assoc \u003d get_disease_drug_association(triplestore)\n    result \u003d triplestore.execute_query (query)\n    disease_drug \u003d {}\n    for DB in result:\n        Generic_Name \u003d None\n        if \u0027Generic_Name\u0027 in DB.other:\n            for x in DB.other[\u0027Generic_Name\u0027]:\n                if x.startswith (\"mesh:\"):\n                    Generic_Name \u003d x\n                    #disease_ont[term.id.upper()] \u003d term\n                    lineage \u003d map ( lambda t : t.id, DBID.rparents ())\n                    sorted_lineage \u003d sorted (lineage, key\u003dlambda e : int(e.split(\u0027:\u0027)[1]))\n                    drug \u003d Drug (DB\u003dDB, Generic_Name\u003dGeneric_Name, lineage\u003dsorted_lineage)\n                    disease_drug[DB.id.upper ()] \u003d drug\n                    break\n    #for k in disease_drug:\n        #print (\"{0} {1} {2}\".format (k, disease_drug[k].mesh_id, disease_drug[k].lineage))\n    return disease_drug\n",
+      "text": "%pyspark\n##changedfor drugmatrix\n\ndef get_disease_drug_associations (triplestore):\n    #drug_assoc \u003d get_disease_drug_association(triplestore)\n    result \u003d triplestore.execute_query (query)\n    disease_drug \u003d {}\n    for DBID in result:\n        Generic_Name \u003d None\n        if \u0027Generic_Name\u0027 in DBID.other:\n            for x in DBID.other[\u0027Generic_Name\u0027]:\n                if x.startswith (\"mesh:\"):\n                    Generic_Name \u003d x\n                    #disease_ont[term.id.upper()] \u003d term\n                    lineage \u003d map ( lambda t : t.id, DBID.rparents ())\n                    sorted_lineage \u003d sorted (lineage, key\u003dlambda e : int(e.split(\u0027:\u0027)[1]))\n                    drug \u003d Drug (DBID\u003dDBID, Generic_Name\u003dGeneric_Name, lineage\u003dsorted_lineage)\n                    disease_drug[DBID.id.upper ()] \u003d drug\n                    break\n    #for k in disease_drug:\n        #print (\"{0} {1} {2}\".format (k, disease_drug[k].mesh_id, disease_drug[k].lineage))\n    return disease_drug\n",
       "user": "ad\\ruhirai",
-      "dateUpdated": "Mar 23, 2017 2:24:57 PM",
+      "dateUpdated": "Mar 23, 2017 3:26:23 PM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -399,15 +399,15 @@
       "jobName": "paragraph_1490279901668_-1058906336",
       "id": "20170323-103821_354165981",
       "dateCreated": "Mar 23, 2017 10:38:21 AM",
-      "dateStarted": "Mar 23, 2017 2:24:57 PM",
-      "dateFinished": "Mar 23, 2017 2:24:57 PM",
+      "dateStarted": "Mar 23, 2017 3:26:23 PM",
+      "dateFinished": "Mar 23, 2017 3:26:23 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%pyspark\n##changedfor drugmatrix\nont \u003d pronto.Ontology (\u0027/projects/stars/m2m/var/diseaseontology/dis.obo\u0027)\ndef parse_ontology (ont):\n    #ont \u003d pronto.Ontology (\u0027/projects/stars/m2m/var/diseaseontology/dis.obo\u0027)\n    \u0027\u0027\u0027 print (ont.json) \u0027\u0027\u0027\n    hierarchy_map \u003d defaultdict(list)\n    for bind in ont:\n        mesh_id \u003d bind[\u0027MESH:\u0027].value.rsplit(\u0027/\u0027, 1)[-1].upper ()\n        disease \u003d bind[\u0027xref\u0027].value.rsplit(\u0027/\u0027, 1)[-1]\n        disease_id \u003d int(disease.replace (\u0027DOID\u0027, \u0027\u0027))\n        if not disease_id in hierarchy_map[mesh_id]:\n            hierarchy_map[mesh_id].append (disease_id)\n       \n    return hierarchy_map\n   ",
       "user": "ad\\ruhirai",
-      "dateUpdated": "Mar 23, 2017 2:07:44 PM",
+      "dateUpdated": "Mar 23, 2017 3:26:29 PM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -429,15 +429,15 @@
       "jobName": "paragraph_1490277613814_148203682",
       "id": "20170323-100013_1264862257",
       "dateCreated": "Mar 23, 2017 10:00:13 AM",
-      "dateStarted": "Mar 23, 2017 2:07:44 PM",
-      "dateFinished": "Mar 23, 2017 2:07:45 PM",
+      "dateStarted": "Mar 23, 2017 3:26:29 PM",
+      "dateFinished": "Mar 23, 2017 3:26:31 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%pyspark\n##changedfor drugmatrix\n\ndef print_groups (groups):\n    for path in groups:\n        print (\"path {0}\".format (path))\n        for drug in groups[path]:\n            try:\n                print (\"  \u003e {0}({2})\u003c-({1} diseases)\".format (drug.Generic_Name, drug.mesh_id, len(drug.diseases)))\n            except Exception:\n                traceback.print_exc ()",
       "user": "ad\\ruhirai",
-      "dateUpdated": "Mar 23, 2017 2:07:54 PM",
+      "dateUpdated": "Mar 23, 2017 3:26:38 PM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -459,15 +459,15 @@
       "jobName": "paragraph_1490280089162_-942652516",
       "id": "20170323-104129_1003549522",
       "dateCreated": "Mar 23, 2017 10:41:29 AM",
-      "dateStarted": "Mar 23, 2017 2:07:54 PM",
-      "dateFinished": "Mar 23, 2017 2:07:54 PM",
+      "dateStarted": "Mar 23, 2017 3:26:38 PM",
+      "dateFinished": "Mar 23, 2017 3:26:38 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%pyspark\n##changedfor drugmatrix\n\ndef cooccurrence_matrix():\n    #disease_matrix \u003d defaultdict(list)\n    disease_ontology \u003d parse_ontology (ont)\n    disease_drug \u003d  get_disease_drug_associations ()\n    for DBID_id in disease_drug:\n        drug \u003d disease_drug [DBID_id]\n        if drug.mesh_id in disease_ontology:\n            disease \u003d disease_ontology [drug.mesh_id]\n\n    \u0027\u0027\u0027 Bind Disease Ontology data to Disease Drug associations. \u0027\u0027\u0027\n    nodes \u003d defaultdict(int)\n    for mesh_id, drug in disease_drug.iteritems ():\n        if len(drug.lineage) \u003c 5:\n            continue\n        key \u003d \"/\".join (drug.lineage)\n        nodes[key] \u003d nodes[key] + 1\n\n    \u0027\u0027\u0027 For nodes with more than some threshold number of children: \u0027\u0027\u0027\n    threshold \u003d 3\n    groups \u003d defaultdict(list)\n    for path in nodes:\n        if nodes[path] \u003e threshold:\n            DBID_id \u003d path.split(\u0027/\u0027)[-1]\n            for drug.mesh_id, drug in disease_drug.iteritems ():\n                # Match appropriate drug indications to disease object:\n                if len(drug.lineage) \u003e 0 and DBID_id \u003d\u003d drug.lineage[-1] and drug.mesh_id in disease_ontology:\n                    drug.diseases \u003d disease_drug [drug.mesh_id]\n                    groups[path].append (drug)\n                    #print (\"{0}: {1} arity:{2} ({3}) drugs:{4}\".format (path, disease.term.name, nodes[n], disease.xref, disease.drugs))\n    return groups\n    \ngroups \u003d cooccurrence_matrix()\n#print groups",
+      "text": "%pyspark\n##changedfor drugmatrix\n\ndef cooccurrence_matrix():\n    disease_matrix \u003d defaultdict(list)\n    disease_drug \u003d  get_disease_drug_associations (triplestore)\n    disease_ontology \u003d parse_ontology (ont)\n    for DB_id in disease_drug:\n        drug \u003d disease_drug [DB_id]\n        if drug.mesh_id in disease_ontology:\n            disease \u003d disease_ontology [drug.mesh_id]\n\n    \u0027\u0027\u0027 Bind Disease Ontology data to Disease Drug associations. \u0027\u0027\u0027\n    nodes \u003d defaultdict(int)\n    for mesh_id, drug in disease_drug.iteritems ():\n        if len(drug.lineage) \u003c 5:\n            continue\n        key \u003d \"/\".join (drug.lineage)\n        nodes[key] \u003d nodes[key] + 1\n\n    \u0027\u0027\u0027 For nodes with more than some threshold number of children: \u0027\u0027\u0027\n    threshold \u003d 3\n    groups \u003d defaultdict(list)\n    for path in nodes:\n        if nodes[path] \u003e threshold:\n            DB_id \u003d path.split(\u0027/\u0027)[-1]\n            for drug.mesh_id, drug in disease_drug.iteritems ():\n                # Match appropriate drug indications to disease object:\n                if len(drug.lineage) \u003e 0 and DB_id \u003d\u003d drug.lineage[-1] and drug.mesh_id in disease_ontology:\n                    drug.diseases \u003d disease_drug [drug.mesh_id]\n                    groups[path].append (drug)\n                    #print (\"{0}: {1} arity:{2} ({3}) drugs:{4}\".format (path, disease.term.name, nodes[n], disease.xref, disease.drugs))\n    return groups\n    \ngroups \u003d cooccurrence_matrix()\n#print groups",
       "user": "ad\\ruhirai",
-      "dateUpdated": "Mar 23, 2017 2:26:14 PM",
+      "dateUpdated": "Mar 23, 2017 3:22:43 PM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -486,7 +486,7 @@
         "msg": [
           {
             "type": "TEXT",
-            "data": "Traceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-7823861029578108822.py\", line 346, in \u003cmodule\u003e\n    raise Exception(traceback.format_exc())\nException: Traceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-7823861029578108822.py\", line 339, in \u003cmodule\u003e\n    exec(code)\n  File \"\u003cstdin\u003e\", line 26, in \u003cmodule\u003e\n  File \"\u003cstdin\u003e\", line 2, in cooccurrence_matrix\n  File \"\u003cstdin\u003e\", line 6, in parse_ontology\nTypeError: \u0027Term\u0027 object has no attribute \u0027__getitem__\u0027\n\n"
+            "data": "Traceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-7823861029578108822.py\", line 346, in \u003cmodule\u003e\n    raise Exception(traceback.format_exc())\nException: Traceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-7823861029578108822.py\", line 339, in \u003cmodule\u003e\n    exec(code)\n  File \"\u003cstdin\u003e\", line 27, in \u003cmodule\u003e\n  File \"\u003cstdin\u003e\", line 3, in cooccurrence_matrix\n  File \"\u003cstdin\u003e\", line 4, in get_disease_drug_associations\n  File \"/projects/stars/venv/lib/python2.7/site-packages/SPARQLWrapper/SmartWrapper.py\", line 218, in __getitem__\n    if False in [k in b for k in yes_keys] : continue\nTypeError: \u0027bool\u0027 object is not iterable\n\n"
           }
         ]
       },
@@ -494,8 +494,8 @@
       "jobName": "paragraph_1490280301717_677418357",
       "id": "20170323-104501_1913161026",
       "dateCreated": "Mar 23, 2017 10:45:01 AM",
-      "dateStarted": "Mar 23, 2017 2:26:15 PM",
-      "dateFinished": "Mar 23, 2017 2:26:15 PM",
+      "dateStarted": "Mar 23, 2017 3:22:43 PM",
+      "dateFinished": "Mar 23, 2017 3:22:45 PM",
       "status": "ERROR",
       "progressUpdateIntervalMs": 500
     },
