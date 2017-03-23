@@ -439,7 +439,7 @@
     {
       "text": "%sql select * from diseases where _2 \u003e 0.05 order by _2\n",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 23, 2017 2:01:07 PM",
+      "dateUpdated": "Mar 23, 2017 6:53:21 PM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -477,8 +477,8 @@
       "jobName": "paragraph_1489707425619_654382383",
       "id": "20170316-193705_1455286457",
       "dateCreated": "Mar 16, 2017 7:37:05 PM",
-      "dateStarted": "Mar 23, 2017 1:38:20 PM",
-      "dateFinished": "Mar 23, 2017 1:38:23 PM",
+      "dateStarted": "Mar 23, 2017 6:53:21 PM",
+      "dateFinished": "Mar 23, 2017 6:53:23 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
