@@ -96,7 +96,7 @@
     {
       "text": "%pyspark\nquery \u003d \"\"\"\nPREFIX db_resource:      \u003chttp://chem2bio2rdf.org/drugbank/resource/\u003e\nPREFIX ctd_chem_disease: \u003chttp://chem2bio2rdf.org/ctd/resource/ctd_chem_disease/\u003e \nPREFIX biordf:           \u003chttp://bio2rdf.org/\u003e\nPREFIX ctd:              \u003chttp://chem2bio2rdf.org/ctd/resource/\u003e\nPREFIX pubchem:          \u003chttp://chem2bio2rdf.org/ctd/resource/\u003e\nSELECT DISTINCT ?chem_disease ?meshid ?compound ?drug\nWHERE {\n  ?chem_disease ctd:diseaseid ?meshid .\n  ?chem_disease ctd:cid       ?compound .\n  ?drug         db_resource:CID ?compound\n}\n\"\"\"",
       "user": "ad\\ruhirai",
-      "dateUpdated": "Mar 22, 2017 2:16:59 PM",
+      "dateUpdated": "Mar 23, 2017 9:56:08 AM",
       "config": {
         "enabled": true,
         "editorMode": "ace/mode/python",
@@ -118,15 +118,15 @@
       "jobName": "paragraph_1490206577460_1384220315",
       "id": "20170307-202932_2073115934",
       "dateCreated": "Mar 22, 2017 2:16:17 PM",
-      "dateStarted": "Mar 22, 2017 2:16:59 PM",
-      "dateFinished": "Mar 22, 2017 2:16:59 PM",
+      "dateStarted": "Mar 23, 2017 9:56:08 AM",
+      "dateFinished": "Mar 23, 2017 9:56:08 AM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%md\nDefine a function to run the query, parse the response, and return a map of disease to compound where the key is a MESH id.",
       "user": "ad\\ruhirai",
-      "dateUpdated": "Mar 22, 2017 2:17:06 PM",
+      "dateUpdated": "Mar 23, 2017 9:56:11 AM",
       "config": {
         "enabled": true,
         "tableHide": false,
@@ -156,15 +156,15 @@
       "jobName": "paragraph_1490206577461_1383835566",
       "id": "20170307-205321_210744016",
       "dateCreated": "Mar 22, 2017 2:16:17 PM",
-      "dateStarted": "Mar 22, 2017 2:17:06 PM",
-      "dateFinished": "Mar 22, 2017 2:17:06 PM",
+      "dateStarted": "Mar 23, 2017 9:56:11 AM",
+      "dateFinished": "Mar 23, 2017 9:56:11 AM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%md\nNow we create a data structure that maps paths through the hierarchy to the lists of diseases under those nodes.\nAnd we include this example instead of printing every item since that bogs down our notebook.\n~~~~~~~\npath DOID:4/DOID:4844/DOID:14566/DOID:0060072/DOID:0060084/DOID:0060101\n    \u003e subependymal giant cell astrocytoma(MESH:D001254)\u003c-(1 drugs)\npath DOID:4/DOID:1564/DOID:2473/DOID:0050117/DOID:0050136\n    \u003e candidiasis(MESH:D002177)\u003c-(1 drugs)\n    \u003e vulvovaginal candidiasis(MESH:D002181)\u003c-(5 drugs)\n    \u003e pneumocystosis(MESH:D011020)\u003c-(1 drugs)\n    \u003e oral candidiasis(MESH:D002180)\u003c-(5 drugs)\npath DOID:4/DOID:162/DOID:3119/DOID:14566/DOID:0050686\n    \u003e gallbladder cancer(MESH:D005706)\u003c-(60 drugs)\n    \u003e cribriform carcinoma(MESH:D000230)\u003c-(148 drugs)\n    \u003e thyroid carcinoma(MESH:D013964)\u003c-(66 drugs)\n    \u003e cerebral primitive neuroectodermal tumor(MESH:D018242)\u003c-(15 drugs)\n    \u003e pharynx cancer(MESH:D010610)\u003c-(1 drugs)\n~~~~~~~",
       "user": "ad\\ruhirai",
-      "dateUpdated": "Mar 22, 2017 2:17:09 PM",
+      "dateUpdated": "Mar 23, 2017 9:56:30 AM",
       "config": {
         "enabled": true,
         "tableHide": false,
@@ -194,8 +194,8 @@
       "jobName": "paragraph_1490206577461_1383835566",
       "id": "20170317-065536_1949387075",
       "dateCreated": "Mar 22, 2017 2:16:17 PM",
-      "dateStarted": "Mar 22, 2017 2:17:09 PM",
-      "dateFinished": "Mar 22, 2017 2:17:09 PM",
+      "dateStarted": "Mar 23, 2017 9:56:30 AM",
+      "dateFinished": "Mar 23, 2017 9:56:30 AM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
