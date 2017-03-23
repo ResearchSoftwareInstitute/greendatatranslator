@@ -162,44 +162,6 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\nNow we create a data structure that maps paths through the hierarchy to the lists of diseases under those nodes.\nAnd we include this example instead of printing every item since that bogs down our notebook.\n~~~~~~~\npath DOID:4/DOID:4844/DOID:14566/DOID:0060072/DOID:0060084/DOID:0060101\n    \u003e subependymal giant cell astrocytoma(MESH:D001254)\u003c-(1 drugs)\npath DOID:4/DOID:1564/DOID:2473/DOID:0050117/DOID:0050136\n    \u003e candidiasis(MESH:D002177)\u003c-(1 drugs)\n    \u003e vulvovaginal candidiasis(MESH:D002181)\u003c-(5 drugs)\n    \u003e pneumocystosis(MESH:D011020)\u003c-(1 drugs)\n    \u003e oral candidiasis(MESH:D002180)\u003c-(5 drugs)\npath DOID:4/DOID:162/DOID:3119/DOID:14566/DOID:0050686\n    \u003e gallbladder cancer(MESH:D005706)\u003c-(60 drugs)\n    \u003e cribriform carcinoma(MESH:D000230)\u003c-(148 drugs)\n    \u003e thyroid carcinoma(MESH:D013964)\u003c-(66 drugs)\n    \u003e cerebral primitive neuroectodermal tumor(MESH:D018242)\u003c-(15 drugs)\n    \u003e pharynx cancer(MESH:D010610)\u003c-(1 drugs)\n~~~~~~~",
-      "user": "ad\\ruhirai",
-      "dateUpdated": "Mar 23, 2017 2:17:00 PM",
-      "config": {
-        "enabled": true,
-        "tableHide": true,
-        "editorMode": "ace/mode/markdown",
-        "results": {},
-        "editorHide": false,
-        "editorSetting": {
-          "language": "markdown",
-          "editOnDblClick": true
-        },
-        "colWidth": 4.0
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003eNow we create a data structure that maps paths through the hierarchy to the lists of diseases under those nodes.\u003cbr/\u003eAnd we include this example instead of printing every item since that bogs down our notebook.\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003epath DOID:4/DOID:4844/DOID:14566/DOID:0060072/DOID:0060084/DOID:0060101\n    \u0026gt; subependymal giant cell astrocytoma(MESH:D001254)\u0026lt;-(1 drugs)\npath DOID:4/DOID:1564/DOID:2473/DOID:0050117/DOID:0050136\n    \u0026gt; candidiasis(MESH:D002177)\u0026lt;-(1 drugs)\n    \u0026gt; vulvovaginal candidiasis(MESH:D002181)\u0026lt;-(5 drugs)\n    \u0026gt; pneumocystosis(MESH:D011020)\u0026lt;-(1 drugs)\n    \u0026gt; oral candidiasis(MESH:D002180)\u0026lt;-(5 drugs)\npath DOID:4/DOID:162/DOID:3119/DOID:14566/DOID:0050686\n    \u0026gt; gallbladder cancer(MESH:D005706)\u0026lt;-(60 drugs)\n    \u0026gt; cribriform carcinoma(MESH:D000230)\u0026lt;-(148 drugs)\n    \u0026gt; thyroid carcinoma(MESH:D013964)\u0026lt;-(66 drugs)\n    \u0026gt; cerebral primitive neuroectodermal tumor(MESH:D018242)\u0026lt;-(15 drugs)\n    \u0026gt; pharynx cancer(MESH:D010610)\u0026lt;-(1 drugs)\n\u003c/code\u003e\u003c/pre\u003e\n\u003c/div\u003e"
-          }
-        ]
-      },
-      "apps": [],
-      "jobName": "paragraph_1490206577461_1383835566",
-      "id": "20170317-065536_1949387075",
-      "dateCreated": "Mar 22, 2017 2:16:17 PM",
-      "dateStarted": "Mar 23, 2017 9:56:30 AM",
-      "dateFinished": "Mar 23, 2017 9:56:30 AM",
-      "status": "FINISHED",
-      "progressUpdateIntervalMs": 500
-    },
-    {
       "text": "%pyspark\n\ndef print_groups ():\n    for g in groups:\n        print (g)\n        print (\"{0} -\u003e \".format (g))\n        for d in groups[g]:\n            print (\"  \u003e {0}\".format (d.drugs))\n",
       "user": "ad\\ruhirai",
       "dateUpdated": "Mar 22, 2017 2:17:34 PM",
