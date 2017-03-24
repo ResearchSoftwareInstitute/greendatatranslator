@@ -277,9 +277,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%pyspark\n\ndef print_groups ():\n    for g in groups:\n        print (g)\n        print (\"{0} -\u003e \".format (g))\n        for d in groups[g]:\n            print (\"  \u003e {0}\".format (d.diseases))\n  ",
+      "text": "%pyspark\n\ndef print_groups ():\n    for g in groups:\n        print (g)\n        print (\"{0} -\u003e \".format (g))\n        for d in groups[g]:\n            print (\"  \u003e {0}\".format (d.drugs))\n  ",
       "user": "ad\\ruhirai",
-      "dateUpdated": "Mar 23, 2017 5:22:40 PM",
+      "dateUpdated": "Mar 24, 2017 8:56:07 AM",
       "config": {
         "enabled": true,
         "editorMode": "ace/mode/python",
@@ -301,8 +301,8 @@
       "jobName": "paragraph_1488999384835_-1520134935",
       "id": "20170307-203132_2103117686",
       "dateCreated": "Mar 8, 2017 1:56:24 PM",
-      "dateStarted": "Mar 23, 2017 5:22:40 PM",
-      "dateFinished": "Mar 23, 2017 5:22:40 PM",
+      "dateStarted": "Mar 24, 2017 8:56:07 AM",
+      "dateFinished": "Mar 24, 2017 8:56:07 AM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -347,7 +347,7 @@
     {
       "text": "%pyspark\n##changedfor drugmatrix\ntriplestore_uri \u003d \"http://stars-blazegraph.renci.org/bigdata/sparql\"\ntriplestore \u003d TripleStore (triplestore_uri)\n\nimport pronto\nimport pandas as pd\nimport sys\nfrom collections import defaultdict\nfrom operator import itemgetter\nfrom numpy import dot, sqrt, array\n\nclass Disease(object):\n    def __init__ (self, term, xref, lineage):\n        self.mesh_id \u003d xref\n        self.lineage \u003d lineage\n        self.drugs \u003d []\n        self.term \u003d term\n       ",
       "user": "ad\\ruhirai",
-      "dateUpdated": "Mar 23, 2017 5:23:46 PM",
+      "dateUpdated": "Mar 24, 2017 8:56:09 AM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -369,15 +369,15 @@
       "jobName": "paragraph_1490277614146_-90340636",
       "id": "20170323-100014_785207467",
       "dateCreated": "Mar 23, 2017 10:00:14 AM",
-      "dateStarted": "Mar 23, 2017 5:23:46 PM",
-      "dateFinished": "Mar 23, 2017 5:23:46 PM",
+      "dateStarted": "Mar 24, 2017 8:56:09 AM",
+      "dateFinished": "Mar 24, 2017 8:56:09 AM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%pyspark\n##changedfor drugmatrix\n\n#disease_ont \u003d {}\n\ndef parse_ontology ():\n    ont \u003d pronto.Ontology (\u0027/projects/stars/m2m/var/diseaseontology/dis.obo\u0027)\n    \u0027\u0027\u0027 print (ont.json) \u0027\u0027\u0027\n    hierarchy_map \u003d {}\n    for term in ont:\n        xref \u003d None\n        if \u0027xref\u0027 in term.other:\n            for x in term.other[\u0027xref\u0027]:\n                if x.startswith (\"MESH:\"):\n                    xref \u003d x\n                    #disease_ont[term.id.upper()] \u003d term\n                    lineage \u003d map ( lambda t : t.id, term.rparents ())\n                    sorted_lineage \u003d sorted (lineage, key\u003dlambda e : int(e.split(\u0027:\u0027)[1]))\n                    disease \u003d Disease (term\u003dterm, xref\u003dxref, lineage\u003dsorted_lineage)\n                    hierarchy_map[term.id.upper ()] \u003d disease\n                    break\n    #for k in hierarchy_map:\n    #    print (\"{0} {1} {2}\".format (k, hierarchy_map[k].mesh_id, hierarchy_map[k].lineage))\n    return hierarchy_map\n",
       "user": "ad\\ruhirai",
-      "dateUpdated": "Mar 23, 2017 5:25:04 PM",
+      "dateUpdated": "Mar 24, 2017 8:56:13 AM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -399,15 +399,15 @@
       "jobName": "paragraph_1490279901668_-1058906336",
       "id": "20170323-103821_354165981",
       "dateCreated": "Mar 23, 2017 10:38:21 AM",
-      "dateStarted": "Mar 23, 2017 5:25:04 PM",
-      "dateFinished": "Mar 23, 2017 5:25:04 PM",
+      "dateStarted": "Mar 24, 2017 8:56:13 AM",
+      "dateFinished": "Mar 24, 2017 8:56:13 AM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%pyspark\n##changedfor drugmatrix\ndef get_disease_drug_associations (triplestore):\n    disease_drug \u003d defaultdict(list)\n    result \u003d triplestore.execute_query (query)\n    for bind in result.bindings:\n        mesh_id \u003d bind[\u0027meshid\u0027].value.rsplit(\u0027/\u0027, 1)[-1].upper ()\n        drug \u003d bind[\u0027drug\u0027].value.rsplit(\u0027/\u0027, 1)[-1]\n        drug_id \u003d int(drug.replace (\u0027DB\u0027, \u0027\u0027))\n        if not drug_id in disease_drug[mesh_id]:\n            disease_drug[mesh_id].append (mesh_id)\n    return disease_drug\n   ",
       "user": "ad\\ruhirai",
-      "dateUpdated": "Mar 23, 2017 5:37:16 PM",
+      "dateUpdated": "Mar 24, 2017 8:56:18 AM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -429,15 +429,15 @@
       "jobName": "paragraph_1490277613814_148203682",
       "id": "20170323-100013_1264862257",
       "dateCreated": "Mar 23, 2017 10:00:13 AM",
-      "dateStarted": "Mar 23, 2017 5:37:16 PM",
-      "dateFinished": "Mar 23, 2017 5:37:16 PM",
+      "dateStarted": "Mar 24, 2017 8:56:18 AM",
+      "dateFinished": "Mar 24, 2017 8:56:18 AM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%pyspark\n##changedfor drugmatrix\n\ndef print_groups (groups):\n    for path in groups:\n        print (\"path {0}\".format (path))\n        for disease in groups[path]:\n            try:\n                print (\"  \u003e {0}({1})\u003c-({2} diseases)\".format (disease.drugs, disease.mesh_id, len(disease.term.name)))\n            except Exception:\n                traceback.print_exc ()",
       "user": "ad\\ruhirai",
-      "dateUpdated": "Mar 23, 2017 5:30:59 PM",
+      "dateUpdated": "Mar 24, 2017 8:56:23 AM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -459,15 +459,15 @@
       "jobName": "paragraph_1490280089162_-942652516",
       "id": "20170323-104129_1003549522",
       "dateCreated": "Mar 23, 2017 10:41:29 AM",
-      "dateStarted": "Mar 23, 2017 5:30:59 PM",
-      "dateFinished": "Mar 23, 2017 5:30:59 PM",
+      "dateStarted": "Mar 24, 2017 8:56:23 AM",
+      "dateFinished": "Mar 24, 2017 8:56:23 AM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%pyspark\n##changedfor drugmatrix\n\ndef cooccurrence_matrix():\n    disease_matrix \u003d defaultdict(list)\n    #disease_drug \u003d get_disease_drug_associations (triplestore)\n    drug_disease \u003d get_disease_drug_associations (triplestore)\n    disease_ontology \u003d parse_ontology ()\n    for term_id in disease_ontology:\n        disease \u003d disease_ontology [term_id]\n        if disease.mesh_id in drug_disease:\n            drug \u003d drug_disease [disease.mesh_id]\n\n    \u0027\u0027\u0027 Bind Disease Ontology data to Disease Drug associations. \u0027\u0027\u0027\n    nodes \u003d defaultdict(int)\n    for mesh_id, disease in disease_ontology.iteritems ():\n        if len(disease.lineage) \u003c 5:\n            continue\n        key \u003d \"/\".join (disease.lineage)\n        nodes[key] \u003d nodes[key] + 1\n\n    \u0027\u0027\u0027 For nodes with more than some threshold number of children: \u0027\u0027\u0027\n    threshold \u003d 3\n    groups \u003d defaultdict(list)\n    for path in nodes:\n        if nodes[path] \u003e threshold:\n            term_id \u003d path.split(\u0027/\u0027)[-1]\n            for doid, disease in disease_ontology.iteritems ():\n                # Match appropriate drug indications to disease object:\n                if len(disease.lineage) \u003e 0 and term_id \u003d\u003d disease.lineage[-1] and disease.mesh_id in drug_disease:\n                    disease.drugs \u003d drug_disease [disease.mesh_id]\n                    groups[path].append (disease.mesh_id)\n                    #print (\"{0}: {1} arity:{2} ({3}) drugs:{4}\".format (path, disease.term.name, nodes[n], disease.xref, disease.drugs))\n    return groups\n    \ngroups \u003d cooccurrence_matrix()\nprint groups\n#print groups",
       "user": "ad\\ruhirai",
-      "dateUpdated": "Mar 23, 2017 5:44:12 PM",
+      "dateUpdated": "Mar 24, 2017 8:56:29 AM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -494,15 +494,15 @@
       "jobName": "paragraph_1490280301717_677418357",
       "id": "20170323-104501_1913161026",
       "dateCreated": "Mar 23, 2017 10:45:01 AM",
-      "dateStarted": "Mar 23, 2017 5:44:12 PM",
-      "dateFinished": "Mar 23, 2017 5:44:20 PM",
+      "dateStarted": "Mar 24, 2017 8:56:29 AM",
+      "dateFinished": "Mar 24, 2017 8:56:37 AM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%pyspark\nimport numpy as np\nfrom sklearn.metrics import jaccard_similarity_score\n\ndef reshape_array (source, target):\n    N \u003d np.zeros (target.shape)\n    N[:source.shape[0]] \u003d source\n    return N\n\ndef reshape_arrays (L, R):\n    bigger \u003d max (L.size, R.size)\n    if bigger \u003d\u003d L.size:\n        R \u003d reshape_array (R, L)\n    else:\n        L \u003d reshape_array (L, R)\n    return L, R\n\ndef make_arrays (A, B):\n    L \u003d np.array (A)\n    R \u003d np.array (B)\n    return reshape_arrays (L, R)\n    \ndef average_treatment_set_similarity (drug_lists):\n    import numpy as np\n    from sklearn.metrics import jaccard_similarity_score\n    similarities \u003d []\n    for index, drug_list in enumerate (drug_lists):\n        for index2, drug_list2 in enumerate (drug_lists):\n            if index \u003d\u003d index2:\n                continue\n            L, R \u003d make_arrays (drug_list, drug_list2)\n            similarity \u003d jaccard_similarity_score (L, R)\n            #print (\"   s\u003e {0}\".format (similarity))\n            #print (\"L: {0}\".format (L))\n            #print (\"R: {0}\".format (R))\n            similarities.append (similarity)\n    return np.mean (np.array (similarities)).item ()\n    ",
+      "text": "%pyspark\nimport numpy as np\nfrom sklearn.metrics import jaccard_similarity_score\n\ndef reshape_array (source, target):\n    N \u003d np.zeros (target.shape)\n    N[:source.shape[0]] \u003d source\n    return N\n\ndef reshape_arrays (L, R):\n    bigger \u003d max (L.size, R.size)\n    if bigger \u003d\u003d L.size:\n        R \u003d reshape_array (R, L)\n    else:\n        L \u003d reshape_array (L, R)\n    return L, R\n\ndef make_arrays (A, B):\n    L \u003d np.array (A)\n    R \u003d np.array (B)\n    return reshape_arrays (L, R)\n    \ndef average_treatment_set_similarity (disease_lists):\n    import numpy as np\n    from sklearn.metrics import jaccard_similarity_score\n    similarities \u003d []\n    for index, disease_lists in enumerate (disease_lists):\n        for index2, disease_lists2 in enumerate (disease_lists):\n            if index \u003d\u003d index2:\n                continue\n            L, R \u003d make_arrays (disease_lists, disease_lists2)\n            similarity \u003d jaccard_similarity_score (L, R)\n            #print (\"   s\u003e {0}\".format (similarity))\n            #print (\"L: {0}\".format (L))\n            #print (\"R: {0}\".format (R))\n            similarities.append (similarity)\n    return np.mean (np.array (similarities)).item ()\n    ",
       "user": "ad\\ruhirai",
-      "dateUpdated": "Mar 22, 2017 12:35:14 PM",
+      "dateUpdated": "Mar 24, 2017 8:56:48 AM",
       "config": {
         "enabled": true,
         "editorMode": "ace/mode/python",
@@ -525,15 +525,15 @@
       "jobName": "paragraph_1488999384857_-1517826442",
       "id": "20170307-203223_871947982",
       "dateCreated": "Mar 8, 2017 1:56:24 PM",
-      "dateStarted": "Mar 22, 2017 12:35:14 PM",
-      "dateFinished": "Mar 22, 2017 12:35:14 PM",
+      "dateStarted": "Mar 24, 2017 8:56:48 AM",
+      "dateFinished": "Mar 24, 2017 8:56:48 AM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%pyspark\r\nimport math\r\nfrom pyspark.sql.types import *\r\n\r\npath_key \u003d {}\r\nfor k, v in groups.iteritems ():\r\n    path_key [k] \u003d k.split (\u0027/\u0027)[-1]\r\nfor k in path_key:\r\n    v \u003d groups[k]\r\n    del groups[k]\r\n    groups[path_key[k]] \u003d v\r\n\r\ndata \u003d map (lambda p : (p[0], map(lambda d : d.disease, p[1])),\r\n    groups.iteritems ())\r\nspark_groups \u003d sc.parallelize (data). \\\r\n    map (lambda p : ( p[0].split (\u0027/\u0027)[-1],\r\n        average_treatment_set_similarity (p[1]) )). \\\r\n    filter (lambda p : not math.isnan (float(p[1])))\r\n\r\nspark_groups.toDF().registerTempTable(\"diseases\")\r\n    \r\nschemaString \u003d \"path sum\"\r\nfields \u003d [StructField(field_name, StringType(), True) for field_name in schemaString.split()]\r\nschema \u003d StructType(fields)\r\nschema_diseases \u003d sqlContext.\\\r\n    createDataFrame(spark_groups, schema). \\\r\n    registerTempTable(\"diseases_s\")\r\n",
       "user": "ad\\ruhirai",
-      "dateUpdated": "Mar 22, 2017 12:35:21 PM",
+      "dateUpdated": "Mar 24, 2017 9:00:19 AM",
       "config": {
         "enabled": true,
         "editorMode": "ace/mode/python",
@@ -553,7 +553,7 @@
         "msg": [
           {
             "type": "TEXT",
-            "data": "Traceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-7823861029578108822.py\", line 346, in \u003cmodule\u003e\n    raise Exception(traceback.format_exc())\nException: Traceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-7823861029578108822.py\", line 334, in \u003cmodule\u003e\n    exec(code)\n  File \"\u003cstdin\u003e\", line 16, in \u003cmodule\u003e\n  File \"/projects/stars/stack/spark/spark2/python/pyspark/sql/session.py\", line 57, in toDF\n    return sparkSession.createDataFrame(self, schema, sampleRatio)\n  File \"/projects/stars/stack/spark/spark2/python/pyspark/sql/session.py\", line 522, in createDataFrame\n    rdd, schema \u003d self._createFromRDD(data.map(prepare), schema, samplingRatio)\n  File \"/projects/stars/stack/spark/spark2/python/pyspark/sql/session.py\", line 360, in _createFromRDD\n    struct \u003d self._inferSchema(rdd, samplingRatio)\n  File \"/projects/stars/stack/spark/spark2/python/pyspark/sql/session.py\", line 331, in _inferSchema\n    first \u003d rdd.first()\n  File \"/projects/stars/stack/spark/spark2/python/pyspark/rdd.py\", line 1331, in first\n    raise ValueError(\"RDD is empty\")\nValueError: RDD is empty\n\n"
+            "data": "Traceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-7823861029578108822.py\", line 346, in \u003cmodule\u003e\n    raise Exception(traceback.format_exc())\nException: Traceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-7823861029578108822.py\", line 334, in \u003cmodule\u003e\n    exec(code)\n  File \"\u003cstdin\u003e\", line 11, in \u003cmodule\u003e\n  File \"\u003cstdin\u003e\", line 10, in \u003clambda\u003e\n  File \"\u003cstdin\u003e\", line 10, in \u003clambda\u003e\nAttributeError: \u0027unicode\u0027 object has no attribute \u0027disease\u0027\n\n"
           }
         ]
       },
@@ -561,8 +561,8 @@
       "jobName": "paragraph_1488999384858_-1516672195",
       "id": "20170308-110320_1712021252",
       "dateCreated": "Mar 8, 2017 1:56:24 PM",
-      "dateStarted": "Mar 22, 2017 12:35:21 PM",
-      "dateFinished": "Mar 22, 2017 12:35:21 PM",
+      "dateStarted": "Mar 24, 2017 9:00:19 AM",
+      "dateFinished": "Mar 24, 2017 9:00:19 AM",
       "status": "ERROR",
       "progressUpdateIntervalMs": 500
     },
