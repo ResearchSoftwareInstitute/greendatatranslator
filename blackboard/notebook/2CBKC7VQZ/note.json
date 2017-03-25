@@ -36,6 +36,22 @@
       "progressUpdateIntervalMs": 500
     },
     {
+      "text": "%pyspark\n",
+      "user": "ad\\hongyi",
+      "dateUpdated": "Mar 25, 2017 1:33:36 PM",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1490463216844_1102167949",
+      "id": "20170325-133336_102199797",
+      "dateCreated": "Mar 25, 2017 1:33:36 PM",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
       "text": "%pyspark\nimport os\n\n\ndef extract_triple_item_from_tokens(tokens, start_idx):\n    quotes \u003d [\u0027\"\u0027, \"\u0027\"]\n    item \u003d tokens[start_idx]\n    end_idx \u003d start_idx + 1\n    for quote in quotes:\n        if item.startswith(quote):\n            if item.endswith(quote):\n                # this item is a quoted literal that does not contain spaces\n                # no need for further quote processing\n                break\n            breakout \u003d False\n            while end_idx \u003c len(tokens):\n                item +\u003d \u0027 \u0027 + tokens[end_idx]\n                if tokens[end_idx].endswith(quote):\n                    end_idx +\u003d 1\n                    breakout \u003d True\n                    break\n                else:\n                    end_idx +\u003d 1\n                \n            if breakout:\n                break;\n    return item, end_idx\n    \n\ndef get_link_list(data_path, data_file_name, search_term):\n    file_name \u003d os.path.join(data_path, data_file_name)\n    \n    node_dict \u003d {}\n    node_list \u003d []\n    node_labels \u003d []\n    link_dict \u003d {}\n    link_list \u003d []\n    \n    with open(file_name, \u0027r\u0027) as f:\n        node_idx \u003d 0\n        for line in f:\n            if line.find(search_term) \u003e\u003d 0:\n                print line\n                tokens \u003d line.split()\n                subject, idx \u003d extract_triple_item_from_tokens(tokens, 0)\n                if subject not in node_dict:\n                    node_dict[subject] \u003d node_idx\n                    node_list.append(node_idx)\n                    node_labels.append(subject)\n                    node_idx +\u003d 1\n                \n                predicate, idx2 \u003d extract_triple_item_from_tokens(tokens, idx)\n                \n                object, idx3 \u003d extract_triple_item_from_tokens(tokens, idx2)\n                \n                if object not in node_dict:\n                    node_dict[object] \u003d node_idx\n                    node_list.append(node_idx)\n                    node_labels.append(object)\n                    node_idx +\u003d 1\n                \n                link_str \u003d str(node_dict[subject]) + \u0027_\u0027 + str(node_dict[object]) + \u0027_\u0027 + str(predicate)\n                \n                if link_str not in link_dict:\n                    link_dict[link_str] \u003d 1\n                else:\n                    link_dict[link_str] +\u003d 1\n    \n    for key, value in link_dict.items():\n        print \"key\u003d\" + key + \", value\u003d\"+str(value)\n        tokens \u003d key.split(\u0027_\u0027)\n        source \u003d int(tokens[0])\n        target \u003d int(tokens[1])\n        link_list.append([source, target, value])\n    \n    return node_labels, node_list, link_list\n    \n\nnode_labels, node_list, link_list \u003d get_link_list(data_path\u003d\u0027/projects/stars/m2m/var/chem2bio2rdf\u0027, \n                                                  data_file_name\u003d\u0027drugbank.n3\u0027,\n                                                  search_term\u003d\u0027Compound\u0027)",
       "user": "ad\\hongyi",
       "dateUpdated": "Mar 20, 2017 9:55:21 AM",
