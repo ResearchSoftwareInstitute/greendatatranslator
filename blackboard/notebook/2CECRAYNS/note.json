@@ -1,9 +1,9 @@
 {
   "paragraphs": [
     {
-      "text": "%spark.dep\nz.load(\"org.phenoscape:scowl_2.11:1.2.1\")",
+      "text": "%spark.dep\nz.reset ()\nz.load(\"org.phenoscape:scowl_2.11:1.2.1\")",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 21, 2017 8:23:31 PM",
+      "dateUpdated": "Mar 25, 2017 7:17:42 AM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -26,8 +26,8 @@
       "jobName": "paragraph_1490132380396_-493558097",
       "id": "20170321-173940_994747591",
       "dateCreated": "Mar 21, 2017 5:39:40 PM",
-      "dateStarted": "Mar 21, 2017 8:23:31 PM",
-      "dateFinished": "Mar 21, 2017 8:27:45 PM",
+      "dateStarted": "Mar 25, 2017 7:17:43 AM",
+      "dateFinished": "Mar 25, 2017 7:22:07 AM",
       "status": "ERROR",
       "progressUpdateIntervalMs": 500
     },
