@@ -3,7 +3,7 @@
     {
       "text": "%pyspark\nfrom lightning import Lightning\n\nclass StarsLightning (object):\n    def __init__(self, host\u003d\"https://stars-lightning.renci.org\"):\n        self.host \u003d host\n        self.service \u003d Lightning(host\u003dself.host)\n    def render (self, vis, width\u003d400, height\u003d300):\n        print (\u0027%html \u003ciframe src\u003d\"{0}/visualizations/{1}/iframe\" width\u003d\"{2}\" height\u003d\"{3}\" \u003e\u0027.format (self.host, vis.id, width, height))\n        \nstarlight \u003d StarsLightning ()",
       "user": "ad\\hongyi",
-      "dateUpdated": "Mar 17, 2017 5:38:24 PM",
+      "dateUpdated": "Mar 24, 2017 8:23:34 PM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -30,15 +30,15 @@
       "jobName": "paragraph_1489586243684_-1929472760",
       "id": "20170315-095723_1855116549",
       "dateCreated": "Mar 15, 2017 9:57:23 AM",
-      "dateStarted": "Mar 17, 2017 5:38:24 PM",
-      "dateFinished": "Mar 17, 2017 5:38:25 PM",
+      "dateStarted": "Mar 24, 2017 8:23:34 PM",
+      "dateFinished": "Mar 24, 2017 8:23:49 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%pyspark\nstarlight.render (vis \u003d starlight.service.line([1, 1, 2, 3, 5, 8]))",
-      "user": "ad\\scox",
-      "dateUpdated": "Mar 15, 2017 10:09:32 AM",
+      "user": "ad\\hongyi",
+      "dateUpdated": "Mar 24, 2017 8:23:43 PM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -65,7 +65,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003ciframe src\u003d\"https://stars-lightning.renci.org/visualizations/08d11f93-76d7-4393-8c23-108d8b6fd6a3/iframe\" width\u003d\"400\" height\u003d\"300\" \u003e\n"
+            "data": "\u003ciframe src\u003d\"https://stars-lightning.renci.org/visualizations/5fa2d50b-7d5c-444a-a4ef-33cfc47ecded/iframe\" width\u003d\"400\" height\u003d\"300\" \u003e\n"
           }
         ]
       },
@@ -73,8 +73,8 @@
       "jobName": "paragraph_1489516334094_-1062008347",
       "id": "20170314-143214_1064555866",
       "dateCreated": "Mar 14, 2017 2:32:14 PM",
-      "dateStarted": "Mar 15, 2017 10:09:32 AM",
-      "dateFinished": "Mar 15, 2017 10:09:32 AM",
+      "dateStarted": "Mar 24, 2017 8:23:43 PM",
+      "dateFinished": "Mar 24, 2017 8:23:49 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
