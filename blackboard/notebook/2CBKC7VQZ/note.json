@@ -36,19 +36,38 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%pyspark\n",
+      "text": "%pyspark\n\nfrom bokeh.plotting import figure, output_file\n\n# prepare some data\nx \u003d [1, 2, 3, 4, 5]\ny \u003d [6, 7, 2, 4, 5]\n\n# output to static HTML file\noutput_file(\"lines.html\")\n\n# create a new plot with a title and axis labels\np \u003d figure(title\u003d\"simple line example\", x_axis_label\u003d\u0027x\u0027, y_axis_label\u003d\u0027y\u0027)\n\n# add a line renderer with legend and line thickness\np.line(x, y, legend\u003d\"Temp.\", line_width\u003d2)\n\ns \u003d \"%html \"\ntxt \u003d open(\u0027lines.html\u0027).read()\ns +\u003d txt\nprint(s)\n",
       "user": "ad\\hongyi",
-      "dateUpdated": "Mar 25, 2017 1:33:36 PM",
-      "config": {},
+      "dateUpdated": "Mar 25, 2017 1:42:42 PM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala"
+        },
+        "editorMode": "ace/mode/scala"
+      },
       "settings": {
         "params": {},
         "forms": {}
+      },
+      "results": {
+        "code": "ERROR",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Traceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-6001548107173711961.py\", line 346, in \u003cmodule\u003e\n    raise Exception(traceback.format_exc())\nException: Traceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-6001548107173711961.py\", line 334, in \u003cmodule\u003e\n    exec(code)\n  File \"\u003cstdin\u003e\", line 8, in \u003cmodule\u003e\nIOError: [Errno 2] No such file or directory: \u0027lines.html\u0027\n\n"
+          }
+        ]
       },
       "apps": [],
       "jobName": "paragraph_1490463216844_1102167949",
       "id": "20170325-133336_102199797",
       "dateCreated": "Mar 25, 2017 1:33:36 PM",
-      "status": "READY",
+      "dateStarted": "Mar 25, 2017 1:42:43 PM",
+      "dateFinished": "Mar 25, 2017 1:42:59 PM",
+      "status": "ERROR",
       "progressUpdateIntervalMs": 500
     },
     {
