@@ -19,7 +19,7 @@
     {
       "text": "%pyspark\nimport prov.model as prov\nimport re\nfrom datetime import datetime\nfrom datetime import date\n\nclass QueryResponseProvenance(object):\n    \"\"\" Abstract W3C PROV model of the provenance of components of a complex query. \"\"\"\n    def __init__(self, default_ns, namespaces\u003d[]):\n        \"\"\" Specify a default namespace and associated sub namespaces \"\"\"\n        self.document \u003d prov.ProvDocument ()\n        self.default_ns \u003d default_ns\n        self.document.set_default_namespace (self.default_ns)\n        self.namespaces \u003d namespaces\n        self.subspaces \u003d {}\n        for namespace in self.namespaces:\n            self.subspaces[namespace] \u003d self.add_namespace (self.default_ns, namespace)\n    def add_namespace (self, root, qualifier):\n        subspace \u003d \"{0}{1}\".format (root, qualifier)\n        self.document.add_namespace (qualifier, subspace)\n        return subspace\n    def add_entity (self, name, tuples):\n        self.document.entity (name, tuples)\n    def add_data_source (self, name, entity):\n        self.entity (name, entity.to_tuple ())\n    def add_algorithm (self, name, start, end\u003dNone):\n        assert name in self.namespaces, \"Name must be in list of namespaces\"\n        if end:\n            self.document.activity (name, start, end)\n        else:\n            self.document.activity (name, start)\n    def get_time (self):\n        return datetime.now ().strftime (\"%Y-%m-%dT%H:%M:%S\")\n    def __str__(self):\n        return self.__repr__()\n    def __repr__(self):\n        return self.document.get_provn ()\n        \nprovenance \u003d QueryResponseProvenance (\u0027http://purl.some.ns/\u0027, [ \u0027a\u0027, \u0027b\u0027, \u0027c\u0027 ])\n\nclass AbstractEntity(object):\n    def __init__(self, type, namespace, attributes\u003d[]):\n        self.attributes \u003d []\n        self.namespace \u003d namespace\n        self.attr_keys \u003d {}\n        self.add_attribute (prov.PROV_TYPE, type, plain\u003dTrue)\n        for a in attributes:\n            assert len(a) \u003d\u003d 2, \"Attribute components must be len\u003d\u003d2 arrays\"\n            self.add_attribute (a[0], a[1])\n    def add_attribute (self, iri, value, plain\u003dFalse):\n        key \u003d \u0027{0}@{1}\u0027.format (iri, value)\n        if not key in self.attr_keys:\n            if plain:\n                self.attributes.append ((iri, value))\n            else:\n                self.attributes.append ((\u0027{0}{1}\u0027.format (self.namespace, iri), value))\n            self.attr_keys[key] \u003d 1\n    def to_tuple (self):\n        return tuple(self.attributes)\n\ne \u003d AbstractEntity (\u0027SomeType\u0027, \u0027http://purl.some.ns/ae\u0027, )\ne.add_attribute (\u0027ds0\u0027, \u0027\u003chttp://all.ds.org/\u0027)\ne.add_attribute (\u0027ds1\u0027, \u0027\u003chttp://all.ds.org/\u0027)\nprovenance.add_entity (\u0027e\u0027, e.to_tuple ())\nprint (provenance.document.get_provn ())",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 24, 2017 6:15:33 PM",
+      "dateUpdated": "Mar 24, 2017 9:36:52 PM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -46,15 +46,15 @@
       "jobName": "paragraph_1490388079769_-1478794288",
       "id": "20170324-164119_865549647",
       "dateCreated": "Mar 24, 2017 4:41:19 PM",
-      "dateStarted": "Mar 24, 2017 6:15:33 PM",
-      "dateFinished": "Mar 24, 2017 6:15:33 PM",
+      "dateStarted": "Mar 24, 2017 9:36:52 PM",
+      "dateFinished": "Mar 24, 2017 9:36:52 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%pyspark\n\n\u0027\u0027\u0027 DataLake Support \u0027\u0027\u0027\nclass DataLakeProvenance(QueryResponseProvenance):\n    PREFIX \u003d re.compile (\u0027^prefix \u0027, re.I)\n    def __init__(self, default_ns, namespaces\u003d[]):\n        QueryResponseProvenance.__init__(self, default_ns, namespaces)\n\n    def parse_sparql (self, query, source_map):\n        sources \u003d {}\n        for line in query.split (\u0027\\n\u0027):\n            line \u003d \u0027 \u0027.join (line.strip ().split ())\n            match \u003d self.PREFIX.match (line)\n            if match is None:\n                continue\n            if True:\n                parts \u003d line.strip().split (\u0027 \u0027)\n                if len(parts) \u003e\u003d 3:\n                    iri \u003d parts[2].strip ()\n                    e \u003d None\n                    for k, v in source_map.iteritems ():\n                        if k in iri:\n                            if v in sources:\n                                e \u003d sources[v]\n                            else:\n                                e \u003d AbstractEntity (\u0027data\u0027, \u0027{0}{1}\u0027.format (self.default_ns, v))\n                                sources[v] \u003d e\n                            e.add_attribute (\u0027src\u0027, v, plain\u003dTrue)\n                    if e is None:\n                        e \u003d AbstractEntity (\u0027data\u0027, \u0027http://purl.data.org/\u0027)\n                        e.add_attribute (\u0027src\u0027, iri, plain\u003dTrue)\n                        self.add_entity (\u0027data\u0027, e.to_tuple ())\n        for k, v in sources.iteritems ():\n            self.add_entity (\u0027data\u0027, v.to_tuple ())",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 24, 2017 6:15:50 PM",
+      "dateUpdated": "Mar 24, 2017 9:36:57 PM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -76,15 +76,15 @@
       "jobName": "paragraph_1490393461101_-181500383",
       "id": "20170324-181101_1881040132",
       "dateCreated": "Mar 24, 2017 6:11:01 PM",
-      "dateStarted": "Mar 24, 2017 6:15:50 PM",
-      "dateFinished": "Mar 24, 2017 6:15:50 PM",
+      "dateStarted": "Mar 24, 2017 9:36:57 PM",
+      "dateFinished": "Mar 24, 2017 9:36:57 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%pyspark\nclass TranslatorProvenance (DataLakeProvenance):\n    def __init__(self):\n        DataLakeProvenance.__init__(\n            self,\n            default_ns \u003d \u0027http://purl.translator.org/prov/\u0027,\n            namespaces \u003d [\n                \u0027clinical\u0027, \u0027enviro\u0027, \u0027medchem\u0027,             # data sources\n                \u0027exposure.pm25-ozone\u0027, \u0027clinical.med.prescribed\u0027 # algorithms / assumptions\n            ])\n    def parse_sparql (self, query):\n        super(TranslatorProvenance, self).parse_sparql (\n            query,\n            source_map \u003d {\n                \u0027\u003chttp://chem2bio2rdf.org/ctd/\u0027 : \u0027c2b2r.ctd\u0027,\n                \u0027GO_\u0027 : \u0027GO\u0027,\n                \u0027\u003chttp://chem2bio2rdf.org/drugbank\u0027 : \u0027c2b2r.drugbank\u0027,\n                \u0027monarch\u0027 : \u0027monarch\u0027\n            })",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 24, 2017 6:15:51 PM",
+      "dateUpdated": "Mar 24, 2017 9:36:59 PM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -106,15 +106,15 @@
       "jobName": "paragraph_1490393482161_1559534362",
       "id": "20170324-181122_2102261765",
       "dateCreated": "Mar 24, 2017 6:11:22 PM",
-      "dateStarted": "Mar 24, 2017 6:15:51 PM",
-      "dateFinished": "Mar 24, 2017 6:15:51 PM",
+      "dateStarted": "Mar 24, 2017 9:36:59 PM",
+      "dateFinished": "Mar 24, 2017 9:36:59 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%pyspark\n\ndef test ():\n    sparql_query \u003d \"\"\"\n    PREFIX db_resource:      \u003chttp://chem2bio2rdf.org/drugbank/resource/\u003e\n    PREFIX ctd_chem_disease: \u003chttp://chem2bio2rdf.org/ctd/resource/ctd_chem_disease/\u003e \n    PREFIX biordf:           \u003chttp://bio2rdf.org/\u003e\n    PREFIX ctd:              \u003chttp://chem2bio2rdf.org/ctd/resource/\u003e\n    SELECT DISTINCT ?chem_disease ?meshid ?compound ?drug\n    WHERE {\n      ?chem_disease ctd:diseaseid ?meshid .\n      ?chem_disease ctd:cid       ?compound .\n      ?drug         db_resource:CID ?compound\n    }\"\"\"\n\n    p \u003d TranslatorProvenance ()\n    p.parse_sparql (sparql_query)\n    start \u003d p.get_time ()\n    end \u003d p.get_time ()\n    p.add_algorithm (\u0027clinical.med.prescribed\u0027, start)\n    p.add_algorithm (\u0027exposure.pm25-ozone\u0027, start, end)\n    print (p)\n\ntest ()\n",
+      "text": "%pyspark\n\ndef test ():\n    sparql_query \u003d \"\"\"\n    PREFIX db_resource:      \u003chttp://chem2bio2rdf.org/drugbank/resource/\u003e\n    PREFIX ctd_chem_disease: \u003chttp://chem2bio2rdf.org/ctd/resource/ctd_chem_disease/\u003e \n    PREFIX biordf:           \u003chttp://bio2rdf.org/\u003e\n    PREFIX ctd:              \u003chttp://chem2bio2rdf.org/ctd/resource/\u003e\n    SELECT DISTINCT ?chem_disease ?meshid ?compound ?drug\n    WHERE {\n      ?chem_disease ctd:diseaseid ?meshid .\n      ?chem_disease ctd:cid       ?compound .\n      ?drug         db_resource:CID ?compound\n    }\"\"\"\n\n    p \u003d TranslatorProvenance ()\n    p.parse_sparql (sparql_query)\n    start \u003d p.get_time ()\n    end \u003d p.get_time ()\n    p.add_algorithm (\u0027clinical.med.prescribed\u0027, start)\n    p.add_algorithm (\u0027exposure.pm25-ozone\u0027, start, end)\n    print (p)\n\n    import requests\n    exposure \u003d \u0027http://bdtgis.renci.org:9090/v1/exposures/pm25/scores?start_date\u003d1985-04-12\u0026end_date\u003d1985-04-13\u0026exposure_point\u003d35.720278%2C-79.176389\u0026temporal_resolution\u003dday\u0026score_type\u003d7dayrisk\u0027\n    r \u003d requests.get (exposure)\n    print (r.status_code)\n    print (r.json ())\n    \ntest ()\n",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 24, 2017 6:15:54 PM",
+      "dateUpdated": "Mar 24, 2017 9:37:56 PM",
       "config": {
         "colWidth": 11.0,
         "enabled": true,
@@ -142,7 +142,7 @@
         "msg": [
           {
             "type": "TEXT",
-            "data": "document\n  default \u003chttp://purl.translator.org/prov/\u003e\n  prefix exposure.pm25-ozone \u003chttp://purl.translator.org/prov/exposure.pm25-ozone\u003e\n  prefix enviro \u003chttp://purl.translator.org/prov/enviro\u003e\n  prefix medchem \u003chttp://purl.translator.org/prov/medchem\u003e\n  prefix clinical \u003chttp://purl.translator.org/prov/clinical\u003e\n  prefix clinical.med.prescribed \u003chttp://purl.translator.org/prov/clinical.med.prescribed\u003e\n  \n  entity(data, [prov:type\u003d\"data\", src\u003d\"\u003chttp://bio2rdf.org/\u003e\"])\n  entity(data, [prov:type\u003d\"data\", src\u003d\"c2b2r.drugbank\"])\n  entity(data, [prov:type\u003d\"data\", src\u003d\"c2b2r.ctd\"])\n  activity(clinical.med.prescribed, 2017-03-24T18:15:54, -)\n  activity(exposure.pm25-ozone, 2017-03-24T18:15:54, 2017-03-24T18:15:54)\nendDocument\n"
+            "data": "document\n  default \u003chttp://purl.translator.org/prov/\u003e\n  prefix exposure.pm25-ozone \u003chttp://purl.translator.org/prov/exposure.pm25-ozone\u003e\n  prefix enviro \u003chttp://purl.translator.org/prov/enviro\u003e\n  prefix medchem \u003chttp://purl.translator.org/prov/medchem\u003e\n  prefix clinical \u003chttp://purl.translator.org/prov/clinical\u003e\n  prefix clinical.med.prescribed \u003chttp://purl.translator.org/prov/clinical.med.prescribed\u003e\n  \n  entity(data, [prov:type\u003d\"data\", src\u003d\"\u003chttp://bio2rdf.org/\u003e\"])\n  entity(data, [prov:type\u003d\"data\", src\u003d\"c2b2r.drugbank\"])\n  entity(data, [prov:type\u003d\"data\", src\u003d\"c2b2r.ctd\"])\n  activity(clinical.med.prescribed, 2017-03-24T21:37:56, -)\n  activity(exposure.pm25-ozone, 2017-03-24T21:37:56, 2017-03-24T21:37:56)\nendDocument\n200\nTrue\n"
           }
         ]
       },
@@ -150,8 +150,8 @@
       "jobName": "paragraph_1490377578176_1075105290",
       "id": "20170324-134618_408304644",
       "dateCreated": "Mar 24, 2017 1:46:18 PM",
-      "dateStarted": "Mar 24, 2017 6:15:54 PM",
-      "dateFinished": "Mar 24, 2017 6:15:54 PM",
+      "dateStarted": "Mar 24, 2017 9:37:56 PM",
+      "dateFinished": "Mar 24, 2017 9:37:56 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
