@@ -112,9 +112,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%pyspark\n\ndef test ():\n    sparql_query \u003d \"\"\"\n    PREFIX db_resource:      \u003chttp://chem2bio2rdf.org/drugbank/resource/\u003e\n    PREFIX ctd_chem_disease: \u003chttp://chem2bio2rdf.org/ctd/resource/ctd_chem_disease/\u003e \n    PREFIX biordf:           \u003chttp://bio2rdf.org/\u003e\n    PREFIX ctd:              \u003chttp://chem2bio2rdf.org/ctd/resource/\u003e\n    SELECT DISTINCT ?chem_disease ?meshid ?compound ?drug\n    WHERE {\n      ?chem_disease ctd:diseaseid ?meshid .\n      ?chem_disease ctd:cid       ?compound .\n      ?drug         db_resource:CID ?compound\n    }\"\"\"\n\n    p \u003d TranslatorProvenance ()\n    p.parse_sparql (sparql_query)\n    start \u003d p.get_time ()\n    end \u003d p.get_time ()\n    p.add_algorithm (\u0027clinical.med.prescribed\u0027, start)\n    p.add_algorithm (\u0027exposure.pm25-ozone\u0027, start, end)\n    print (p)\n\n    import requests\n    exposure \u003d \u0027http://bdtgis.renci.org:9090/v1/exposures/pm25/scores?start_date\u003d1985-04-12\u0026end_date\u003d1985-04-13\u0026exposure_point\u003d35.720278%2C-79.176389\u0026temporal_resolution\u003dday\u0026score_type\u003d7dayrisk\u0027\n    r \u003d requests.get (exposure)\n    print (r.status_code)\n    print (r.json ())\n    \ntest ()\n",
+      "text": "%pyspark\n\ndef test ():\n    sparql_query \u003d \"\"\"\n    PREFIX db_resource:      \u003chttp://chem2bio2rdf.org/drugbank/resource/\u003e\n    PREFIX ctd_chem_disease: \u003chttp://chem2bio2rdf.org/ctd/resource/ctd_chem_disease/\u003e \n    PREFIX biordf:           \u003chttp://bio2rdf.org/\u003e\n    PREFIX ctd:              \u003chttp://chem2bio2rdf.org/ctd/resource/\u003e\n    SELECT DISTINCT ?chem_disease ?meshid ?compound ?drug\n    WHERE {\n      ?chem_disease ctd:diseaseid ?meshid .\n      ?chem_disease ctd:cid       ?compound .\n      ?drug         db_resource:CID ?compound\n    }\"\"\"\n\n    p \u003d TranslatorProvenance ()\n    p.parse_sparql (sparql_query)\n    start \u003d p.get_time ()\n    end \u003d p.get_time ()\n    p.add_algorithm (\u0027clinical.med.prescribed\u0027, start)\n    p.add_algorithm (\u0027exposure.pm25-ozone\u0027, start, end)\n    print (p)\n\n\ntest ()\n",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 24, 2017 9:37:56 PM",
+      "dateUpdated": "Mar 24, 2017 9:52:46 PM",
       "config": {
         "colWidth": 11.0,
         "enabled": true,
@@ -142,7 +142,7 @@
         "msg": [
           {
             "type": "TEXT",
-            "data": "document\n  default \u003chttp://purl.translator.org/prov/\u003e\n  prefix exposure.pm25-ozone \u003chttp://purl.translator.org/prov/exposure.pm25-ozone\u003e\n  prefix enviro \u003chttp://purl.translator.org/prov/enviro\u003e\n  prefix medchem \u003chttp://purl.translator.org/prov/medchem\u003e\n  prefix clinical \u003chttp://purl.translator.org/prov/clinical\u003e\n  prefix clinical.med.prescribed \u003chttp://purl.translator.org/prov/clinical.med.prescribed\u003e\n  \n  entity(data, [prov:type\u003d\"data\", src\u003d\"\u003chttp://bio2rdf.org/\u003e\"])\n  entity(data, [prov:type\u003d\"data\", src\u003d\"c2b2r.drugbank\"])\n  entity(data, [prov:type\u003d\"data\", src\u003d\"c2b2r.ctd\"])\n  activity(clinical.med.prescribed, 2017-03-24T21:37:56, -)\n  activity(exposure.pm25-ozone, 2017-03-24T21:37:56, 2017-03-24T21:37:56)\nendDocument\n200\nTrue\n"
+            "data": "document\n  default \u003chttp://purl.translator.org/prov/\u003e\n  prefix exposure.pm25-ozone \u003chttp://purl.translator.org/prov/exposure.pm25-ozone\u003e\n  prefix enviro \u003chttp://purl.translator.org/prov/enviro\u003e\n  prefix medchem \u003chttp://purl.translator.org/prov/medchem\u003e\n  prefix clinical \u003chttp://purl.translator.org/prov/clinical\u003e\n  prefix clinical.med.prescribed \u003chttp://purl.translator.org/prov/clinical.med.prescribed\u003e\n  \n  entity(data, [prov:type\u003d\"data\", src\u003d\"\u003chttp://bio2rdf.org/\u003e\"])\n  entity(data, [prov:type\u003d\"data\", src\u003d\"c2b2r.drugbank\"])\n  entity(data, [prov:type\u003d\"data\", src\u003d\"c2b2r.ctd\"])\n  activity(clinical.med.prescribed, 2017-03-24T21:52:46, -)\n  activity(exposure.pm25-ozone, 2017-03-24T21:52:46, 2017-03-24T21:52:46)\nendDocument\n"
           }
         ]
       },
@@ -150,24 +150,89 @@
       "jobName": "paragraph_1490377578176_1075105290",
       "id": "20170324-134618_408304644",
       "dateCreated": "Mar 24, 2017 1:46:18 PM",
-      "dateStarted": "Mar 24, 2017 9:37:56 PM",
-      "dateFinished": "Mar 24, 2017 9:37:56 PM",
+      "dateStarted": "Mar 24, 2017 9:52:46 PM",
+      "dateFinished": "Mar 24, 2017 9:52:46 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%pyspark\n\ndef provenance(original_function):\n    def new_function(*args, **kwargs):\n        original_function(*args, **kwargs)\n        print(\"Hello, solar system!\")\n    return new_function\n    \ndef provenance(provenance):\n    def provenance_aspect(function):\n        def wrapper(*args, **kwargs):\n            print (\u0027prov: {}\u0027.format (p))\n            function(*args, **kwargs)\n        return wrapper\n    return provenance_aspect\n",
+      "user": "ad\\scox",
+      "dateUpdated": "Mar 24, 2017 10:01:59 PM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python"
+        },
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "jobName": "paragraph_1490392173049_585653342",
+      "id": "20170324-174933_869005619",
+      "dateCreated": "Mar 24, 2017 5:49:33 PM",
+      "dateStarted": "Mar 24, 2017 10:01:59 PM",
+      "dateFinished": "Mar 24, 2017 10:01:59 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%pyspark\n\np \u003d TranslatorProvenance ()\nstart \u003d p.get_time ()\nend \u003d p.get_time ()\n#p.add_algorithm (\u0027clinical.med.prescribed\u0027, start)\n#p.add_algorithm (\u0027exposure.pm25-ozone\u0027, start, end)\n\n@provenance(provenance\u003dp)\ndef get_exposure ():\n    import requests\n    exposure \u003d \u0027http://bdtgis.renci.org:9090/v1/exposures/pm25/scores?start_date\u003d1985-04-12\u0026end_date\u003d2018-04-13\u0026exposure_point\u003d35.720278%2C-79.176389\u0026temporal_resolution\u003dday\u0026score_type\u003d7dayrisk\u0027\n    r \u003d requests.get (exposure)\n    print (r.status_code)\n    print (r.json ())\n    \n    print requests.post (\n        \"https://exposures.renci.org/v1/getExposureScore\",\n        data \u003d {\n          \"etime\": \"1985-04-12\",\n          \"exposure\": \"pm25\",\n          \"loc\": \"35.720278,-79.176389,Sa,35.731944,-78.852778,Su\",\n          \"stime\": \"1985-04-12\",\n          \"tres\": \"string\",\n          \"tscore\": \"string\"\n        }).json ()\nget_exposure ()\n\nprint (p)\n    ",
+      "user": "ad\\scox",
+      "dateUpdated": "Mar 24, 2017 10:02:00 PM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python"
+        },
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "prov: document\n  default \u003chttp://purl.translator.org/prov/\u003e\n  prefix exposure.pm25-ozone \u003chttp://purl.translator.org/prov/exposure.pm25-ozone\u003e\n  prefix enviro \u003chttp://purl.translator.org/prov/enviro\u003e\n  prefix medchem \u003chttp://purl.translator.org/prov/medchem\u003e\n  prefix clinical \u003chttp://purl.translator.org/prov/clinical\u003e\n  prefix clinical.med.prescribed \u003chttp://purl.translator.org/prov/clinical.med.prescribed\u003e\n  \nendDocument\n200\nTrue\n{u\u0027data\u0027: [{u\u0027end-time\u0027: 0, u\u0027start-time\u0027: 0, u\u0027value\u0027: 16}]}\ndocument\n  default \u003chttp://purl.translator.org/prov/\u003e\n  prefix exposure.pm25-ozone \u003chttp://purl.translator.org/prov/exposure.pm25-ozone\u003e\n  prefix enviro \u003chttp://purl.translator.org/prov/enviro\u003e\n  prefix medchem \u003chttp://purl.translator.org/prov/medchem\u003e\n  prefix clinical \u003chttp://purl.translator.org/prov/clinical\u003e\n  prefix clinical.med.prescribed \u003chttp://purl.translator.org/prov/clinical.med.prescribed\u003e\n  \nendDocument\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1490406769603_1276988731",
+      "id": "20170324-215249_538470017",
+      "dateCreated": "Mar 24, 2017 9:52:49 PM",
+      "dateStarted": "Mar 24, 2017 10:02:00 PM",
+      "dateFinished": "Mar 24, 2017 10:02:00 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%pyspark\n",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 24, 2017 5:49:33 PM",
+      "dateUpdated": "Mar 24, 2017 9:54:07 PM",
       "config": {},
       "settings": {
         "params": {},
         "forms": {}
       },
       "apps": [],
-      "jobName": "paragraph_1490392173049_585653342",
-      "id": "20170324-174933_869005619",
-      "dateCreated": "Mar 24, 2017 5:49:33 PM",
+      "jobName": "paragraph_1490406847132_-926560165",
+      "id": "20170324-215407_689501181",
+      "dateCreated": "Mar 24, 2017 9:54:07 PM",
       "status": "READY",
       "progressUpdateIntervalMs": 500
     }
