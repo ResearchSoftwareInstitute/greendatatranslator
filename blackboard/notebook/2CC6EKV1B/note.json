@@ -25,9 +25,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%pyspark\nimport prov.model as prov\nimport re\nfrom datetime import datetime\nfrom datetime import date\n\nclass QueryResponseProvenance(object):\n    \"\"\" Abstract W3C PROV model of the provenance of components of a complex query. \"\"\"\n    def __init__(self, default_ns, namespaces\u003d[]):\n        \"\"\" Specify a default namespace and associated sub namespaces \"\"\"\n        self.document \u003d prov.ProvDocument ()\n        self.default_ns \u003d default_ns\n        self.document.set_default_namespace (self.default_ns)\n        self.namespaces \u003d namespaces\n        self.subspaces \u003d {}\n        for namespace in self.namespaces:\n            self.subspaces[namespace] \u003d self.add_namespace (self.default_ns, namespace)\n    def add_namespace (self, root, qualifier):\n        subspace \u003d \"{0}{1}\".format (root, qualifier)\n        self.document.add_namespace (qualifier, subspace)\n        return subspace\n    def add_entity (self, name, tuples):\n        self.document.entity (name, tuples)\n    def add_data_source (self, name, entity):\n        self.entity (name, entity.to_tuple ())\n    def add_algorithm (self, name, start, end\u003dNone):\n        assert name in self.namespaces, \"Name must be in list of namespaces\"\n        if end:\n            self.document.activity (name, start, end)\n        else:\n            self.document.activity (name, start)\n    def get_time (self):\n        return datetime.now ().strftime (\"%Y-%m-%dT%H:%M:%S\")\n    def __str__(self):\n        return self.__repr__()\n    def __repr__(self):\n        return self.document.get_provn ()\n        \np \u003d QueryResponseProvenance (\u0027http://purl.some.ns/\u0027, [ \u0027a\u0027, \u0027b\u0027, \u0027c\u0027 ])\n\nclass AbstractEntity(object):\n    def __init__(self, type, namespace, attributes\u003d[]):\n        self.attributes \u003d []\n        self.namespace \u003d namespace\n        self.attr_keys \u003d {}\n        self.add_attribute (prov.PROV_TYPE, type)\n        for a in attributes:\n            assert len(a) \u003d\u003d 2, \"Attribute components must be len\u003d\u003d2 arrays\"\n            self.add_attribute (a[0], a[1])\n    def add_attribute (self, iri, value):\n        key \u003d \u0027{0}@{1}\u0027.format (iri, value)\n        if not key in self.attr_keys:\n            self.attributes.append ((iri, value))\n            self.attr_keys[key] \u003d 1\n    def to_tuple (self):\n        return tuple(self.attributes)\n\ne \u003d AbstractEntity (\u0027SomeType\u0027, \u0027http://purl.some.ns/ae\u0027, )\ne.add_attribute (\u0027ds0\u0027, \u0027\u003chttp://all.ds.org/\u0027)\ne.add_attribute (\u0027ds1\u0027, \u0027\u003chttp://all.ds.org/\u0027)\np.add_entity (\u0027e\u0027, e.to_tuple ())\nprint (p.document.get_provn ())",
+      "text": "%pyspark\nimport prov.model as prov\nfrom datetime import datetime\nfrom datetime import date\n\nclass QueryResponseProvenance(object):\n    \"\"\" Abstract W3C PROV model of the provenance of components of a complex query. \"\"\"\n    def __init__(self, default_ns, namespaces\u003d[]):\n        \"\"\" Specify a default namespace and associated sub namespaces \"\"\"\n        self.document \u003d prov.ProvDocument ()\n        self.default_ns \u003d default_ns\n        self.document.set_default_namespace (self.default_ns)\n        self.namespaces \u003d namespaces\n        self.subspaces \u003d {}\n        for namespace in self.namespaces:\n            self.subspaces[namespace] \u003d self.add_namespace (self.default_ns, namespace)\n    def add_namespace (self, root, qualifier):\n        subspace \u003d \"{0}{1}\".format (root, qualifier)\n        self.document.add_namespace (qualifier, subspace)\n        return subspace\n    def add_entity (self, name, tuples):\n        self.document.entity (name, tuples)\n    def add_data_source (self, name, entity):\n        self.entity (name, entity.to_tuple ())\n    def add_algorithm (self, name, start, end\u003dNone):\n        assert name in self.namespaces, \"Name must be in list of namespaces\"\n        if end:\n            self.document.activity (name, start, end)\n        else:\n            self.document.activity (name, start)\n    def get_time (self):\n        return datetime.now ().strftime (\"%Y-%m-%dT%H:%M:%S\")\n    def __str__(self):\n        return self.__repr__()\n    def __repr__(self):\n        return self.document.get_provn ()\n        \np \u003d QueryResponseProvenance (\u0027http://purl.some.ns/\u0027, [ \u0027a\u0027, \u0027b\u0027, \u0027c\u0027 ])\n\nclass AbstractEntity(object):\n    def __init__(self, type, namespace, attributes\u003d[]):\n        self.attributes \u003d []\n        self.namespace \u003d namespace\n        self.attr_keys \u003d {}\n        self.add_attribute (prov.PROV_TYPE, type)\n        for a in attributes:\n            assert len(a) \u003d\u003d 2, \"Attribute components must be len\u003d\u003d2 arrays\"\n            self.add_attribute (a[0], a[1])\n    def add_attribute (self, iri, value):\n        key \u003d \u0027{0}@{1}\u0027.format (iri, value)\n        if not key in self.attr_keys:\n            self.attributes.append ((iri, value))\n            self.attr_keys[key] \u003d 1\n    def to_tuple (self):\n        return tuple(self.attributes)\n\ne \u003d AbstractEntity (\u0027SomeType\u0027, \u0027http://purl.some.ns/ae\u0027, )\ne.add_attribute (\u0027ds0\u0027, \u0027\u003chttp://all.ds.org/\u0027)\ne.add_attribute (\u0027ds1\u0027, \u0027\u003chttp://all.ds.org/\u0027)\np.add_entity (\u0027e\u0027, e.to_tuple ())\nprint (p.document.get_provn ())",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 25, 2017 8:42:32 AM",
+      "dateUpdated": "Mar 25, 2017 9:17:05 PM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -54,15 +54,15 @@
       "jobName": "paragraph_1490388079769_-1478794288",
       "id": "20170324-164119_865549647",
       "dateCreated": "Mar 24, 2017 4:41:19 PM",
-      "dateStarted": "Mar 25, 2017 8:42:32 AM",
-      "dateFinished": "Mar 25, 2017 8:42:47 AM",
+      "dateStarted": "Mar 25, 2017 9:17:05 PM",
+      "dateFinished": "Mar 25, 2017 9:17:05 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%pyspark\n\n\u0027\u0027\u0027 DataLake Support \u0027\u0027\u0027\nclass DataLakeProvenance(QueryResponseProvenance):\n    PREFIX \u003d re.compile (\u0027^prefix \u0027, re.I)\n    def __init__(self, default_ns, namespaces\u003d[]):\n        QueryResponseProvenance.__init__(self, default_ns, namespaces)\n\n    def parse_sparql (self, text, source_map, type\u003d\"data\"):\n        sources \u003d {}\n        for line in text.split (\u0027\\n\u0027):\n            line \u003d \u0027 \u0027.join (line.strip ().split ())\n            match \u003d self.PREFIX.match (line)\n            if match is None:\n                continue\n            if True:\n                parts \u003d line.strip().split (\u0027 \u0027)\n                if len(parts) \u003e\u003d 3:\n                    iri \u003d parts[2].strip ()\n                    e \u003d None\n                    for k, v in source_map.iteritems ():\n                        if k in iri:\n                            if v in sources:\n                                e \u003d sources[v]\n                            else:\n                                e \u003d AbstractEntity (type, \u0027{0}{1}\u0027.format (self.default_ns, v))\n                                sources[v] \u003d e\n                            e.add_attribute (\u0027src\u0027, v)\n                    if e is None:\n                        e \u003d AbstractEntity (type, \u0027http://purl.data.org/\u0027)\n                        e.add_attribute (\u0027src\u0027, iri)\n                        self.add_entity (\u0027data\u0027, e.to_tuple ())\n        for k, v in sources.iteritems ():\n            self.add_entity (\u0027data\u0027, v.to_tuple ())",
+      "text": "%pyspark\nimport re\n\n\u0027\u0027\u0027 DataLake Support \u0027\u0027\u0027\nclass DataLakeProvenance(QueryResponseProvenance):\n    PREFIX \u003d re.compile (\u0027^prefix \u0027, re.I)\n    def __init__(self, default_ns, namespaces\u003d[]):\n        QueryResponseProvenance.__init__(self, default_ns, namespaces)\n\n    def parse_sparql (self, text, source_map, type\u003d\"data\"):\n        sources \u003d {}\n        for line in text.split (\u0027\\n\u0027):\n            line \u003d \u0027 \u0027.join (line.strip ().split ())\n            match \u003d self.PREFIX.match (line)\n            if match is None:\n                continue\n            if True:\n                parts \u003d line.strip().split (\u0027 \u0027)\n                if len(parts) \u003e\u003d 3:\n                    iri \u003d parts[2].strip ()\n                    e \u003d None\n                    for k, v in source_map.iteritems ():\n                        if k in iri:\n                            if v in sources:\n                                e \u003d sources[v]\n                            else:\n                                e \u003d AbstractEntity (type, \u0027{0}{1}\u0027.format (self.default_ns, v))\n                                sources[v] \u003d e\n                            e.add_attribute (\u0027src\u0027, v)\n                    if e is None:\n                        e \u003d AbstractEntity (type, \u0027http://purl.data.org/\u0027)\n                        e.add_attribute (\u0027src\u0027, iri)\n                        self.add_entity (\u0027data\u0027, e.to_tuple ())\n        for k, v in sources.iteritems ():\n            self.add_entity (\u0027data\u0027, v.to_tuple ())",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 25, 2017 11:00:03 AM",
+      "dateUpdated": "Mar 25, 2017 9:17:14 PM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -84,15 +84,15 @@
       "jobName": "paragraph_1490393461101_-181500383",
       "id": "20170324-181101_1881040132",
       "dateCreated": "Mar 24, 2017 6:11:01 PM",
-      "dateStarted": "Mar 25, 2017 11:00:03 AM",
-      "dateFinished": "Mar 25, 2017 11:00:03 AM",
+      "dateStarted": "Mar 25, 2017 9:17:15 PM",
+      "dateFinished": "Mar 25, 2017 9:17:15 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%pyspark\nclass GreenTranslatorProvenance (DataLakeProvenance):\n    def __init__(self):\n        DataLakeProvenance.__init__(\n            self,\n            default_ns \u003d \u0027http://purl.translator.org/prov/\u0027,\n            namespaces \u003d [\n                \u0027clinical\u0027, \u0027enviro\u0027, \u0027medbiochem\u0027,                            # data sources\n                \u0027exposure.pm25-ozone\u0027, \u0027clinical.med.prescribed\u0027, \u0027blazegraph\u0027 # algorithms / assumptions\n            ])\n    def parse_sparql (self, query):\n        super(GreenTranslatorProvenance, self).parse_sparql (\n            query,\n            source_map \u003d {\n                \u0027\u003chttp://chem2bio2rdf.org/ctd/\u0027 : \u0027c2b2r.ctd\u0027,\n                \u0027GO_\u0027 : \u0027GO\u0027,\n                \u0027\u003chttp://chem2bio2rdf.org/drugbank\u0027 : \u0027c2b2r.drugbank\u0027,\n                \u0027monarch\u0027 : \u0027monarch\u0027\n            },\n            type\u003d\"medbiochem:data\")",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 25, 2017 11:55:49 AM",
+      "dateUpdated": "Mar 25, 2017 9:17:24 PM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -114,15 +114,15 @@
       "jobName": "paragraph_1490393482161_1559534362",
       "id": "20170324-181122_2102261765",
       "dateCreated": "Mar 24, 2017 6:11:22 PM",
-      "dateStarted": "Mar 25, 2017 11:55:49 AM",
-      "dateFinished": "Mar 25, 2017 11:55:49 AM",
+      "dateStarted": "Mar 25, 2017 9:17:24 PM",
+      "dateFinished": "Mar 25, 2017 9:17:24 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%pyspark\n\nsparql_query \u003d \"\"\"\nPREFIX db_resource:      \u003chttp://chem2bio2rdf.org/drugbank/resource/\u003e\nPREFIX ctd_chem_disease: \u003chttp://chem2bio2rdf.org/ctd/resource/ctd_chem_disease/\u003e \nPREFIX biordf:           \u003chttp://bio2rdf.org/\u003e\nPREFIX ctd:              \u003chttp://chem2bio2rdf.org/ctd/resource/\u003e\nSELECT DISTINCT ?chem_disease ?meshid ?compound ?drug\nWHERE {\n  ?chem_disease ctd:diseaseid ?meshid .\n  ?chem_disease ctd:cid       ?compound .\n  ?drug         db_resource:CID ?compound\n}\"\"\"\n\ndef test ():\n    p \u003d GreenTranslatorProvenance ()\n    p.parse_sparql (sparql_query)\n    start \u003d p.get_time ()\n    end \u003d p.get_time ()\n    p.add_algorithm (\u0027clinical.med.prescribed\u0027, start)\n    p.add_algorithm (\u0027exposure.pm25-ozone\u0027, start, end)\n    print (p)\n\ntest ()\n",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 25, 2017 11:55:52 AM",
+      "dateUpdated": "Mar 25, 2017 9:16:22 PM",
       "config": {
         "colWidth": 11.0,
         "enabled": true,
@@ -139,7 +139,7 @@
           "language": "python"
         },
         "editorMode": "ace/mode/python",
-        "lineNumbers": true
+        "lineNumbers": false
       },
       "settings": {
         "params": {},
