@@ -104,18 +104,51 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%pyspark\n",
+      "text": "PREFIX rdf: \u003chttp://www.w3.org/1999/02/22-rdf-syntax-ns#\u003e \nPREFIX rdfs: \u003chttp://www.w3.org/2000/01/rdf-schema#\u003e \nPREFIX xsd: \u003chttp://www.w3.org/2001/XMLSchema#\u003e \nPREFIX owl: \u003chttp://www.w3.org/2002/07/owl#\u003e \nPREFIX obo: \u003chttp://purl.obolibrary.org/obo/\u003e \nPREFIX cebs: \u003chttp://cebs.niehs.nih.gov/cebs/\u003e \nPREFIX sift: \u003chttp://cebs.niehs.nih.gov/sift/\u003e \n\nSELECT DISTINCT ?subject ?subject_label (STR(?organ_type_label) as ?organ_name) (STR(?morphology_type_label) as ?morphology_name) \nWHERE { VALUES ?organ_root { obo:UBERON_0013765 # digestive system element obo:UBERON_0000020 # sense organ } \nGRAPH ?m1 { ?subject a cebs:subject; rdfs:label ?subject_label . ?organ a ?organ_type ; obo:BFO_0000050 ?subject . # part of } \nGRAPH ?m2 { ?morphology a ?morphology_type ; rdfs:label ?morphology_label ; obo:RO_0000052 ?organ . # inheres in } \nGRAPH sift:ontology { ?organ_type rdfs:subClassOf* ?organ_root ; rdfs:label ?organ_type_label . ?morphology_type rdfs:label ?morphology_type_label . } } LIMIT 100",
       "user": "ad\\cschmitt",
-      "dateUpdated": "Feb 23, 2017 10:55:31 PM",
+      "dateUpdated": "Mar 27, 2017 5:02:09 PM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala"
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "ERROR",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\n\n\n\u003cconsole\u003e:1: error: identifier expected but $XMLSTART$\u003c found.\nPREFIX rdf: \u003chttp://www.w3.org/1999/02/22-rdf-syntax-ns#\u003e\n            ^\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1487908531226_2143871595",
+      "id": "20170223-225531_877424851",
+      "dateCreated": "Feb 23, 2017 10:55:31 PM",
+      "dateStarted": "Mar 27, 2017 5:02:09 PM",
+      "dateFinished": "Mar 27, 2017 5:02:09 PM",
+      "status": "ERROR",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "user": "ad\\cschmitt",
       "config": {},
       "settings": {
         "params": {},
         "forms": {}
       },
       "apps": [],
-      "jobName": "paragraph_1487908531226_2143871595",
-      "id": "20170223-225531_877424851",
-      "dateCreated": "Feb 23, 2017 10:55:31 PM",
+      "jobName": "paragraph_1490648403971_676045370",
+      "id": "20170327-170003_141240038",
+      "dateCreated": "Mar 27, 2017 5:00:03 PM",
       "status": "READY",
       "progressUpdateIntervalMs": 500
     }
@@ -143,6 +176,8 @@
     "2C8K1VZ6J:shared_process": [],
     "2CA9JMF94:shared_process": []
   },
-  "config": {},
+  "config": {
+    "personalizedMode": "true"
+  },
   "info": {}
 }
