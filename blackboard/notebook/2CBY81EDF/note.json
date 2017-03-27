@@ -3,7 +3,7 @@
     {
       "text": "%pyspark\nprint (\"x\")",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 13, 2017 10:05:49 PM",
+      "dateUpdated": "Mar 27, 2017 1:59:31 PM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -30,8 +30,8 @@
       "jobName": "paragraph_1489457139225_1227332443",
       "id": "20170313-220539_338125202",
       "dateCreated": "Mar 13, 2017 10:05:39 PM",
-      "dateStarted": "Mar 13, 2017 10:05:49 PM",
-      "dateFinished": "Mar 13, 2017 10:06:08 PM",
+      "dateStarted": "Mar 27, 2017 1:59:31 PM",
+      "dateFinished": "Mar 27, 2017 1:59:31 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -52,7 +52,7 @@
       "progressUpdateIntervalMs": 500
     }
   ],
-  "name": "/evryscope/Test",
+  "name": "/evryscope/Curves",
   "id": "2CBY81EDF",
   "angularObjects": {
     "2C8PNVW4G:shared_process": [],
@@ -75,6 +75,9 @@
     "2C8K1VZ6J:shared_process": [],
     "2CA9JMF94:shared_process": []
   },
-  "config": {},
+  "config": {
+    "looknfeel": "default",
+    "personalizedMode": "false"
+  },
   "info": {}
 }
