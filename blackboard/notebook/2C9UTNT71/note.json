@@ -2,8 +2,8 @@
   "paragraphs": [
     {
       "text": "%pyspark\nfrom string import Template\nfrom collections import defaultdict\nfrom SPARQLWrapper import SPARQLWrapper, JSON\n#import matplotlib.pyplot as plt\n#import seaborn as sns\n\n#import urllib2\n#proxy \u003d urllib2.ProxyHandler({\u0027http\u0027: \u0027gateway.ad.renci.org:8080\u0027})\n#opener \u003d urllib2.build_opener(proxy)\n#urllib2.install_opener(opener)\n\nblazegraph_uri \u003d \"http://stars-blazegraph.renci.org/bigdata/sparql\"\nblazegraph \u003d SPARQLWrapper (blazegraph_uri)\ndef query_sparql (query, service\u003dblazegraph):\n    service.setQuery (query)\n    service.setReturnFormat (JSON)\n    return service.query().convert ()\n    \nquery \u003d Template (\"\"\"\nPREFIX db_resource: \u003chttp://chem2bio2rdf.org/drugbank/resource/\u003e\nSELECT ?generic_name ?protein\nWHERE {\n  ?interaction db_resource:SwissProt_ID ?protein .\n  ?interaction db_resource:DBID         ?drug .\n  ?drug        db_resource:Generic_Name ?generic_name .\n  FILTER regex(?generic_name, \"${drugs}\", \"i\")\n}\"\"\")\ndrug_list \u003d \"Creatine|Baclofen|Amlodipine|Brimonidine|Acetaminophen|Aspirin\"\nresults \u003d query_sparql ( query.substitute (drugs\u003ddrug_list))",
-      "user": "ad\\scox",
-      "dateUpdated": "Mar 6, 2017 1:39:07 PM",
+      "user": "ad\\hongyi",
+      "dateUpdated": "Mar 27, 2017 10:25:24 AM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -25,8 +25,8 @@
       "jobName": "paragraph_1487641452141_-374648616",
       "id": "20170220-204412_131187424",
       "dateCreated": "Feb 20, 2017 8:44:12 PM",
-      "dateStarted": "Mar 6, 2017 1:39:07 PM",
-      "dateFinished": "Mar 6, 2017 1:39:07 PM",
+      "dateStarted": "Mar 27, 2017 10:25:24 AM",
+      "dateFinished": "Mar 27, 2017 10:25:40 AM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -101,8 +101,8 @@
     },
     {
       "text": "%pyspark\nimport json\nnodes \u003d [ \u0027{ \"id\": \"root\", \"group\": 1 }\u0027 ]\nlinks \u003d []\nfor p in protein_drug:\n    nodes.append (\u0027{{ \"id\": \"{0}\", \"group\": 1, \"size\" : {1} }}\u0027.format (p, len(protein_drug[p])))\n    links.append (\u0027{{ \"source\": \"{0}\", \"target\": \"root\", \"value\": 1 }}\u0027.format (p))\n    for d in protein_drug[p]:\n        nodes.append (\u0027{{ \"id\": \"{0}\", \"group\": 1 }}\u0027.format (d))\n        links.append (\u0027{{ \"source\": \"{0}\", \"target\": \"root\", \"value\": 1 }}\u0027.format (d))\n        links.append (\u0027{{ \"source\": \"{0}\", \"target\": \"{1}\", \"value\": 1 }}\u0027.format (p, d))\n\ntext \u003d Template (\"\"\"\n\u003cmeta charset\u003d\"utf-8\"\u003e\n\u003cstyle\u003e\n.links line {\n  stroke: #999;\n  stroke-opacity: 0.6;\n}\n.nodes circle {\n  stroke: #fff;\n  stroke-width: 1.5px;\n}\n.node text {\n  pointer-events: none;\n  font: 10px sans-serif;\n}\n\u003c/style\u003e\n\u003csvg width\u003d\"200\" height\u003d\"200\"\u003e\u003c/svg\u003e\n\u003cscript src\u003d\"https://d3js.org/d3.v4.min.js\"\u003e\u003c/script\u003e\n\u003cscript\u003e\n    var svg \u003d d3.select(\"svg\"),\n        width \u003d +svg.attr(\"width\"),\n        height \u003d +svg.attr(\"height\");\n    var color \u003d d3.scaleOrdinal(d3.schemeCategory20);\n    var simulation \u003d d3.forceSimulation()\n        .force(\"link\", d3.forceLink().id(function(d) { return d.id; }))\n        .force(\"charge\", d3.forceManyBody())\n        .force(\"center\", d3.forceCenter(width / 2, height / 2));\n\n    var graph \u003d {\n        nodes : [\n            ${nodes}\n        ],\n        links : [\n            ${links}\n        ]\n    };\n    var link \u003d svg.append(\"g\")\n        .attr(\"class\", \"links\")\n        .selectAll(\"line\")\n        .data(graph.links)\n        .enter().append(\"line\")\n        .attr(\"stroke-width\", function(d) { return Math.sqrt(d.value); });\n    var node \u003d svg.append(\"g\")\n        .attr(\"class\", \"nodes\")\n        .selectAll(\"circle\")\n        .data(graph.nodes)\n        .enter().append(\"circle\")\n        .attr(\"r\", 5)\n        .attr(\"fill\", function(d) { return color(d.group); })\n        .call(d3.drag()\n        .on(\"start\", dragstarted)\n        .on(\"drag\", dragged)\n        .on(\"end\", dragended));\n    node.append(\"title\")\n        .text(function(d) { return d.id; });\n    \n    node.append(\"text\")\n        .attr(\"dx\", 12)\n        .attr(\"dy\", \".35em\")\n        .text(function(d) { return d.id });\n      \n    simulation\n        .nodes(graph.nodes)\n        .on(\"tick\", ticked);\n    simulation.force(\"link\")\n        .links(graph.links);\n    function ticked() {\n        link\n            .attr(\"x1\", function(d) { return d.source.x; })\n            .attr(\"y1\", function(d) { return d.source.y; })\n            .attr(\"x2\", function(d) { return d.target.x; })\n            .attr(\"y2\", function(d) { return d.target.y; });\n        node\n            .attr(\"cx\", function(d) { return d.x; })\n            .attr(\"cy\", function(d) { return d.y; });\n    }\n\nfunction dragstarted(d) {\n  if (!d3.event.active) simulation.alphaTarget(0.3).restart();\n  d.fx \u003d d.x;\n  d.fy \u003d d.y;\n}\n\nfunction dragged(d) {\n  d.fx \u003d d3.event.x;\n  d.fy \u003d d3.event.y;\n}\n\nfunction dragended(d) {\n  if (!d3.event.active) simulation.alphaTarget(0);\n  d.fx \u003d null;\n  d.fy \u003d null;\n}\n\n\u003c/script\u003e\n\u003cp\u003ehi\u003c/p\u003e\"\"\").safe_substitute (\n    nodes\u003d\",\\n\".join (nodes),\n    links \u003d \",\\n\".join (links)\n)\nprint (\"%html {0}\".format (text))",
-      "user": "ad\\scox",
-      "dateUpdated": "Mar 10, 2017 1:31:02 PM",
+      "user": "ad\\hongyi",
+      "dateUpdated": "Mar 27, 2017 10:39:46 AM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -121,7 +121,7 @@
         "msg": [
           {
             "type": "TEXT",
-            "data": "Traceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-7826051971645887731.py\", line 346, in \u003cmodule\u003e\n    raise Exception(traceback.format_exc())\nException: Traceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-7826051971645887731.py\", line 334, in \u003cmodule\u003e\n    exec(code)\n  File \"\u003cstdin\u003e\", line 4, in \u003cmodule\u003e\nNameError: name \u0027protein_drug\u0027 is not defined\n\n"
+            "data": "Traceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-2407525085945386422.py\", line 346, in \u003cmodule\u003e\n    raise Exception(traceback.format_exc())\nException: Traceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-2407525085945386422.py\", line 334, in \u003cmodule\u003e\n    exec(code)\n  File \"\u003cstdin\u003e\", line 4, in \u003cmodule\u003e\nNameError: name \u0027protein_drug\u0027 is not defined\n\n"
           }
         ]
       },
@@ -129,8 +129,8 @@
       "jobName": "paragraph_1487641239378_92145389",
       "id": "20170220-204039_2094760541",
       "dateCreated": "Feb 20, 2017 8:40:39 PM",
-      "dateStarted": "Mar 10, 2017 1:31:02 PM",
-      "dateFinished": "Mar 10, 2017 1:31:18 PM",
+      "dateStarted": "Mar 27, 2017 10:39:46 AM",
+      "dateFinished": "Mar 27, 2017 10:39:47 AM",
       "status": "ERROR",
       "progressUpdateIntervalMs": 500
     },
