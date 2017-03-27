@@ -79,9 +79,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%pyspark\nstarlight.render (\n    starlight.service.force (\n        conn\u003dlink_list,\n        labels\u003dnode_labels),\n    width\u003d900, height\u003d600)",
+      "text": "%pyspark\nstarlight.render (\n    starlight.service.force (\n        conn\u003dlink_list,\n        labels\u003dnode_labels),\n    width\u003d600, height\u003d300)",
       "user": "ad\\hongyi",
-      "dateUpdated": "Mar 25, 2017 5:51:49 PM",
+      "dateUpdated": "Mar 27, 2017 9:35:50 AM",
       "config": {
         "enabled": true,
         "editorMode": "ace/mode/python",
@@ -101,7 +101,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003ciframe src\u003d\"https://stars-lightning.renci.org/visualizations/8f573f68-94e7-47ae-9e06-d6995b20fbf2/iframe\" width\u003d\"900\" height\u003d\"600\" \u003e\n"
+            "data": "\u003ciframe src\u003d\"https://stars-lightning.renci.org/visualizations/eaa0f861-9ce4-4f72-b6bf-4f9950b270a8/iframe\" width\u003d\"600\" height\u003d\"300\" \u003e\n"
           }
         ]
       },
@@ -109,8 +109,8 @@
       "jobName": "paragraph_1489786791864_-1083763702",
       "id": "20170314-143043_998819232",
       "dateCreated": "Mar 17, 2017 5:39:51 PM",
-      "dateStarted": "Mar 25, 2017 5:51:49 PM",
-      "dateFinished": "Mar 25, 2017 5:51:50 PM",
+      "dateStarted": "Mar 27, 2017 9:35:50 AM",
+      "dateFinished": "Mar 27, 2017 9:35:50 AM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
