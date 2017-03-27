@@ -81,7 +81,7 @@
     {
       "text": "%pyspark\nfrom numpy import random\nmatrix \u003d random.rand(50,50)\nmatrix[matrix \u003c 0.75] \u003d 0\ngroup \u003d (random.rand(10) * 5).astype(\u0027int\u0027)\nlabels\u003d[str(t) for t in range(0,50)]\n\nstarlight.render (\n    vis \u003d starlight.service.adjacency(\n        matrix,\n        group\u003dgroup,\n        labels\u003dlabels,\n        numbers\u003dTrue,\n        sort\u003d\"group\",\n        height\u003d700,\n        width\u003d700),\n    width \u003d 800, height\u003d800)",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 15, 2017 10:10:59 AM",
+      "dateUpdated": "Mar 27, 2017 3:06:05 PM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -96,11 +96,11 @@
         "forms": {}
       },
       "results": {
-        "code": "SUCCESS",
+        "code": "ERROR",
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003ciframe src\u003d\"https://stars-lightning.renci.org/visualizations/4ff9268e-52e2-4224-8ed7-f3d234ee9da3/iframe\" width\u003d\"800\" height\u003d\"800\" \u003e\n"
+            "type": "TEXT",
+            "data": "Traceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-7142529863681084184.py\", line 346, in \u003cmodule\u003e\n    raise Exception(traceback.format_exc())\nException: Traceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-7142529863681084184.py\", line 339, in \u003cmodule\u003e\n    exec(code)\n  File \"\u003cstdin\u003e\", line 6, in \u003cmodule\u003e\nNameError: name \u0027starlight\u0027 is not defined\n\n"
           }
         ]
       },
@@ -108,9 +108,9 @@
       "jobName": "paragraph_1489516243330_904889327",
       "id": "20170314-143043_998819232",
       "dateCreated": "Mar 14, 2017 2:30:43 PM",
-      "dateStarted": "Mar 15, 2017 10:10:59 AM",
-      "dateFinished": "Mar 15, 2017 10:10:59 AM",
-      "status": "FINISHED",
+      "dateStarted": "Mar 27, 2017 3:06:05 PM",
+      "dateFinished": "Mar 27, 2017 3:06:29 PM",
+      "status": "ERROR",
       "progressUpdateIntervalMs": 500
     },
     {
