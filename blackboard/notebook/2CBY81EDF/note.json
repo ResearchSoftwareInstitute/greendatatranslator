@@ -36,9 +36,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n\nID         SYSREMMAG          SYSREMEPOCHS          SYSREMERR\nbigint,   \"{1.2, ... 2.2, 3.3}\",     \"{1.2, ... 2.2, 3.3}\",          \"{1.2, ... 2.2, 3.3}\" \n \nThe first number is just an ID from a catalog, and the remaining three columns are arrays of floats, each of which will be several thousand items long. There should be 4,400,674 rows in total.just let me know if you have any issues with it.\n\n",
+      "text": "%md\n\n| ID      | SYSREMMAG             | SYSREMEPOCHS          | SYSREMERR               |\n|---------|:---------------------:|-----------------------|-------------------------|\n| bigint  | \"{1.2, ... 2.2, 3.3}\" | \"{1.2, ... 2.2, 3.3}\" | \"{1.2, ... 2.2, 3.3}\"   |\n",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 27, 2017 8:09:09 PM",
+      "dateUpdated": "Mar 27, 2017 8:17:44 PM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -48,8 +48,8 @@
           "editOnDblClick": true
         },
         "editorMode": "ace/mode/markdown",
-        "editorHide": false,
-        "tableHide": true
+        "editorHide": true,
+        "tableHide": false
       },
       "settings": {
         "params": {},
@@ -60,7 +60,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003eID SYSREMMAG SYSREMEPOCHS SYSREMERR\u003cbr/\u003ebigint, \u0026ldquo;{1.2, \u0026hellip; 2.2, 3.3}\u0026rdquo;, \u0026ldquo;{1.2, \u0026hellip; 2.2, 3.3}\u0026rdquo;, \u0026ldquo;{1.2, \u0026hellip; 2.2, 3.3}\u0026rdquo; \u003c/p\u003e\n\u003cp\u003eThe first number is just an ID from a catalog, and the remaining three columns are arrays of floats, each of which will be several thousand items long. There should be 4,400,674 rows in total.just let me know if you have any issues with it.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ctable\u003e\n  \u003cthead\u003e\n    \u003ctr\u003e\n      \u003cth\u003eID \u003c/th\u003e\n      \u003cth align\u003d\"center\"\u003eSYSREMMAG \u003c/th\u003e\n      \u003cth\u003eSYSREMEPOCHS \u003c/th\u003e\n      \u003cth\u003eSYSREMERR \u003c/th\u003e\n    \u003c/tr\u003e\n  \u003c/thead\u003e\n  \u003ctbody\u003e\n    \u003ctr\u003e\n      \u003ctd\u003ebigint \u003c/td\u003e\n      \u003ctd align\u003d\"center\"\u003e\u0026ldquo;{1.2, \u0026hellip; 2.2, 3.3}\u0026rdquo; \u003c/td\u003e\n      \u003ctd\u003e\u0026ldquo;{1.2, \u0026hellip; 2.2, 3.3}\u0026rdquo; \u003c/td\u003e\n      \u003ctd\u003e\u0026ldquo;{1.2, \u0026hellip; 2.2, 3.3}\u0026rdquo; \u003c/td\u003e\n    \u003c/tr\u003e\n  \u003c/tbody\u003e\n\u003c/table\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -68,8 +68,8 @@
       "jobName": "paragraph_1490659714532_720150966",
       "id": "20170327-200834_1009194881",
       "dateCreated": "Mar 27, 2017 8:08:34 PM",
-      "dateStarted": "Mar 27, 2017 8:09:03 PM",
-      "dateFinished": "Mar 27, 2017 8:09:05 PM",
+      "dateStarted": "Mar 27, 2017 8:17:44 PM",
+      "dateFinished": "Mar 27, 2017 8:17:44 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -90,26 +90,35 @@
         "params": {},
         "forms": {}
       },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "4400635\n"
+          }
+        ]
+      },
       "apps": [],
       "jobName": "paragraph_1489457149757_-1051920041",
       "id": "20170313-220549_1392032504",
       "dateCreated": "Mar 13, 2017 10:05:49 PM",
       "dateStarted": "Mar 27, 2017 8:07:37 PM",
-      "dateFinished": "Mar 27, 2017 8:07:22 PM",
-      "status": "RUNNING",
-      "errorMessage": "",
+      "dateFinished": "Mar 27, 2017 8:12:44 PM",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%pyspark\ncurves.take (10)",
+      "text": "%pyspark\n\nimport numpy as np\n\nclass LightCurve(object):\n    def __init__(self, mag, epochs, err):\n        self.mag \u003d mag\n        self.epocs \u003d epochs\n        self.err \u003d err\n\ndef to_array (text):\n    import numpy as np\n    return numpy.array (map (lambda v : float(v), text.replace (\u0027{\u0027, \u0027[\u0027).replace (\u0027}\u0027, \u0027]\u0027).split (\u0027,\u0027)))\n\ndef load_curves (row):\n    return LightCurve (\n        mag \u003d to_array (row[1]),\n        epochs \u003d to_array (row[2]),\n        err \u003d to_array (row[3]))\n        \nsample \u003d curves.sample (False, 0.1, 1234). \\\n    filter (lambda v : v[0] !\u003d \u0027lcv_apassid\u0027). \\\n    map    (lambda v : load_curves (v))\n    ",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 27, 2017 8:09:41 PM",
+      "dateUpdated": "Mar 27, 2017 8:38:55 PM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
         "results": {},
         "editorSetting": {
-          "language": "python"
+          "language": "python",
+          "editOnDblClick": false
         },
         "editorMode": "ace/mode/python"
       },
@@ -117,26 +126,67 @@
         "params": {},
         "forms": {}
       },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
       "apps": [],
       "jobName": "paragraph_1490659334546_-738231256",
       "id": "20170327-200214_193024193",
       "dateCreated": "Mar 27, 2017 8:02:14 PM",
-      "status": "READY",
+      "dateStarted": "Mar 27, 2017 8:38:55 PM",
+      "dateFinished": "Mar 27, 2017 8:38:55 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%pyspark\nfrom pyspark.sql.types import *\n#curves.toDF().registerTempTable(\"curves\")\n\nsample.take (2)",
+      "user": "ad\\scox",
+      "dateUpdated": "Mar 27, 2017 8:38:57 PM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala"
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "ERROR",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Traceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-989927401751002448.py\", line 346, in \u003cmodule\u003e\n    raise Exception(traceback.format_exc())\nException: Traceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-989927401751002448.py\", line 339, in \u003cmodule\u003e\n    exec(code)\n  File \"\u003cstdin\u003e\", line 2, in \u003cmodule\u003e\n  File \"/projects/stars/stack/spark/spark2/python/pyspark/rdd.py\", line 1310, in take\n    res \u003d self.context.runJob(self, takeUpToNumLeft, p)\n  File \"/projects/stars/stack/spark/spark2/python/pyspark/context.py\", line 933, in runJob\n    port \u003d self._jvm.PythonRDD.runJob(self._jsc.sc(), mappedRDD._jrdd, partitions)\n  File \"/projects/stars/stack/spark/spark2/python/lib/py4j-0.10.3-src.zip/py4j/java_gateway.py\", line 1133, in __call__\n    answer, self.gateway_client, self.target_id, self.name)\n  File \"/projects/stars/stack/spark/spark2/python/pyspark/sql/utils.py\", line 63, in deco\n    return f(*a, **kw)\n  File \"/projects/stars/stack/spark/spark2/python/lib/py4j-0.10.3-src.zip/py4j/protocol.py\", line 319, in get_return_value\n    format(target_id, \".\", name), value)\nPy4JJavaError: An error occurred while calling z:org.apache.spark.api.python.PythonRDD.runJob.\n: org.apache.spark.SparkException: Job aborted due to stage failure: Task 0 in stage 7.0 failed 4 times, most recent failure: Lost task 0.3 in stage 7.0 (TID 15369, stars-c6.edc.renci.org): org.apache.spark.api.python.PythonException: Traceback (most recent call last):\n  File \"/scratch/mesos/slaves/20170321-090025-1963465132-5050-25729-S0/frameworks/20170321-090025-1963465132-5050-25729-3268/executors/0/runs/4669f05d-34c4-400c-acb1-91c58bfdd0dd/spark-2.0.1-bin-hadoop2.6/python/lib/pyspark.zip/pyspark/worker.py\", line 172, in main\n    process()\n  File \"/scratch/mesos/slaves/20170321-090025-1963465132-5050-25729-S0/frameworks/20170321-090025-1963465132-5050-25729-3268/executors/0/runs/4669f05d-34c4-400c-acb1-91c58bfdd0dd/spark-2.0.1-bin-hadoop2.6/python/lib/pyspark.zip/pyspark/worker.py\", line 167, in process\n    serializer.dump_stream(func(split_index, iterator), outfile)\n  File \"/scratch/mesos/slaves/20170321-090025-1963465132-5050-25729-S0/frameworks/20170321-090025-1963465132-5050-25729-3268/executors/0/runs/4669f05d-34c4-400c-acb1-91c58bfdd0dd/spark-2.0.1-bin-hadoop2.6/python/lib/pyspark.zip/pyspark/serializers.py\", line 263, in dump_stream\n    vs \u003d list(itertools.islice(iterator, batch))\n  File \"/projects/stars/stack/spark/spark2/python/pyspark/rdd.py\", line 1306, in takeUpToNumLeft\n    yield next(iterator)\n  File \"\u003cstdin\u003e\", line 17, in \u003clambda\u003e\n  File \"\u003cstdin\u003e\", line 12, in load_curves\n  File \"\u003cstdin\u003e\", line 9, in to_array\nNameError: global name \u0027numpy\u0027 is not defined\n\n\tat org.apache.spark.api.python.PythonRunner$$anon$1.read(PythonRDD.scala:193)\n\tat org.apache.spark.api.python.PythonRunner$$anon$1.\u003cinit\u003e(PythonRDD.scala:234)\n\tat org.apache.spark.api.python.PythonRunner.compute(PythonRDD.scala:152)\n\tat org.apache.spark.api.python.PythonRDD.compute(PythonRDD.scala:63)\n\tat org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:319)\n\tat org.apache.spark.rdd.RDD.iterator(RDD.scala:283)\n\tat org.apache.spark.scheduler.ResultTask.runTask(ResultTask.scala:70)\n\tat org.apache.spark.scheduler.Task.run(Task.scala:86)\n\tat org.apache.spark.executor.Executor$TaskRunner.run(Executor.scala:274)\n\tat java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)\n\tat java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)\n\tat java.lang.Thread.run(Thread.java:745)\n\nDriver stacktrace:\n\tat org.apache.spark.scheduler.DAGScheduler.org$apache$spark$scheduler$DAGScheduler$$failJobAndIndependentStages(DAGScheduler.scala:1454)\n\tat org.apache.spark.scheduler.DAGScheduler$$anonfun$abortStage$1.apply(DAGScheduler.scala:1442)\n\tat org.apache.spark.scheduler.DAGScheduler$$anonfun$abortStage$1.apply(DAGScheduler.scala:1441)\n\tat scala.collection.mutable.ResizableArray$class.foreach(ResizableArray.scala:59)\n\tat scala.collection.mutable.ArrayBuffer.foreach(ArrayBuffer.scala:48)\n\tat org.apache.spark.scheduler.DAGScheduler.abortStage(DAGScheduler.scala:1441)\n\tat org.apache.spark.scheduler.DAGScheduler$$anonfun$handleTaskSetFailed$1.apply(DAGScheduler.scala:811)\n\tat org.apache.spark.scheduler.DAGScheduler$$anonfun$handleTaskSetFailed$1.apply(DAGScheduler.scala:811)\n\tat scala.Option.foreach(Option.scala:257)\n\tat org.apache.spark.scheduler.DAGScheduler.handleTaskSetFailed(DAGScheduler.scala:811)\n\tat org.apache.spark.scheduler.DAGSchedulerEventProcessLoop.doOnReceive(DAGScheduler.scala:1667)\n\tat org.apache.spark.scheduler.DAGSchedulerEventProcessLoop.onReceive(DAGScheduler.scala:1622)\n\tat org.apache.spark.scheduler.DAGSchedulerEventProcessLoop.onReceive(DAGScheduler.scala:1611)\n\tat org.apache.spark.util.EventLoop$$anon$1.run(EventLoop.scala:48)\n\tat org.apache.spark.scheduler.DAGScheduler.runJob(DAGScheduler.scala:632)\n\tat org.apache.spark.SparkContext.runJob(SparkContext.scala:1890)\n\tat org.apache.spark.SparkContext.runJob(SparkContext.scala:1903)\n\tat org.apache.spark.SparkContext.runJob(SparkContext.scala:1916)\n\tat org.apache.spark.api.python.PythonRDD$.runJob(PythonRDD.scala:441)\n\tat org.apache.spark.api.python.PythonRDD.runJob(PythonRDD.scala)\n\tat sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)\n\tat sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)\n\tat sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\n\tat java.lang.reflect.Method.invoke(Method.java:606)\n\tat py4j.reflection.MethodInvoker.invoke(MethodInvoker.java:237)\n\tat py4j.reflection.ReflectionEngine.invoke(ReflectionEngine.java:357)\n\tat py4j.Gateway.invoke(Gateway.java:280)\n\tat py4j.commands.AbstractCommand.invokeMethod(AbstractCommand.java:132)\n\tat py4j.commands.CallCommand.execute(CallCommand.java:79)\n\tat py4j.GatewayConnection.run(GatewayConnection.java:214)\n\tat java.lang.Thread.run(Thread.java:745)\nCaused by: org.apache.spark.api.python.PythonException: Traceback (most recent call last):\n  File \"/scratch/mesos/slaves/20170321-090025-1963465132-5050-25729-S0/frameworks/20170321-090025-1963465132-5050-25729-3268/executors/0/runs/4669f05d-34c4-400c-acb1-91c58bfdd0dd/spark-2.0.1-bin-hadoop2.6/python/lib/pyspark.zip/pyspark/worker.py\", line 172, in main\n    process()\n  File \"/scratch/mesos/slaves/20170321-090025-1963465132-5050-25729-S0/frameworks/20170321-090025-1963465132-5050-25729-3268/executors/0/runs/4669f05d-34c4-400c-acb1-91c58bfdd0dd/spark-2.0.1-bin-hadoop2.6/python/lib/pyspark.zip/pyspark/worker.py\", line 167, in process\n    serializer.dump_stream(func(split_index, iterator), outfile)\n  File \"/scratch/mesos/slaves/20170321-090025-1963465132-5050-25729-S0/frameworks/20170321-090025-1963465132-5050-25729-3268/executors/0/runs/4669f05d-34c4-400c-acb1-91c58bfdd0dd/spark-2.0.1-bin-hadoop2.6/python/lib/pyspark.zip/pyspark/serializers.py\", line 263, in dump_stream\n    vs \u003d list(itertools.islice(iterator, batch))\n  File \"/projects/stars/stack/spark/spark2/python/pyspark/rdd.py\", line 1306, in takeUpToNumLeft\n    yield next(iterator)\n  File \"\u003cstdin\u003e\", line 17, in \u003clambda\u003e\n  File \"\u003cstdin\u003e\", line 12, in load_curves\n  File \"\u003cstdin\u003e\", line 9, in to_array\nNameError: global name \u0027numpy\u0027 is not defined\n\n\tat org.apache.spark.api.python.PythonRunner$$anon$1.read(PythonRDD.scala:193)\n\tat org.apache.spark.api.python.PythonRunner$$anon$1.\u003cinit\u003e(PythonRDD.scala:234)\n\tat org.apache.spark.api.python.PythonRunner.compute(PythonRDD.scala:152)\n\tat org.apache.spark.api.python.PythonRDD.compute(PythonRDD.scala:63)\n\tat org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:319)\n\tat org.apache.spark.rdd.RDD.iterator(RDD.scala:283)\n\tat org.apache.spark.scheduler.ResultTask.runTask(ResultTask.scala:70)\n\tat org.apache.spark.scheduler.Task.run(Task.scala:86)\n\tat org.apache.spark.executor.Executor$TaskRunner.run(Executor.scala:274)\n\tat java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)\n\tat java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)\n\t... 1 more\n\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1490659781141_1045171841",
+      "id": "20170327-200941_1006195128",
+      "dateCreated": "Mar 27, 2017 8:09:41 PM",
+      "dateStarted": "Mar 27, 2017 8:38:57 PM",
+      "dateFinished": "Mar 27, 2017 8:38:58 PM",
+      "status": "ERROR",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%pyspark\n",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 27, 2017 8:09:41 PM",
+      "dateUpdated": "Mar 27, 2017 8:12:23 PM",
       "config": {},
       "settings": {
         "params": {},
         "forms": {}
       },
       "apps": [],
-      "jobName": "paragraph_1490659781141_1045171841",
-      "id": "20170327-200941_1006195128",
-      "dateCreated": "Mar 27, 2017 8:09:41 PM",
+      "jobName": "paragraph_1490659943605_-14041357",
+      "id": "20170327-201223_716142911",
+      "dateCreated": "Mar 27, 2017 8:12:23 PM",
       "status": "READY",
       "progressUpdateIntervalMs": 500
     }
