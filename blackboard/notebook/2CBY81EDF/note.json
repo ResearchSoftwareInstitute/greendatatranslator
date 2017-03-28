@@ -40,8 +40,8 @@
     },
     {
       "text": "%pyspark\nimport numpy as np\n\nclass LightCurve(object):\n    def __init__(self, mag, epochs, err):\n        self.mag \u003d mag\n        self.epocs \u003d epochs\n        self.err \u003d err\n    @staticmethod\n    def load_curves (row):\n        return LightCurve (\n            mag \u003d LightCurve.to_array (row[1]),\n            epochs \u003d LightCurve.to_array (row[2]),\n            err \u003d LightCurve.to_array (row[3]))\n    @staticmethod\n    def to_array (text):\n        a \u003d text.replace (\u0027{\u0027, \u0027\u0027).replace (\u0027}\u0027, \u0027\u0027).split (\u0027,\u0027)\n        return np.array (map (lambda v : float(v), a))",
-      "user": "ad\\scox",
-      "dateUpdated": "Mar 28, 2017 10:00:34 AM",
+      "user": "ad\\hcorbett",
+      "dateUpdated": "Mar 28, 2017 10:53:54 AM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -65,8 +65,8 @@
       "jobName": "paragraph_1490659334546_-738231256",
       "id": "20170327-200214_193024193",
       "dateCreated": "Mar 27, 2017 8:02:14 PM",
-      "dateStarted": "Mar 28, 2017 9:46:01 AM",
-      "dateFinished": "Mar 28, 2017 9:46:01 AM",
+      "dateStarted": "Mar 28, 2017 10:53:54 AM",
+      "dateFinished": "Mar 28, 2017 10:54:09 AM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -207,18 +207,48 @@
       "progressUpdateIntervalMs": 500
     },
     {
+      "text": "%pyspark\nimport sklearn.metrics as met\n\n# Code from http://alexminnaar.com/time-series-classification-and-clustering-with-python.html\n# Implements a simple kNN classifier based on a DTW distance measure\n\n",
+      "user": "ad\\hcorbett",
+      "dateUpdated": "Mar 28, 2017 10:59:53 AM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python"
+        },
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "jobName": "paragraph_1490709103791_2118146600",
+      "id": "20170328-095143_1888707834",
+      "dateCreated": "Mar 28, 2017 9:51:43 AM",
+      "dateStarted": "Mar 28, 2017 10:59:53 AM",
+      "dateFinished": "Mar 28, 2017 11:00:02 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
       "text": "%pyspark\n",
-      "user": "ad\\scox",
-      "dateUpdated": "Mar 28, 2017 9:51:43 AM",
+      "user": "ad\\hcorbett",
+      "dateUpdated": "Mar 28, 2017 10:59:53 AM",
       "config": {},
       "settings": {
         "params": {},
         "forms": {}
       },
       "apps": [],
-      "jobName": "paragraph_1490709103791_2118146600",
-      "id": "20170328-095143_1888707834",
-      "dateCreated": "Mar 28, 2017 9:51:43 AM",
+      "jobName": "paragraph_1490713193059_-972920083",
+      "id": "20170328-105953_1855237260",
+      "dateCreated": "Mar 28, 2017 10:59:53 AM",
       "status": "READY",
       "progressUpdateIntervalMs": 500
     }
