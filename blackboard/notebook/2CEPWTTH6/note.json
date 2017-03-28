@@ -39,9 +39,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%pyspark\nfrom pyspark.sql.types import *\n\ndef look (r):\n    result \u003d []\n    result.append (\"{}\".format (r))\n    return result\n        \nclass CTDExposureEvents(object):\n    def __init__(self, path):\n        self.path \u003d path\n        self.rdd \u003d self.load ()\n        self.rdd.toDF().registerTempTable (\u0027ctd_exposure_events\u0027)\n\n    def load (self, sample_size\u003d1.0):\n        return sqlContext.read.                                     \\\n            format(\u0027com.databricks.spark.csv\u0027).                     \\\n            options(comment\u003d\u0027#\u0027).                                   \\\n            options(delimiter\u003d\",\").                                 \\\n            options(header\u003d\u0027true\u0027).                                 \\\n            load(self.path).rdd.                                   \\\n            sample (False, sample_size, 1234)\n\n    def get_events (self, stressor_agent_id\u003dNone):\n        return self.rdd.filter (lambda r : r.stressoragentid \u003d\u003d stressor_agent_id)\n\nctd_expo_data \u003d \u0027/projects/stars/translator/var/ctd/CTD_exposure_events.csv\u0027\nctd_exposure_events \u003d CTDExposureEvents (ctd_expo_data)\n\npm25_agent_id \u003d \u0027D052638\u0027\npm25_events \u003d ctd_exposure_events.get_events (stressor_agent_id\u003dpm25_agent_id)\nprint (pm25_events.take (10))\n\nasthma_mesh_id \u003d \u0027D001249\u0027\n",
+      "text": "%pyspark\nfrom pyspark.sql.types import *\n\nclass CTDLoader(object):\n    def __init__(self, path, table, sample_size\u003d1.0):\n        self.path \u003d path\n        self.rdd \u003d self.load (sample_size\u003dsample_size)\n        self.rdd.toDF().registerTempTable (table)\n\n    def load (self, sample_size\u003d1.0):\n        return sqlContext.read.                                     \\\n            format(\u0027com.databricks.spark.csv\u0027).                     \\\n            options(comment\u003d\u0027#\u0027).                                   \\\n            options(delimiter\u003d\",\").                                 \\\n            options(header\u003d\u0027true\u0027).                                 \\\n            load(self.path).rdd.                                   \\\n            sample (False, sample_size, 1234)\n\nclass CTDExposureEvents(CTDLoader):\n    def __init__(self, path, table):\n        CTDLoader.__init__(self, path, table)\nclass CTDGenesPathways(CTDLoader):\n    def __init__(self, path, table):\n        CTDLoader.__init__(self, path, table)\n    \nctd_expo_data \u003d \u0027/projects/stars/translator/var/ctd/CTD_exposure_events.csv\u0027\nctd_exposure_events \u003d CTDExposureEvents (ctd_expo_data, \u0027ctd_exposure_events\u0027)\n\n#GeneSymbol,GeneID,PathwayName,PathwayID\nctd_genes_pathways_data \u003d \u0027/projects/stars/translator/var/ctd/CTD_genes_pathways.csv\u0027\nctd_gene_pathway \u003d CTDGenesPathways (ctd_genes_pathways_data, \u0027ctd_genes_pathways\u0027)\nprefix \u003d { \n    \u0027kegg\u0027 : \u0027http://www.genome.jp/kegg-bin/show_pathway?hsa\u0027,\n    \u0027ncbi\u0027 : \u0027https://www.ncbi.nlm.nih.gov/gene/\u0027\n}\n\npm25_agent_id \u003d \u0027D052638\u0027\nasthma_mesh_id \u003d \u0027D001249\u0027\n",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 28, 2017 3:36:55 PM",
+      "dateUpdated": "Mar 28, 2017 3:57:41 PM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -57,42 +57,21 @@
       },
       "results": {
         "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TEXT",
-            "data": "[Row(stressoragentname\u003du\u0027Particulate Matter\u0027, stressoragentid\u003du\u0027D052638\u0027, numberofreceptors\u003dNone, receptordescription\u003dNone, receptornotes\u003dNone, studylocation\u003du\u0027Sweden\u0027, assaymediums\u003du\u0027Air\u0027, assayedtermname\u003du\u0027Particulate Matter\u0027, assayedtermid\u003du\u0027D052638\u0027, assaylevel\u003du\u002711.9\u0027, assayunitsofmeasurement\u003du\u0027micrograms per cubic meter\u0027, assaymeasurementstatistic\u003du\u0027interquartile range\u0027, assaynotes\u003du\u0027Nov-May, Particulate Matter \u003c\u003d10 microns\u0027, outcomerelationship\u003dNone, diseasename\u003dNone, diseaseid\u003dNone, phenotypename\u003dNone, phenotypeid\u003dNone, reference\u003du\u002722182596\u0027), Row(stressoragentname\u003du\u0027Particulate Matter\u0027, stressoragentid\u003du\u0027D052638\u0027, numberofreceptors\u003du\u0027111769\u0027, receptordescription\u003du\u0027Workers\u0027, receptornotes\u003du\u0027nurses\u0027, studylocation\u003du\u0027United States\u0027, assaymediums\u003du\u0027Air\u0027, assayedtermname\u003du\u0027Particulate Matter\u0027, assayedtermid\u003du\u0027D052638\u0027, assaylevel\u003du\u002726\u0027, assayunitsofmeasurement\u003du\u0027micrograms per cubic meter\u0027, assaymeasurementstatistic\u003du\u0027median, third quartile\u0027, assaynotes\u003dNone, outcomerelationship\u003dNone, diseasename\u003dNone, diseaseid\u003dNone, phenotypename\u003dNone, phenotypeid\u003dNone, reference\u003du\u002725294559\u0027), Row(stressoragentname\u003du\u0027Particulate Matter\u0027, stressoragentid\u003du\u0027D052638\u0027, numberofreceptors\u003du\u00272028\u0027, receptordescription\u003du\u0027Controls for disease:Coronary Disease[D003327]\u0027, receptornotes\u003dNone, studylocation\u003du\u0027Germany\u0027, assaymediums\u003dNone, assayedtermname\u003du\u0027CRP\u0027, assayedtermid\u003du\u00271401\u0027, assaylevel\u003du\u002724.1\u0027, assayunitsofmeasurement\u003du\u0027percent\u0027, assaymeasurementstatistic\u003du\u0027percent change per 3.91 micrograms per cubic meter Particulate Matter\u0027, assaynotes\u003du\u0027Model 2\u0027, outcomerelationship\u003dNone, diseasename\u003dNone, diseaseid\u003dNone, phenotypename\u003dNone, phenotypeid\u003dNone, reference\u003du\u002719672412\u0027), Row(stressoragentname\u003du\u0027Particulate Matter\u0027, stressoragentid\u003du\u0027D052638\u0027, numberofreceptors\u003dNone, receptordescription\u003du\u0027Study subjects\u0027, receptornotes\u003dNone, studylocation\u003du\u0027Italy\u0027, assaymediums\u003du\u0027Air\u0027, assayedtermname\u003du\u0027Particulate Matter\u0027, assayedtermid\u003du\u0027D052638\u0027, assaylevel\u003du\u002735.1\u0027, assayunitsofmeasurement\u003du\u0027micrograms per cubic meter\u0027, assaymeasurementstatistic\u003du\u0027mean\u0027, assaynotes\u003dNone, outcomerelationship\u003dNone, diseasename\u003dNone, diseaseid\u003dNone, phenotypename\u003dNone, phenotypeid\u003dNone, reference\u003du\u002718408228\u0027), Row(stressoragentname\u003du\u0027Particulate Matter\u0027, stressoragentid\u003du\u0027D052638\u0027, numberofreceptors\u003dNone, receptordescription\u003dNone, receptornotes\u003dNone, studylocation\u003du\u0027Netherlands\u0027, assaymediums\u003du\u0027Air\u0027, assayedtermname\u003du\u0027Particulate Matter\u0027, assayedtermid\u003du\u0027D052638\u0027, assaylevel\u003du\u002762.3\u0027, assayunitsofmeasurement\u003du\u0027micrograms per hour\u0027, assaymeasurementstatistic\u003du\u0027median\u0027, assaynotes\u003du\u0027median dose, particulate matter \u003c\u003d2.5 microns in diameter\u0027, outcomerelationship\u003dNone, diseasename\u003dNone, diseaseid\u003dNone, phenotypename\u003dNone, phenotypeid\u003dNone, reference\u003du\u002720185385\u0027), Row(stressoragentname\u003du\u0027Particulate Matter\u0027, stressoragentid\u003du\u0027D052638\u0027, numberofreceptors\u003dNone, receptordescription\u003dNone, receptornotes\u003dNone, studylocation\u003du\u0027Netherlands\u0027, assaymediums\u003du\u0027Air\u0027, assayedtermname\u003du\u0027Particulate Matter\u0027, assayedtermid\u003du\u0027D052638\u0027, assaylevel\u003du\u002782.3\u0027, assayunitsofmeasurement\u003du\u0027micrograms per cubic meter\u0027, assaymeasurementstatistic\u003du\u0027maximum\u0027, assaynotes\u003du\u0027outdoor\u0027, outcomerelationship\u003dNone, diseasename\u003dNone, diseaseid\u003dNone, phenotypename\u003dNone, phenotypeid\u003dNone, reference\u003du\u002716299096\u0027), Row(stressoragentname\u003du\u0027Particulate Matter\u0027, stressoragentid\u003du\u0027D052638\u0027, numberofreceptors\u003du\u00271112\u0027, receptordescription\u003du\u0027Study subjects\u0027, receptornotes\u003dNone, studylocation\u003du\u0027United States\u0027, assaymediums\u003du\u0027Air\u0027, assayedtermname\u003du\u0027Particulate Matter\u0027, assayedtermid\u003du\u0027D052638\u0027, assaylevel\u003du\u00278651\u0027, assayunitsofmeasurement\u003du\u0027particle number per cubic centimeter\u0027, assaymeasurementstatistic\u003du\u00275th percentile\u0027, assaynotes\u003du\u002728-day mean (prior visit)\u0027, outcomerelationship\u003dNone, diseasename\u003dNone, diseaseid\u003dNone, phenotypename\u003dNone, phenotypeid\u003dNone, reference\u003du\u002726967543\u0027), Row(stressoragentname\u003du\u0027Particulate Matter\u0027, stressoragentid\u003du\u0027D052638\u0027, numberofreceptors\u003du\u002719109\u0027, receptordescription\u003du\u0027Infants or newborns\u0027, receptornotes\u003dNone, studylocation\u003du\u0027United States\u0027, assaymediums\u003du\u0027Air\u0027, assayedtermname\u003du\u0027Particulate Matter\u0027, assayedtermid\u003du\u0027D052638\u0027, assaylevel\u003du\u002720.1\u0027, assayunitsofmeasurement\u003du\u0027micrograms per cubic meter\u0027, assaymeasurementstatistic\u003du\u002750th percentile\u0027, assaynotes\u003du\u002724-hour daily average at a lag of 6, 7 or 8 days on index days 6,106\u0027, outcomerelationship\u003dNone, diseasename\u003dNone, diseaseid\u003dNone, phenotypename\u003dNone, phenotypeid\u003dNone, reference\u003du\u002716451867\u0027), Row(stressoragentname\u003du\u0027Particulate Matter\u0027, stressoragentid\u003du\u0027D052638\u0027, numberofreceptors\u003du\u00271463\u0027, receptordescription\u003du\u0027Study subjects\u0027, receptornotes\u003dNone, studylocation\u003du\u0027United Arab Emirates\u0027, assaymediums\u003du\u0027Air\u0027, assayedtermname\u003du\u0027Particulate Matter\u0027, assayedtermid\u003du\u0027D052638\u0027, assaylevel\u003du\u002719.14\u0027, assayunitsofmeasurement\u003du\u0027micrograms per cubic meter\u0027, assaymeasurementstatistic\u003du\u002795th percentile\u0027, assaynotes\u003dNone, outcomerelationship\u003dNone, diseasename\u003dNone, diseaseid\u003dNone, phenotypename\u003dNone, phenotypeid\u003dNone, reference\u003du\u002722357138\u0027), Row(stressoragentname\u003du\u0027Particulate Matter\u0027, stressoragentid\u003du\u0027D052638\u0027, numberofreceptors\u003du\u0027834\u0027, receptordescription\u003du\u0027Children\u0027, receptornotes\u003dNone, studylocation\u003du\u0027Nepal\u0027, assaymediums\u003dNone, assayedtermname\u003du\u0027Particulate Matter\u0027, assayedtermid\u003du\u0027D052638\u0027, assaylevel\u003du\u00272830\u0027, assayunitsofmeasurement\u003du\u0027micrograms per cubic meter\u0027, assaymeasurementstatistic\u003du\u0027minimum\u0027, assaynotes\u003dNone, outcomerelationship\u003dNone, diseasename\u003dNone, diseaseid\u003dNone, phenotypename\u003dNone, phenotypeid\u003dNone, reference\u003du\u002724533994\u0027)]\n"
-          }
-        ]
+        "msg": []
       },
       "apps": [],
       "jobName": "paragraph_1490726964178_-532847693",
       "id": "20170328-144924_801460369",
       "dateCreated": "Mar 28, 2017 2:49:24 PM",
-      "dateStarted": "Mar 28, 2017 3:36:55 PM",
-      "dateFinished": "Mar 28, 2017 3:36:55 PM",
+      "dateStarted": "Mar 28, 2017 3:57:42 PM",
+      "dateFinished": "Mar 28, 2017 3:57:43 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%pyspark\n",
+      "text": "%sql select stressoragentid,receptordescription,phenotypeid from ctd_exposure_events where stressoragentid\u003d\u0027D052638\u0027 and receptordescription like \u0027%[D001249]%\u0027 order by phenotypeid\n",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 28, 2017 3:03:59 PM",
-      "config": {},
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "apps": [],
-      "jobName": "paragraph_1490727839472_-883096719",
-      "id": "20170328-150359_1070759844",
-      "dateCreated": "Mar 28, 2017 3:03:59 PM",
-      "status": "READY",
-      "progressUpdateIntervalMs": 500
-    },
-    {
-      "text": "%sql select * from ctd_exposure_events where stressoragentid\u003d\u0027D052638\u0027 and receptordescription like \u0027%[D001249]%\u0027\n",
-      "user": "ad\\scox",
-      "dateUpdated": "Mar 28, 2017 3:38:19 PM",
+      "dateUpdated": "Mar 28, 2017 3:49:29 PM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -121,7 +100,7 @@
         "msg": [
           {
             "type": "TABLE",
-            "data": "stressoragentname\tstressoragentid\tnumberofreceptors\treceptordescription\treceptornotes\tstudylocation\tassaymediums\tassayedtermname\tassayedtermid\tassaylevel\tassayunitsofmeasurement\tassaymeasurementstatistic\tassaynotes\toutcomerelationship\tdiseasename\tdiseaseid\tphenotypename\tphenotypeid\treference\nParticulate Matter\tD052638\t612\tSubjects with disease:Asthma[D001249]\tnull\tUnited States\tAir\tParticulate Matter\tD052638\t26.2\tmicrograms per cubic meter\tminimum\tnull\tnull\tnull\tnull\tnull\tnull\t18795172\nParticulate Matter\tD052638\t181\tControls for disease:Asthma[D001249]\tnull\tBrazil\tAir\tParticulate Matter\tD052638\t2.06\tmicrograms per kilogram per day\tmean potential dose in dry season\tPM2.5\tnull\tnull\tnull\tnull\tnull\t22978271\nParticulate Matter\tD052638\t612\tSubjects with disease:Asthma[D001249]\tnull\tUnited States\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tpositive correlation\tAsthma\tD001249\tnull\tnull\t18795172\nParticulate Matter\tD052638\t19\tSubjects with disease:Asthma[D001249]\tnull\tUnited States\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tpositive correlation\tnull\tnull\tinflammatory response\tGO:0006954\t16330366\nParticulate Matter\tD052638\t62\tSubjects with disease:Asthma[D001249]\tnull\tCanada\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tpositive correlation\tnull\tnull\tinflammatory response\tGO:0006954\t27152705\nParticulate Matter\tD052638\t19\tSubjects with disease:Asthma[D001249]\tnull\tUnited States\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tpositive correlation\tnull\tnull\tresponse to chemical\tGO:0042221\t16330366\nParticulate Matter\tD052638\tnull\tSubjects with disease:Asthma[D001249]\tnull\tMexico\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tpositive correlation\tSigns and Symptoms, Respiratory\tD012818\tnull\tnull\t18560490\nParticulate Matter\tD052638\t62\tSubjects with disease:Asthma[D001249]\tnull\tCanada\tAir, Breath\tNitric Oxide\tD009569\t16.3\tparts per billion\tmedian\tfractional exhaled nitric oxide\tnull\tnull\tnull\tnull\tnull\t27152705\nParticulate Matter\tD052638\tnull\tSubjects with disease:Asthma[D001249]\tnull\tMexico\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tpositive correlation\tnull\tnull\tregulation of inflammatory response\tGO:0050727\t18560490\nParticulate Matter\tD052638\t612\tSubjects with disease:Asthma[D001249]\tnull\tUnited States\tAir\tParticulate Matter\tD052638\t19.3\tmicrograms per cubic meter\tmean\tnull\tnull\tnull\tnull\tnull\tnull\t18795172\nParticulate Matter\tD052638\t691\tSubjects with disease:Asthma[D001249]\tnull\tUnited States\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tpositive correlation\tAsthma\tD001249\tnull\tnull\t15121522\nParticulate Matter\tD052638\t1227\tControls for disease:Asthma[D001249]\tnull\tItaly\tnull\tParticulate Matter\tD052638\t0.127\tkilograms per square meter\tmean\testimated emissions\tnull\tnull\tnull\tnull\tnull\t18203803\nParticulate Matter\tD052638\t62\tSubjects with disease:Asthma[D001249]\tnull\tCanada\tAir, Breath\tNitric Oxide\tD009569\t24.8\tparts per billion\tinterquartile range\tfractional exhaled nitric oxide\tnull\tnull\tnull\tnull\tnull\t27152705\nParticulate Matter\tD052638\t62\tSubjects with disease:Asthma[D001249]\tnull\tCanada\tAir\tParticulate Matter\tD052638\t10.8\tmicrograms per cubic meter\tinterquartile range\tfractional exhaled nitric oxide\tnull\tnull\tnull\tnull\tnull\t27152705\nParticulate Matter\tD052638\tnull\tControls for disease:Asthma[D001249]\tnull\tMexico\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tpositive correlation\tnull\tnull\tregulation of inflammatory response\tGO:0050727\t18560490\nParticulate Matter\tD052638\t40\tSubjects with disease:Asthma[D001249]\tnull\tBrazil\tAir\tParticulate Matter\tD052638\t0.32\tmicrograms per kilogram per day\tmean potential dose in rainy season\tPM2.5\tnull\tnull\tnull\tnull\tnull\t22978271\nParticulate Matter\tD052638\t691\tControls for disease:Asthma[D001249]\tnull\tUnited States\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tpositive correlation\tAsthma\tD001249\tnull\tnull\t15121522\nParticulate Matter\tD052638\t612\tSubjects with disease:Asthma[D001249]\tnull\tUnited States\tAir\tParticulate Matter\tD052638\t37.7\tmicrograms per cubic meter\tmean\tnull\tnull\tnull\tnull\tnull\tnull\t18795172\nParticulate Matter\tD052638\t181\tControls for disease:Asthma[D001249]\tnull\tBrazil\tAir\tParticulate Matter\tD052638\t0.3\tmicrograms per kilogram per day\tmean potential dose in rainy season\tPM2.5\tnull\tnull\tnull\tnull\tnull\t22978271\nParticulate Matter\tD052638\t62\tSubjects with disease:Asthma[D001249]\tnull\tCanada\tAir\tParticulate Matter\tD052638\t14.1\tmicrograms per cubic meter\tmedian\tfractional exhaled nitric oxide\tnull\tnull\tnull\tnull\tnull\t27152705\nParticulate Matter\tD052638\t612\tSubjects with disease:Asthma[D001249]\tnull\tUnited States\tAir\tParticulate Matter\tD052638\t46.9\tmicrograms per cubic meter\tmaximum\tnull\tnull\tnull\tnull\tnull\tnull\t18795172\nParticulate Matter\tD052638\t612\tSubjects with disease:Asthma[D001249]\tnull\tUnited States\tAir\tParticulate Matter\tD052638\t24.6\tmicrograms per cubic meter\tmaximum\tnull\tnull\tnull\tnull\tnull\tnull\t18795172\nParticulate Matter\tD052638\t612\tSubjects with disease:Asthma[D001249]\tnull\tUnited States\tAir\tParticulate Matter\tD052638\t10.6\tmicrograms per cubic meter\tminimum\tnull\tnull\tnull\tnull\tnull\tnull\t18795172\nParticulate Matter\tD052638\t9016\tSubjects with disease:Asthma[D001249]\tnull\tItaly\tnull\tParticulate Matter\tD052638\t0.12\tkilograms per square meter\tmean\testimated emissions\tnull\tnull\tnull\tnull\tnull\t18203803\nParticulate Matter\tD052638\t40\tSubjects with disease:Asthma[D001249]\tnull\tBrazil\tAir\tParticulate Matter\tD052638\t2.11\tmicrograms per kilogram per day\tmean potential dose in dry season\tPM2.5\tnull\tnull\tnull\tnull\tnull\t22978271\nParticulate Matter\tD052638\t472\tControls for disease:Asthma[D001249]\tnull\tItaly\tnull\tParticulate Matter\tD052638\t0.121\tkilograms per square meter\tmean\testimated emissions\tnull\tnull\tnull\tnull\tnull\t18203803\n"
+            "data": "stressoragentid\treceptordescription\tphenotypeid\nD052638\tSubjects with disease:Asthma[D001249]\tnull\nD052638\tControls for disease:Asthma[D001249]\tnull\nD052638\tSubjects with disease:Asthma[D001249]\tnull\nD052638\tSubjects with disease:Asthma[D001249]\tnull\nD052638\tSubjects with disease:Asthma[D001249]\tnull\nD052638\tSubjects with disease:Asthma[D001249]\tnull\nD052638\tControls for disease:Asthma[D001249]\tnull\nD052638\tSubjects with disease:Asthma[D001249]\tnull\nD052638\tControls for disease:Asthma[D001249]\tnull\nD052638\tSubjects with disease:Asthma[D001249]\tnull\nD052638\tSubjects with disease:Asthma[D001249]\tnull\nD052638\tSubjects with disease:Asthma[D001249]\tnull\nD052638\tSubjects with disease:Asthma[D001249]\tnull\nD052638\tControls for disease:Asthma[D001249]\tnull\nD052638\tSubjects with disease:Asthma[D001249]\tnull\nD052638\tSubjects with disease:Asthma[D001249]\tnull\nD052638\tSubjects with disease:Asthma[D001249]\tnull\nD052638\tSubjects with disease:Asthma[D001249]\tnull\nD052638\tSubjects with disease:Asthma[D001249]\tnull\nD052638\tControls for disease:Asthma[D001249]\tnull\nD052638\tSubjects with disease:Asthma[D001249]\tnull\nD052638\tSubjects with disease:Asthma[D001249]\tGO:0006954\nD052638\tSubjects with disease:Asthma[D001249]\tGO:0006954\nD052638\tSubjects with disease:Asthma[D001249]\tGO:0042221\nD052638\tControls for disease:Asthma[D001249]\tGO:0050727\nD052638\tSubjects with disease:Asthma[D001249]\tGO:0050727\n"
           }
         ]
       },
@@ -129,24 +108,59 @@
       "jobName": "paragraph_1490729652290_464467952",
       "id": "20170328-153412_653652966",
       "dateCreated": "Mar 28, 2017 3:34:12 PM",
-      "dateStarted": "Mar 28, 2017 3:37:04 PM",
-      "dateFinished": "Mar 28, 2017 3:37:05 PM",
+      "dateStarted": "Mar 28, 2017 3:49:29 PM",
+      "dateFinished": "Mar 28, 2017 3:49:30 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%sql select GeneID, PathwayName, PathwayID from ctd_genes_pathways where lower(PathwayName) \u003d \u0027asthma\u0027\n",
+      "user": "ad\\scox",
+      "dateUpdated": "Mar 28, 2017 3:53:05 PM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "sql"
+        },
+        "editorMode": "ace/mode/sql"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "GeneID\tPathwayName\tPathwayID\n539241\tAsthma\tKEGG:05310\n282490\tAsthma\tKEGG:05310\n282491\tAsthma\tKEGG:05310\n525727\tAsthma\tKEGG:05310\n282493\tAsthma\tKEGG:05310\n282534\tAsthma\tKEGG:05310\n282535\tAsthma\tKEGG:05310\n282494\tAsthma\tKEGG:05310\n282495\tAsthma\tKEGG:05310\n506214\tAsthma\tKEGG:05310\n282530\tAsthma\tKEGG:05310\n282498\tAsthma\tKEGG:05310\n6356\tAsthma\tKEGG:05310\n958\tAsthma\tKEGG:05310\n959\tAsthma\tKEGG:05310\n481732\tAsthma\tKEGG:05310\n607827\tAsthma\tKEGG:05310\n607786\tAsthma\tKEGG:05310\n474861\tAsthma\tKEGG:05310\n474862\tAsthma\tKEGG:05310\n481731\tAsthma\tKEGG:05310\n100052184\tAsthma\tKEGG:05310\n101088996\tAsthma\tKEGG:05310\n248402\tAsthma\tKEGG:05310\n8288\tAsthma\tKEGG:05310\n2205\tAsthma\tKEGG:05310\n2207\tAsthma\tKEGG:05310\n14960\tAsthma\tKEGG:05310\n14961\tAsthma\tKEGG:05310\n14998\tAsthma\tKEGG:05310\n14999\tAsthma\tKEGG:05310\n15000\tAsthma\tKEGG:05310\n14969\tAsthma\tKEGG:05310\n15001\tAsthma\tKEGG:05310\n15002\tAsthma\tKEGG:05310\n3108\tAsthma\tKEGG:05310\n3109\tAsthma\tKEGG:05310\n3111\tAsthma\tKEGG:05310\n3112\tAsthma\tKEGG:05310\n3113\tAsthma\tKEGG:05310\n3115\tAsthma\tKEGG:05310\n3117\tAsthma\tKEGG:05310\n3118\tAsthma\tKEGG:05310\n3119\tAsthma\tKEGG:05310\n3122\tAsthma\tKEGG:05310\n3123\tAsthma\tKEGG:05310\n3125\tAsthma\tKEGG:05310\n3126\tAsthma\tKEGG:05310\n3127\tAsthma\tKEGG:05310\n24485\tAsthma\tKEGG:05310\n3586\tAsthma\tKEGG:05310\n3596\tAsthma\tKEGG:05310\n3562\tAsthma\tKEGG:05310\n3565\tAsthma\tKEGG:05310\n3567\tAsthma\tKEGG:05310\n3578\tAsthma\tKEGG:05310\n790858\tAsthma\tKEGG:05310\n717870\tAsthma\tKEGG:05310\n100429857\tAsthma\tKEGG:05310\n717947\tAsthma\tKEGG:05310\n717702\tAsthma\tKEGG:05310\n717992\tAsthma\tKEGG:05310\n717969\tAsthma\tKEGG:05310\n720582\tAsthma\tKEGG:05310\n716823\tAsthma\tKEGG:05310\n100187587\tAsthma\tKEGG:05310\n692100\tAsthma\tKEGG:05310\n100428228\tAsthma\tKEGG:05310\n554228\tAsthma\tKEGG:05310\n2206\tAsthma\tKEGG:05310\n100079322\tAsthma\tKEGG:05310\n449592\tAsthma\tKEGG:05310\n471977\tAsthma\tKEGG:05310\n462598\tAsthma\tKEGG:05310\n462599\tAsthma\tKEGG:05310\n471974\tAsthma\tKEGG:05310\n471976\tAsthma\tKEGG:05310\n462594\tAsthma\tKEGG:05310\n462595\tAsthma\tKEGG:05310\n462591\tAsthma\tKEGG:05310\n462592\tAsthma\tKEGG:05310\n5553\tAsthma\tKEGG:05310\n6037\tAsthma\tKEGG:05310\n309621\tAsthma\tKEGG:05310\n309622\tAsthma\tKEGG:05310\n294269\tAsthma\tKEGG:05310\n294270\tAsthma\tKEGG:05310\n294274\tAsthma\tKEGG:05310\n294273\tAsthma\tKEGG:05310\n24984\tAsthma\tKEGG:05310\n365542\tAsthma\tKEGG:05310\n24986\tAsthma\tKEGG:05310\n445528\tAsthma\tKEGG:05310\n100135050\tAsthma\tKEGG:05310\n100157996\tAsthma\tKEGG:05310\n100135049\tAsthma\tKEGG:05310\n100153387\tAsthma\tKEGG:05310\n100037921\tAsthma\tKEGG:05310\n100135040\tAsthma\tKEGG:05310\n100153386\tAsthma\tKEGG:05310\n7124\tAsthma\tKEGG:05310\n742350\tAsthma\tKEGG:05310\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1490729725822_-238544909",
+      "id": "20170328-153525_1091113031",
+      "dateCreated": "Mar 28, 2017 3:35:25 PM",
+      "dateStarted": "Mar 28, 2017 3:53:05 PM",
+      "dateFinished": "Mar 28, 2017 3:53:06 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%sql\n",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 28, 2017 3:35:25 PM",
+      "dateUpdated": "Mar 28, 2017 3:52:53 PM",
       "config": {},
       "settings": {
         "params": {},
         "forms": {}
       },
       "apps": [],
-      "jobName": "paragraph_1490729725822_-238544909",
-      "id": "20170328-153525_1091113031",
-      "dateCreated": "Mar 28, 2017 3:35:25 PM",
+      "jobName": "paragraph_1490730773675_-359642290",
+      "id": "20170328-155253_844974090",
+      "dateCreated": "Mar 28, 2017 3:52:53 PM",
       "status": "READY",
       "progressUpdateIntervalMs": 500
     }
