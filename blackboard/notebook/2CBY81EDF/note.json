@@ -1,9 +1,9 @@
 {
   "paragraphs": [
     {
-      "text": "%pyspark\nprint (\"x\")",
+      "text": "%pyspark\nprint (\"x\")\n\ncurves \u003d sc.textFile (\u0027/projects/stars/evryscope/var/data/lcvs.csv\u0027)",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 27, 2017 1:59:31 PM",
+      "dateUpdated": "Mar 27, 2017 8:07:35 PM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -30,16 +30,62 @@
       "jobName": "paragraph_1489457139225_1227332443",
       "id": "20170313-220539_338125202",
       "dateCreated": "Mar 13, 2017 10:05:39 PM",
-      "dateStarted": "Mar 27, 2017 1:59:31 PM",
-      "dateFinished": "Mar 27, 2017 1:59:31 PM",
+      "dateStarted": "Mar 27, 2017 8:07:35 PM",
+      "dateFinished": "Mar 27, 2017 8:07:36 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%pyspark\n",
+      "text": "%md\n\nID         SYSREMMAG          SYSREMEPOCHS          SYSREMERR\nbigint,   \"{1.2, ... 2.2, 3.3}\",     \"{1.2, ... 2.2, 3.3}\",          \"{1.2, ... 2.2, 3.3}\" \n \nThe first number is just an ID from a catalog, and the remaining three columns are arrays of floats, each of which will be several thousand items long. There should be 4,400,674 rows in total.just let me know if you have any issues with it.\n\n",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 13, 2017 10:05:49 PM",
-      "config": {},
+      "dateUpdated": "Mar 27, 2017 8:09:09 PM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": false,
+        "tableHide": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003eID SYSREMMAG SYSREMEPOCHS SYSREMERR\u003cbr/\u003ebigint, \u0026ldquo;{1.2, \u0026hellip; 2.2, 3.3}\u0026rdquo;, \u0026ldquo;{1.2, \u0026hellip; 2.2, 3.3}\u0026rdquo;, \u0026ldquo;{1.2, \u0026hellip; 2.2, 3.3}\u0026rdquo; \u003c/p\u003e\n\u003cp\u003eThe first number is just an ID from a catalog, and the remaining three columns are arrays of floats, each of which will be several thousand items long. There should be 4,400,674 rows in total.just let me know if you have any issues with it.\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1490659714532_720150966",
+      "id": "20170327-200834_1009194881",
+      "dateCreated": "Mar 27, 2017 8:08:34 PM",
+      "dateStarted": "Mar 27, 2017 8:09:03 PM",
+      "dateFinished": "Mar 27, 2017 8:09:05 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%pyspark\ncurves.count()\n",
+      "user": "ad\\scox",
+      "dateUpdated": "Mar 27, 2017 8:07:37 PM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python"
+        },
+        "editorMode": "ace/mode/python"
+      },
       "settings": {
         "params": {},
         "forms": {}
@@ -48,6 +94,49 @@
       "jobName": "paragraph_1489457149757_-1051920041",
       "id": "20170313-220549_1392032504",
       "dateCreated": "Mar 13, 2017 10:05:49 PM",
+      "dateStarted": "Mar 27, 2017 8:07:37 PM",
+      "dateFinished": "Mar 27, 2017 8:07:22 PM",
+      "status": "RUNNING",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%pyspark\ncurves.take (10)",
+      "user": "ad\\scox",
+      "dateUpdated": "Mar 27, 2017 8:09:41 PM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python"
+        },
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1490659334546_-738231256",
+      "id": "20170327-200214_193024193",
+      "dateCreated": "Mar 27, 2017 8:02:14 PM",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%pyspark\n",
+      "user": "ad\\scox",
+      "dateUpdated": "Mar 27, 2017 8:09:41 PM",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1490659781141_1045171841",
+      "id": "20170327-200941_1006195128",
+      "dateCreated": "Mar 27, 2017 8:09:41 PM",
       "status": "READY",
       "progressUpdateIntervalMs": 500
     }
