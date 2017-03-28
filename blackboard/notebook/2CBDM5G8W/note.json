@@ -52,7 +52,7 @@
       "progressUpdateIntervalMs": 500
     }
   ],
-  "name": "/NCATSTranslator/VisualizeSemanticData/Test/TestD3Viz",
+  "name": "~Trash/NCATSTranslator/VisualizeSemanticData/Test/TestD3Viz",
   "id": "2CBDM5G8W",
   "angularObjects": {
     "2C8PNVW4G:shared_process": [],
