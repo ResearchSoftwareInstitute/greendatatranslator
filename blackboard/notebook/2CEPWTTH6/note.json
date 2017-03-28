@@ -1,0 +1,118 @@
+{
+  "paragraphs": [
+    {
+      "text": "%md\nstressoragentname,stressoragentid,numberofreceptors,receptordescription,receptornotes,studylocation,assaymediums,assayedtermname,assayedtermid,assaylevel,assayunitsofmeasurement,assaymeasurementstatistic,assaynotes,outcomerelationship,diseasename,diseaseid,phenotypename,phenotypeid,reference\n",
+      "user": "ad\\scox",
+      "dateUpdated": "Mar 28, 2017 2:57:07 PM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003estressoragentname,stressoragentid,numberofreceptors,receptordescription,receptornotes,studylocation,assaymediums,assayedtermname,assayedtermid,assaylevel,assayunitsofmeasurement,assaymeasurementstatistic,assaynotes,outcomerelationship,diseasename,diseaseid,phenotypename,phenotypeid,reference\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1490727123732_-959302716",
+      "id": "20170328-145203_1584354037",
+      "dateCreated": "Mar 28, 2017 2:52:03 PM",
+      "dateStarted": "Mar 28, 2017 2:57:07 PM",
+      "dateFinished": "Mar 28, 2017 2:57:09 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%pyspark\nfrom pyspark.sql.types import *\n\nclass CTDExposureEvents(object):\n    def __init__(self, path):\n        self.path \u003d path\n        self.rdd \u003d self.load ()\n\n    def load (self, sample_size\u003d1.0):\n        return sqlContext.read.                                     \\\n            format(\u0027com.databricks.spark.csv\u0027).                     \\\n            options(comment\u003d\u0027#\u0027).                                   \\\n            options(delimiter\u003d\",\").                                 \\\n            options(header\u003d\u0027true\u0027).                                   \\\n            load(self.path).rdd.                                   \\\n            sample (False, sample_size, 1234)\n            \n    def get_events (self, stressor_agent_id\u003dNone):\n        return self.rdd.filter (lambda r : r.C1 \u003d\u003d stressor_agent_id)\n        \nctd_expo_data \u003d \u0027/projects/stars/translator/var/ctd/CTD_exposure_events.csv\u0027\npm25_agent_id \u003d \u0027D052638\u0027\nctd_exposure_events \u003d CTDExposureEvents (ctd_expo_data)\npm25_events \u003d ctd_exposure_events.get_events (stressor_agent_id\u003dpm25_agent_id)\nprint (pm25_events.take (10))\n\n\n",
+      "user": "ad\\scox",
+      "dateUpdated": "Mar 28, 2017 3:09:59 PM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python"
+        },
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "ERROR",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Traceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-1678691898936180541.py\", line 346, in \u003cmodule\u003e\n    raise Exception(traceback.format_exc())\nException: Traceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-1678691898936180541.py\", line 339, in \u003cmodule\u003e\n    exec(code)\n  File \"\u003cstdin\u003e\", line 20, in \u003cmodule\u003e\n  File \"/projects/stars/stack/spark/spark2/python/pyspark/rdd.py\", line 1310, in take\n    res \u003d self.context.runJob(self, takeUpToNumLeft, p)\n  File \"/projects/stars/stack/spark/spark2/python/pyspark/context.py\", line 933, in runJob\n    port \u003d self._jvm.PythonRDD.runJob(self._jsc.sc(), mappedRDD._jrdd, partitions)\n  File \"/projects/stars/stack/spark/spark2/python/lib/py4j-0.10.3-src.zip/py4j/java_gateway.py\", line 1133, in __call__\n    answer, self.gateway_client, self.target_id, self.name)\n  File \"/projects/stars/stack/spark/spark2/python/pyspark/sql/utils.py\", line 63, in deco\n    return f(*a, **kw)\n  File \"/projects/stars/stack/spark/spark2/python/lib/py4j-0.10.3-src.zip/py4j/protocol.py\", line 319, in get_return_value\n    format(target_id, \".\", name), value)\nPy4JJavaError: An error occurred while calling z:org.apache.spark.api.python.PythonRDD.runJob.\n: org.apache.spark.SparkException: Job aborted due to stage failure: Task 0 in stage 8.0 failed 4 times, most recent failure: Lost task 0.3 in stage 8.0 (TID 17, stars-c3.edc.renci.org): org.apache.spark.api.python.PythonException: Traceback (most recent call last):\n  File \"/scratch/mesos/slaves/20170217-100748-1963465132-5050-1963-S2/frameworks/20170321-090025-1963465132-5050-25729-3273/executors/1/runs/62b0a582-2e42-4172-823e-f656cf227454/spark-2.0.1-bin-hadoop2.6/python/lib/pyspark.zip/pyspark/worker.py\", line 172, in main\n    process()\n  File \"/scratch/mesos/slaves/20170217-100748-1963465132-5050-1963-S2/frameworks/20170321-090025-1963465132-5050-25729-3273/executors/1/runs/62b0a582-2e42-4172-823e-f656cf227454/spark-2.0.1-bin-hadoop2.6/python/lib/pyspark.zip/pyspark/worker.py\", line 167, in process\n    serializer.dump_stream(func(split_index, iterator), outfile)\n  File \"/scratch/mesos/slaves/20170217-100748-1963465132-5050-1963-S2/frameworks/20170321-090025-1963465132-5050-25729-3273/executors/1/runs/62b0a582-2e42-4172-823e-f656cf227454/spark-2.0.1-bin-hadoop2.6/python/lib/pyspark.zip/pyspark/serializers.py\", line 263, in dump_stream\n    vs \u003d list(itertools.islice(iterator, batch))\n  File \"/projects/stars/stack/spark/spark2/python/pyspark/rdd.py\", line 1306, in takeUpToNumLeft\n    yield next(iterator)\n  File \"\u003cstdin\u003e\", line 15, in \u003clambda\u003e\n  File \"/scratch/mesos/slaves/20170217-100748-1963465132-5050-1963-S2/frameworks/20170321-090025-1963465132-5050-25729-3273/executors/1/runs/62b0a582-2e42-4172-823e-f656cf227454/spark-2.0.1-bin-hadoop2.6/python/lib/pyspark.zip/pyspark/sql/types.py\", line 1502, in __getattr__\n    raise AttributeError(item)\nAttributeError: C1\n\n\tat org.apache.spark.api.python.PythonRunner$$anon$1.read(PythonRDD.scala:193)\n\tat org.apache.spark.api.python.PythonRunner$$anon$1.\u003cinit\u003e(PythonRDD.scala:234)\n\tat org.apache.spark.api.python.PythonRunner.compute(PythonRDD.scala:152)\n\tat org.apache.spark.api.python.PythonRDD.compute(PythonRDD.scala:63)\n\tat org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:319)\n\tat org.apache.spark.rdd.RDD.iterator(RDD.scala:283)\n\tat org.apache.spark.scheduler.ResultTask.runTask(ResultTask.scala:70)\n\tat org.apache.spark.scheduler.Task.run(Task.scala:86)\n\tat org.apache.spark.executor.Executor$TaskRunner.run(Executor.scala:274)\n\tat java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)\n\tat java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)\n\tat java.lang.Thread.run(Thread.java:745)\n\nDriver stacktrace:\n\tat org.apache.spark.scheduler.DAGScheduler.org$apache$spark$scheduler$DAGScheduler$$failJobAndIndependentStages(DAGScheduler.scala:1454)\n\tat org.apache.spark.scheduler.DAGScheduler$$anonfun$abortStage$1.apply(DAGScheduler.scala:1442)\n\tat org.apache.spark.scheduler.DAGScheduler$$anonfun$abortStage$1.apply(DAGScheduler.scala:1441)\n\tat scala.collection.mutable.ResizableArray$class.foreach(ResizableArray.scala:59)\n\tat scala.collection.mutable.ArrayBuffer.foreach(ArrayBuffer.scala:48)\n\tat org.apache.spark.scheduler.DAGScheduler.abortStage(DAGScheduler.scala:1441)\n\tat org.apache.spark.scheduler.DAGScheduler$$anonfun$handleTaskSetFailed$1.apply(DAGScheduler.scala:811)\n\tat org.apache.spark.scheduler.DAGScheduler$$anonfun$handleTaskSetFailed$1.apply(DAGScheduler.scala:811)\n\tat scala.Option.foreach(Option.scala:257)\n\tat org.apache.spark.scheduler.DAGScheduler.handleTaskSetFailed(DAGScheduler.scala:811)\n\tat org.apache.spark.scheduler.DAGSchedulerEventProcessLoop.doOnReceive(DAGScheduler.scala:1667)\n\tat org.apache.spark.scheduler.DAGSchedulerEventProcessLoop.onReceive(DAGScheduler.scala:1622)\n\tat org.apache.spark.scheduler.DAGSchedulerEventProcessLoop.onReceive(DAGScheduler.scala:1611)\n\tat org.apache.spark.util.EventLoop$$anon$1.run(EventLoop.scala:48)\n\tat org.apache.spark.scheduler.DAGScheduler.runJob(DAGScheduler.scala:632)\n\tat org.apache.spark.SparkContext.runJob(SparkContext.scala:1890)\n\tat org.apache.spark.SparkContext.runJob(SparkContext.scala:1903)\n\tat org.apache.spark.SparkContext.runJob(SparkContext.scala:1916)\n\tat org.apache.spark.api.python.PythonRDD$.runJob(PythonRDD.scala:441)\n\tat org.apache.spark.api.python.PythonRDD.runJob(PythonRDD.scala)\n\tat sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)\n\tat sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)\n\tat sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\n\tat java.lang.reflect.Method.invoke(Method.java:606)\n\tat py4j.reflection.MethodInvoker.invoke(MethodInvoker.java:237)\n\tat py4j.reflection.ReflectionEngine.invoke(ReflectionEngine.java:357)\n\tat py4j.Gateway.invoke(Gateway.java:280)\n\tat py4j.commands.AbstractCommand.invokeMethod(AbstractCommand.java:132)\n\tat py4j.commands.CallCommand.execute(CallCommand.java:79)\n\tat py4j.GatewayConnection.run(GatewayConnection.java:214)\n\tat java.lang.Thread.run(Thread.java:745)\nCaused by: org.apache.spark.api.python.PythonException: Traceback (most recent call last):\n  File \"/scratch/mesos/slaves/20170217-100748-1963465132-5050-1963-S2/frameworks/20170321-090025-1963465132-5050-25729-3273/executors/1/runs/62b0a582-2e42-4172-823e-f656cf227454/spark-2.0.1-bin-hadoop2.6/python/lib/pyspark.zip/pyspark/worker.py\", line 172, in main\n    process()\n  File \"/scratch/mesos/slaves/20170217-100748-1963465132-5050-1963-S2/frameworks/20170321-090025-1963465132-5050-25729-3273/executors/1/runs/62b0a582-2e42-4172-823e-f656cf227454/spark-2.0.1-bin-hadoop2.6/python/lib/pyspark.zip/pyspark/worker.py\", line 167, in process\n    serializer.dump_stream(func(split_index, iterator), outfile)\n  File \"/scratch/mesos/slaves/20170217-100748-1963465132-5050-1963-S2/frameworks/20170321-090025-1963465132-5050-25729-3273/executors/1/runs/62b0a582-2e42-4172-823e-f656cf227454/spark-2.0.1-bin-hadoop2.6/python/lib/pyspark.zip/pyspark/serializers.py\", line 263, in dump_stream\n    vs \u003d list(itertools.islice(iterator, batch))\n  File \"/projects/stars/stack/spark/spark2/python/pyspark/rdd.py\", line 1306, in takeUpToNumLeft\n    yield next(iterator)\n  File \"\u003cstdin\u003e\", line 15, in \u003clambda\u003e\n  File \"/scratch/mesos/slaves/20170217-100748-1963465132-5050-1963-S2/frameworks/20170321-090025-1963465132-5050-25729-3273/executors/1/runs/62b0a582-2e42-4172-823e-f656cf227454/spark-2.0.1-bin-hadoop2.6/python/lib/pyspark.zip/pyspark/sql/types.py\", line 1502, in __getattr__\n    raise AttributeError(item)\nAttributeError: C1\n\n\tat org.apache.spark.api.python.PythonRunner$$anon$1.read(PythonRDD.scala:193)\n\tat org.apache.spark.api.python.PythonRunner$$anon$1.\u003cinit\u003e(PythonRDD.scala:234)\n\tat org.apache.spark.api.python.PythonRunner.compute(PythonRDD.scala:152)\n\tat org.apache.spark.api.python.PythonRDD.compute(PythonRDD.scala:63)\n\tat org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:319)\n\tat org.apache.spark.rdd.RDD.iterator(RDD.scala:283)\n\tat org.apache.spark.scheduler.ResultTask.runTask(ResultTask.scala:70)\n\tat org.apache.spark.scheduler.Task.run(Task.scala:86)\n\tat org.apache.spark.executor.Executor$TaskRunner.run(Executor.scala:274)\n\tat java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)\n\tat java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)\n\t... 1 more\n\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1490726964178_-532847693",
+      "id": "20170328-144924_801460369",
+      "dateCreated": "Mar 28, 2017 2:49:24 PM",
+      "dateStarted": "Mar 28, 2017 3:09:59 PM",
+      "dateFinished": "Mar 28, 2017 3:10:00 PM",
+      "status": "ERROR",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%pyspark\n",
+      "user": "ad\\scox",
+      "dateUpdated": "Mar 28, 2017 3:03:59 PM",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1490727839472_-883096719",
+      "id": "20170328-150359_1070759844",
+      "dateCreated": "Mar 28, 2017 3:03:59 PM",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "/NCATSTranslator/Green/CTDExposureEvents",
+  "id": "2CEPWTTH6",
+  "angularObjects": {
+    "2C8PNVW4G:shared_process": [],
+    "2C9WWVYVN::2CEPWTTH6": [],
+    "2C9M4A84U:shared_process": [],
+    "2C8JB5J2A:shared_process": [],
+    "2C8UPVAV8:shared_process": [],
+    "2CB6QSJQK:shared_process": [],
+    "2CB4GRYA4:shared_process": [],
+    "2CAZ1XA1G:shared_process": [],
+    "2CBGUDB9H:shared_process": [],
+    "2C9VT2CHD:shared_process": [],
+    "2CBBPS1GQ:shared_process": [],
+    "2CAYF7YMG:shared_process": [],
+    "2C7NS2RPM:shared_process": [],
+    "2CB55MCKF:shared_process": [],
+    "2C9P6TDB4:shared_process": [],
+    "2C7YD2D51:shared_process": [],
+    "2C9UAC7QR:shared_process": [],
+    "2C8K1VZ6J:shared_process": [],
+    "2CA9JMF94:shared_process": []
+  },
+  "config": {},
+  "info": {}
+}
