@@ -34,7 +34,7 @@
     {
       "text": "%spark\nvar x \u003d sc.parallelize (Array(0, 4, 3)).collect ()\n",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 21, 2017 7:17:16 PM",
+      "dateUpdated": "Mar 28, 2017 6:42:15 PM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -61,33 +61,62 @@
       "jobName": "paragraph_1490132356969_28515512",
       "id": "20170321-173916_931028472",
       "dateCreated": "Mar 21, 2017 5:39:16 PM",
-      "dateStarted": "Mar 21, 2017 7:17:16 PM",
-      "dateFinished": "Mar 21, 2017 7:17:33 PM",
+      "dateStarted": "Mar 28, 2017 6:42:15 PM",
+      "dateFinished": "Mar 28, 2017 6:42:18 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n\n",
+      "text": "%spark\nimport org.phenoscape.scowl._\n\n",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 21, 2017 7:19:31 PM",
+      "dateUpdated": "Mar 28, 2017 6:40:16 PM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
         "results": {},
         "editorSetting": {
-          "language": "markdown",
-          "editOnDblClick": true
+          "language": "scala",
+          "editOnDblClick": false
         },
-        "editorMode": "ace/mode/markdown"
+        "editorMode": "ace/mode/scala",
+        "editorHide": false,
+        "tableHide": false
       },
       "settings": {
         "params": {},
         "forms": {}
       },
+      "results": {
+        "code": "ERROR",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\n\n\n\u003cconsole\u003e:23: error: object phenoscape is not a member of package org\n       import org.phenoscape.scowl._\n                  ^\n"
+          }
+        ]
+      },
       "apps": [],
       "jobName": "paragraph_1490138255511_1383701003",
       "id": "20170321-191735_1946820153",
       "dateCreated": "Mar 21, 2017 7:17:35 PM",
+      "dateStarted": "Mar 28, 2017 6:40:16 PM",
+      "dateFinished": "Mar 28, 2017 6:40:31 PM",
+      "status": "ERROR",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%spark\n",
+      "user": "ad\\scox",
+      "dateUpdated": "Mar 28, 2017 6:40:16 PM",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1490740816827_-522144022",
+      "id": "20170328-184016_1023895059",
+      "dateCreated": "Mar 28, 2017 6:40:16 PM",
       "status": "READY",
       "progressUpdateIntervalMs": 500
     }
