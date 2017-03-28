@@ -67,9 +67,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%spark\nimport org.phenoscape.scowl._\n\n",
+      "text": "%spark\nimport org.phenoscape.scowl._\n",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 28, 2017 6:40:16 PM",
+      "dateUpdated": "Mar 28, 2017 7:29:00 PM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -99,8 +99,8 @@
       "jobName": "paragraph_1490138255511_1383701003",
       "id": "20170321-191735_1946820153",
       "dateCreated": "Mar 21, 2017 7:17:35 PM",
-      "dateStarted": "Mar 28, 2017 6:40:16 PM",
-      "dateFinished": "Mar 28, 2017 6:40:31 PM",
+      "dateStarted": "Mar 28, 2017 7:29:01 PM",
+      "dateFinished": "Mar 28, 2017 7:29:01 PM",
       "status": "ERROR",
       "progressUpdateIntervalMs": 500
     },
