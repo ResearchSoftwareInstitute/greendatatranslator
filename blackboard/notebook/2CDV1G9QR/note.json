@@ -1,15 +1,16 @@
 {
   "paragraphs": [
     {
-      "text": "%pyspark\nfrom lightning import Lightning\n\nclass StarsLightning (object):\n    def __init__(self, host\u003d\"https://stars-lightning.renci.org\"):\n        self.host \u003d host\n        self.service \u003d Lightning(host\u003dself.host)\n    def render (self, vis, width\u003d400, height\u003d300):\n        print (\u0027%html \u003ciframe src\u003d\"{0}/visualizations/{1}/iframe\" width\u003d\"{2}\" height\u003d\"{3}\" \u003e\u0027.format (self.host, vis.id, width, height))\n        \nstarlight \u003d StarsLightning ()",
+      "text": "%python\nfrom lightning import Lightning\n\nclass StarsLightning (object):\n    def __init__(self, host\u003d\"https://stars-lightning.renci.org\"):\n        self.host \u003d host\n        self.service \u003d Lightning(host\u003dself.host)\n    def render (self, vis, width\u003d400, height\u003d300):\n        print (\u0027%html \u003ciframe src\u003d\"{0}/visualizations/{1}/iframe\" width\u003d\"{2}\" height\u003d\"{3}\" \u003e\u0027.format (self.host, vis.id, width, height))\n\nstarlight \u003d StarsLightning ()",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 27, 2017 3:29:16 PM",
+      "dateUpdated": "Mar 28, 2017 10:08:22 AM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
         "results": {},
         "editorSetting": {
-          "language": "python"
+          "language": "python",
+          "editOnDblClick": false
         },
         "editorMode": "ace/mode/python"
       },
@@ -22,7 +23,7 @@
         "msg": [
           {
             "type": "TEXT",
-            "data": "Lightning initialized\nConnected to server at https://stars-lightning.renci.org\n"
+            "data": "... ... ... ... ... ... Lightning initialized\nConnected to server at https://stars-lightning.renci.org\n"
           }
         ]
       },
@@ -30,15 +31,15 @@
       "jobName": "paragraph_1489586243684_-1929472760",
       "id": "20170315-095723_1855116549",
       "dateCreated": "Mar 15, 2017 9:57:23 AM",
-      "dateStarted": "Mar 27, 2017 3:29:16 PM",
-      "dateFinished": "Mar 27, 2017 3:29:19 PM",
+      "dateStarted": "Mar 28, 2017 10:08:22 AM",
+      "dateFinished": "Mar 28, 2017 10:08:23 AM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%pyspark\nstarlight.render (vis \u003d starlight.service.line([1, 1, 2, 3, 5, 8]))",
-      "user": "ad\\hongyi",
-      "dateUpdated": "Mar 24, 2017 8:23:43 PM",
+      "text": "%python\nstarlight.render (vis \u003d starlight.service.line([1, 1, 2, 3, 5, 8]))",
+      "user": "ad\\scox",
+      "dateUpdated": "Mar 28, 2017 10:08:25 AM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -52,7 +53,8 @@
           }
         },
         "editorSetting": {
-          "language": "python"
+          "language": "python",
+          "editOnDblClick": false
         },
         "editorMode": "ace/mode/python"
       },
@@ -65,7 +67,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003ciframe src\u003d\"https://stars-lightning.renci.org/visualizations/5fa2d50b-7d5c-444a-a4ef-33cfc47ecded/iframe\" width\u003d\"400\" height\u003d\"300\" \u003e\n"
+            "data": "\u003ciframe src\u003d\"https://stars-lightning.renci.org/visualizations/746e154d-ba16-4a85-b91a-267c27143ede/iframe\" width\u003d\"400\" height\u003d\"300\" \u003e\n"
           }
         ]
       },
@@ -73,21 +75,22 @@
       "jobName": "paragraph_1489516334094_-1062008347",
       "id": "20170314-143214_1064555866",
       "dateCreated": "Mar 14, 2017 2:32:14 PM",
-      "dateStarted": "Mar 24, 2017 8:23:43 PM",
-      "dateFinished": "Mar 24, 2017 8:23:49 PM",
+      "dateStarted": "Mar 28, 2017 10:08:25 AM",
+      "dateFinished": "Mar 28, 2017 10:08:25 AM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%pyspark\nfrom numpy import random\nmatrix \u003d random.rand(50,50)\nmatrix[matrix \u003c 0.75] \u003d 0\ngroup \u003d (random.rand(10) * 5).astype(\u0027int\u0027)\nlabels\u003d[str(t) for t in range(0,50)]\n\nstarlight.render (\n    vis \u003d starlight.service.adjacency(\n        matrix,\n        group\u003dgroup,\n        labels\u003dlabels,\n        numbers\u003dTrue,\n        sort\u003d\"group\",\n        height\u003d700,\n        width\u003d700),\n    width \u003d 800, height\u003d800)",
+      "text": "%python\nfrom numpy import random\nmatrix \u003d random.rand(50,50)\nmatrix[matrix \u003c 0.75] \u003d 0\ngroup \u003d (random.rand(10) * 5).astype(\u0027int\u0027)\nlabels\u003d[str(t) for t in range(0,50)]\n\nstarlight.render (\n    vis \u003d starlight.service.adjacency(\n        matrix,\n        group\u003dgroup,\n        labels\u003dlabels,\n        numbers\u003dTrue,\n        sort\u003d\"group\",\n        height\u003d700,\n        width\u003d700),\n    width \u003d 800, height\u003d800)",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 27, 2017 3:29:21 PM",
+      "dateUpdated": "Mar 28, 2017 10:08:30 AM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
         "results": {},
         "editorSetting": {
-          "language": "python"
+          "language": "python",
+          "editOnDblClick": false
         },
         "editorMode": "ace/mode/python"
       },
@@ -99,8 +102,8 @@
         "code": "SUCCESS",
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003ciframe src\u003d\"https://stars-lightning.renci.org/visualizations/e7c22ead-a439-4310-9b2c-eef67b23537f/iframe\" width\u003d\"800\" height\u003d\"800\" \u003e\n"
+            "type": "TEXT",
+            "data": "... ... ... ... ... ... ... ... ... %html \u003ciframe src\u003d\"https://stars-lightning.renci.org/visualizations/494cbdec-c3cc-4b63-a734-b07f0ed4bdb9/iframe\" width\u003d\"800\" height\u003d\"800\" \u003e\n"
           }
         ]
       },
@@ -108,8 +111,8 @@
       "jobName": "paragraph_1489516243330_904889327",
       "id": "20170314-143043_998819232",
       "dateCreated": "Mar 14, 2017 2:30:43 PM",
-      "dateStarted": "Mar 27, 2017 3:29:21 PM",
-      "dateFinished": "Mar 27, 2017 3:29:21 PM",
+      "dateStarted": "Mar 28, 2017 10:08:30 AM",
+      "dateFinished": "Mar 28, 2017 10:08:30 AM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },

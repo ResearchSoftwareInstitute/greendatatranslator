@@ -3,7 +3,7 @@
     {
       "text": "%md\n\n| ID      | SYSREMMAG             | SYSREMEPOCHS          | SYSREMERR               |\n|---------|:---------------------:|-----------------------|-------------------------|\n| bigint  | \"{1.2, ... 2.2, 3.3}\" | \"{1.2, ... 2.2, 3.3}\" | \"{1.2, ... 2.2, 3.3}\"   |\n",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 27, 2017 8:17:44 PM",
+      "dateUpdated": "Mar 28, 2017 9:44:30 AM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -33,15 +33,15 @@
       "jobName": "paragraph_1490659714532_720150966",
       "id": "20170327-200834_1009194881",
       "dateCreated": "Mar 27, 2017 8:08:34 PM",
-      "dateStarted": "Mar 27, 2017 8:17:44 PM",
-      "dateFinished": "Mar 27, 2017 8:17:44 PM",
+      "dateStarted": "Mar 28, 2017 9:44:30 AM",
+      "dateFinished": "Mar 28, 2017 9:44:33 AM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%pyspark\nimport numpy as np\n\nclass LightCurve(object):\n    def __init__(self, mag, epochs, err):\n        self.mag \u003d mag\n        self.epocs \u003d epochs\n        self.err \u003d err\n    @staticmethod\n    def load_curves (row):\n        return LightCurve (\n            mag \u003d to_array (row[1]),\n            epochs \u003d to_array (row[2]),\n            err \u003d LightCurve.to_array (row[3]))\n    @staticmethod\n    def to_array (text):\n        a \u003d text.replace (\u0027{\u0027, \u0027\u0027).replace (\u0027}\u0027, \u0027\u0027).split (\u0027,\u0027)\n        return np.array (map (lambda v : float(v), a))",
+      "text": "%pyspark\nimport numpy as np\n\nclass LightCurve(object):\n    def __init__(self, mag, epochs, err):\n        self.mag \u003d mag\n        self.epocs \u003d epochs\n        self.err \u003d err\n    @staticmethod\n    def load_curves (row):\n        return LightCurve (\n            mag \u003d LightCurve.to_array (row[1]),\n            epochs \u003d LightCurve.to_array (row[2]),\n            err \u003d LightCurve.to_array (row[3]))\n    @staticmethod\n    def to_array (text):\n        a \u003d text.replace (\u0027{\u0027, \u0027\u0027).replace (\u0027}\u0027, \u0027\u0027).split (\u0027,\u0027)\n        return np.array (map (lambda v : float(v), a))",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 27, 2017 9:36:25 PM",
+      "dateUpdated": "Mar 28, 2017 10:00:34 AM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -50,7 +50,8 @@
           "language": "python",
           "editOnDblClick": false
         },
-        "editorMode": "ace/mode/python"
+        "editorMode": "ace/mode/python",
+        "editorHide": false
       },
       "settings": {
         "params": {},
@@ -64,23 +65,23 @@
       "jobName": "paragraph_1490659334546_-738231256",
       "id": "20170327-200214_193024193",
       "dateCreated": "Mar 27, 2017 8:02:14 PM",
-      "dateStarted": "Mar 27, 2017 9:36:25 PM",
-      "dateFinished": "Mar 27, 2017 9:36:25 PM",
+      "dateStarted": "Mar 28, 2017 9:46:01 AM",
+      "dateFinished": "Mar 28, 2017 9:46:01 AM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%pyspark\nfrom pyspark.sql.types import *\n#curves.toDF().registerTempTable(\"curves\")\n\ndef load (sample_size):\n    input_file \u003d \u0027/projects/stars/evryscope/var/data/lcvs.csv\u0027\n    return sqlContext.read.                                     \\\n        format(\u0027com.databricks.spark.csv\u0027).                     \\\n        options(comment\u003d\u0027#\u0027).                                   \\\n        options(delimiter\u003d\",\").                                 \\\n        options(header\u003dTrue).                                   \\\n        load(input_file).rdd.                                   \\\n        sample (False, sample_size, 1234).                      \\\n        map (lambda r : load_curves (r))\ncurves \u003d load (0.2)\n",
+      "text": "%pyspark\nfrom pyspark.sql.types import *\ndef load (sample_size\u003d1.0):\n    input_file \u003d \u0027/projects/stars/evryscope/var/data/lcvs.csv\u0027\n    return sqlContext.read.                                     \\\n        format(\u0027com.databricks.spark.csv\u0027).                     \\\n        options(comment\u003d\u0027#\u0027).                                   \\\n        options(delimiter\u003d\",\").                                 \\\n        options(header\u003dTrue).                                   \\\n        load(input_file).rdd.                                   \\\n        sample (False, sample_size, 1234).                      \\\n        map (lambda r : LightCurve.load_curves (r))\ncurves \u003d load ()\n",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 27, 2017 9:25:53 PM",
+      "dateUpdated": "Mar 28, 2017 10:00:10 AM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
         "results": {},
         "editorSetting": {
-          "language": "scala"
+          "language": "python"
         },
-        "editorMode": "ace/mode/scala"
+        "editorMode": "ace/mode/python"
       },
       "settings": {
         "params": {},
@@ -94,15 +95,15 @@
       "jobName": "paragraph_1490659781141_1045171841",
       "id": "20170327-200941_1006195128",
       "dateCreated": "Mar 27, 2017 8:09:41 PM",
-      "dateStarted": "Mar 27, 2017 9:25:54 PM",
-      "dateFinished": "Mar 27, 2017 9:25:54 PM",
+      "dateStarted": "Mar 28, 2017 10:00:10 AM",
+      "dateFinished": "Mar 28, 2017 10:00:11 AM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%pyspark\ncurves.count ()\n",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 27, 2017 9:36:36 PM",
+      "dateUpdated": "Mar 28, 2017 9:52:29 AM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -122,7 +123,7 @@
         "msg": [
           {
             "type": "TEXT",
-            "data": "878899\n"
+            "data": "4400634\n"
           }
         ]
       },
@@ -130,24 +131,94 @@
       "jobName": "paragraph_1490659943605_-14041357",
       "id": "20170327-201223_716142911",
       "dateCreated": "Mar 27, 2017 8:12:23 PM",
-      "dateStarted": "Mar 27, 2017 9:36:36 PM",
-      "dateFinished": "Mar 27, 2017 9:43:45 PM",
+      "dateStarted": "Mar 28, 2017 9:52:29 AM",
+      "dateFinished": "Mar 28, 2017 9:59:19 AM",
       "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%pyspark\ncurves.map (lambda v : np.sum (v.mag)).\\\n    take (10)",
+      "user": "ad\\scox",
+      "dateUpdated": "Mar 28, 2017 9:59:28 AM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python"
+        },
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "[3954.8626040877216, 3993.1496547884462, 4088.1283649836591, 3958.0866344876035, 3990.7716485017218, 12800.775073051456, 4021.7451994473777, 3999.4706032869972, 4005.6268526355425, 22293.477833747864]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1490708988602_314459080",
+      "id": "20170328-094948_836001762",
+      "dateCreated": "Mar 28, 2017 9:49:48 AM",
+      "dateStarted": "Mar 28, 2017 9:59:28 AM",
+      "dateFinished": "Mar 28, 2017 9:59:29 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%pyspark\nimport bls\n\n\n\n\n\n\n\n\n",
+      "user": "ad\\scox",
+      "dateUpdated": "Mar 28, 2017 9:51:43 AM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python"
+        },
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "ERROR",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Traceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-4325838016133613763.py\", line 346, in \u003cmodule\u003e\n    raise Exception(traceback.format_exc())\nException: Traceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-4325838016133613763.py\", line 339, in \u003cmodule\u003e\n    exec(code)\n  File \"\u003cstdin\u003e\", line 1, in \u003cmodule\u003e\nImportError: No module named bls\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1490662181777_1693493398",
+      "id": "20170327-204941_1905806004",
+      "dateCreated": "Mar 27, 2017 8:49:41 PM",
+      "dateStarted": "Mar 28, 2017 9:51:43 AM",
+      "dateFinished": "Mar 28, 2017 9:51:43 AM",
+      "status": "ERROR",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%pyspark\n",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 27, 2017 8:49:41 PM",
+      "dateUpdated": "Mar 28, 2017 9:51:43 AM",
       "config": {},
       "settings": {
         "params": {},
         "forms": {}
       },
       "apps": [],
-      "jobName": "paragraph_1490662181777_1693493398",
-      "id": "20170327-204941_1905806004",
-      "dateCreated": "Mar 27, 2017 8:49:41 PM",
+      "jobName": "paragraph_1490709103791_2118146600",
+      "id": "20170328-095143_1888707834",
+      "dateCreated": "Mar 28, 2017 9:51:43 AM",
       "status": "READY",
       "progressUpdateIntervalMs": 500
     }
