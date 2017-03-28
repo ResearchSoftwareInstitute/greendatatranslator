@@ -1,9 +1,9 @@
 {
   "paragraphs": [
     {
-      "text": "%md\nstressoragentname,stressoragentid,numberofreceptors,receptordescription,receptornotes,studylocation,assaymediums,assayedtermname,assayedtermid,assaylevel,assayunitsofmeasurement,assaymeasurementstatistic,assaynotes,outcomerelationship,diseasename,diseaseid,phenotypename,phenotypeid,reference\n",
+      "text": "%md\nTranslator needs to be able to answer questions that, conceptually, navigate between pathways and \nstressoragentname,stressoragentid,numberofreceptors,receptordescription,receptornotes,studylocation,assaymediums,assayedtermname,assayedtermid,assaylevel,assayunitsofmeasurement,assaymeasurementstatistic,assaynotes,outcomerelationship,diseasename,diseaseid,phenotypename,phenotypeid,reference\n\n#GeneSymbol,GeneID,PathwayName,PathwayID\n",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 28, 2017 3:34:55 PM",
+      "dateUpdated": "Mar 28, 2017 4:11:21 PM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -13,8 +13,8 @@
           "editOnDblClick": true
         },
         "editorMode": "ace/mode/markdown",
-        "editorHide": false,
-        "tableHide": true
+        "editorHide": true,
+        "tableHide": false
       },
       "settings": {
         "params": {},
@@ -25,7 +25,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003estressoragentname,stressoragentid,numberofreceptors,receptordescription,receptornotes,studylocation,assaymediums,assayedtermname,assayedtermid,assaylevel,assayunitsofmeasurement,assaymeasurementstatistic,assaynotes,outcomerelationship,diseasename,diseaseid,phenotypename,phenotypeid,reference\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003eTranslator needs to be able to answer questions that, conceptually, navigate between pathways and\u003cbr/\u003estressoragentname,stressoragentid,numberofreceptors,receptordescription,receptornotes,studylocation,assaymediums,assayedtermname,assayedtermid,assaylevel,assayunitsofmeasurement,assaymeasurementstatistic,assaynotes,outcomerelationship,diseasename,diseaseid,phenotypename,phenotypeid,reference\u003c/p\u003e\n\u003cp\u003e#GeneSymbol,GeneID,PathwayName,PathwayID\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -33,15 +33,15 @@
       "jobName": "paragraph_1490727123732_-959302716",
       "id": "20170328-145203_1584354037",
       "dateCreated": "Mar 28, 2017 2:52:03 PM",
-      "dateStarted": "Mar 28, 2017 2:57:07 PM",
-      "dateFinished": "Mar 28, 2017 2:57:09 PM",
+      "dateStarted": "Mar 28, 2017 4:11:21 PM",
+      "dateFinished": "Mar 28, 2017 4:11:21 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%pyspark\nfrom pyspark.sql.types import *\n\nclass CTDLoader(object):\n    def __init__(self, path, table, sample_size\u003d1.0):\n        self.path \u003d path\n        self.rdd \u003d self.load (sample_size\u003dsample_size)\n        self.rdd.toDF().registerTempTable (table)\n\n    def load (self, sample_size\u003d1.0):\n        return sqlContext.read.                                     \\\n            format(\u0027com.databricks.spark.csv\u0027).                     \\\n            options(comment\u003d\u0027#\u0027).                                   \\\n            options(delimiter\u003d\",\").                                 \\\n            options(header\u003d\u0027true\u0027).                                 \\\n            load(self.path).rdd.                                   \\\n            sample (False, sample_size, 1234)\n\nclass CTDExposureEvents(CTDLoader):\n    def __init__(self, path, table):\n        CTDLoader.__init__(self, path, table)\nclass CTDGenesPathways(CTDLoader):\n    def __init__(self, path, table):\n        CTDLoader.__init__(self, path, table)\n    \nctd_expo_data \u003d \u0027/projects/stars/translator/var/ctd/CTD_exposure_events.csv\u0027\nctd_exposure_events \u003d CTDExposureEvents (ctd_expo_data, \u0027ctd_exposure_events\u0027)\n\n#GeneSymbol,GeneID,PathwayName,PathwayID\nctd_genes_pathways_data \u003d \u0027/projects/stars/translator/var/ctd/CTD_genes_pathways.csv\u0027\nctd_gene_pathway \u003d CTDGenesPathways (ctd_genes_pathways_data, \u0027ctd_genes_pathways\u0027)\nprefix \u003d { \n    \u0027kegg\u0027 : \u0027http://www.genome.jp/kegg-bin/show_pathway?hsa\u0027,\n    \u0027ncbi\u0027 : \u0027https://www.ncbi.nlm.nih.gov/gene/\u0027\n}\n\npm25_agent_id \u003d \u0027D052638\u0027\nasthma_mesh_id \u003d \u0027D001249\u0027\n",
+      "text": "%pyspark\nfrom pyspark.sql.types import *\n\nclass CTDLoader(object):\n    def __init__(self, path, table, sample_size\u003d1.0):\n        self.path \u003d path\n        self.rdd \u003d self.load (sample_size\u003dsample_size)\n        self.rdd.toDF().registerTempTable (table)\n    def load (self, sample_size\u003d1.0):\n        return sqlContext.read.                                     \\\n            format(\u0027com.databricks.spark.csv\u0027).                     \\\n            options(comment\u003d\u0027#\u0027).                                   \\\n            options(delimiter\u003d\",\").                                 \\\n            options(header\u003d\u0027true\u0027).                                 \\\n            load(self.path).rdd.                                   \\\n            sample (False, sample_size, 1234)\nclass CTDExposureEvents(CTDLoader):\n    def __init__(self, path, table):\n        CTDLoader.__init__(self, path, table)\nclass CTDGenesPathways(CTDLoader):\n    def __init__(self, path, table):\n        CTDLoader.__init__(self, path, table)\n    \nctd_expo_data \u003d \u0027/projects/stars/translator/var/ctd/CTD_exposure_events.csv\u0027\nctd_exposure_events \u003d CTDExposureEvents (ctd_expo_data, \u0027ctd_exposure_events\u0027)\n\nctd_genes_pathways_data \u003d \u0027/projects/stars/translator/var/ctd/CTD_genes_pathways.csv\u0027\nctd_gene_pathway \u003d CTDGenesPathways (ctd_genes_pathways_data, \u0027ctd_genes_pathways\u0027)\n\nprefix \u003d { \n    \u0027kegg\u0027 : \u0027http://www.genome.jp/kegg-bin/show_pathway?hsa\u0027,\n    \u0027ncbi\u0027 : \u0027https://www.ncbi.nlm.nih.gov/gene/\u0027\n}\n\npm25_agent_id \u003d \u0027D052638\u0027\nasthma_mesh_id \u003d \u0027D001249\u0027\n",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 28, 2017 3:57:41 PM",
+      "dateUpdated": "Mar 28, 2017 4:12:33 PM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -63,15 +63,15 @@
       "jobName": "paragraph_1490726964178_-532847693",
       "id": "20170328-144924_801460369",
       "dateCreated": "Mar 28, 2017 2:49:24 PM",
-      "dateStarted": "Mar 28, 2017 3:57:42 PM",
-      "dateFinished": "Mar 28, 2017 3:57:43 PM",
+      "dateStarted": "Mar 28, 2017 4:12:33 PM",
+      "dateFinished": "Mar 28, 2017 4:12:34 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%sql select stressoragentid,receptordescription,phenotypeid from ctd_exposure_events where stressoragentid\u003d\u0027D052638\u0027 and receptordescription like \u0027%[D001249]%\u0027 order by phenotypeid\n",
+      "text": "%sql \nselect stressoragentid,receptordescription,phenotypeid \nfrom ctd_exposure_events \nwhere stressoragentid\u003d\u0027D052638\u0027 and receptordescription like \u0027%[D001249]%\u0027 order by phenotypeid\n",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 28, 2017 3:49:29 PM",
+      "dateUpdated": "Mar 28, 2017 4:15:35 PM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -79,7 +79,7 @@
           "0": {
             "graph": {
               "mode": "table",
-              "height": 300.0,
+              "height": 136.11111450195312,
               "optionOpen": false
             },
             "helium": {}
@@ -100,7 +100,7 @@
         "msg": [
           {
             "type": "TABLE",
-            "data": "stressoragentid\treceptordescription\tphenotypeid\nD052638\tSubjects with disease:Asthma[D001249]\tnull\nD052638\tControls for disease:Asthma[D001249]\tnull\nD052638\tSubjects with disease:Asthma[D001249]\tnull\nD052638\tSubjects with disease:Asthma[D001249]\tnull\nD052638\tSubjects with disease:Asthma[D001249]\tnull\nD052638\tSubjects with disease:Asthma[D001249]\tnull\nD052638\tControls for disease:Asthma[D001249]\tnull\nD052638\tSubjects with disease:Asthma[D001249]\tnull\nD052638\tControls for disease:Asthma[D001249]\tnull\nD052638\tSubjects with disease:Asthma[D001249]\tnull\nD052638\tSubjects with disease:Asthma[D001249]\tnull\nD052638\tSubjects with disease:Asthma[D001249]\tnull\nD052638\tSubjects with disease:Asthma[D001249]\tnull\nD052638\tControls for disease:Asthma[D001249]\tnull\nD052638\tSubjects with disease:Asthma[D001249]\tnull\nD052638\tSubjects with disease:Asthma[D001249]\tnull\nD052638\tSubjects with disease:Asthma[D001249]\tnull\nD052638\tSubjects with disease:Asthma[D001249]\tnull\nD052638\tSubjects with disease:Asthma[D001249]\tnull\nD052638\tControls for disease:Asthma[D001249]\tnull\nD052638\tSubjects with disease:Asthma[D001249]\tnull\nD052638\tSubjects with disease:Asthma[D001249]\tGO:0006954\nD052638\tSubjects with disease:Asthma[D001249]\tGO:0006954\nD052638\tSubjects with disease:Asthma[D001249]\tGO:0042221\nD052638\tControls for disease:Asthma[D001249]\tGO:0050727\nD052638\tSubjects with disease:Asthma[D001249]\tGO:0050727\n"
+            "data": "stressoragentid\treceptordescription\tphenotypeid\nD052638\tSubjects with disease:Asthma[D001249]\tnull\nD052638\tControls for disease:Asthma[D001249]\tnull\nD052638\tSubjects with disease:Asthma[D001249]\tnull\nD052638\tSubjects with disease:Asthma[D001249]\tnull\nD052638\tSubjects with disease:Asthma[D001249]\tnull\nD052638\tControls for disease:Asthma[D001249]\tnull\nD052638\tSubjects with disease:Asthma[D001249]\tnull\nD052638\tSubjects with disease:Asthma[D001249]\tnull\nD052638\tSubjects with disease:Asthma[D001249]\tnull\nD052638\tSubjects with disease:Asthma[D001249]\tnull\nD052638\tSubjects with disease:Asthma[D001249]\tnull\nD052638\tControls for disease:Asthma[D001249]\tnull\nD052638\tSubjects with disease:Asthma[D001249]\tnull\nD052638\tSubjects with disease:Asthma[D001249]\tnull\nD052638\tSubjects with disease:Asthma[D001249]\tnull\nD052638\tSubjects with disease:Asthma[D001249]\tnull\nD052638\tSubjects with disease:Asthma[D001249]\tnull\nD052638\tSubjects with disease:Asthma[D001249]\tnull\nD052638\tControls for disease:Asthma[D001249]\tnull\nD052638\tSubjects with disease:Asthma[D001249]\tnull\nD052638\tControls for disease:Asthma[D001249]\tnull\nD052638\tSubjects with disease:Asthma[D001249]\tGO:0006954\nD052638\tSubjects with disease:Asthma[D001249]\tGO:0006954\nD052638\tSubjects with disease:Asthma[D001249]\tGO:0042221\nD052638\tSubjects with disease:Asthma[D001249]\tGO:0050727\nD052638\tControls for disease:Asthma[D001249]\tGO:0050727\n"
           }
         ]
       },
@@ -108,21 +108,30 @@
       "jobName": "paragraph_1490729652290_464467952",
       "id": "20170328-153412_653652966",
       "dateCreated": "Mar 28, 2017 3:34:12 PM",
-      "dateStarted": "Mar 28, 2017 3:49:29 PM",
-      "dateFinished": "Mar 28, 2017 3:49:30 PM",
+      "dateStarted": "Mar 28, 2017 4:15:35 PM",
+      "dateFinished": "Mar 28, 2017 4:15:36 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%sql select GeneID, PathwayName, PathwayID from ctd_genes_pathways where lower(PathwayName) \u003d \u0027asthma\u0027\n",
+      "text": "%sql\nselect GeneID, PathwayName, PathwayID\nfrom ctd_genes_pathways\nwhere lower(PathwayName) \u003d \u0027asthma\u0027\n",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 28, 2017 3:53:05 PM",
+      "dateUpdated": "Mar 28, 2017 4:15:51 PM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
-        "results": {},
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 126.11111450195312,
+              "optionOpen": false
+            }
+          }
+        },
         "editorSetting": {
-          "language": "sql"
+          "language": "sql",
+          "editOnDblClick": false
         },
         "editorMode": "ace/mode/sql"
       },
@@ -143,8 +152,8 @@
       "jobName": "paragraph_1490729725822_-238544909",
       "id": "20170328-153525_1091113031",
       "dateCreated": "Mar 28, 2017 3:35:25 PM",
-      "dateStarted": "Mar 28, 2017 3:53:05 PM",
-      "dateFinished": "Mar 28, 2017 3:53:06 PM",
+      "dateStarted": "Mar 28, 2017 4:15:51 PM",
+      "dateFinished": "Mar 28, 2017 4:15:52 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
