@@ -41,7 +41,7 @@
     {
       "text": "%pyspark\nimport numpy as np\n\nclass LightCurve(object):\n    def __init__(self, mag, epochs, err):\n        self.mag \u003d mag\n        self.epocs \u003d epochs\n        self.err \u003d err\n    @staticmethod\n    def load_curves (row):\n        return LightCurve (\n            mag \u003d LightCurve.to_array (row[1]),\n            epochs \u003d LightCurve.to_array (row[2]),\n            err \u003d LightCurve.to_array (row[3]))\n    @staticmethod\n    def to_array (text):\n        a \u003d text.replace (\u0027{\u0027, \u0027\u0027).replace (\u0027}\u0027, \u0027\u0027).split (\u0027,\u0027)\n        return np.array (map (lambda v : float(v), a))",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 29, 2017 9:59:21 AM",
+      "dateUpdated": "Mar 29, 2017 10:30:26 AM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -62,8 +62,8 @@
       "jobName": "paragraph_1490659334546_-738231256",
       "id": "20170327-200214_193024193",
       "dateCreated": "Mar 27, 2017 8:02:14 PM",
-      "dateStarted": "Mar 29, 2017 9:59:21 AM",
-      "dateFinished": "Mar 29, 2017 9:59:51 AM",
+      "dateStarted": "Mar 29, 2017 10:30:26 AM",
+      "dateFinished": "Mar 29, 2017 10:30:56 AM",
       "status": "ERROR",
       "errorMessage": "java.net.ConnectException: Connection refused\n\tat java.net.PlainSocketImpl.socketConnect(Native Method)\n\tat java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:339)\n\tat java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:200)\n\tat java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:182)\n\tat java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)\n\tat java.net.Socket.connect(Socket.java:579)\n\tat org.apache.thrift.transport.TSocket.open(TSocket.java:182)\n\tat org.apache.zeppelin.interpreter.remote.ClientFactory.create(ClientFactory.java:51)\n\tat org.apache.zeppelin.interpreter.remote.ClientFactory.create(ClientFactory.java:37)\n\tat org.apache.commons.pool2.BasePooledObjectFactory.makeObject(BasePooledObjectFactory.java:60)\n\tat org.apache.commons.pool2.impl.GenericObjectPool.create(GenericObjectPool.java:861)\n\tat org.apache.commons.pool2.impl.GenericObjectPool.borrowObject(GenericObjectPool.java:435)\n\tat org.apache.commons.pool2.impl.GenericObjectPool.borrowObject(GenericObjectPool.java:363)\n\tat org.apache.zeppelin.interpreter.remote.RemoteInterpreterProcess.getClient(RemoteInterpreterProcess.java:90)\n\tat org.apache.zeppelin.interpreter.remote.RemoteInterpreter.init(RemoteInterpreter.java:209)\n\tat org.apache.zeppelin.interpreter.remote.RemoteInterpreter.getFormType(RemoteInterpreter.java:375)\n\tat org.apache.zeppelin.interpreter.LazyOpenInterpreter.getFormType(LazyOpenInterpreter.java:105)\n\tat org.apache.zeppelin.notebook.Paragraph.jobRun(Paragraph.java:365)\n\tat org.apache.zeppelin.scheduler.Job.run(Job.java:175)\n\tat org.apache.zeppelin.scheduler.RemoteScheduler$JobRunner.run(RemoteScheduler.java:329)\n\tat java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:471)\n\tat java.util.concurrent.FutureTask.run(FutureTask.java:262)\n\tat java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(ScheduledThreadPoolExecutor.java:178)\n\tat java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:292)\n\tat java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)\n\tat java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)\n\tat java.lang.Thread.run(Thread.java:745)\n",
       "progressUpdateIntervalMs": 500
