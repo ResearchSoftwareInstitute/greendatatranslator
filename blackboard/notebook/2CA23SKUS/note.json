@@ -568,18 +568,54 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%pyspark\n",
+      "text": "%python\nimport json\n\njson.dumps ({ \"a\" : \"b\", \"c\" : 2 }, indent\u003d2) \n",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 11, 2017 10:19:30 AM",
+      "dateUpdated": "Mar 28, 2017 9:54:25 PM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false
+        },
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u0027{\\n  \"a\": \"b\", \\n  \"c\": 2\\n}\u0027\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1489245570256_-1511556726",
+      "id": "20170311-101930_1578840703",
+      "dateCreated": "Mar 11, 2017 10:19:30 AM",
+      "dateStarted": "Mar 28, 2017 9:54:25 PM",
+      "dateFinished": "Mar 28, 2017 9:54:25 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%python\n",
+      "user": "ad\\scox",
+      "dateUpdated": "Mar 28, 2017 9:54:25 PM",
       "config": {},
       "settings": {
         "params": {},
         "forms": {}
       },
       "apps": [],
-      "jobName": "paragraph_1489245570256_-1511556726",
-      "id": "20170311-101930_1578840703",
-      "dateCreated": "Mar 11, 2017 10:19:30 AM",
+      "jobName": "paragraph_1490752465390_141157477",
+      "id": "20170328-215425_1923353856",
+      "dateCreated": "Mar 28, 2017 9:54:25 PM",
       "status": "READY",
       "progressUpdateIntervalMs": 500
     }
