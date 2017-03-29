@@ -119,11 +119,11 @@
         "forms": {}
       },
       "results": {
-        "code": "ERROR",
+        "code": "SUCCESS",
         "msg": [
           {
             "type": "TEXT",
-            "data": "Traceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-4651179463938616739.py\", line 346, in \u003cmodule\u003e\n    raise Exception(traceback.format_exc())\nException: Traceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-4651179463938616739.py\", line 339, in \u003cmodule\u003e\n    exec(code)\n  File \"\u003cstdin\u003e\", line 1, in \u003cmodule\u003e\n  File \"/projects/stars/stack/spark/spark2/python/pyspark/rdd.py\", line 1008, in count\n    return self.mapPartitions(lambda i: [sum(1 for _ in i)]).sum()\n  File \"/projects/stars/stack/spark/spark2/python/pyspark/rdd.py\", line 999, in sum\n    return self.mapPartitions(lambda x: [sum(x)]).fold(0, operator.add)\n  File \"/projects/stars/stack/spark/spark2/python/pyspark/rdd.py\", line 873, in fold\n    vals \u003d self.mapPartitions(func).collect()\n  File \"/projects/stars/stack/spark/spark2/python/pyspark/rdd.py\", line 776, in collect\n    port \u003d self.ctx._jvm.PythonRDD.collectAndServe(self._jrdd.rdd())\n  File \"/projects/stars/stack/spark/spark2/python/lib/py4j-0.10.3-src.zip/py4j/java_gateway.py\", line 1133, in __call__\n    answer, self.gateway_client, self.target_id, self.name)\n  File \"/projects/stars/stack/spark/spark2/python/pyspark/sql/utils.py\", line 63, in deco\n    return f(*a, **kw)\n  File \"/projects/stars/stack/spark/spark2/python/lib/py4j-0.10.3-src.zip/py4j/protocol.py\", line 319, in get_return_value\n    format(target_id, \".\", name), value)\nPy4JJavaError: An error occurred while calling z:org.apache.spark.api.python.PythonRDD.collectAndServe.\n: org.apache.spark.SparkException: Job 2 cancelled part of cancelled job group zeppelin-20170327-201223_716142911\n\tat org.apache.spark.scheduler.DAGScheduler.org$apache$spark$scheduler$DAGScheduler$$failJobAndIndependentStages(DAGScheduler.scala:1454)\n\tat org.apache.spark.scheduler.DAGScheduler.handleJobCancellation(DAGScheduler.scala:1393)\n\tat org.apache.spark.scheduler.DAGScheduler$$anonfun$handleJobGroupCancelled$1.apply$mcVI$sp(DAGScheduler.scala:795)\n\tat org.apache.spark.scheduler.DAGScheduler$$anonfun$handleJobGroupCancelled$1.apply(DAGScheduler.scala:795)\n\tat org.apache.spark.scheduler.DAGScheduler$$anonfun$handleJobGroupCancelled$1.apply(DAGScheduler.scala:795)\n\tat scala.collection.mutable.HashSet.foreach(HashSet.scala:78)\n\tat org.apache.spark.scheduler.DAGScheduler.handleJobGroupCancelled(DAGScheduler.scala:795)\n\tat org.apache.spark.scheduler.DAGSchedulerEventProcessLoop.doOnReceive(DAGScheduler.scala:1642)\n\tat org.apache.spark.scheduler.DAGSchedulerEventProcessLoop.onReceive(DAGScheduler.scala:1622)\n\tat org.apache.spark.scheduler.DAGSchedulerEventProcessLoop.onReceive(DAGScheduler.scala:1611)\n\tat org.apache.spark.util.EventLoop$$anon$1.run(EventLoop.scala:48)\n\tat org.apache.spark.scheduler.DAGScheduler.runJob(DAGScheduler.scala:632)\n\tat org.apache.spark.SparkContext.runJob(SparkContext.scala:1890)\n\tat org.apache.spark.SparkContext.runJob(SparkContext.scala:1903)\n\tat org.apache.spark.SparkContext.runJob(SparkContext.scala:1916)\n\tat org.apache.spark.SparkContext.runJob(SparkContext.scala:1930)\n\tat org.apache.spark.rdd.RDD$$anonfun$collect$1.apply(RDD.scala:912)\n\tat org.apache.spark.rdd.RDDOperationScope$.withScope(RDDOperationScope.scala:151)\n\tat org.apache.spark.rdd.RDDOperationScope$.withScope(RDDOperationScope.scala:112)\n\tat org.apache.spark.rdd.RDD.withScope(RDD.scala:358)\n\tat org.apache.spark.rdd.RDD.collect(RDD.scala:911)\n\tat org.apache.spark.api.python.PythonRDD$.collectAndServe(PythonRDD.scala:453)\n\tat org.apache.spark.api.python.PythonRDD.collectAndServe(PythonRDD.scala)\n\tat sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)\n\tat sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)\n\tat sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\n\tat java.lang.reflect.Method.invoke(Method.java:606)\n\tat py4j.reflection.MethodInvoker.invoke(MethodInvoker.java:237)\n\tat py4j.reflection.ReflectionEngine.invoke(ReflectionEngine.java:357)\n\tat py4j.Gateway.invoke(Gateway.java:280)\n\tat py4j.commands.AbstractCommand.invokeMethod(AbstractCommand.java:132)\n\tat py4j.commands.CallCommand.execute(CallCommand.java:79)\n\tat py4j.GatewayConnection.run(GatewayConnection.java:214)\n\tat java.lang.Thread.run(Thread.java:745)\n\n\n"
+            "data": "3213339\n"
           }
         ]
       },
@@ -131,9 +131,9 @@
       "jobName": "paragraph_1490659943605_-14041357",
       "id": "20170327-201223_716142911",
       "dateCreated": "Mar 27, 2017 8:12:23 PM",
-      "dateStarted": "Mar 29, 2017 11:06:19 AM",
-      "dateFinished": "Mar 29, 2017 11:07:29 AM",
-      "status": "ERROR",
+      "dateStarted": "Mar 29, 2017 11:35:56 AM",
+      "dateFinished": "Mar 29, 2017 11:45:09 AM",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
