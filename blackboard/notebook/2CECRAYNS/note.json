@@ -39,7 +39,7 @@
     {
       "text": "%spark\nvar x \u003d sc.parallelize (Array(0, 4, 3)).collect ()\nimport org.phenoscape.scowl.omn._",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 29, 2017 2:24:45 PM",
+      "dateUpdated": "Mar 29, 2017 3:04:03 PM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -69,8 +69,8 @@
       "jobName": "paragraph_1490138255511_1383701003",
       "id": "20170321-191735_1946820153",
       "dateCreated": "Mar 21, 2017 7:17:35 PM",
-      "dateStarted": "Mar 29, 2017 2:24:45 PM",
-      "dateFinished": "Mar 29, 2017 2:24:46 PM",
+      "dateStarted": "Mar 29, 2017 3:04:04 PM",
+      "dateFinished": "Mar 29, 2017 3:04:04 PM",
       "status": "ERROR",
       "progressUpdateIntervalMs": 500
     },
