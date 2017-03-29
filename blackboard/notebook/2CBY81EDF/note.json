@@ -41,7 +41,7 @@
     {
       "text": "%pyspark\nimport numpy as np\n\nclass LightCurve(object):\n    def __init__(self, mag, epochs, err):\n        self.mag \u003d mag\n        self.epocs \u003d epochs\n        self.err \u003d err\n    @staticmethod\n    def load_curves (row):\n        return LightCurve (\n            mag \u003d LightCurve.to_array (row[1]),\n            epochs \u003d LightCurve.to_array (row[2]),\n            err \u003d LightCurve.to_array (row[3]))\n    @staticmethod\n    def to_array (text):\n        a \u003d text.replace (\u0027{\u0027, \u0027\u0027).replace (\u0027}\u0027, \u0027\u0027).split (\u0027,\u0027)\n        return np.array (map (lambda v : float(v), a))",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 29, 2017 11:09:01 AM",
+      "dateUpdated": "Mar 29, 2017 11:35:49 AM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -65,15 +65,15 @@
       "jobName": "paragraph_1490659334546_-738231256",
       "id": "20170327-200214_193024193",
       "dateCreated": "Mar 27, 2017 8:02:14 PM",
-      "dateStarted": "Mar 29, 2017 11:09:01 AM",
-      "dateFinished": "Mar 29, 2017 11:09:20 AM",
+      "dateStarted": "Mar 29, 2017 11:35:50 AM",
+      "dateFinished": "Mar 29, 2017 11:35:50 AM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%pyspark\nfrom pyspark.sql.types import *\ndef load (input_file, sample_size\u003d1.0):\n    return sqlContext.read.                                     \\\n        format(\u0027com.databricks.spark.csv\u0027).                     \\\n        options(comment\u003d\u0027#\u0027).                                   \\\n        options(delimiter\u003d\",\").                                 \\\n        options(header\u003dTrue).                                   \\\n        load(input_file).rdd.                                   \\\n        sample (False, sample_size, 1234).                      \\\n        map (lambda r : LightCurve.load_curves (r))\n#input_file \u003d \u0027/projects/stars/evryscope/var/data/lcvs.csv\u0027\ninput_file \u003d \"/ssdscratch/scox/evryscope/lcvs.csv\"\ncurves \u003d load (input_file)\n",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 29, 2017 11:09:28 AM",
+      "dateUpdated": "Mar 29, 2017 11:35:51 AM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -95,15 +95,15 @@
       "jobName": "paragraph_1490659781141_1045171841",
       "id": "20170327-200941_1006195128",
       "dateCreated": "Mar 27, 2017 8:09:41 PM",
-      "dateStarted": "Mar 29, 2017 11:09:28 AM",
-      "dateFinished": "Mar 29, 2017 11:09:33 AM",
+      "dateStarted": "Mar 29, 2017 11:35:51 AM",
+      "dateFinished": "Mar 29, 2017 11:35:53 AM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%pyspark\ncurves.count ()\n",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 29, 2017 11:06:19 AM",
+      "dateUpdated": "Mar 29, 2017 11:35:56 AM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
