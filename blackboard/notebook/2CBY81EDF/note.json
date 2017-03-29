@@ -73,7 +73,7 @@
     {
       "text": "%pyspark\nfrom pyspark.sql.types import *\ndef load (input_file, sample_size\u003d1.0):\n    return sqlContext.read.                                     \\\n        format(\u0027com.databricks.spark.csv\u0027).                     \\\n        options(comment\u003d\u0027#\u0027).                                   \\\n        options(delimiter\u003d\",\").                                 \\\n        options(header\u003dTrue).                                   \\\n        load(input_file).rdd.                                   \\\n        sample (False, sample_size, 1234).                      \\\n        map (lambda r : LightCurve.load_curves (r))\n#input_file \u003d \u0027/projects/stars/evryscope/var/data/lcvs.csv\u0027\ninput_file \u003d \"/ssdscratch/scox/evryscope/lcvs.csv\"\ncurves \u003d load (input_file)\n",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 29, 2017 11:35:51 AM",
+      "dateUpdated": "Mar 29, 2017 12:43:59 PM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -95,15 +95,15 @@
       "jobName": "paragraph_1490659781141_1045171841",
       "id": "20170327-200941_1006195128",
       "dateCreated": "Mar 27, 2017 8:09:41 PM",
-      "dateStarted": "Mar 29, 2017 11:35:51 AM",
-      "dateFinished": "Mar 29, 2017 11:35:53 AM",
+      "dateStarted": "Mar 29, 2017 12:44:00 PM",
+      "dateFinished": "Mar 29, 2017 12:44:00 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%pyspark\ncurves.count ()\n",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 29, 2017 11:35:56 AM",
+      "dateUpdated": "Mar 29, 2017 12:44:02 PM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -123,7 +123,7 @@
         "msg": [
           {
             "type": "TEXT",
-            "data": "3213339\n"
+            "data": "4400634\n"
           }
         ]
       },
@@ -131,15 +131,15 @@
       "jobName": "paragraph_1490659943605_-14041357",
       "id": "20170327-201223_716142911",
       "dateCreated": "Mar 27, 2017 8:12:23 PM",
-      "dateStarted": "Mar 29, 2017 11:35:56 AM",
-      "dateFinished": "Mar 29, 2017 11:45:09 AM",
+      "dateStarted": "Mar 29, 2017 12:44:02 PM",
+      "dateFinished": "Mar 29, 2017 12:51:29 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%pyspark\ncurves.map (lambda v : np.sum (v.mag)).\\\n    take (10)",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 28, 2017 9:59:28 AM",
+      "dateUpdated": "Mar 29, 2017 12:59:23 PM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -166,15 +166,15 @@
       "jobName": "paragraph_1490708988602_314459080",
       "id": "20170328-094948_836001762",
       "dateCreated": "Mar 28, 2017 9:49:48 AM",
-      "dateStarted": "Mar 28, 2017 9:59:28 AM",
-      "dateFinished": "Mar 28, 2017 9:59:29 AM",
+      "dateStarted": "Mar 29, 2017 12:59:23 PM",
+      "dateFinished": "Mar 29, 2017 12:59:24 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%pyspark\nimport sklearn.metrics as met\nimport numpy as np\n\n# Code from http://alexminnaar.com/time-series-classification-and-clustering-with-python.html\n# Implements a simple kNN classifier based on a DTW distance measure\n# Likely that a faster implementation (w/ subsequence search) exists in http://mlpy.sourceforge.net/docs/3.4/dtw.html\n\ndef LB_Keogh(s1, s2, r):\n    \"\"\"Lower-bounded DTW implementation for early-abandon.\n       Should be linear, whereas the full DTW is quadratic. \"\"\" \n    LB_sum \u003d 0\n    for ind, i in enumerate(s1):\n\n        lower_bound\u003dmin(s2[(ind - r if ind - r \u003e\u003d 0 else 0):(ind + r)])\n        upper_bound\u003dmax(s2[(ind - r if ind - r \u003e\u003d 0 else 0):(ind + r)])\n\n        if i \u003e upper_bound:\n            LB_sum \u003d LB_sum + (i - upper_bound)**2\n        elif i \u003c lower_bound:\n            LB_sum \u003d LB_sum + (i - lower_bound)**2\n\n    return np.sqrt(LB_sum)\n    \n    \ndef DTWDistance(s1, s2,w):\n    DTW \u003d {}\n\n    w \u003d max(w, np.abs(len(s1) - len(s2)))\n\n    for i in range(-1, len(s1)):\n        for j in range(-1, len(s2)):\n            DTW[(i, j)] \u003d float(\u0027inf\u0027)\n    DTW[(-1, -1)] \u003d 0\n\n    for i in np.arange(len(s1)):\n        for j in np.arange(np.max(0, i - w), np.min(len(s2), i + w)):\n            dist\u003d (s1[i] - s2[j])**2\n            DTW[(i, j)] \u003d dist + np.min(DTW[(i-1, j)], \n                                        DTW[(i, j-1)], \n                                        DTW[(i-1, j-1)])\n\n    return np.sqrt(DTW[len(s1)-1, len(s2)-1])\n\n\n",
+      "text": "%pyspark\nimport sklearn.metrics as met\nimport mlpy\nimport numpy as np\n\n# Code from http://alexminnaar.com/time-series-classification-and-clustering-with-python.html\n# Implements a simple kNN classifier based on a DTW distance measure\n# Likely that a faster implementation (w/ subsequence search) exists in http://mlpy.sourceforge.net/docs/3.4/dtw.html\n\ndef LB_Keogh(s1, s2, r):\n    \"\"\"Lower-bounded DTW implementation for early-abandon.\n       Should be linear, whereas the full DTW is quadratic. \"\"\" \n    LB_sum \u003d 0\n    for ind, i in enumerate(s1):\n\n        lower_bound\u003dmin(s2[(ind - r if ind - r \u003e\u003d 0 else 0):(ind + r)])\n        upper_bound\u003dmax(s2[(ind - r if ind - r \u003e\u003d 0 else 0):(ind + r)])\n\n        if i \u003e upper_bound:\n            LB_sum \u003d LB_sum + (i - upper_bound)**2\n        elif i \u003c lower_bound:\n            LB_sum \u003d LB_sum + (i - lower_bound)**2\n\n    return np.sqrt(LB_sum)\n    \n    \ndef DTWDistance(s1, s2,w):\n    DTW \u003d {}\n\n    w \u003d max(w, np.abs(len(s1) - len(s2)))\n\n    for i in range(-1, len(s1)):\n        for j in range(-1, len(s2)):\n            DTW[(i, j)] \u003d float(\u0027inf\u0027)\n    DTW[(-1, -1)] \u003d 0\n\n    for i in np.arange(len(s1)):\n        for j in np.arange(np.max(0, i - w), np.min(len(s2), i + w)):\n            dist\u003d (s1[i] - s2[j])**2\n            DTW[(i, j)] \u003d dist + np.min(DTW[(i-1, j)], \n                                        DTW[(i, j-1)], \n                                        DTW[(i-1, j-1)])\n\n    return np.sqrt(DTW[len(s1)-1, len(s2)-1])\n\n\n",
       "user": "ad\\hcorbett",
-      "dateUpdated": "Mar 28, 2017 1:15:41 PM",
+      "dateUpdated": "Mar 29, 2017 1:08:37 PM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -189,16 +189,21 @@
         "forms": {}
       },
       "results": {
-        "code": "SUCCESS",
-        "msg": []
+        "code": "ERROR",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Traceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-4935002644691135647.py\", line 346, in \u003cmodule\u003e\n    raise Exception(traceback.format_exc())\nException: Traceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-4935002644691135647.py\", line 334, in \u003cmodule\u003e\n    exec(code)\n  File \"\u003cstdin\u003e\", line 2, in \u003cmodule\u003e\nImportError: No module named mlpy\n\n"
+          }
+        ]
       },
       "apps": [],
       "jobName": "paragraph_1490709103791_2118146600",
       "id": "20170328-095143_1888707834",
       "dateCreated": "Mar 28, 2017 9:51:43 AM",
-      "dateStarted": "Mar 28, 2017 12:59:42 PM",
-      "dateFinished": "Mar 28, 2017 12:59:42 PM",
-      "status": "FINISHED",
+      "dateStarted": "Mar 29, 2017 1:08:37 PM",
+      "dateFinished": "Mar 29, 2017 1:08:39 PM",
+      "status": "ERROR",
       "progressUpdateIntervalMs": 500
     },
     {
