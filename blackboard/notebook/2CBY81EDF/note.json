@@ -40,8 +40,8 @@
     },
     {
       "text": "%pyspark\nimport numpy as np\n\nclass LightCurve(object):\n    def __init__(self, mag, epochs, err):\n        self.mag \u003d mag\n        self.epocs \u003d epochs\n        self.err \u003d err\n    @staticmethod\n    def load_curves (row):\n        return LightCurve (\n            mag \u003d LightCurve.to_array (row[1]),\n            epochs \u003d LightCurve.to_array (row[2]),\n            err \u003d LightCurve.to_array (row[3]))\n    @staticmethod\n    def to_array (text):\n        a \u003d text.replace (\u0027{\u0027, \u0027\u0027).replace (\u0027}\u0027, \u0027\u0027).split (\u0027,\u0027)\n        return np.array (map (lambda v : float(v), a))",
-      "user": "ad\\hcorbett",
-      "dateUpdated": "Mar 28, 2017 10:53:54 AM",
+      "user": "ad\\scox",
+      "dateUpdated": "Mar 29, 2017 7:53:33 AM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -65,15 +65,15 @@
       "jobName": "paragraph_1490659334546_-738231256",
       "id": "20170327-200214_193024193",
       "dateCreated": "Mar 27, 2017 8:02:14 PM",
-      "dateStarted": "Mar 28, 2017 10:53:54 AM",
-      "dateFinished": "Mar 28, 2017 10:54:09 AM",
+      "dateStarted": "Mar 29, 2017 7:53:33 AM",
+      "dateFinished": "Mar 29, 2017 7:53:49 AM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%pyspark\nfrom pyspark.sql.types import *\ndef load (sample_size\u003d1.0):\n    input_file \u003d \u0027/projects/stars/evryscope/var/data/lcvs.csv\u0027\n    return sqlContext.read.                                     \\\n        format(\u0027com.databricks.spark.csv\u0027).                     \\\n        options(comment\u003d\u0027#\u0027).                                   \\\n        options(delimiter\u003d\",\").                                 \\\n        options(header\u003dTrue).                                   \\\n        load(input_file).rdd.                                   \\\n        sample (False, sample_size, 1234).                      \\\n        map (lambda r : LightCurve.load_curves (r))\ncurves \u003d load ()\n",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 28, 2017 10:00:10 AM",
+      "dateUpdated": "Mar 29, 2017 7:53:51 AM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -88,16 +88,21 @@
         "forms": {}
       },
       "results": {
-        "code": "SUCCESS",
-        "msg": []
+        "code": "ERROR",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Traceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-1703176705427293382.py\", line 346, in \u003cmodule\u003e\n    raise Exception(traceback.format_exc())\nException: Traceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-1703176705427293382.py\", line 339, in \u003cmodule\u003e\n    exec(code)\n  File \"\u003cstdin\u003e\", line 12, in \u003cmodule\u003e\n  File \"\u003cstdin\u003e\", line 9, in load\n  File \"/projects/stars/stack/spark/spark2/python/pyspark/sql/readwriter.py\", line 147, in load\n    return self._df(self._jreader.load(path))\n  File \"/projects/stars/stack/spark/spark2/python/lib/py4j-0.10.3-src.zip/py4j/java_gateway.py\", line 1133, in __call__\n    answer, self.gateway_client, self.target_id, self.name)\n  File \"/projects/stars/stack/spark/spark2/python/pyspark/sql/utils.py\", line 63, in deco\n    return f(*a, **kw)\n  File \"/projects/stars/stack/spark/spark2/python/lib/py4j-0.10.3-src.zip/py4j/protocol.py\", line 319, in get_return_value\n    format(target_id, \".\", name), value)\nPy4JJavaError: An error occurred while calling o63.load.\n: java.io.IOException: No FileSystem for scheme: null\n\tat org.apache.hadoop.fs.FileSystem.getFileSystemClass(FileSystem.java:2584)\n\tat org.apache.hadoop.fs.FileSystem.createFileSystem(FileSystem.java:2591)\n\tat org.apache.hadoop.fs.FileSystem.access$200(FileSystem.java:91)\n\tat org.apache.hadoop.fs.FileSystem$Cache.getInternal(FileSystem.java:2630)\n\tat org.apache.hadoop.fs.FileSystem$Cache.get(FileSystem.java:2612)\n\tat org.apache.hadoop.fs.FileSystem.get(FileSystem.java:370)\n\tat org.apache.hadoop.fs.Path.getFileSystem(Path.java:296)\n\tat org.apache.spark.sql.catalyst.catalog.SessionCatalog.makeQualifiedPath(SessionCatalog.scala:115)\n\tat org.apache.spark.sql.catalyst.catalog.SessionCatalog.createDatabase(SessionCatalog.scala:145)\n\tat org.apache.spark.sql.catalyst.catalog.SessionCatalog.\u003cinit\u003e(SessionCatalog.scala:89)\n\tat org.apache.spark.sql.internal.SessionState.catalog$lzycompute(SessionState.scala:95)\n\tat org.apache.spark.sql.internal.SessionState.catalog(SessionState.scala:95)\n\tat org.apache.spark.sql.internal.SessionState$$anon$1.\u003cinit\u003e(SessionState.scala:112)\n\tat org.apache.spark.sql.internal.SessionState.analyzer$lzycompute(SessionState.scala:112)\n\tat org.apache.spark.sql.internal.SessionState.analyzer(SessionState.scala:111)\n\tat org.apache.spark.sql.execution.QueryExecution.assertAnalyzed(QueryExecution.scala:49)\n\tat org.apache.spark.sql.Dataset$.ofRows(Dataset.scala:64)\n\tat org.apache.spark.sql.SparkSession.baseRelationToDataFrame(SparkSession.scala:382)\n\tat org.apache.spark.sql.DataFrameReader.load(DataFrameReader.scala:143)\n\tat org.apache.spark.sql.DataFrameReader.load(DataFrameReader.scala:132)\n\tat sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)\n\tat sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)\n\tat sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\n\tat java.lang.reflect.Method.invoke(Method.java:606)\n\tat py4j.reflection.MethodInvoker.invoke(MethodInvoker.java:237)\n\tat py4j.reflection.ReflectionEngine.invoke(ReflectionEngine.java:357)\n\tat py4j.Gateway.invoke(Gateway.java:280)\n\tat py4j.commands.AbstractCommand.invokeMethod(AbstractCommand.java:132)\n\tat py4j.commands.CallCommand.execute(CallCommand.java:79)\n\tat py4j.GatewayConnection.run(GatewayConnection.java:214)\n\tat java.lang.Thread.run(Thread.java:745)\n\n\n"
+          }
+        ]
       },
       "apps": [],
       "jobName": "paragraph_1490659781141_1045171841",
       "id": "20170327-200941_1006195128",
       "dateCreated": "Mar 27, 2017 8:09:41 PM",
-      "dateStarted": "Mar 28, 2017 10:00:10 AM",
-      "dateFinished": "Mar 28, 2017 10:00:11 AM",
-      "status": "FINISHED",
+      "dateStarted": "Mar 29, 2017 7:53:51 AM",
+      "dateFinished": "Mar 29, 2017 7:53:54 AM",
+      "status": "ERROR",
       "progressUpdateIntervalMs": 500
     },
     {
@@ -169,41 +174,6 @@
       "dateStarted": "Mar 28, 2017 9:59:28 AM",
       "dateFinished": "Mar 28, 2017 9:59:29 AM",
       "status": "FINISHED",
-      "progressUpdateIntervalMs": 500
-    },
-    {
-      "text": "%pyspark\nimport bls\n\n\n\n\n\n\n\n\n",
-      "user": "ad\\scox",
-      "dateUpdated": "Mar 28, 2017 9:51:43 AM",
-      "config": {
-        "colWidth": 12.0,
-        "enabled": true,
-        "results": {},
-        "editorSetting": {
-          "language": "python"
-        },
-        "editorMode": "ace/mode/python"
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "results": {
-        "code": "ERROR",
-        "msg": [
-          {
-            "type": "TEXT",
-            "data": "Traceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-4325838016133613763.py\", line 346, in \u003cmodule\u003e\n    raise Exception(traceback.format_exc())\nException: Traceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-4325838016133613763.py\", line 339, in \u003cmodule\u003e\n    exec(code)\n  File \"\u003cstdin\u003e\", line 1, in \u003cmodule\u003e\nImportError: No module named bls\n\n"
-          }
-        ]
-      },
-      "apps": [],
-      "jobName": "paragraph_1490662181777_1693493398",
-      "id": "20170327-204941_1905806004",
-      "dateCreated": "Mar 27, 2017 8:49:41 PM",
-      "dateStarted": "Mar 28, 2017 9:51:43 AM",
-      "dateFinished": "Mar 28, 2017 9:51:43 AM",
-      "status": "ERROR",
       "progressUpdateIntervalMs": 500
     },
     {
