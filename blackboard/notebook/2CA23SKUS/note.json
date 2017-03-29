@@ -79,13 +79,14 @@
     {
       "text": "%pyspark\nimport traceback\nfrom SPARQLWrapper import SPARQLWrapper2, JSON\nfrom collections import defaultdict\n\nclass TripleStore(object):\n    def __init__(self, hostname):\n        self.service \u003d  SPARQLWrapper2 (hostname)\n    def execute_query (self, query):\n        self.service.setQuery (query)\n        self.service.setReturnFormat (JSON)\n        return self.service.query().convert ()\n    def execute_query_file (self, query_file):\n        result \u003d None\n        with open (query_file, \"r\") as stream:\n            query \u003d stream.read ()\n            result \u003d self.execute_query (query)\n        return result\n",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 23, 2017 1:37:41 PM",
+      "dateUpdated": "Mar 28, 2017 8:32:23 PM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
         "results": {},
         "editorSetting": {
-          "language": "python"
+          "language": "python",
+          "editOnDblClick": false
         },
         "editorMode": "ace/mode/python"
       },
@@ -101,21 +102,22 @@
       "jobName": "paragraph_1488936514367_766072622",
       "id": "20170307-202834_465623601",
       "dateCreated": "Mar 7, 2017 8:28:34 PM",
-      "dateStarted": "Mar 23, 2017 1:37:41 PM",
-      "dateFinished": "Mar 23, 2017 1:37:41 PM",
+      "dateStarted": "Mar 28, 2017 8:32:24 PM",
+      "dateFinished": "Mar 28, 2017 8:32:39 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%pyspark\nquery \u003d \"\"\"\nPREFIX db_resource:      \u003chttp://chem2bio2rdf.org/drugbank/resource/\u003e\nPREFIX ctd_chem_disease: \u003chttp://chem2bio2rdf.org/ctd/resource/ctd_chem_disease/\u003e \nPREFIX biordf:           \u003chttp://bio2rdf.org/\u003e\nPREFIX ctd:              \u003chttp://chem2bio2rdf.org/ctd/resource/\u003e\nPREFIX pubchem:          \u003chttp://chem2bio2rdf.org/ctd/resource/\u003e\nSELECT DISTINCT ?chem_disease ?meshid ?compound ?drug\nWHERE {\n  ?chem_disease ctd:diseaseid ?meshid .\n  ?chem_disease ctd:cid       ?compound .\n  ?drug         db_resource:CID ?compound\n}\n\"\"\"",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 23, 2017 1:37:43 PM",
+      "dateUpdated": "Mar 28, 2017 8:32:47 PM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
         "results": {},
         "editorSetting": {
-          "language": "python"
+          "language": "python",
+          "editOnDblClick": false
         },
         "editorMode": "ace/mode/python"
       },
@@ -131,8 +133,8 @@
       "jobName": "paragraph_1488936572727_-1322836426",
       "id": "20170307-202932_2073115934",
       "dateCreated": "Mar 7, 2017 8:29:32 PM",
-      "dateStarted": "Mar 23, 2017 1:37:43 PM",
-      "dateFinished": "Mar 23, 2017 1:37:43 PM",
+      "dateStarted": "Mar 28, 2017 8:32:48 PM",
+      "dateFinished": "Mar 28, 2017 8:32:48 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -215,13 +217,14 @@
     {
       "text": "%pyspark\n\ndef print_groups ():\n    for g in groups:\n        print (g)\n        print (\"{0} -\u003e \".format (g))\n        for d in groups[g]:\n            print (\"  \u003e {0}\".format (d.diseases))\n",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 23, 2017 1:37:49 PM",
+      "dateUpdated": "Mar 28, 2017 8:32:55 PM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
         "results": {},
         "editorSetting": {
-          "language": "python"
+          "language": "python",
+          "editOnDblClick": false
         },
         "editorMode": "ace/mode/python"
       },
@@ -237,21 +240,22 @@
       "jobName": "paragraph_1489456560506_1148452341",
       "id": "20170313-215600_1833550478",
       "dateCreated": "Mar 13, 2017 9:56:00 PM",
-      "dateStarted": "Mar 23, 2017 1:37:49 PM",
-      "dateFinished": "Mar 23, 2017 1:37:49 PM",
+      "dateStarted": "Mar 28, 2017 8:32:55 PM",
+      "dateFinished": "Mar 28, 2017 8:32:55 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%pyspark\ntriplestore_uri \u003d \"http://stars-blazegraph.renci.org/bigdata/sparql\"\ntriplestore \u003d TripleStore (triplestore_uri)\n\nimport pronto\nimport pandas as pd\nimport sys\nfrom collections import defaultdict\nfrom operator import itemgetter\nfrom numpy import dot, sqrt, array\n\nclass Disease(object):\n    def __init__ (self, term, xref, lineage):\n        self.mesh_id \u003d xref\n        self.lineage \u003d lineage\n        self.drugs \u003d []\n        self.term \u003d term\n\n#disease_ont \u003d {}\n\ndef parse_ontology ():\n    ont \u003d pronto.Ontology (\u0027/projects/stars/m2m/var/diseaseontology/dis.obo\u0027)\n    \u0027\u0027\u0027 print (ont.json) \u0027\u0027\u0027\n    hierarchy_map \u003d {}\n    for term in ont:\n        xref \u003d None\n        if \u0027xref\u0027 in term.other:\n            for x in term.other[\u0027xref\u0027]:\n                if x.startswith (\"MESH:\"):\n                    xref \u003d x\n                    #disease_ont[term.id.upper()] \u003d term\n                    lineage \u003d map ( lambda t : t.id, term.rparents ())\n                    sorted_lineage \u003d sorted (lineage, key\u003dlambda e : int(e.split(\u0027:\u0027)[1]))\n                    disease \u003d Disease (term\u003dterm, xref\u003dxref, lineage\u003dsorted_lineage)\n                    hierarchy_map[term.id.upper ()] \u003d disease\n                    break\n    #for k in hierarchy_map:\n    #    print (\"{0} {1} {2}\".format (k, hierarchy_map[k].mesh_id, hierarchy_map[k].lineage))\n    return hierarchy_map\n    \ndef get_disease_drug_associations (triplestore):\n    disease_drug \u003d defaultdict(list)\n    result \u003d triplestore.execute_query (query)\n    for bind in result.bindings:\n        mesh_id \u003d bind[\u0027meshid\u0027].value.rsplit(\u0027/\u0027, 1)[-1].upper ()\n        drug \u003d bind[\u0027drug\u0027].value.rsplit(\u0027/\u0027, 1)[-1]\n        drug_id \u003d int(drug.replace (\u0027DB\u0027, \u0027\u0027))\n        if not drug_id in disease_drug[mesh_id]:\n            disease_drug[mesh_id].append (drug_id)\n    return disease_drug\n\ndef print_groups (groups):\n    for path in groups:\n        print (\"path {0}\".format (path))\n        for disease in groups[path]:\n            try:\n                print (\"  \u003e {0}({1})\u003c-({2} drugs)\".format (disease.term.name, disease.mesh_id, len(disease.drugs)))\n            except Exception:\n                traceback.print_exc ()\n\ndef cooccurrence_matrix():\n    disease_matrix \u003d defaultdict(list)\n    disease_drug \u003d get_disease_drug_associations (triplestore)\n    disease_ontology \u003d parse_ontology ()\n    for term_id in disease_ontology:\n        disease \u003d disease_ontology [term_id]\n        if disease.mesh_id in disease_drug:\n            drug \u003d disease_drug [disease.mesh_id]\n\n    \u0027\u0027\u0027 Bind Disease Ontology data to Disease Drug associations. \u0027\u0027\u0027\n    nodes \u003d defaultdict(int)\n    for mesh_id, disease in disease_ontology.iteritems ():\n        if len(disease.lineage) \u003c 5:\n            continue\n        key \u003d \"/\".join (disease.lineage)\n        nodes[key] \u003d nodes[key] + 1\n\n    \u0027\u0027\u0027 For nodes with more than some threshold number of children: \u0027\u0027\u0027\n    threshold \u003d 3\n    groups \u003d defaultdict(list)\n    for path in nodes:\n        if nodes[path] \u003e threshold:\n            term_id \u003d path.split(\u0027/\u0027)[-1]\n            for doid, disease in disease_ontology.iteritems ():\n                # Match appropriate drug indications to disease object:\n                if len(disease.lineage) \u003e 0 and term_id \u003d\u003d disease.lineage[-1] and disease.mesh_id in disease_drug:\n                    disease.drugs \u003d disease_drug [disease.mesh_id]\n                    groups[path].append (disease)\n                    #print (\"{0}: {1} arity:{2} ({3}) drugs:{4}\".format (path, disease.term.name, nodes[n], disease.xref, disease.drugs))\n    return groups\n    \ngroups \u003d cooccurrence_matrix()",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 23, 2017 1:37:53 PM",
+      "dateUpdated": "Mar 28, 2017 8:33:12 PM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
         "results": {},
         "editorSetting": {
-          "language": "python"
+          "language": "python",
+          "editOnDblClick": false
         },
         "editorMode": "ace/mode/python"
       },
@@ -260,28 +264,34 @@
         "forms": {}
       },
       "results": {
-        "code": "SUCCESS",
-        "msg": []
+        "code": "ERROR",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Traceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-2445130947451974969.py\", line 346, in \u003cmodule\u003e\n    raise Exception(traceback.format_exc())\nException: Traceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-2445130947451974969.py\", line 339, in \u003cmodule\u003e\n    exec(code)\n  File \"\u003cstdin\u003e\", line 75, in \u003cmodule\u003e\n  File \"\u003cstdin\u003e\", line 51, in cooccurrence_matrix\n  File \"\u003cstdin\u003e\", line 33, in get_disease_drug_associations\n  File \"\u003cstdin\u003e\", line 10, in execute_query\n  File \"/projects/stars/venv/lib/python2.7/site-packages/SPARQLWrapper/SmartWrapper.py\", line 276, in query\n    res \u003d super(SPARQLWrapper2, self).query()\n  File \"/projects/stars/venv/lib/python2.7/site-packages/SPARQLWrapper/Wrapper.py\", line 567, in query\n    return QueryResult(self._query())\n  File \"/projects/stars/venv/lib/python2.7/site-packages/SPARQLWrapper/Wrapper.py\", line 545, in _query\n    raise EndPointInternalError(e.read())\nEndPointInternalError: EndPointInternalError: endpoint returned code 500 and response. \n\nResponse:\nSPARQL-QUERY: queryStr\u003d\nPREFIX db_resource:      \u003chttp://chem2bio2rdf.org/drugbank/resource/\u003e\nPREFIX ctd_chem_disease: \u003chttp://chem2bio2rdf.org/ctd/resource/ctd_chem_disease/\u003e \nPREFIX biordf:           \u003chttp://bio2rdf.org/\u003e\nPREFIX ctd:              \u003chttp://chem2bio2rdf.org/ctd/resource/\u003e\nPREFIX pubchem:          \u003chttp://chem2bio2rdf.org/ctd/resource/\u003e\nSELECT DISTINCT ?chem_disease ?meshid ?compound ?drug\nWHERE {\n  ?chem_disease ctd:diseaseid ?meshid .\n  ?chem_disease ctd:cid       ?compound .\n  ?drug         db_resource:CID ?compound\n}\n\njava.util.concurrent.ExecutionException: java.util.concurrent.ExecutionException: org.openrdf.query.QueryEvaluationException: java.lang.RuntimeException: java.util.concurrent.ExecutionException: java.lang.Exception: task\u003dChunkTask{query\u003d8a87c673-c717-44d7-a7a6-ee88730db260,bopId\u003d9,partitionId\u003d-1,sinkId\u003d10,altSinkId\u003dnull}, cause\u003djava.util.concurrent.ExecutionException: java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException: addr\u003d-4871855 : cause\u003djava.lang.IllegalStateException: Error reading from WriteCache addr: 961456896 length: 12, writeCacheDebug: No WriteCache debug info\n\tat java.util.concurrent.FutureTask.report(FutureTask.java:122)\n\tat java.util.concurrent.FutureTask.get(FutureTask.java:192)\n\tat com.bigdata.rdf.sail.webapp.BigdataServlet.submitApiTask(BigdataServlet.java:281)\n\tat com.bigdata.rdf.sail.webapp.QueryServlet.doSparqlQuery(QueryServlet.java:653)\n\tat com.bigdata.rdf.sail.webapp.QueryServlet.doGet(QueryServlet.java:288)\n\tat com.bigdata.rdf.sail.webapp.RESTServlet.doGet(RESTServlet.java:240)\n\tat javax.servlet.http.HttpServlet.service(HttpServlet.java:687)\n\tat javax.servlet.http.HttpServlet.service(HttpServlet.java:790)\n\tat org.eclipse.jetty.servlet.ServletHolder.handle(ServletHolder.java:769)\n\tat org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1667)\n\tat org.eclipse.jetty.servlets.CrossOriginFilter.handle(CrossOriginFilter.java:248)\n\tat org.eclipse.jetty.servlets.CrossOriginFilter.doFilter(CrossOriginFilter.java:211)\n\tat org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1650)\n\tat org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandler.java:583)\n\tat org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:143)\n\tat org.eclipse.jetty.security.SecurityHandler.handle(SecurityHandler.java:577)\n\tat org.eclipse.jetty.server.session.SessionHandler.doHandle(SessionHandler.java:223)\n\tat org.eclipse.jetty.server.handler.ContextHandler.doHandle(ContextHandler.java:1125)\n\tat org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandler.java:515)\n\tat org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:185)\n\tat org.eclipse.jetty.server.handler.ContextHandler.doScope(ContextHandler.java:1059)\n\tat org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141)\n\tat org.eclipse.jetty.server.handler.ContextHandlerCollection.handle(ContextHandlerCollection.java:215)\n\tat org.eclipse.jetty.server.handler.HandlerCollection.handle(HandlerCollection.java:110)\n\tat org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:97)\n\tat org.eclipse.jetty.server.Server.handle(Server.java:497)\n\tat org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:311)\n\tat org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:248)\n\tat org.eclipse.jetty.io.AbstractConnection$2.run(AbstractConnection.java:540)\n\tat org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:610)\n\tat org.eclipse.jetty.util.thread.QueuedThreadPool$3.run(QueuedThreadPool.java:539)\n\tat java.lang.Thread.run(Thread.java:745)\nCaused by: java.util.concurrent.ExecutionException: org.openrdf.query.QueryEvaluationException: java.lang.RuntimeException: java.util.concurrent.ExecutionException: java.lang.Exception: task\u003dChunkTask{query\u003d8a87c673-c717-44d7-a7a6-ee88730db260,bopId\u003d9,partitionId\u003d-1,sinkId\u003d10,altSinkId\u003dnull}, cause\u003djava.util.concurrent.ExecutionException: java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException: addr\u003d-4871855 : cause\u003djava.lang.IllegalStateException: Error reading from WriteCache addr: 961456896 length: 12, writeCacheDebug: No WriteCache debug info\n\tat java.util.concurrent.FutureTask.report(FutureTask.java:122)\n\tat java.util.concurrent.FutureTask.get(FutureTask.java:192)\n\tat com.bigdata.rdf.sail.webapp.QueryServlet$SparqlQueryTask.call(QueryServlet.java:864)\n\tat com.bigdata.rdf.sail.webapp.QueryServlet$SparqlQueryTask.call(QueryServlet.java:670)\n\tat com.bigdata.rdf.task.ApiTaskForIndexManager.call(ApiTaskForIndexManager.java:68)\n\tat java.util.concurrent.FutureTask.run(FutureTask.java:266)\n\tat java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)\n\tat java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)\n\t... 1 more\nCaused by: org.openrdf.query.QueryEvaluationException: java.lang.RuntimeException: java.util.concurrent.ExecutionException: java.lang.Exception: task\u003dChunkTask{query\u003d8a87c673-c717-44d7-a7a6-ee88730db260,bopId\u003d9,partitionId\u003d-1,sinkId\u003d10,altSinkId\u003dnull}, cause\u003djava.util.concurrent.ExecutionException: java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException: addr\u003d-4871855 : cause\u003djava.lang.IllegalStateException: Error reading from WriteCache addr: 961456896 length: 12, writeCacheDebug: No WriteCache debug info\n\tat com.bigdata.rdf.sail.Bigdata2Sesame2BindingSetIterator.hasNext(Bigdata2Sesame2BindingSetIterator.java:188)\n\tat info.aduna.iteration.IterationWrapper.hasNext(IterationWrapper.java:68)\n\tat org.openrdf.query.QueryResults.report(QueryResults.java:155)\n\tat org.openrdf.repository.sail.SailTupleQuery.evaluate(SailTupleQuery.java:76)\n\tat com.bigdata.rdf.sail.webapp.BigdataRDFContext$TupleQueryTask.doQuery(BigdataRDFContext.java:1713)\n\tat com.bigdata.rdf.sail.webapp.BigdataRDFContext$AbstractQueryTask.innerCall(BigdataRDFContext.java:1569)\n\tat com.bigdata.rdf.sail.webapp.BigdataRDFContext$AbstractQueryTask.call(BigdataRDFContext.java:1534)\n\tat com.bigdata.rdf.sail.webapp.BigdataRDFContext$AbstractQueryTask.call(BigdataRDFContext.java:747)\n\t... 4 more\nCaused by: java.lang.RuntimeException: java.util.concurrent.ExecutionException: java.lang.Exception: task\u003dChunkTask{query\u003d8a87c673-c717-44d7-a7a6-ee88730db260,bopId\u003d9,partitionId\u003d-1,sinkId\u003d10,altSinkId\u003dnull}, cause\u003djava.util.concurrent.ExecutionException: java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException: addr\u003d-4871855 : cause\u003djava.lang.IllegalStateException: Error reading from WriteCache addr: 961456896 length: 12, writeCacheDebug: No WriteCache debug info\n\tat com.bigdata.rdf.sail.RunningQueryCloseableIterator.checkFuture(RunningQueryCloseableIterator.java:59)\n\tat com.bigdata.rdf.sail.RunningQueryCloseableIterator.close(RunningQueryCloseableIterator.java:73)\n\tat com.bigdata.rdf.sail.RunningQueryCloseableIterator.hasNext(RunningQueryCloseableIterator.java:82)\n\tat com.bigdata.striterator.ChunkedWrappedIterator.hasNext(ChunkedWrappedIterator.java:197)\n\tat com.bigdata.rdf.sail.Bigdata2Sesame2BindingSetIterator.hasNext(Bigdata2Sesame2BindingSetIterator.java:134)\n\t... 11 more\nCaused by: java.util.concurrent.ExecutionException: java.lang.Exception: task\u003dChunkTask{query\u003d8a87c673-c717-44d7-a7a6-ee88730db260,bopId\u003d9,partitionId\u003d-1,sinkId\u003d10,altSinkId\u003dnull}, cause\u003djava.util.concurrent.ExecutionException: java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException: addr\u003d-4871855 : cause\u003djava.lang.IllegalStateException: Error reading from WriteCache addr: 961456896 length: 12, writeCacheDebug: No WriteCache debug info\n\tat com.bigdata.util.concurrent.Haltable.get(Haltable.java:273)\n\tat com.bigdata.bop.engine.AbstractRunningQuery.get(AbstractRunningQuery.java:1516)\n\tat com.bigdata.bop.engine.AbstractRunningQuery.get(AbstractRunningQuery.java:104)\n\tat com.bigdata.rdf.sail.RunningQueryCloseableIterator.checkFuture(RunningQueryCloseableIterator.java:46)\n\t... 15 more\nCaused by: java.lang.Exception: task\u003dChunkTask{query\u003d8a87c673-c717-44d7-a7a6-ee88730db260,bopId\u003d9,partitionId\u003d-1,sinkId\u003d10,altSinkId\u003dnull}, cause\u003djava.util.concurrent.ExecutionException: java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException: addr\u003d-4871855 : cause\u003djava.lang.IllegalStateException: Error reading from WriteCache addr: 961456896 length: 12, writeCacheDebug: No WriteCache debug info\n\tat com.bigdata.bop.engine.ChunkedRunningQuery$ChunkTask.call(ChunkedRunningQuery.java:1367)\n\tat com.bigdata.bop.engine.ChunkedRunningQuery$ChunkTaskWrapper.run(ChunkedRunningQuery.java:926)\n\tat java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)\n\tat java.util.concurrent.FutureTask.run(FutureTask.java:266)\n\tat com.bigdata.concurrent.FutureTaskMon.run(FutureTaskMon.java:63)\n\tat com.bigdata.bop.engine.ChunkedRunningQuery$ChunkFutureTask.run(ChunkedRunningQuery.java:821)\n\t... 3 more\nCaused by: java.util.concurrent.ExecutionException: java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException: addr\u003d-4871855 : cause\u003djava.lang.IllegalStateException: Error reading from WriteCache addr: 961456896 length: 12, writeCacheDebug: No WriteCache debug info\n\tat java.util.concurrent.FutureTask.report(FutureTask.java:122)\n\tat java.util.concurrent.FutureTask.get(FutureTask.java:192)\n\tat com.bigdata.bop.engine.ChunkedRunningQuery$ChunkTask.call(ChunkedRunningQuery.java:1347)\n\t... 8 more\nCaused by: java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException: addr\u003d-4871855 : cause\u003djava.lang.IllegalStateException: Error reading from WriteCache addr: 961456896 length: 12, writeCacheDebug: No WriteCache debug info\n\tat com.bigdata.bop.join.PipelineJoin$JoinTask.call(PipelineJoin.java:682)\n\tat com.bigdata.bop.join.PipelineJoin$JoinTask.call(PipelineJoin.java:382)\n\tat java.util.concurrent.FutureTask.run(FutureTask.java:266)\n\tat com.bigdata.concurrent.FutureTaskMon.run(FutureTaskMon.java:63)\n\tat com.bigdata.bop.engine.ChunkedRunningQuery$ChunkTask.call(ChunkedRunningQuery.java:1346)\n\t... 8 more\nCaused by: java.lang.RuntimeException: java.lang.RuntimeException: addr\u003d-4871855 : cause\u003djava.lang.IllegalStateException: Error reading from WriteCache addr: 961456896 length: 12, writeCacheDebug: No WriteCache debug info\n\tat com.bigdata.bop.join.PipelineJoin$JoinTask$BindingSetConsumerTask.call(PipelineJoin.java:1027)\n\tat com.bigdata.bop.join.PipelineJoin$JoinTask.consumeSource(PipelineJoin.java:739)\n\tat com.bigdata.bop.join.PipelineJoin$JoinTask.call(PipelineJoin.java:623)\n\t... 12 more\nCaused by: java.lang.RuntimeException: addr\u003d-4871855 : cause\u003djava.lang.IllegalStateException: Error reading from WriteCache addr: 961456896 length: 12, writeCacheDebug: No WriteCache debug info\n\tat com.bigdata.rwstore.RWStore.getData(RWStore.java:2399)\n\tat com.bigdata.rwstore.RWStore.getData(RWStore.java:2120)\n\tat com.bigdata.rwstore.RWStore.getData(RWStore.java:2177)\n\tat com.bigdata.rwstore.RWStore.getData(RWStore.java:2072)\n\tat com.bigdata.journal.RWStrategy.readFromLocalStore(RWStrategy.java:732)\n\tat com.bigdata.journal.RWStrategy.read(RWStrategy.java:155)\n\tat com.bigdata.journal.AbstractJournal.read(AbstractJournal.java:4307)\n\tat com.bigdata.btree.AbstractBTree.readNodeOrLeaf(AbstractBTree.java:4533)\n\tat com.bigdata.btree.Node._getChild(Node.java:2746)\n\tat com.bigdata.btree.AbstractBTree$1.compute(AbstractBTree.java:377)\n\tat com.bigdata.btree.AbstractBTree$1.compute(AbstractBTree.java:360)\n\tat com.bigdata.util.concurrent.Memoizer$1.call(Memoizer.java:77)\n\tat java.util.concurrent.FutureTask.run(FutureTask.java:266)\n\tat com.bigdata.util.concurrent.Memoizer.compute(Memoizer.java:92)\n\tat com.bigdata.btree.AbstractBTree.loadChild(AbstractBTree.java:546)\n\tat com.bigdata.btree.Node.getChild(Node.java:2644)\n\tat com.bigdata.btree.Node.indexOf(Node.java:971)\n\tat com.bigdata.btree.Node.indexOf(Node.java:988)\n\tat com.bigdata.btree.AbstractBTree.rangeCount(AbstractBTree.java:2710)\n\tat com.bigdata.relation.accesspath.AccessPath.historicalRangeCount(AccessPath.java:1419)\n\tat com.bigdata.relation.accesspath.AccessPath.rangeCount(AccessPath.java:1387)\n\tat com.bigdata.bop.join.PipelineJoin$JoinTask$AccessPathTask.call(PipelineJoin.java:1658)\n\tat com.bigdata.bop.join.PipelineJoin$JoinTask$BindingSetConsumerTask.executeTasks(PipelineJoin.java:1392)\n\tat com.bigdata.bop.join.PipelineJoin$JoinTask$BindingSetConsumerTask.call(PipelineJoin.java:1016)\n\t... 14 more\nCaused by: java.lang.IllegalStateException: Error reading from WriteCache addr: 961456896 length: 12, writeCacheDebug: No WriteCache debug info\n\tat com.bigdata.rwstore.RWStore.getData(RWStore.java:2317)\n\t... 37 more\nCaused by: java.lang.RuntimeException: java.io.IOException: EOF reading on channel: remaining\u003d16, nread\u003d0, pos\u003d961456896, bytesRead\u003d0\n\tat com.bigdata.rwstore.RWStore.readRaw(RWStore.java:6752)\n\tat com.bigdata.io.writecache.WriteCacheService._readFromLocalDiskIntoNewHeapByteBuffer(WriteCacheService.java:3774)\n\tat com.bigdata.io.writecache.WriteCacheService._getRecord(WriteCacheService.java:3598)\n\tat com.bigdata.io.writecache.WriteCacheService.access$2500(WriteCacheService.java:200)\n\tat com.bigdata.io.writecache.WriteCacheService$1.compute(WriteCacheService.java:3435)\n\tat com.bigdata.io.writecache.WriteCacheService$1.compute(WriteCacheService.java:3419)\n\tat com.bigdata.util.concurrent.Memoizer$1.call(Memoizer.java:77)\n\tat java.util.concurrent.FutureTask.run(FutureTask.java:266)\n\tat com.bigdata.util.concurrent.Memoizer.compute(Memoizer.java:92)\n\tat com.bigdata.io.writecache.WriteCacheService.loadRecord(WriteCacheService.java:3540)\n\tat com.bigdata.io.writecache.WriteCacheService.read(WriteCacheService.java:3259)\n\tat com.bigdata.rwstore.RWStore.getData(RWStore.java:2315)\n\t... 37 more\nCaused by: java.io.IOException: EOF reading on channel: remaining\u003d16, nread\u003d0, pos\u003d961456896, bytesRead\u003d0\n\tat com.bigdata.io.FileChannelUtility.readAll(FileChannelUtility.java:230)\n\tat com.bigdata.rwstore.RWStore.readRaw(RWStore.java:6728)\n\t... 48 more\n\n\n"
+          }
+        ]
       },
       "apps": [],
       "jobName": "paragraph_1489704530583_1022268562",
       "id": "20170316-184850_2069438963",
       "dateCreated": "Mar 16, 2017 6:48:50 PM",
-      "dateStarted": "Mar 23, 2017 1:37:53 PM",
-      "dateFinished": "Mar 23, 2017 1:37:57 PM",
-      "status": "FINISHED",
+      "dateStarted": "Mar 28, 2017 8:33:12 PM",
+      "dateFinished": "Mar 28, 2017 8:33:12 PM",
+      "status": "ERROR",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%pyspark\nimport numpy as np\nfrom sklearn.metrics import jaccard_similarity_score\n\ndef reshape_array (source, target):\n    N \u003d np.zeros (target.shape)\n    N[:source.shape[0]] \u003d source\n    return N\n\ndef reshape_arrays (L, R):\n    bigger \u003d max (L.size, R.size)\n    if bigger \u003d\u003d L.size:\n        R \u003d reshape_array (R, L)\n    else:\n        L \u003d reshape_array (L, R)\n    return L, R\n\ndef make_arrays (A, B):\n    L \u003d np.array (A)\n    R \u003d np.array (B)\n    return reshape_arrays (L, R)\n    \ndef average_treatment_set_similarity (drug_lists):\n    import numpy as np\n    from sklearn.metrics import jaccard_similarity_score\n    similarities \u003d []\n    for index, drug_list in enumerate (drug_lists):\n        for index2, drug_list2 in enumerate (drug_lists):\n            if index \u003d\u003d index2:\n                continue\n            L, R \u003d make_arrays (drug_list, drug_list2)\n            similarity \u003d jaccard_similarity_score (L, R)\n            #print (\"   s\u003e {0}\".format (similarity))\n            #print (\"L: {0}\".format (L))\n            #print (\"R: {0}\".format (R))\n            similarities.append (similarity)\n    return np.mean (np.array (similarities)).item ()",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 23, 2017 1:38:01 PM",
+      "dateUpdated": "Mar 28, 2017 8:13:36 PM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
         "results": {},
         "editorSetting": {
-          "language": "python"
+          "language": "python",
+          "editOnDblClick": false
         },
         "editorMode": "ace/mode/python"
       },
@@ -289,17 +299,15 @@
         "params": {},
         "forms": {}
       },
-      "results": {
-        "code": "SUCCESS",
-        "msg": []
-      },
+      "results": "org.apache.zeppelin.interpreter.InterpreterException: org.apache.thrift.transport.TTransportException: java.net.ConnectException: Connection refused",
       "apps": [],
       "jobName": "paragraph_1489704605784_2086939932",
       "id": "20170316-185005_1904620776",
       "dateCreated": "Mar 16, 2017 6:50:05 PM",
-      "dateStarted": "Mar 23, 2017 1:38:01 PM",
-      "dateFinished": "Mar 23, 2017 1:38:02 PM",
-      "status": "FINISHED",
+      "dateStarted": "Mar 28, 2017 8:13:36 PM",
+      "dateFinished": "Mar 28, 2017 8:14:06 PM",
+      "status": "ERROR",
+      "errorMessage": "java.net.ConnectException: Connection refused\n\tat java.net.PlainSocketImpl.socketConnect(Native Method)\n\tat java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:339)\n\tat java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:200)\n\tat java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:182)\n\tat java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)\n\tat java.net.Socket.connect(Socket.java:579)\n\tat org.apache.thrift.transport.TSocket.open(TSocket.java:182)\n\tat org.apache.zeppelin.interpreter.remote.ClientFactory.create(ClientFactory.java:51)\n\tat org.apache.zeppelin.interpreter.remote.ClientFactory.create(ClientFactory.java:37)\n\tat org.apache.commons.pool2.BasePooledObjectFactory.makeObject(BasePooledObjectFactory.java:60)\n\tat org.apache.commons.pool2.impl.GenericObjectPool.create(GenericObjectPool.java:861)\n\tat org.apache.commons.pool2.impl.GenericObjectPool.borrowObject(GenericObjectPool.java:435)\n\tat org.apache.commons.pool2.impl.GenericObjectPool.borrowObject(GenericObjectPool.java:363)\n\tat org.apache.zeppelin.interpreter.remote.RemoteInterpreterProcess.getClient(RemoteInterpreterProcess.java:90)\n\tat org.apache.zeppelin.interpreter.remote.RemoteInterpreter.init(RemoteInterpreter.java:209)\n\tat org.apache.zeppelin.interpreter.remote.RemoteInterpreter.getFormType(RemoteInterpreter.java:375)\n\tat org.apache.zeppelin.interpreter.LazyOpenInterpreter.getFormType(LazyOpenInterpreter.java:105)\n\tat org.apache.zeppelin.notebook.Paragraph.jobRun(Paragraph.java:365)\n\tat org.apache.zeppelin.scheduler.Job.run(Job.java:175)\n\tat org.apache.zeppelin.scheduler.RemoteScheduler$JobRunner.run(RemoteScheduler.java:329)\n\tat java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:471)\n\tat java.util.concurrent.FutureTask.run(FutureTask.java:262)\n\tat java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(ScheduledThreadPoolExecutor.java:178)\n\tat java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:292)\n\tat java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)\n\tat java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)\n\tat java.lang.Thread.run(Thread.java:745)\n",
       "progressUpdateIntervalMs": 500
     },
     {
