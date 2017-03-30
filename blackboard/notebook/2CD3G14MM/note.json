@@ -1,0 +1,81 @@
+{
+  "paragraphs": [
+    {
+      "text": "%python\nfrom string import Template\nfrom collections import defaultdict\nfrom SPARQLWrapper import SPARQLWrapper2, JSON\nimport matplotlib.pyplot as plt\nimport seaborn as sns\n\nimport urllib2\nproxy \u003d urllib2.ProxyHandler({\u0027http\u0027: \u0027gateway.ad.renci.org:8080\u0027})\nopener \u003d urllib2.build_opener(proxy)\nurllib2.install_opener(opener)\n\nblazegraph_uri \u003d \"http://stars-blazegraph.renci.org/bigdata/sparql\"\nblazegraph \u003d SPARQLWrapper2 (blazegraph_uri)\ndef query_sparql (query, service\u003dblazegraph):\n    service.setQuery (query)\n    service.setReturnFormat (JSON)\n    return service.query().convert ()\n\nquery \u003d \"\"\"\nPREFIX OBO: \u003chttp://purl.obolibrary.org/obo/\u003e\nPREFIX OBAN: \u003chttp://purl.org/oban/\u003e\nSELECT ?object ?association\nWHERE {\n   ?association OBAN:association_has_object OBO:MESH_D001249 .\n   ?association a OBAN:association .\n   ?association OBAN:association_has_subject OBO:MESH_D052638\n}\"\"\"\n\nquery \u003d Template (\"\"\"\nPREFIX OBO: \u003chttp://purl.obolibrary.org/obo/\u003e\nPREFIX OBAN: \u003chttp://purl.org/oban/\u003e\nSELECT ?object ?association\nWHERE {\n   ?association OBAN:association_has_object OBO:MESH_${diseaseMeshID} .\n   ?association a OBAN:association .\n   ?association OBAN:association_has_subject OBO:MESH_${environmentalAgent}\n}\"\"\")\n\nresults \u003d query_sparql (query.substitute (\n    diseaseMeshID\u003d\"D001249\",\n    environmentalAgent\u003d\"D052638\"))\nprint (map (lambda b : b[\u0027association\u0027].value, results.bindings))\n\n",
+      "user": "ad\\scox",
+      "dateUpdated": "Mar 30, 2017 11:26:15 AM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false
+        },
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... [u\u0027https://monarchinitiative.org/MONARCH_f3b5fc147a86dbb6e320aeaef9da4eab97b0f782\u0027]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1490887399830_1230536893",
+      "id": "20170330-112319_626831218",
+      "dateCreated": "Mar 30, 2017 11:23:19 AM",
+      "dateStarted": "Mar 30, 2017 11:26:15 AM",
+      "dateFinished": "Mar 30, 2017 11:26:18 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%python\n",
+      "user": "ad\\scox",
+      "dateUpdated": "Mar 30, 2017 11:26:15 AM",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1490887575236_-1510320682",
+      "id": "20170330-112615_2016805220",
+      "dateCreated": "Mar 30, 2017 11:26:15 AM",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "/NCATSTranslator/Green/PM25_Asthma_Monarch",
+  "id": "2CD3G14MM",
+  "angularObjects": {
+    "2C8PNVW4G:shared_process": [],
+    "2C9M4A84U:shared_process": [],
+    "2C8JB5J2A:shared_process": [],
+    "2C8UPVAV8:shared_process": [],
+    "2CB6QSJQK:shared_process": [],
+    "2CB4GRYA4:shared_process": [],
+    "2CAZ1XA1G:shared_process": [],
+    "2CBGUDB9H:shared_process": [],
+    "2C9VT2CHD:shared_process": [],
+    "2CBBPS1GQ:shared_process": [],
+    "2CAYF7YMG:shared_process": [],
+    "2C7NS2RPM:shared_process": [],
+    "2CB55MCKF:shared_process": [],
+    "2C9P6TDB4:shared_process": [],
+    "2C9WWVYVN::2CD3G14MM": [],
+    "2C7YD2D51:shared_process": [],
+    "2C9UAC7QR:shared_process": [],
+    "2C8K1VZ6J:shared_process": [],
+    "2CA9JMF94:shared_process": []
+  },
+  "config": {},
+  "info": {}
+}
