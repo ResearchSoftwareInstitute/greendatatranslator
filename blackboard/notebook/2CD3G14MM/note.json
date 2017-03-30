@@ -1,9 +1,9 @@
 {
   "paragraphs": [
     {
-      "text": "%md\n\u003ciframe src\u003d\u0027http://vowl.visualdataweb.org/ldvowl/#/graph?endpointURL\u003dhttp:%2F%2Fstars-blazegraph.renci.org%2Fbigdata%2Fsparql\u0027 height\u003d\u0027600\u0027 width\u003d\u00271200\u0027\u003e\u003c/iframe\u003e\n",
+      "text": "%md\n# Our Semantic Data Set\n\nFor now, this notebook is little more than a generic space for exploration of how chem2bio2rdf and Monarch might be structured, and a space for learning about their very different approaches to modeling these spaces.\n\n\u003ciframe src\u003d\u0027http://vowl.visualdataweb.org/ldvowl/#/graph?endpointURL\u003dhttp:%2F%2Fstars-blazegraph.renci.org%2Fbigdata%2Fsparql\u0027 height\u003d\u0027600\u0027 width\u003d\u00271200\u0027\u003e\u003c/iframe\u003e\n",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 30, 2017 7:04:12 PM",
+      "dateUpdated": "Mar 30, 2017 7:27:14 PM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -33,7 +33,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ciframe src\u003d\u0027http://vowl.visualdataweb.org/ldvowl/#/graph?endpointURL\u003dhttp:%2F%2Fstars-blazegraph.renci.org%2Fbigdata%2Fsparql\u0027 height\u003d\u0027600\u0027 width\u003d\u00271200\u0027\u003e\u003c/iframe\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch1\u003eOur Semantic Data Set\u003c/h1\u003e\n\u003cp\u003eFor now, this notebook is little more than a generic space for exploration of how chem2bio2rdf and Monarch might be structured, and a space for learning about their very different approaches to modeling these spaces.\u003c/p\u003e\n\u003ciframe src\u003d\u0027http://vowl.visualdataweb.org/ldvowl/#/graph?endpointURL\u003dhttp:%2F%2Fstars-blazegraph.renci.org%2Fbigdata%2Fsparql\u0027 height\u003d\u0027600\u0027 width\u003d\u00271200\u0027\u003e\u003c/iframe\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -41,8 +41,8 @@
       "jobName": "paragraph_1490914068814_291445783",
       "id": "20170330-184748_106071409",
       "dateCreated": "Mar 30, 2017 6:47:48 PM",
-      "dateStarted": "Mar 30, 2017 7:04:12 PM",
-      "dateFinished": "Mar 30, 2017 7:04:12 PM",
+      "dateStarted": "Mar 30, 2017 7:27:14 PM",
+      "dateFinished": "Mar 30, 2017 7:27:14 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
