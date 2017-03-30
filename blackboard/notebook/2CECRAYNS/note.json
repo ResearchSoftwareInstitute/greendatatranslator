@@ -75,18 +75,123 @@
       "progressUpdateIntervalMs": 500
     },
     {
+      "text": "%spark\nclass Subject {\n    def obj (predicate : String) \u003d {\n        print (s\"hello $predicate\")\n    }\n}",
+      "user": "ad\\scox",
+      "dateUpdated": "Mar 30, 2017 1:59:17 PM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala"
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\ndefined class Subject\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1490740816827_-522144022",
+      "id": "20170328-184016_1023895059",
+      "dateCreated": "Mar 28, 2017 6:40:16 PM",
+      "dateStarted": "Mar 30, 2017 1:59:17 PM",
+      "dateFinished": "Mar 30, 2017 1:59:17 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%spark\nval s \u003d new Subject ()\n\ns obj \"hi\"",
+      "user": "ad\\scox",
+      "dateUpdated": "Mar 30, 2017 1:59:46 PM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala"
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\ns: Subject \u003d Subject@5d3188dd\nhello hi"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1490896688739_-1750161724",
+      "id": "20170330-135808_1166365240",
+      "dateCreated": "Mar 30, 2017 1:58:08 PM",
+      "dateStarted": "Mar 30, 2017 1:59:46 PM",
+      "dateFinished": "Mar 30, 2017 1:59:46 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%spark\nclass What extends Subject {\n    \n}",
+      "user": "ad\\scox",
+      "dateUpdated": "Mar 30, 2017 2:00:11 PM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala"
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\ndefined class What\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1490896778454_1387804333",
+      "id": "20170330-135938_1711297658",
+      "dateCreated": "Mar 30, 2017 1:59:38 PM",
+      "dateStarted": "Mar 30, 2017 2:00:11 PM",
+      "dateFinished": "Mar 30, 2017 2:00:12 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
       "text": "%spark\n",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 28, 2017 6:40:16 PM",
+      "dateUpdated": "Mar 30, 2017 2:00:11 PM",
       "config": {},
       "settings": {
         "params": {},
         "forms": {}
       },
       "apps": [],
-      "jobName": "paragraph_1490740816827_-522144022",
-      "id": "20170328-184016_1023895059",
-      "dateCreated": "Mar 28, 2017 6:40:16 PM",
+      "jobName": "paragraph_1490896811948_1569067037",
+      "id": "20170330-140011_1246442313",
+      "dateCreated": "Mar 30, 2017 2:00:11 PM",
       "status": "READY",
       "progressUpdateIntervalMs": 500
     }
