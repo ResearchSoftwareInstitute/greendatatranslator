@@ -562,42 +562,6 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%python\nimport json\n\njson.dumps ({ \"a\" : \"b\", \"c\" : 2 }, indent\u003d2) \n",
-      "user": "ad\\scox",
-      "dateUpdated": "Mar 29, 2017 7:43:59 AM",
-      "config": {
-        "colWidth": 12.0,
-        "enabled": true,
-        "results": {},
-        "editorSetting": {
-          "language": "python",
-          "editOnDblClick": false
-        },
-        "editorMode": "ace/mode/python"
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TEXT",
-            "data": "\u0027{\\n  \"a\": \"b\", \\n  \"c\": 2\\n}\u0027\n"
-          }
-        ]
-      },
-      "apps": [],
-      "jobName": "paragraph_1489245570256_-1511556726",
-      "id": "20170311-101930_1578840703",
-      "dateCreated": "Mar 11, 2017 10:19:30 AM",
-      "dateStarted": "Mar 29, 2017 7:43:59 AM",
-      "dateFinished": "Mar 29, 2017 7:43:59 AM",
-      "status": "FINISHED",
-      "progressUpdateIntervalMs": 500
-    },
-    {
       "text": "%python\n",
       "user": "ad\\scox",
       "dateUpdated": "Mar 29, 2017 7:43:59 AM",
