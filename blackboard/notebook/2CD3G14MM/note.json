@@ -1,6 +1,52 @@
 {
   "paragraphs": [
     {
+      "text": "%md\n\u003ciframe src\u003d\u0027http://vowl.visualdataweb.org/ldvowl/#/graph?endpointURL\u003dhttp:%2F%2Fstars-blazegraph.renci.org%2Fbigdata%2Fsparql\u0027 height\u003d\u0027600\u0027 width\u003d\u00271200\u0027\u003e\u003c/iframe\u003e\n",
+      "user": "ad\\scox",
+      "dateUpdated": "Mar 30, 2017 7:04:12 PM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 148.33334350585938,
+              "optionOpen": false
+            }
+          }
+        },
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ciframe src\u003d\u0027http://vowl.visualdataweb.org/ldvowl/#/graph?endpointURL\u003dhttp:%2F%2Fstars-blazegraph.renci.org%2Fbigdata%2Fsparql\u0027 height\u003d\u0027600\u0027 width\u003d\u00271200\u0027\u003e\u003c/iframe\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1490914068814_291445783",
+      "id": "20170330-184748_106071409",
+      "dateCreated": "Mar 30, 2017 6:47:48 PM",
+      "dateStarted": "Mar 30, 2017 7:04:12 PM",
+      "dateFinished": "Mar 30, 2017 7:04:12 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
       "text": "%python\nfrom string import Template\nfrom collections import defaultdict\nfrom SPARQLWrapper import SPARQLWrapper2, JSON\nimport matplotlib.pyplot as plt\nimport seaborn as sns\n\nimport urllib2\nproxy \u003d urllib2.ProxyHandler({\u0027http\u0027: \u0027gateway.ad.renci.org:8080\u0027})\nopener \u003d urllib2.build_opener(proxy)\nurllib2.install_opener(opener)\n\nblazegraph_uri \u003d \"http://stars-blazegraph.renci.org/bigdata/sparql\"\nblazegraph \u003d SPARQLWrapper2 (blazegraph_uri)\ndef query_sparql (query, service\u003dblazegraph):\n    service.setQuery (query)\n    service.setReturnFormat (JSON)\n    return service.query().convert ()\n\nquery \u003d \"\"\"\nPREFIX OBO: \u003chttp://purl.obolibrary.org/obo/\u003e\nPREFIX OBAN: \u003chttp://purl.org/oban/\u003e\nSELECT ?object ?association\nWHERE {\n   ?association OBAN:association_has_object OBO:MESH_D001249 .\n   ?association a OBAN:association .\n   ?association OBAN:association_has_subject OBO:MESH_D052638\n}\"\"\"\n\nquery \u003d Template (\"\"\"\nPREFIX OBO: \u003chttp://purl.obolibrary.org/obo/\u003e\nPREFIX OBAN: \u003chttp://purl.org/oban/\u003e\nSELECT ?object ?association\nWHERE {\n   ?association OBAN:association_has_object OBO:MESH_${diseaseMeshID} .\n   ?association a OBAN:association .\n   ?association OBAN:association_has_subject OBO:MESH_${environmentalAgent}\n}\"\"\")\n\nresults \u003d query_sparql (query.substitute (\n    diseaseMeshID\u003d\"D001249\",\n    environmentalAgent\u003d\"D052638\"))\nprint (map (lambda b : b[\u0027association\u0027].value, results.bindings))\n\n",
       "user": "ad\\scox",
       "dateUpdated": "Mar 30, 2017 11:26:15 AM",
