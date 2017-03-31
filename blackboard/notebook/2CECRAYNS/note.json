@@ -3,7 +3,7 @@
     {
       "text": "%spark.dep\nz.reset ()\nz.load (\"/home/evryscope/.m2/repository/org/phenoscape/scowl_2.10/1.2.1/scowl_2.10-1.2.1.jar\")",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 29, 2017 2:16:08 PM",
+      "dateUpdated": "Mar 31, 2017 10:33:31 AM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -23,7 +23,7 @@
         "msg": [
           {
             "type": "TEXT",
-            "data": "res0: org.apache.zeppelin.dep.Dependency \u003d org.apache.zeppelin.dep.Dependency@23e8eec8\n"
+            "data": "res0: org.apache.zeppelin.dep.Dependency \u003d org.apache.zeppelin.dep.Dependency@69dbdb87\n"
           }
         ]
       },
@@ -31,15 +31,31 @@
       "jobName": "paragraph_1490132380396_-493558097",
       "id": "20170321-173940_994747591",
       "dateCreated": "Mar 21, 2017 5:39:40 PM",
-      "dateStarted": "Mar 29, 2017 2:16:08 PM",
-      "dateFinished": "Mar 29, 2017 2:16:17 PM",
+      "dateStarted": "Mar 31, 2017 10:33:31 AM",
+      "dateFinished": "Mar 31, 2017 10:33:41 AM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%spark\nvar x \u003d sc.parallelize (Array(0, 4, 3)).collect ()\nimport org.phenoscape.scowl.omn._",
+      "text": "%spark.dep\n",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 29, 2017 3:04:03 PM",
+      "dateUpdated": "Mar 31, 2017 10:32:27 AM",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1490970747774_1079554618",
+      "id": "20170331-103227_456292412",
+      "dateCreated": "Mar 31, 2017 10:32:27 AM",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%spark\nvar x \u003d sc.parallelize (Array(0, 4, 3)).collect ()\nimport org.phenoscape.scowl._",
+      "user": "ad\\scox",
+      "dateUpdated": "Mar 31, 2017 10:34:34 AM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -61,7 +77,7 @@
         "msg": [
           {
             "type": "TEXT",
-            "data": "\nx: Array[Int] \u003d Array(0, 4, 3)\n\n\n\n\u003cconsole\u003e:23: error: object phenoscape is not a member of package org\n       import org.phenoscape.scowl.omn._\n                  ^\n"
+            "data": "\nx: Array[Int] \u003d Array(0, 4, 3)\n\n\n\n\u003cconsole\u003e:23: error: object phenoscape is not a member of package org\n       import org.phenoscape.scowl._\n                  ^\n"
           }
         ]
       },
@@ -69,8 +85,8 @@
       "jobName": "paragraph_1490138255511_1383701003",
       "id": "20170321-191735_1946820153",
       "dateCreated": "Mar 21, 2017 7:17:35 PM",
-      "dateStarted": "Mar 29, 2017 3:04:04 PM",
-      "dateFinished": "Mar 29, 2017 3:04:04 PM",
+      "dateStarted": "Mar 31, 2017 10:34:34 AM",
+      "dateFinished": "Mar 31, 2017 10:34:35 AM",
       "status": "ERROR",
       "progressUpdateIntervalMs": 500
     },
@@ -196,7 +212,7 @@
       "progressUpdateIntervalMs": 500
     }
   ],
-  "name": "/Tutorial/Scala",
+  "name": "/Exploration/Scala",
   "id": "2CECRAYNS",
   "angularObjects": {
     "2C8PNVW4G:shared_process": [],
@@ -219,6 +235,9 @@
     "2C8K1VZ6J:shared_process": [],
     "2CA9JMF94:shared_process": []
   },
-  "config": {},
+  "config": {
+    "looknfeel": "default",
+    "personalizedMode": "false"
+  },
   "info": {}
 }
