@@ -196,18 +196,54 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%spark\n",
+      "text": "%python.docker activate gcr.io/tensorflow/tensorflow:latest\n",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 30, 2017 2:00:11 PM",
+      "dateUpdated": "Mar 31, 2017 1:31:00 PM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "sh",
+          "editOnDblClick": false
+        },
+        "editorMode": "ace/mode/sh"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\"gcr.io/tensorflow/tensorflow:latest\" activated"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1490896811948_1569067037",
+      "id": "20170330-140011_1246442313",
+      "dateCreated": "Mar 30, 2017 2:00:11 PM",
+      "dateStarted": "Mar 31, 2017 1:31:00 PM",
+      "dateFinished": "Mar 31, 2017 1:31:00 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%python.docker\n",
+      "user": "ad\\scox",
+      "dateUpdated": "Mar 31, 2017 1:29:17 PM",
       "config": {},
       "settings": {
         "params": {},
         "forms": {}
       },
       "apps": [],
-      "jobName": "paragraph_1490896811948_1569067037",
-      "id": "20170330-140011_1246442313",
-      "dateCreated": "Mar 30, 2017 2:00:11 PM",
+      "jobName": "paragraph_1490981357525_739896537",
+      "id": "20170331-132917_302063289",
+      "dateCreated": "Mar 31, 2017 1:29:17 PM",
       "status": "READY",
       "progressUpdateIntervalMs": 500
     }
