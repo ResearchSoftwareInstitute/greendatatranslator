@@ -75,9 +75,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%spark\nclass Subject {\n    def obj (predicate : String) \u003d {\n        print (s\"hello $predicate\")\n    }\n}",
+      "text": "%spark\nclass Comprehension {\n    private var subjects \u003d Array ()\n}\nclass Concept {\n    def take (term : Concept) : Concept \u003d {\n        if (term.isInstanceOf[Concept]) {\n            return this\n        }\n        return this\n    }\n}\nclass Subject {\n    def obj (predicate : String) \u003d {\n        print (s\"hello $predicate\")\n    }\n}\nclass Noop { }\n//------------------------------------------------------------\nclass TranslatorComprehension extends Comprehension { }\nclass What extends TranslatorComprehension {\n    def protein ( ) : Comprehension \u003d {\n        return this\n    }\n}\nval what \u003d new What ()\nval noop \u003d new Noop ()",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 30, 2017 1:59:17 PM",
+      "dateUpdated": "Mar 30, 2017 8:02:20 PM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -96,7 +96,7 @@
         "msg": [
           {
             "type": "TEXT",
-            "data": "\ndefined class Subject\n"
+            "data": "\ndefined class Comprehension\n\ndefined class Concept\n\ndefined class Subject\n\ndefined class Noop\n\ndefined class TranslatorComprehension\n\ndefined class What\n\nwhat: What \u003d What@442d19ae\n\nnoop: Noop \u003d Noop@58ea2de4\n"
           }
         ]
       },
@@ -104,15 +104,15 @@
       "jobName": "paragraph_1490740816827_-522144022",
       "id": "20170328-184016_1023895059",
       "dateCreated": "Mar 28, 2017 6:40:16 PM",
-      "dateStarted": "Mar 30, 2017 1:59:17 PM",
-      "dateFinished": "Mar 30, 2017 1:59:17 PM",
+      "dateStarted": "Mar 30, 2017 8:02:20 PM",
+      "dateFinished": "Mar 30, 2017 8:02:21 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%spark\nval s \u003d new Subject ()\n\ns obj \"hi\"",
+      "text": "%spark\nval s \u003d new Subject ()\n\nwhat obj \"hi\"",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 30, 2017 1:59:46 PM",
+      "dateUpdated": "Mar 30, 2017 7:52:27 PM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -131,7 +131,7 @@
         "msg": [
           {
             "type": "TEXT",
-            "data": "\ns: Subject \u003d Subject@5d3188dd\nhello hi"
+            "data": "\ns: Subject \u003d Subject@4f82d28e\nhello hi"
           }
         ]
       },
@@ -139,8 +139,8 @@
       "jobName": "paragraph_1490896688739_-1750161724",
       "id": "20170330-135808_1166365240",
       "dateCreated": "Mar 30, 2017 1:58:08 PM",
-      "dateStarted": "Mar 30, 2017 1:59:46 PM",
-      "dateFinished": "Mar 30, 2017 1:59:46 PM",
+      "dateStarted": "Mar 30, 2017 7:52:27 PM",
+      "dateFinished": "Mar 30, 2017 7:52:27 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
