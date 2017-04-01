@@ -3,7 +3,7 @@
     {
       "text": "%spark.dep\nz.reset ()\nz.load (\"/home/evryscope/.m2/repository/org/phenoscape/scowl_2.10/1.2.1/scowl_2.10-1.2.1.jar\")",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 31, 2017 10:33:31 AM",
+      "dateUpdated": "Apr 1, 2017 8:33:37 AM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -19,11 +19,11 @@
         "forms": {}
       },
       "results": {
-        "code": "SUCCESS",
+        "code": "ERROR",
         "msg": [
           {
             "type": "TEXT",
-            "data": "res0: org.apache.zeppelin.dep.Dependency \u003d org.apache.zeppelin.dep.Dependency@69dbdb87\n"
+            "data": "Must be used before SparkInterpreter (%spark) initialized\nHint: put this paragraph before any Spark code and restart Zeppelin/Interpreter"
           }
         ]
       },
@@ -31,9 +31,9 @@
       "jobName": "paragraph_1490132380396_-493558097",
       "id": "20170321-173940_994747591",
       "dateCreated": "Mar 21, 2017 5:39:40 PM",
-      "dateStarted": "Mar 31, 2017 10:33:31 AM",
-      "dateFinished": "Mar 31, 2017 10:33:41 AM",
-      "status": "FINISHED",
+      "dateStarted": "Apr 1, 2017 8:33:37 AM",
+      "dateFinished": "Apr 1, 2017 8:33:37 AM",
+      "status": "ERROR",
       "progressUpdateIntervalMs": 500
     },
     {
