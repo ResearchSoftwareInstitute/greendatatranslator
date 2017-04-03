@@ -47,4 +47,12 @@ class GreenTranslator (Translator):
     def query_biochem (self, query):
         return self.blazegraph.execute_query (query)
 
+    def get_exposure_score (self, geo_temporal_map):
+        """ get_exposure_score:
 
+            array of location/date parameters
+        """
+        pass
+
+
+        
