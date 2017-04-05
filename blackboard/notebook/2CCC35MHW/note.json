@@ -775,9 +775,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%python\nquery \u003d \"\"\"\n\nPREFIX rdf: \u003chttp://www.w3.org/1999/02/22-rdf-syntax-ns#\u003e\nPREFIX skos: \u003chttp://www.w3.org/2004/02/skos/core#\u003e\nPREFIX biopax2: \u003chttp://www.biopax.org/release/biopax-level2.owl#\u003e\nPREFIX uniprot: \u003chttp://purl.uniprot.org/core/\u003e\n\nPREFIX drug: \u003chttp://linkedlifedata.com/resource/drugbank/drug/\u003e\nPREFIX targetLink: \u003chttp://linkedlifedata.com/resource/drugbank/targetLink/\u003e\nSELECT distinct ?drug\nWHERE {\n  ?interaction biopax2:PARTICIPANTS ?participant .\n  ?participant biopax2:PHYSICAL-ENTITY ?physicalEntity .\n  ?physicalEntity skos:exactMatch ?protein .\n  ?protein uniprot:classifiedWith \u003chttp://purl.uniprot.org/go/0006954\u003e.\n  ?protein uniprot:recommendedName ?name.\n  ?name uniprot:fullName ?protein_name .\n  ?target skos:exactMatch ?protein .\n  ?target rdf:type \u003chttp://linkedlifedata.com/resource/drugbank/Molecule\u003e .\n  ?drug drug:targetLink [targetLink:target ?target]\n}\n\n\"\"\"\n\n",
+      "text": "%python\nquery \u003d \"\"\"\n\nPREFIX omim: \u003chttp://chem2bio2rdf.org/omim/resource/\u003e\nSELECT ?drug ?disease\nFROM \u003chttp://chem2bio2rdf.org/omim\u003e\nWHERE\n {\n   ?omim_disease omim:drug ?drug .\n   ?omim_disease omim:Name ?disease \n  }\n\n\"\"\"\n\n",
       "user": "ad\\ruhirai",
-      "dateUpdated": "Apr 5, 2017 1:50:02 PM",
+      "dateUpdated": "Apr 5, 2017 2:34:08 PM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -800,8 +800,8 @@
       "jobName": "paragraph_1489689312545_1221521251",
       "id": "20170316-143512_120618013",
       "dateCreated": "Mar 16, 2017 2:35:12 PM",
-      "dateStarted": "Apr 5, 2017 1:50:02 PM",
-      "dateFinished": "Apr 5, 2017 1:50:03 PM",
+      "dateStarted": "Apr 5, 2017 2:34:08 PM",
+      "dateFinished": "Apr 5, 2017 2:34:08 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
