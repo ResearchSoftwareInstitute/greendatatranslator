@@ -156,20 +156,164 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%sql\n",
+      "text": "%pyspark\nclass ACSLoader(object):\n    def __init__(self, path, table, sample_size\u003d1.0):\n        self.path \u003d path\n        self.rdd \u003d self.load (sample_size\u003dsample_size)\n        self.rdd.toDF().registerTempTable (table)\n    def load (self, sample_size\u003d1.0):\n        print (self.path)\n        return sqlContext.read.                                     \\\n            format(\u0027com.databricks.spark.csv\u0027).                     \\\n            options(comment\u003d\u0027#\u0027).                                   \\\n            options(delimiter\u003d\",\").                                 \\\n            options(header\u003d\u0027true\u0027).                                 \\\n            load(self.path).rdd.                                   \\\n            sample (False, sample_size, 1234)\nacs \u003d ACSLoader (\n    path \u003d \"/projects/stars/translator/var/acs/dataworld/uscensusbureau-acs-2015-5-e-agesex/USA_All_States.csv\",\n    table \u003d \"acs\")\n",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 28, 2017 3:52:53 PM",
+      "dateUpdated": "Apr 5, 2017 5:57:56 PM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false
+        },
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "/projects/stars/translator/var/acs/dataworld/uscensusbureau-acs-2015-5-e-agesex/USA_All_States.csv\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1490730773675_-359642290",
+      "id": "20170328-155253_844974090",
+      "dateCreated": "Mar 28, 2017 3:52:53 PM",
+      "dateStarted": "Apr 5, 2017 5:57:56 PM",
+      "dateFinished": "Apr 5, 2017 5:58:04 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%pyspark\nacs.rdd.toDF().printSchema ()",
+      "user": "ad\\scox",
+      "dateUpdated": "Apr 5, 2017 5:59:07 PM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python"
+        },
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "root\n |-- SummaryLevel: string (nullable \u003d true)\n |-- State: string (nullable \u003d true)\n |-- StateFIPS: string (nullable \u003d true)\n |-- GEOID: string (nullable \u003d true)\n |-- AreaName: string (nullable \u003d true)\n |-- B01001_001: string (nullable \u003d true)\n |-- B01001_002: string (nullable \u003d true)\n |-- B01001_003: string (nullable \u003d true)\n |-- B01001_004: string (nullable \u003d true)\n |-- B01001_005: string (nullable \u003d true)\n |-- B01001_006: string (nullable \u003d true)\n |-- B01001_007: string (nullable \u003d true)\n |-- B01001_008: string (nullable \u003d true)\n |-- B01001_009: string (nullable \u003d true)\n |-- B01001_010: string (nullable \u003d true)\n |-- B01001_011: string (nullable \u003d true)\n |-- B01001_012: string (nullable \u003d true)\n |-- B01001_013: string (nullable \u003d true)\n |-- B01001_014: string (nullable \u003d true)\n |-- B01001_015: string (nullable \u003d true)\n |-- B01001_016: string (nullable \u003d true)\n |-- B01001_017: string (nullable \u003d true)\n |-- B01001_018: string (nullable \u003d true)\n |-- B01001_019: string (nullable \u003d true)\n |-- B01001_020: string (nullable \u003d true)\n |-- B01001_021: string (nullable \u003d true)\n |-- B01001_022: string (nullable \u003d true)\n |-- B01001_023: string (nullable \u003d true)\n |-- B01001_024: string (nullable \u003d true)\n |-- B01001_025: string (nullable \u003d true)\n |-- B01001_026: string (nullable \u003d true)\n |-- B01001_027: string (nullable \u003d true)\n |-- B01001_028: string (nullable \u003d true)\n |-- B01001_029: string (nullable \u003d true)\n |-- B01001_030: string (nullable \u003d true)\n |-- B01001_031: string (nullable \u003d true)\n |-- B01001_032: string (nullable \u003d true)\n |-- B01001_033: string (nullable \u003d true)\n |-- B01001_034: string (nullable \u003d true)\n |-- B01001_035: string (nullable \u003d true)\n |-- B01001_036: string (nullable \u003d true)\n |-- B01001_037: string (nullable \u003d true)\n |-- B01001_038: string (nullable \u003d true)\n |-- B01001_039: string (nullable \u003d true)\n |-- B01001_040: string (nullable \u003d true)\n |-- B01001_041: string (nullable \u003d true)\n |-- B01001_042: string (nullable \u003d true)\n |-- B01001_043: string (nullable \u003d true)\n |-- B01001_044: string (nullable \u003d true)\n |-- B01001_045: string (nullable \u003d true)\n |-- B01001_046: string (nullable \u003d true)\n |-- B01001_047: string (nullable \u003d true)\n |-- B01001_048: string (nullable \u003d true)\n |-- B01001_049: string (nullable \u003d true)\n |-- B01001A_001: string (nullable \u003d true)\n |-- B01001A_002: string (nullable \u003d true)\n |-- B01001A_003: string (nullable \u003d true)\n |-- B01001A_004: string (nullable \u003d true)\n |-- B01001A_005: string (nullable \u003d true)\n |-- B01001A_006: string (nullable \u003d true)\n |-- B01001A_007: string (nullable \u003d true)\n |-- B01001A_008: string (nullable \u003d true)\n |-- B01001A_009: string (nullable \u003d true)\n |-- B01001A_010: string (nullable \u003d true)\n |-- B01001A_011: string (nullable \u003d true)\n |-- B01001A_012: string (nullable \u003d true)\n |-- B01001A_013: string (nullable \u003d true)\n |-- B01001A_014: string (nullable \u003d true)\n |-- B01001A_015: string (nullable \u003d true)\n |-- B01001A_016: string (nullable \u003d true)\n |-- B01001A_017: string (nullable \u003d true)\n |-- B01001A_018: string (nullable \u003d true)\n |-- B01001A_019: string (nullable \u003d true)\n |-- B01001A_020: string (nullable \u003d true)\n |-- B01001A_021: string (nullable \u003d true)\n |-- B01001A_022: string (nullable \u003d true)\n |-- B01001A_023: string (nullable \u003d true)\n |-- B01001A_024: string (nullable \u003d true)\n |-- B01001A_025: string (nullable \u003d true)\n |-- B01001A_026: string (nullable \u003d true)\n |-- B01001A_027: string (nullable \u003d true)\n |-- B01001A_028: string (nullable \u003d true)\n |-- B01001A_029: string (nullable \u003d true)\n |-- B01001A_030: string (nullable \u003d true)\n |-- B01001A_031: string (nullable \u003d true)\n |-- B01001B_001: string (nullable \u003d true)\n |-- B01001B_002: string (nullable \u003d true)\n |-- B01001B_003: string (nullable \u003d true)\n |-- B01001B_004: string (nullable \u003d true)\n |-- B01001B_005: string (nullable \u003d true)\n |-- B01001B_006: string (nullable \u003d true)\n |-- B01001B_007: string (nullable \u003d true)\n |-- B01001B_008: string (nullable \u003d true)\n |-- B01001B_009: string (nullable \u003d true)\n |-- B01001B_010: string (nullable \u003d true)\n |-- B01001B_011: string (nullable \u003d true)\n |-- B01001B_012: string (nullable \u003d true)\n |-- B01001B_013: string (nullable \u003d true)\n |-- B01001B_014: string (nullable \u003d true)\n |-- B01001B_015: string (nullable \u003d true)\n |-- B01001B_016: string (nullable \u003d true)\n |-- B01001B_017: string (nullable \u003d true)\n |-- B01001B_018: string (nullable \u003d true)\n |-- B01001B_019: string (nullable \u003d true)\n |-- B01001B_020: string (nullable \u003d true)\n |-- B01001B_021: string (nullable \u003d true)\n |-- B01001B_022: string (nullable \u003d true)\n |-- B01001B_023: string (nullable \u003d true)\n |-- B01001B_024: string (nullable \u003d true)\n |-- B01001B_025: string (nullable \u003d true)\n |-- B01001B_026: string (nullable \u003d true)\n |-- B01001B_027: string (nullable \u003d true)\n |-- B01001B_028: string (nullable \u003d true)\n |-- B01001B_029: string (nullable \u003d true)\n |-- B01001B_030: string (nullable \u003d true)\n |-- B01001B_031: string (nullable \u003d true)\n |-- B01001C_001: string (nullable \u003d true)\n |-- B01001C_002: string (nullable \u003d true)\n |-- B01001C_003: string (nullable \u003d true)\n |-- B01001C_004: string (nullable \u003d true)\n |-- B01001C_005: string (nullable \u003d true)\n |-- B01001C_006: string (nullable \u003d true)\n |-- B01001C_007: string (nullable \u003d true)\n |-- B01001C_008: string (nullable \u003d true)\n |-- B01001C_009: string (nullable \u003d true)\n |-- B01001C_010: string (nullable \u003d true)\n |-- B01001C_011: string (nullable \u003d true)\n |-- B01001C_012: string (nullable \u003d true)\n |-- B01001C_013: string (nullable \u003d true)\n |-- B01001C_014: string (nullable \u003d true)\n |-- B01001C_015: string (nullable \u003d true)\n |-- B01001C_016: string (nullable \u003d true)\n |-- B01001C_017: string (nullable \u003d true)\n |-- B01001C_018: string (nullable \u003d true)\n |-- B01001C_019: string (nullable \u003d true)\n |-- B01001C_020: string (nullable \u003d true)\n |-- B01001C_021: string (nullable \u003d true)\n |-- B01001C_022: string (nullable \u003d true)\n |-- B01001C_023: string (nullable \u003d true)\n |-- B01001C_024: string (nullable \u003d true)\n |-- B01001C_025: string (nullable \u003d true)\n |-- B01001C_026: string (nullable \u003d true)\n |-- B01001C_027: string (nullable \u003d true)\n |-- B01001C_028: string (nullable \u003d true)\n |-- B01001C_029: string (nullable \u003d true)\n |-- B01001C_030: string (nullable \u003d true)\n |-- B01001C_031: string (nullable \u003d true)\n |-- B01001D_001: string (nullable \u003d true)\n |-- B01001D_002: string (nullable \u003d true)\n |-- B01001D_003: string (nullable \u003d true)\n |-- B01001D_004: string (nullable \u003d true)\n |-- B01001D_005: string (nullable \u003d true)\n |-- B01001D_006: string (nullable \u003d true)\n |-- B01001D_007: string (nullable \u003d true)\n |-- B01001D_008: string (nullable \u003d true)\n |-- B01001D_009: string (nullable \u003d true)\n |-- B01001D_010: string (nullable \u003d true)\n |-- B01001D_011: string (nullable \u003d true)\n |-- B01001D_012: string (nullable \u003d true)\n |-- B01001D_013: string (nullable \u003d true)\n |-- B01001D_014: string (nullable \u003d true)\n |-- B01001D_015: string (nullable \u003d true)\n |-- B01001D_016: string (nullable \u003d true)\n |-- B01001D_017: string (nullable \u003d true)\n |-- B01001D_018: string (nullable \u003d true)\n |-- B01001D_019: string (nullable \u003d true)\n |-- B01001D_020: string (nullable \u003d true)\n |-- B01001D_021: string (nullable \u003d true)\n |-- B01001D_022: string (nullable \u003d true)\n |-- B01001D_023: string (nullable \u003d true)\n |-- B01001D_024: string (nullable \u003d true)\n |-- B01001D_025: string (nullable \u003d true)\n |-- B01001D_026: string (nullable \u003d true)\n |-- B01001D_027: string (nullable \u003d true)\n |-- B01001D_028: string (nullable \u003d true)\n |-- B01001D_029: string (nullable \u003d true)\n |-- B01001D_030: string (nullable \u003d true)\n |-- B01001D_031: string (nullable \u003d true)\n |-- B01001E_001: string (nullable \u003d true)\n |-- B01001E_002: string (nullable \u003d true)\n |-- B01001E_003: string (nullable \u003d true)\n |-- B01001E_004: string (nullable \u003d true)\n |-- B01001E_005: string (nullable \u003d true)\n |-- B01001E_006: string (nullable \u003d true)\n |-- B01001E_007: string (nullable \u003d true)\n |-- B01001E_008: string (nullable \u003d true)\n |-- B01001E_009: string (nullable \u003d true)\n |-- B01001E_010: string (nullable \u003d true)\n |-- B01001E_011: string (nullable \u003d true)\n |-- B01001E_012: string (nullable \u003d true)\n |-- B01001E_013: string (nullable \u003d true)\n |-- B01001E_014: string (nullable \u003d true)\n |-- B01001E_015: string (nullable \u003d true)\n |-- B01001E_016: string (nullable \u003d true)\n |-- B01001E_017: string (nullable \u003d true)\n |-- B01001E_018: string (nullable \u003d true)\n |-- B01001E_019: string (nullable \u003d true)\n |-- B01001E_020: string (nullable \u003d true)\n |-- B01001E_021: string (nullable \u003d true)\n |-- B01001E_022: string (nullable \u003d true)\n |-- B01001E_023: string (nullable \u003d true)\n |-- B01001E_024: string (nullable \u003d true)\n |-- B01001E_025: string (nullable \u003d true)\n |-- B01001E_026: string (nullable \u003d true)\n |-- B01001E_027: string (nullable \u003d true)\n |-- B01001E_028: string (nullable \u003d true)\n |-- B01001E_029: string (nullable \u003d true)\n |-- B01001E_030: string (nullable \u003d true)\n |-- B01001E_031: string (nullable \u003d true)\n |-- B01001F_001: string (nullable \u003d true)\n |-- B01001F_002: string (nullable \u003d true)\n |-- B01001F_003: string (nullable \u003d true)\n |-- B01001F_004: string (nullable \u003d true)\n |-- B01001F_005: string (nullable \u003d true)\n |-- B01001F_006: string (nullable \u003d true)\n |-- B01001F_007: string (nullable \u003d true)\n |-- B01001F_008: string (nullable \u003d true)\n |-- B01001F_009: string (nullable \u003d true)\n |-- B01001F_010: string (nullable \u003d true)\n |-- B01001F_011: string (nullable \u003d true)\n |-- B01001F_012: string (nullable \u003d true)\n |-- B01001F_013: string (nullable \u003d true)\n |-- B01001F_014: string (nullable \u003d true)\n |-- B01001F_015: string (nullable \u003d true)\n |-- B01001F_016: string (nullable \u003d true)\n |-- B01001F_017: string (nullable \u003d true)\n |-- B01001F_018: string (nullable \u003d true)\n |-- B01001F_019: string (nullable \u003d true)\n |-- B01001F_020: string (nullable \u003d true)\n |-- B01001F_021: string (nullable \u003d true)\n |-- B01001F_022: string (nullable \u003d true)\n |-- B01001F_023: string (nullable \u003d true)\n |-- B01001F_024: string (nullable \u003d true)\n |-- B01001F_025: string (nullable \u003d true)\n |-- B01001F_026: string (nullable \u003d true)\n |-- B01001F_027: string (nullable \u003d true)\n |-- B01001F_028: string (nullable \u003d true)\n |-- B01001F_029: string (nullable \u003d true)\n |-- B01001F_030: string (nullable \u003d true)\n |-- B01001F_031: string (nullable \u003d true)\n |-- B01001G_001: string (nullable \u003d true)\n |-- B01001G_002: string (nullable \u003d true)\n |-- B01001G_003: string (nullable \u003d true)\n |-- B01001G_004: string (nullable \u003d true)\n |-- B01001G_005: string (nullable \u003d true)\n |-- B01001G_006: string (nullable \u003d true)\n |-- B01001G_007: string (nullable \u003d true)\n |-- B01001G_008: string (nullable \u003d true)\n |-- B01001G_009: string (nullable \u003d true)\n |-- B01001G_010: string (nullable \u003d true)\n |-- B01001G_011: string (nullable \u003d true)\n |-- B01001G_012: string (nullable \u003d true)\n |-- B01001G_013: string (nullable \u003d true)\n |-- B01001G_014: string (nullable \u003d true)\n |-- B01001G_015: string (nullable \u003d true)\n |-- B01001G_016: string (nullable \u003d true)\n |-- B01001G_017: string (nullable \u003d true)\n |-- B01001G_018: string (nullable \u003d true)\n |-- B01001G_019: string (nullable \u003d true)\n |-- B01001G_020: string (nullable \u003d true)\n |-- B01001G_021: string (nullable \u003d true)\n |-- B01001G_022: string (nullable \u003d true)\n |-- B01001G_023: string (nullable \u003d true)\n |-- B01001G_024: string (nullable \u003d true)\n |-- B01001G_025: string (nullable \u003d true)\n |-- B01001G_026: string (nullable \u003d true)\n |-- B01001G_027: string (nullable \u003d true)\n |-- B01001G_028: string (nullable \u003d true)\n |-- B01001G_029: string (nullable \u003d true)\n |-- B01001G_030: string (nullable \u003d true)\n |-- B01001G_031: string (nullable \u003d true)\n |-- B01001H_001: string (nullable \u003d true)\n |-- B01001H_002: string (nullable \u003d true)\n |-- B01001H_003: string (nullable \u003d true)\n |-- B01001H_004: string (nullable \u003d true)\n |-- B01001H_005: string (nullable \u003d true)\n |-- B01001H_006: string (nullable \u003d true)\n |-- B01001H_007: string (nullable \u003d true)\n |-- B01001H_008: string (nullable \u003d true)\n |-- B01001H_009: string (nullable \u003d true)\n |-- B01001H_010: string (nullable \u003d true)\n |-- B01001H_011: string (nullable \u003d true)\n |-- B01001H_012: string (nullable \u003d true)\n |-- B01001H_013: string (nullable \u003d true)\n |-- B01001H_014: string (nullable \u003d true)\n |-- B01001H_015: string (nullable \u003d true)\n |-- B01001H_016: string (nullable \u003d true)\n |-- B01001H_017: string (nullable \u003d true)\n |-- B01001H_018: string (nullable \u003d true)\n |-- B01001H_019: string (nullable \u003d true)\n |-- B01001H_020: string (nullable \u003d true)\n |-- B01001H_021: string (nullable \u003d true)\n |-- B01001H_022: string (nullable \u003d true)\n |-- B01001H_023: string (nullable \u003d true)\n |-- B01001H_024: string (nullable \u003d true)\n |-- B01001H_025: string (nullable \u003d true)\n |-- B01001H_026: string (nullable \u003d true)\n |-- B01001H_027: string (nullable \u003d true)\n |-- B01001H_028: string (nullable \u003d true)\n |-- B01001H_029: string (nullable \u003d true)\n |-- B01001H_030: string (nullable \u003d true)\n |-- B01001H_031: string (nullable \u003d true)\n |-- B01001I_001: string (nullable \u003d true)\n |-- B01001I_002: string (nullable \u003d true)\n |-- B01001I_003: string (nullable \u003d true)\n |-- B01001I_004: string (nullable \u003d true)\n |-- B01001I_005: string (nullable \u003d true)\n |-- B01001I_006: string (nullable \u003d true)\n |-- B01001I_007: string (nullable \u003d true)\n |-- B01001I_008: string (nullable \u003d true)\n |-- B01001I_009: string (nullable \u003d true)\n |-- B01001I_010: string (nullable \u003d true)\n |-- B01001I_011: string (nullable \u003d true)\n |-- B01001I_012: string (nullable \u003d true)\n |-- B01001I_013: string (nullable \u003d true)\n |-- B01001I_014: string (nullable \u003d true)\n |-- B01001I_015: string (nullable \u003d true)\n |-- B01001I_016: string (nullable \u003d true)\n |-- B01001I_017: string (nullable \u003d true)\n |-- B01001I_018: string (nullable \u003d true)\n |-- B01001I_019: string (nullable \u003d true)\n |-- B01001I_020: string (nullable \u003d true)\n |-- B01001I_021: string (nullable \u003d true)\n |-- B01001I_022: string (nullable \u003d true)\n |-- B01001I_023: string (nullable \u003d true)\n |-- B01001I_024: string (nullable \u003d true)\n |-- B01001I_025: string (nullable \u003d true)\n |-- B01001I_026: string (nullable \u003d true)\n |-- B01001I_027: string (nullable \u003d true)\n |-- B01001I_028: string (nullable \u003d true)\n |-- B01001I_029: string (nullable \u003d true)\n |-- B01001I_030: string (nullable \u003d true)\n |-- B01001I_031: string (nullable \u003d true)\n |-- B01002_001: string (nullable \u003d true)\n |-- B01002_002: string (nullable \u003d true)\n |-- B01002_003: string (nullable \u003d true)\n |-- B01002A_001: string (nullable \u003d true)\n |-- B01002A_002: string (nullable \u003d true)\n |-- B01002A_003: string (nullable \u003d true)\n |-- B01002B_001: string (nullable \u003d true)\n |-- B01002B_002: string (nullable \u003d true)\n |-- B01002B_003: string (nullable \u003d true)\n |-- B01002C_001: string (nullable \u003d true)\n |-- B01002C_002: string (nullable \u003d true)\n |-- B01002C_003: string (nullable \u003d true)\n |-- B01002D_001: string (nullable \u003d true)\n |-- B01002D_002: string (nullable \u003d true)\n |-- B01002D_003: string (nullable \u003d true)\n |-- B01002E_001: string (nullable \u003d true)\n |-- B01002E_002: string (nullable \u003d true)\n |-- B01002E_003: string (nullable \u003d true)\n |-- B01002F_001: string (nullable \u003d true)\n |-- B01002F_002: string (nullable \u003d true)\n |-- B01002F_003: string (nullable \u003d true)\n |-- B01002G_001: string (nullable \u003d true)\n |-- B01002G_002: string (nullable \u003d true)\n |-- B01002G_003: string (nullable \u003d true)\n |-- B01002H_001: string (nullable \u003d true)\n |-- B01002H_002: string (nullable \u003d true)\n |-- B01002H_003: string (nullable \u003d true)\n |-- B01002I_001: string (nullable \u003d true)\n |-- B01002I_002: string (nullable \u003d true)\n |-- B01002I_003: string (nullable \u003d true)\n |-- B01003_001: string (nullable \u003d true)\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1491429538637_113037870",
+      "id": "20170405-175858_2019457635",
+      "dateCreated": "Apr 5, 2017 5:58:58 PM",
+      "dateStarted": "Apr 5, 2017 5:59:07 PM",
+      "dateFinished": "Apr 5, 2017 5:59:08 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n# uscensusbureau-acs-2015-5-e-agesex/01_TableKey.csv \nTableID,TableDescription,NumColumns,TopicArea\nB01001,SEX BY AGE,49.0,AgeSex\nB01001A,SEX BY AGE (WHITE ALONE),31.0,AgeSex\nB01001B,SEX BY AGE (BLACK OR AFRICAN AMERICAN ALONE),31.0,AgeSex\nB01001C,SEX BY AGE (AMERICAN INDIAN AND ALASKA NATIVE ALONE),31.0,AgeSex\nB01001D,SEX BY AGE (ASIAN ALONE),31.0,AgeSex\nB01001E,SEX BY AGE (NATIVE HAWAIIAN AND OTHER PACIFIC ISLANDER ALONE),31.0,AgeSex\nB01001F,SEX BY AGE (SOME OTHER RACE ALONE),31.0,AgeSex\nB01001G,SEX BY AGE (TWO OR MORE RACES),31.0,AgeSex\nB01001H,\"SEX BY AGE (WHITE ALONE, NOT HISPANIC OR LATINO)\",31.0,AgeSex\nB01001I,SEX BY AGE (HISPANIC OR LATINO),31.0,AgeSex\nB01002,MEDIAN AGE BY SEX,3.0,AgeSex\nB01002A,MEDIAN AGE BY SEX (WHITE ALONE),3.0,AgeSex\nB01002B,MEDIAN AGE BY SEX (BLACK OR AFRICAN AMERICAN ALONE),3.0,AgeSex\nB01002C,MEDIAN AGE BY SEX (AMERICAN INDIAN AND ALASKA NATIVE),3.0,AgeSex\nB01002D,MEDIAN AGE BY SEX (ASIAN ALONE),3.0,AgeSex\nB01002E,MEDIAN AGE BY SEX (NATIVE HAWAIIAN AND OTHER PACIFIC ISLANDER ALONE),3.0,AgeSex\nB01002F,MEDIAN AGE BY SEX (SOME OTHER RACE ALONE),3.0,AgeSex\nB01002G,MEDIAN AGE BY SEX (TWO OR MORE RACES),3.0,AgeSex\nB01002H,\"MEDIAN AGE BY SEX (WHITE ALONE, NOT HISPANIC OR LATINO)\",3.0,AgeSex\nB01002I,MEDIAN AGE BY SEX (HISPANIC OR LATINO),3.0,AgeSex\nB01003,TOTAL POPULATION,1.0,AgeSex\n",
+      "user": "ad\\scox",
+      "dateUpdated": "Apr 5, 2017 6:01:32 PM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch1\u003euscensusbureau-acs-2015-5-e-agesex/01_TableKey.csv\u003c/h1\u003e\n\u003cp\u003eTableID,TableDescription,NumColumns,TopicArea\u003cbr/\u003eB01001,SEX BY AGE,49.0,AgeSex\u003cbr/\u003eB01001A,SEX BY AGE (WHITE ALONE),31.0,AgeSex\u003cbr/\u003eB01001B,SEX BY AGE (BLACK OR AFRICAN AMERICAN ALONE),31.0,AgeSex\u003cbr/\u003eB01001C,SEX BY AGE (AMERICAN INDIAN AND ALASKA NATIVE ALONE),31.0,AgeSex\u003cbr/\u003eB01001D,SEX BY AGE (ASIAN ALONE),31.0,AgeSex\u003cbr/\u003eB01001E,SEX BY AGE (NATIVE HAWAIIAN AND OTHER PACIFIC ISLANDER ALONE),31.0,AgeSex\u003cbr/\u003eB01001F,SEX BY AGE (SOME OTHER RACE ALONE),31.0,AgeSex\u003cbr/\u003eB01001G,SEX BY AGE (TWO OR MORE RACES),31.0,AgeSex\u003cbr/\u003eB01001H,\u0026ldquo;SEX BY AGE (WHITE ALONE, NOT HISPANIC OR LATINO)\u0026rdquo;,31.0,AgeSex\u003cbr/\u003eB01001I,SEX BY AGE (HISPANIC OR LATINO),31.0,AgeSex\u003cbr/\u003eB01002,MEDIAN AGE BY SEX,3.0,AgeSex\u003cbr/\u003eB01002A,MEDIAN AGE BY SEX (WHITE ALONE),3.0,AgeSex\u003cbr/\u003eB01002B,MEDIAN AGE BY SEX (BLACK OR AFRICAN AMERICAN ALONE),3.0,AgeSex\u003cbr/\u003eB01002C,MEDIAN AGE BY SEX (AMERICAN INDIAN AND ALASKA NATIVE),3.0,AgeSex\u003cbr/\u003eB01002D,MEDIAN AGE BY SEX (ASIAN ALONE),3.0,AgeSex\u003cbr/\u003eB01002E,MEDIAN AGE BY SEX (NATIVE HAWAIIAN AND OTHER PACIFIC ISLANDER ALONE),3.0,AgeSex\u003cbr/\u003eB01002F,MEDIAN AGE BY SEX (SOME OTHER RACE ALONE),3.0,AgeSex\u003cbr/\u003eB01002G,MEDIAN AGE BY SEX (TWO OR MORE RACES),3.0,AgeSex\u003cbr/\u003eB01002H,\u0026ldquo;MEDIAN AGE BY SEX (WHITE ALONE, NOT HISPANIC OR LATINO)\u0026rdquo;,3.0,AgeSex\u003cbr/\u003eB01002I,MEDIAN AGE BY SEX (HISPANIC OR LATINO),3.0,AgeSex\u003cbr/\u003eB01003,TOTAL POPULATION,1.0,AgeSex\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1491429668305_-1921698204",
+      "id": "20170405-180108_1031926333",
+      "dateCreated": "Apr 5, 2017 6:01:08 PM",
+      "dateStarted": "Apr 5, 2017 6:01:32 PM",
+      "dateFinished": "Apr 5, 2017 6:01:32 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%sql select distinct State from acs\n\n",
+      "user": "ad\\scox",
+      "dateUpdated": "Apr 5, 2017 5:58:28 PM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false
+        },
+        "editorMode": "ace/mode/sql"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "State\nAZ\nSC\nLA\nMN\nNJ\nDC\nOR\nVA\nRI\nKY\nWY\nNH\nMI\nNV\nWI\nID\nCA\nCT\nNE\nMT\nNC\nVT\nMD\nDE\nMO\nIL\nME\nND\nWA\nMS\nAL\nIN\nOH\nTN\nIA\nNM\nPA\nSD\nNY\nTX\nWV\nGA\nMA\nKS\nCO\nFL\nAK\nAR\nOK\nPR\nUT\nHI\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1491429291076_-1477269420",
+      "id": "20170405-175451_2051805492",
+      "dateCreated": "Apr 5, 2017 5:54:51 PM",
+      "dateStarted": "Apr 5, 2017 5:58:29 PM",
+      "dateFinished": "Apr 5, 2017 5:58:33 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%pyspark\n",
+      "user": "ad\\scox",
+      "dateUpdated": "Apr 5, 2017 5:55:18 PM",
       "config": {},
       "settings": {
         "params": {},
         "forms": {}
       },
       "apps": [],
-      "jobName": "paragraph_1490730773675_-359642290",
-      "id": "20170328-155253_844974090",
-      "dateCreated": "Mar 28, 2017 3:52:53 PM",
+      "jobName": "paragraph_1491429318324_1500933898",
+      "id": "20170405-175518_1257418317",
+      "dateCreated": "Apr 5, 2017 5:55:18 PM",
       "status": "READY",
-      "errorMessage": "",
       "progressUpdateIntervalMs": 500
     }
   ],
