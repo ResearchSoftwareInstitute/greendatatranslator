@@ -47,9 +47,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%python\nfrom string import Template\nfrom collections import defaultdict\nfrom SPARQLWrapper import SPARQLWrapper2, JSON\nimport matplotlib.pyplot as plt\nimport seaborn as sns\n\nimport urllib2\nproxy \u003d urllib2.ProxyHandler({\u0027http\u0027: \u0027gateway.ad.renci.org:8080\u0027})\nopener \u003d urllib2.build_opener(proxy)\nurllib2.install_opener(opener)\n\nblazegraph_uri \u003d \"http://stars-blazegraph.renci.org/bigdata/sparql\"\nblazegraph \u003d SPARQLWrapper2 (blazegraph_uri)\ndef query_sparql (query, service\u003dblazegraph):\n    service.setQuery (query)\n    service.setReturnFormat (JSON)\n    return service.query().convert ()\n\nquery \u003d \"\"\"\nPREFIX OBO: \u003chttp://purl.obolibrary.org/obo/\u003e\nPREFIX OBAN: \u003chttp://purl.org/oban/\u003e\nSELECT ?object ?association\nWHERE {\n   ?association OBAN:association_has_object OBO:MESH_D001249 .\n   ?association a OBAN:association .\n   ?association OBAN:association_has_subject OBO:MESH_D052638\n}\"\"\"\n\nquery \u003d Template (\"\"\"\nPREFIX OBO: \u003chttp://purl.obolibrary.org/obo/\u003e\nPREFIX OBAN: \u003chttp://purl.org/oban/\u003e\nSELECT ?object ?association\nWHERE {\n   ?association OBAN:association_has_object OBO:MESH_${diseaseMeshID} .\n   ?association a OBAN:association .\n   ?association OBAN:association_has_subject OBO:MESH_${environmentalAgent}\n}\"\"\")\n\nresults \u003d query_sparql (query.substitute (\n    diseaseMeshID\u003d\"D001249\",\n    environmentalAgent\u003d\"D052638\"))\nprint (map (lambda b : b[\u0027association\u0027].value, results.bindings))\n\n",
+      "text": "%python\nfrom string import Template\nfrom collections import defaultdict\nfrom SPARQLWrapper import SPARQLWrapper2, JSON\nimport matplotlib.pyplot as plt\nimport seaborn as sns\n\nimport urllib2\nproxy \u003d urllib2.ProxyHandler({\u0027http\u0027: \u0027gateway.ad.renci.org:8080\u0027})\nopener \u003d urllib2.build_opener(proxy)\nurllib2.install_opener(opener)\n\nblazegraph_uri \u003d \"http://stars-blazegraph.renci.org/bigdata/sparql\"\nblazegraph \u003d SPARQLWrapper2 (blazegraph_uri)\ndef query_sparql (query, service\u003dblazegraph):\n    service.setQuery (query)\n    service.setReturnFormat (JSON)\n    return service.query().convert ()\n\nquery \u003d \"\"\"\nPREFIX OBO: \u003chttp://purl.obolibrary.org/obo/\u003e\nPREFIX OBAN: \u003chttp://purl.org/oban/\u003e\nSELECT ?object ?association\nWHERE {\n   ?association OBAN:association_has_object OBO:MESH_D001249 .\n   ?association a OBAN:association .\n   ?association OBAN:association_has_subject OBO:MESH_D052638\n}\"\"\"\n\nquery \u003d Template (\"\"\"\nPREFIX OBO: \u003chttp://purl.obolibrary.org/obo/\u003e\nPREFIX OBAN: \u003chttp://purl.org/oban/\u003e\nSELECT ?object ?association\nWHERE {\n   ?association OBAN:association_has_object OBO:MESH_${diseaseMeshID} .\n   ?association a OBAN:association .\n   ?association OBAN:association_has_subject OBO:MESH_${environmentalAgent}\n}\"\"\")\n\nresults \u003d query_sparql (query.substitute (\n    diseaseMeshID\u003d\"D001249\",\n    environmentalAgent\u003d\"D052638\"))\nprint (\"\\n{}\\n\".format (map (lambda b : b[\u0027association\u0027].value, results.bindings)))\n\n",
       "user": "ad\\scox",
-      "dateUpdated": "Mar 30, 2017 11:26:15 AM",
+      "dateUpdated": "Apr 4, 2017 10:39:58 PM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -69,7 +69,7 @@
         "msg": [
           {
             "type": "TEXT",
-            "data": "... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... [u\u0027https://monarchinitiative.org/MONARCH_f3b5fc147a86dbb6e320aeaef9da4eab97b0f782\u0027]\n"
+            "data": "... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... \n[u\u0027https://monarchinitiative.org/MONARCH_f3b5fc147a86dbb6e320aeaef9da4eab97b0f782\u0027]\n\n"
           }
         ]
       },
@@ -77,8 +77,8 @@
       "jobName": "paragraph_1490887399830_1230536893",
       "id": "20170330-112319_626831218",
       "dateCreated": "Mar 30, 2017 11:23:19 AM",
-      "dateStarted": "Mar 30, 2017 11:26:15 AM",
-      "dateFinished": "Mar 30, 2017 11:26:18 AM",
+      "dateStarted": "Apr 4, 2017 10:39:58 PM",
+      "dateFinished": "Apr 4, 2017 10:39:58 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
