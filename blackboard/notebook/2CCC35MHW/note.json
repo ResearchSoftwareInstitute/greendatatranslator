@@ -775,9 +775,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%python\n\n\n",
+      "text": "%python\nquery \u003d \"\"\"\n\nPREFIX drugbank: \u003chttp://linkedlifedata.com/resource/drugbank/\u003e\nPREFIX skos: \u003chttp://www.w3.org/2004/02/skos/core#\u003e\nPREFIX rdf: \u003chttp://www.w3.org/1999/02/22-rdf-syntax-ns#\u003e\nPREFIX rdfs: \u003chttp://www.w3.org/2000/01/rdf-schema#\u003e\nSELECT ?Drug\nWHERE {\n    ?s  drugbank:Drug ?Drug\n}\n\n\"\"\"\n\n",
       "user": "ad\\ruhirai",
-      "dateUpdated": "Apr 5, 2017 10:56:54 AM",
+      "dateUpdated": "Apr 5, 2017 12:02:19 PM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -793,20 +793,15 @@
         "forms": {}
       },
       "results": {
-        "code": "ERROR",
-        "msg": [
-          {
-            "type": "TEXT",
-            "data": "  File \"\u003cstdin\u003e\", line 1\n    PREFIX db_resource:      \u003chttp://linkedlifedata.com/resource/drugbank/drug\u003e\n                     ^\nSyntaxError: invalid syntax\n  File \"\u003cstdin\u003e\", line 1\n    PREFIX ctd_chem_disease: \u003chttp://chem2bio2rdf.org/ctd/resource/ctd_chem_disease/\u003e \n                          ^\nSyntaxError: invalid syntax\n  File \"\u003cstdin\u003e\", line 1\n    PREFIX biordf:           \u003chttp://bio2rdf.org/\u003e\n                ^\nSyntaxError: invalid syntax\n  File \"\u003cstdin\u003e\", line 1\n    PREFIX ctd:              \u003chttp://chem2bio2rdf.org/ctd/resource/\u003e\n             ^\nSyntaxError: invalid syntax\n  File \"\u003cstdin\u003e\", line 1\n    PREFIX pubchem:          \u003chttp://chem2bio2rdf.org/ctd/resource/\u003e\n                 ^\nSyntaxError: invalid syntax\n  File \"\u003cstdin\u003e\", line 1\n    SELECT DISTINCT ?drug ?chem_disease ?meshid ?compound\n                  ^\nSyntaxError: invalid syntax\n  File \"\u003cstdin\u003e\", line 1\n    WHERE {\n          ^\nSyntaxError: invalid syntax\n  File \"\u003cstdin\u003e\", line 1\n    ?drug         db_resource:CID ?compound .\n    ^\nIndentationError: unexpected indent\n  File \"\u003cstdin\u003e\", line 1\n    ?chem_disease ctd:diseaseid ?meshid .\n    ^\nIndentationError: unexpected indent\n  File \"\u003cstdin\u003e\", line 1\n    ?chem_disease ctd:cid       ?compound \n    ^\nIndentationError: unexpected indent\n  File \"\u003cstdin\u003e\", line 1\n    }\n    ^\nSyntaxError: invalid syntax\n"
-          }
-        ]
+        "code": "SUCCESS",
+        "msg": []
       },
       "apps": [],
       "jobName": "paragraph_1489689312545_1221521251",
       "id": "20170316-143512_120618013",
       "dateCreated": "Mar 16, 2017 2:35:12 PM",
-      "dateStarted": "Apr 5, 2017 10:56:29 AM",
-      "dateFinished": "Apr 5, 2017 10:56:29 AM",
+      "dateStarted": "Apr 5, 2017 12:02:19 PM",
+      "dateFinished": "Apr 5, 2017 12:02:19 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
