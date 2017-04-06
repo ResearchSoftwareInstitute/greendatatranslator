@@ -806,18 +806,49 @@
       "progressUpdateIntervalMs": 500
     },
     {
+      "text": "%python\nquery\u003d\u0027\u0027\u0027\nPREFIX db_resource:      \u003chttp://chem2bio2rdf.org/drugbank/resource/\u003e\nPREFIX ctd_chem_disease: \u003chttp://chem2bio2rdf.org/ctd/resource/ctd_chem_disease/\u003e \nPREFIX biordf:           \u003chttp://bio2rdf.org/\u003e\nPREFIX ctd:              \u003chttp://chem2bio2rdf.org/ctd/resource/\u003e\nPREFIX pubchem:          \u003chttp://chem2bio2rdf.org/ctd/resource/\u003e\nPREFIX sider:            \u003chttp://chem2bio2rdf.org/sider/resource/\u003e\nSELECT DISTINCT ?drug ?chem_disease ?meshid ?compound ?side_effect\nWHERE {\n\n  ?drug         db_resource:CID ?compound .\n  ?chem_disease ctd:diseaseid   ?meshid .\n  ?chem_disease ctd:cid         ?compound .\n # ?sider        sider:cid       ?cid .\n  ?sider         sider:side_effect ?side_effect \n}\u0027\u0027\u0027",
+      "user": "ad\\ruhirai",
+      "dateUpdated": "Apr 6, 2017 9:28:09 AM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false
+        },
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "jobName": "paragraph_1491404155739_-163801345",
+      "id": "20170405-105555_104041110",
+      "dateCreated": "Apr 5, 2017 10:55:55 AM",
+      "dateStarted": "Apr 6, 2017 9:28:09 AM",
+      "dateFinished": "Apr 6, 2017 9:28:09 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
       "text": "%python\n",
       "user": "ad\\ruhirai",
-      "dateUpdated": "Apr 5, 2017 10:55:55 AM",
+      "dateUpdated": "Apr 6, 2017 9:28:09 AM",
       "config": {},
       "settings": {
         "params": {},
         "forms": {}
       },
       "apps": [],
-      "jobName": "paragraph_1491404155739_-163801345",
-      "id": "20170405-105555_104041110",
-      "dateCreated": "Apr 5, 2017 10:55:55 AM",
+      "jobName": "paragraph_1491485289832_-140381584",
+      "id": "20170406-092809_293142387",
+      "dateCreated": "Apr 6, 2017 9:28:09 AM",
       "status": "READY",
       "progressUpdateIntervalMs": 500
     }
