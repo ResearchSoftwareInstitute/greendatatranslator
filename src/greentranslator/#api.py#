@@ -49,7 +49,7 @@ class GreenTranslator (Translator):
     def query_biochem (self, query):
         return self.blazegraph.execute_query (query)
 
-    def get_exposure_coordinates (self, exposure_type, latitude, longitude, radius):
+    def get_exposure_by_area (self, exposure_type, latitude, longitude, radius):
         """ get_exposure_score:
             array of location/date parameters
         """
@@ -69,7 +69,7 @@ latitude = ''
 longitude = ''
 radius = '0'
      # Get exposure location(s) as latitude, longitude coordinates
-     api_response = api_instance.exposures_exposure_type_coordinates_get(exposure_type, latitude=latitude, longitude=longitude, radius=radius)
+     api_response = api_instance.exposures_exposure_type_coordinates_get
      pprint(api_response)
  except ApiException as e:
      print("Exception when calling DefaultApi->exposures_exposure_type_coordinates_get: %s\n" % e)
@@ -82,4 +82,9 @@ translator = GreenTranslator ("greentranslator",
                                   'blazegraph_uri' : 'http://stars-blazegraph.renci.org/bigdata/sparql',
                                   'exposures_uri'  : 'https://bdtgis.renci.org:9090/v1/exposures'
                               })
-        
+
+exposure = translator.get_exposure_by_area (exposure_type = 'pm25'
+                                            latitude = '',
+                                            longitude = '',
+                                            radius = 0)
+print (exposure)
