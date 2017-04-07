@@ -1,7 +1,7 @@
 import json, pprint, requests, textwrap, time
 
 host = 'http://localhost:8998'
-data = {'kind': 'spark'}
+data = {'kind': 'pyspark'}
 headers = {'Content-Type': 'application/json'}
 r = requests.post(host + '/sessions', data=json.dumps(data), headers=headers)
 print (r.json())
@@ -16,14 +16,7 @@ while True:
         break
     else:
         time.sleep (5)
-        print ("waiting...")
-'''
-{u'id': 0,
-  u'output': {u'data': {u'text/plain': u'res0: Int = 2'},
-              u'execution_count': 0,
-              u'status': u'ok'},
-  u'state': u'available'}
-'''
+        print ("   waiting for spark context...")
 
 data = {
   'code': textwrap.dedent("""
@@ -37,6 +30,17 @@ data = {
     print "Pi is roughly %f" % (4.0 * count / NUM_SAMPLES)
     """)
 }
-
 r = requests.post(statements_url, data=json.dumps(data), headers=headers)
+
+statement_url = host + r.headers['location']
+print ('statement url: {}'.format (statement_url))
+while True:
+    r = requests.get(statement_url, headers=headers)
+    print (r.json ())
+    if r.json()['state'] == 'waiting':
+        continue
+    break
+
 pprint.pprint(r.json())
+
+requests.delete(session_url, headers=headers)
