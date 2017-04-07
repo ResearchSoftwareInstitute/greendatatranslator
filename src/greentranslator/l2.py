@@ -1,13 +1,8 @@
-import json, pprint, requests, textwrap, time
-
-
-pprint.pprint(r.json())
-
-requests.delete(session_url, headers=headers)
+import json, pprint, requests, textwrap, time, sys
 
 class LivyContext(object):
-    def __init__(self, host, kind='pyspark'):
-        self.host = 'http://localhost:8998'
+    def __init__(self, host='http://localhost:8998', kind='pyspark'):
+        self.host = host
         self.data = { 'kind' : kind }
         self.headers = { 'Content-Type': 'application/json' }
         r = requests.post(host + '/sessions', data=json.dumps(self.data), headers=self.headers)
@@ -24,18 +19,35 @@ class LivyContext(object):
                 print (".")
 
     def execute (self, code):
-        data = { 'code': textwrap.dedent (code)) }
-        r = requests.post(self.statements_url, data=json.dumps(self.data), headers=self.headers)
+        data = { 'code': textwrap.dedent (code) }
+        r = requests.post(self.statements_url, data=json.dumps(data), headers=self.headers)
+        print (r.headers)
+        print (r.json ())
+        statement_url = self.host + r.headers['location']
+        print ('statement url: {}'.format (statement_url))
         r = None
         while True:
-            r = requests.get(statement_url, headers=headers).json ()
+            r = requests.get(statement_url, headers=self.headers).json ()
             if r['state'] == 'available':
                 break
-        return r
+
+        if not r['output']['status'] == 'ok':
+            raise "Error: {}".format (r)
+
+        return r['output']['data']['text/plain']
 
     def close (self):
         requests.delete(self.session_url, headers=self.headers)
 
+def main ():
+    code_path = sys.argv[1]
+    lc = LivyContext ()
+    with open(code_path, 'r') as stream:
+        code = stream.read ()
+        print (code)
+        print(lc.execute (code))
+    lc.close ()
+main ()
 
 '''
 {'id': 0, 'state': 'running', 'output': None}
