@@ -1,3 +1,5 @@
+print (sqlContext)
+
 class ACSLoader(object):
     def __init__(self, path, table, sample_size=1.0):
         self.path = path
@@ -13,8 +15,11 @@ class ACSLoader(object):
             load(self.path).rdd.                                   \
             sample (False, sample_size, 1234)
 acs = ACSLoader (
-    path = "/projects/stars/translator/var/acs/dataworld/uscensusbureau-acs-2015-5-e-agesex/USA_All_States.csv",
-    table = "acs").toDF ()
+    path = "/projects/stars/translator/var/acs/dataworld/uscensusbureau-acs-2015-5-e-income/data/USA_All_States.csv",
+    table = "acs_income")
 
-acs.printSchema ()
-acs.registerTempTable ("acs_income")
+
+sqlContext.sql ("SELECT B19037A_041, B19037E_036 from acs_income")
+
+'''
+'''

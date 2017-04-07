@@ -32,6 +32,7 @@ class LivyContext(object):
                 break
 
         if not r['output']['status'] == 'ok':
+            print (r)
             raise "Error: {}".format (r)
 
         return r['output']['data']['text/plain']
