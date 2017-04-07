@@ -1,0 +1,20 @@
+.
+.
+.
+{'Date': 'Fri, 07 Apr 2017 23:11:17 GMT', 'Content-Type': 'application/json', 'Content-Encoding': 'gzip', 'Location': '/sessions/0/statements/0', 'Transfer-Encoding': 'chunked', 'Server': 'Jetty(9.2.16.v20160414)'}
+{'id': 0, 'state': 'waiting', 'output': None}
+statement url: http://localhost:8998/sessions/0/statements/0
+{'Date': 'Fri, 07 Apr 2017 23:11:43 GMT', 'Content-Type': 'application/json', 'Content-Encoding': 'gzip', 'Location': '/sessions/0/statements/1', 'Transfer-Encoding': 'chunked', 'Server': 'Jetty(9.2.16.v20160414)'}
+{'id': 1, 'state': 'waiting', 'output': None}
+statement url: http://localhost:8998/sessions/0/statements/1
+{'id': 1, 'state': 'available', 'output': {'status': 'error', 'execution_count': 1, 'ename': 'SyntaxError', 'evalue': 'EOL while scanning string literal (<stdin>, line 1)', 'traceback': ['  File "<stdin>", line 1\n', "    sqlContext.sql('select {0} from acs_income\n", '                                             ^\n', 'SyntaxError: EOL while scanning string literal\n']}}
+Traceback (most recent call last):
+  File "livy.py", line 89, in <module>
+    main ()
+  File "livy.py", line 86, in main
+    print (acs_income.get_B19037E_036 ())
+  File "livy.py", line 71, in get_B19037E_036
+    r = self.execute ("sqlContext.sql('select {0} from acs_income")
+  File "livy.py", line 36, in execute
+    raise "Error: {}".format (r)
+TypeError: exceptions must derive from BaseException
