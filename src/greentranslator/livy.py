@@ -27,11 +27,20 @@ class LivyContext(object):
             r = requests.get(statement_url, headers=self.headers).json ()
             if r['state'] == 'available':
                 break
-        if not r['output']['status'] == 'ok':
-            print ("Encountered error: {}".format (r))
-            raise "Error: {}".format (r)
-
-        return r['output']['data']['text/plain']
+        result = None
+        output = r['output']
+        if output is None:
+            print ("Error: result is 'available' but output is None")
+            print (r)
+        else:
+            if not r['output']['status'] == 'ok':
+                print ("Encountered error: {}".format (r))
+                raise "Error: {}".format (r)
+            if 'data' in output:
+                output_data = output['data']
+                if 'text/plain' in output_data:
+                    result = output_data['text/plain']
+        return result
 
     def close (self):
         requests.delete(self.session_url, headers=self.headers)
@@ -82,7 +91,7 @@ atexit.register (cleanup)
 
 def main ():
     acs_income = ACSIncome ()
-    for x in range (0, 10):
+    for x in range (0, 100):
         print (acs_income.get_col('B19037E_036'))
     acs_income.close ()
 
