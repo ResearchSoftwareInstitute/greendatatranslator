@@ -84,6 +84,35 @@ def main ():
     acs_income = ACSIncome ()
     for x in range (0, 10):
         print (acs_income.get_col('B19037E_036'))
-
+    acs_income.close ()
 
 main ()
+
+
+'''
+{'Date': 'Fri, 07 Apr 2017 23:15:15 GMT', 'Content-Type': 'application/json', 'Content-Encoding': 'gzip', 'Location': '/sessions/0/statements/0', 'Transfer-Encoding': 'chunked', 'Server': 'Jetty(9.2.16.v20160414)'}
+{'id': 0, 'state': 'waiting', 'output': None}
+statement url: http://localhost:8998/sessions/0/statements/0
+{'Date': 'Fri, 07 Apr 2017 23:15:40 GMT', 'Content-Type': 'application/json', 'Content-Encoding': 'gzip', 'Location': '/sessions/0/statements/1', 'Transfer-Encoding': 'chunked', 'Server': 'Jetty(9.2.16.v20160414)'}
+{'id': 1, 'state': 'waiting', 'output': None}
+statement url: http://localhost:8998/sessions/0/statements/1
+None
+{'Date': 'Fri, 07 Apr 2017 23:15:41 GMT', 'Content-Type': 'application/json', 'Content-Encoding': 'gzip', 'Location': '/sessions/0/statements/2', 'Transfer-Encoding': 'chunked', 'Server': 'Jetty(9.2.16.v20160414)'}
+{'id': 2, 'state': 'waiting', 'output': None}
+statement url: http://localhost:8998/sessions/0/statements/2
+None
+{'Date': 'Fri, 07 Apr 2017 23:15:41 GMT', 'Content-Type': 'application/json', 'Content-Encoding': 'gzip', 'Location': '/sessions/0/statements/3', 'Transfer-Encoding': 'chunked', 'Server': 'Jetty(9.2.16.v20160414)'}
+{'id': 3, 'state': 'waiting', 'output': None}
+statement url: http://localhost:8998/sessions/0/statements/3
+None
+{'Date': 'Fri, 07 Apr 2017 23:15:41 GMT', 'Content-Type': 'application/json', 'Content-Encoding': 'gzip', 'Location': '/sessions/0/statements/4', 'Transfer-Encoding': 'chunked', 'Server': 'Jetty(9.2.16.v20160414)'}
+{'id': 4, 'state': 'running', 'output': None}
+statement url: http://localhost:8998/sessions/0/statements/4
+None
+{'Date': 'Fri, 07 Apr 2017 23:15:41 GMT', 'Content-Type': 'application/json', 'Content-Encoding': 'gzip', 'Location': '/sessions/0/statements/5', 'Transfer-Encoding': 'chunked', 'Server': 'Jetty(9.2.16.v20160414)'}
+{'id': 5, 'state': 'waiting', 'output': None}
+statement url: http://localhost:8998/sessions/0/statements/5
+None
+{'Date': 'Fri, 07 Apr 2017 23:15:41 GMT', 'Content-Type': 'application/json', 'Content-Encoding': 'gzip', 'Location': '/sessions/0/statements/6', 'Transfer-Encoding': 'chunked', 'Server': 'Je
+
+'''
