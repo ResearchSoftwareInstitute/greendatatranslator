@@ -3,7 +3,7 @@
     {
       "text": "%python\nfrom greentranslator.api import GreenTranslator",
       "user": "ad\\scox",
-      "dateUpdated": "Apr 11, 2017 4:44:20 PM",
+      "dateUpdated": "Apr 11, 2017 5:03:12 PM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -31,8 +31,8 @@
       "jobName": "paragraph_1491937672813_542441337",
       "id": "20170411-150752_1295216604",
       "dateCreated": "Apr 11, 2017 3:07:52 PM",
-      "dateStarted": "Apr 11, 2017 4:44:20 PM",
-      "dateFinished": "Apr 11, 2017 4:44:20 PM",
+      "dateStarted": "Apr 11, 2017 5:03:12 PM",
+      "dateFinished": "Apr 11, 2017 5:03:12 PM",
       "status": "ERROR",
       "progressUpdateIntervalMs": 500
     },
