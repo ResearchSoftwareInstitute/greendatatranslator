@@ -13,6 +13,7 @@ class LoggingUtil(object):
         FORMAT = '%(asctime)-15s %(filename)s %(funcName)s %(levelname)s: %(message)s'
         logging.basicConfig(format=FORMAT, level=logging.INFO)
         return logging.getLogger(name)
+logger = LoggingUtil.init_logging (__file__)
 
 class TripleStore(object):
     def __init__(self, hostname):
@@ -28,8 +29,6 @@ class TripleStore(object):
             result = self.execute_query (query)
         return result
 
-logger = LoggingUtil.init_logging (__file__)
-
 class DataLake(object):
     def __init__(self, name):
         self.name = name
@@ -40,14 +39,33 @@ class Translator (DataLake):
 
 class GreenTranslator (Translator):
 
-    def __init__(self, name, config):
+    def __init__(self, name="greentranslator", config={}):
         Translator.__init__(self, name)
         self.config = config
-        self.blazegraph = TripleStore (self.config ['blazegraph_uri'])
+        blaze_uri = None
+        if 'blaze_uri' in config:
+            blaze_uri = self.config ['blaze_uri']
+        if not blaze_uri:
+            blaze_uri = 'http://stars-blazegraph.renci.org/bigdata/sparql'
+        self.blazegraph = TripleStore (blaze_uri)
         #self.exposures_uri = self.config ['exposures_uri']
         self.exposures = swagger_client.DefaultApi ()
     def query_biochem (self, query):
         return self.blazegraph.execute_query (query)
+    def get_drugs_by_disease (self, disease):
+        text = Template ("""
+        PREFIX db_resource: <http://chem2bio2rdf.org/drugbank/resource/>
+        PREFIX omim:        <http://chem2bio2rdf.org/omim/resource/>
+        SELECT DISTINCT ?disease ?generic_name
+        WHERE {
+        ?drug        db_resource:Generic_Name ?generic_name .
+        ?disease_rec omim:drug                ?drug ;
+        omim:Name                ?disease .
+        FILTER regex(?disease, "${disease}", "i")
+        }""").substitute (disease="asthma")
+
+        return self.blazegraph.execute_query (text)
+
 
     def get_exposure_by_area (self, exposure_type, latitude, longitude, radius):
         """ get_exposure_score:
@@ -65,29 +83,18 @@ class GreenTranslator (Translator):
         return result
 
 def main ():
-    translator = GreenTranslator ("greentranslator",
-                                  config = {
-                                      'blazegraph_uri' : 'http://stars-blazegraph.renci.org/bigdata/sparql',
-#                                      'exposures_uri'  : 'https://bdtgis.renci.org:9090/v1/exposures'
-                                  })
-
+    translator = GreenTranslator ()
     exposure = translator.get_exposure_by_area (exposure_type = 'pm25',
                                                 latitude      = '',
                                                 longitude     = '',
                                                 radius        = '0')
-    print (exposure)
+    print ("Exposure: {}".format (exposure))
 
+    results = translator.get_drugs_by_disease ("asthma")
 
-
-    print (translator.query_biochem (Template ("""
-PREFIX db_resource: <http://chem2bio2rdf.org/drugbank/resource/>
-PREFIX omim:        <http://chem2bio2rdf.org/omim/resource/>
-SELECT DISTINCT ?disease ?generic_name
-WHERE {
-  ?drug        db_resource:Generic_Name ?generic_name .
-  ?disease_rec omim:drug                ?drug ;
-               omim:Name                ?disease .
-  FILTER regex(?disease, "${disease}", "i")
-    }""").substitute (disease="asthma")))
+    drugs = map (lambda b : b['generic_name'].value, results.bindings)
+    for k,v in drugs.iteritems ():
+        for k0,v0 in v.iteritems ():
+            print ("{0} => {1} -> {2}".format (k, k0, v0))
 
 main ()
