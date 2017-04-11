@@ -91,10 +91,6 @@ def main ():
     print ("Exposure: {}".format (exposure))
 
     results = translator.get_drugs_by_disease ("asthma")
+    print ("Asthma drugs: {}".format (list(map (lambda b : b['generic_name'].value, results.bindings))))
 
-    drugs = map (lambda b : b['generic_name'].value, results.bindings)
-    for k,v in drugs.iteritems ():
-        for k0,v0 in v.iteritems ():
-            print ("{0} => {1} -> {2}".format (k, k0, v0))
-
-main ()
+#main ()
