@@ -1,0 +1,33 @@
+#!/bin/bash
+
+version=$1
+
+if [ -z "$version" ]; then
+    echo version parameter is required
+    exit 0
+fi
+
+publish () {
+    git commit -am "api version $version"
+    git push origin master
+
+    set -e
+    git tag $version -m "publishing version $version"
+    git push --tags origin master
+
+    python setup.py register -r pypitest
+    python setup.py sdist upload -r pypitest
+    python setup.py register -r pypi
+    python setup.py sdist upload -r pypi
+
+    python -m pip --no-cache-dir uninstall greentranslator
+    python -m pip --no-cache-dir install greentranslator==$version
+
+    python -c "from greentranslator.api import GreenTranslator"
+
+#    cd ../../datatranslator/python-client/
+#    python setup.py install
+}
+
+
+publish

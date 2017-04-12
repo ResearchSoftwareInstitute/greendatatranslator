@@ -1,0 +1,29 @@
+#!/bin/bash
+
+version=$1
+
+[ -z "$version" ] && exit 0
+
+publish () {
+    git commit -am "api version $version"
+    git push origin master
+
+    git tag $version -m "publishing version $version"
+    git push --tags origin master
+
+    python setup.py register -r pypitest
+    python setup.py sdist upload -r pypitest
+    python setup.py register -r pypi
+    python setup.py sdist upload -r pypi
+
+    python -m pip --no-cache-dir uninstall greentranslator
+    python -m pip --no-cache-dir install greentranslator==$version
+
+    python -c "from greentranslator.api import GreenTranslator"
+
+#    cd ../../datatranslator/python-client/
+#    python setup.py install
+}
+
+
+publish
