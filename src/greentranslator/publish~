@@ -2,7 +2,10 @@
 
 version=$1
 
-[ -z "$version" ] && exit 0
+if [ -z "$version" ]; then
+    echo version parameter is required
+    exit 0
+fi
 
 publish () {
     git commit -am "api version $version"

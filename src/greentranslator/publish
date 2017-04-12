@@ -11,8 +11,10 @@ publish () {
     git commit -am "api version $version"
     git push origin master
 
+    set -e
     git tag $version -m "publishing version $version"
     git push --tags origin master
+    set +e
 
     python setup.py register -r pypitest
     python setup.py sdist upload -r pypitest
