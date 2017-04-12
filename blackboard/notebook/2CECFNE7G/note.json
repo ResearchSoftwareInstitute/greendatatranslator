@@ -3,7 +3,7 @@
     {
       "text": "%python\nfrom greentranslator.api import GreenTranslator\ntranslator \u003d GreenTranslator ()",
       "user": "ad\\scox",
-      "dateUpdated": "Apr 11, 2017 6:31:51 PM",
+      "dateUpdated": "Apr 11, 2017 8:38:37 PM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -26,15 +26,15 @@
       "jobName": "paragraph_1491937672813_542441337",
       "id": "20170411-150752_1295216604",
       "dateCreated": "Apr 11, 2017 3:07:52 PM",
-      "dateStarted": "Apr 11, 2017 6:31:52 PM",
-      "dateFinished": "Apr 11, 2017 6:31:52 PM",
+      "dateStarted": "Apr 11, 2017 8:38:37 PM",
+      "dateFinished": "Apr 11, 2017 8:38:37 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%python\nexposure \u003d translator.get_exposure_by_area (exposure_type \u003d \u0027pm25\u0027,\n                                            latitude      \u003d \u0027\u0027,\n                                            longitude     \u003d \u0027\u0027,\n                                            radius        \u003d \u00270\u0027)\nprint (\"Exposure: {}\".format (exposure))",
       "user": "ad\\scox",
-      "dateUpdated": "Apr 11, 2017 6:31:53 PM",
+      "dateUpdated": "Apr 11, 2017 8:38:38 PM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -62,15 +62,15 @@
       "jobName": "paragraph_1491937683390_644430444",
       "id": "20170411-150803_117835410",
       "dateCreated": "Apr 11, 2017 3:08:03 PM",
-      "dateStarted": "Apr 11, 2017 6:31:53 PM",
-      "dateFinished": "Apr 11, 2017 6:31:53 PM",
+      "dateStarted": "Apr 11, 2017 8:38:38 PM",
+      "dateFinished": "Apr 11, 2017 8:38:38 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%python\nresults \u003d translator.get_drugs_by_disease (\"asthma\")\nprint (\"Asthma drugs: {}\".format (list(map (lambda b : b[\u0027generic_name\u0027].value, results.bindings))))",
       "user": "ad\\scox",
-      "dateUpdated": "Apr 11, 2017 6:34:36 PM",
+      "dateUpdated": "Apr 11, 2017 8:38:40 PM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -90,7 +90,7 @@
         "msg": [
           {
             "type": "TEXT",
-            "data": "Asthma drugs: [u\u0027Fluticasone Propionate\u0027, u\u0027Chlorpheniramine\u0027, u\u0027Aminophylline\u0027, u\u0027Vitamin E\u0027, u\u0027Flunisolide\u0027, u\u0027Theophylline\u0027, u\u0027Beclomethasone\u0027, u\u0027Montelukast\u0027, u\u0027Hydrocortisone\u0027, u\u0027Salmeterol\u0027, u\u0027Formoterol\u0027, u\u0027Dyphylline\u0027, u\u0027Nedocromil\u0027, u\u0027Zileuton\u0027, u\u0027Mometasone\u0027, u\u0027Enprofylline\u0027, u\u0027Isoproterenol\u0027, u\u0027Omalizumab\u0027, u\u0027Isoetharine\u0027, u\u0027Zafirlukast\u0027, u\u0027Cinalukast\u0027, u\u0027Terbutaline\u0027]\n"
+            "data": "Asthma drugs: [u\u0027Chlorpheniramine\u0027, u\u0027Aminophylline\u0027, u\u0027Vitamin E\u0027, u\u0027Flunisolide\u0027, u\u0027Theophylline\u0027, u\u0027Beclomethasone\u0027, u\u0027Montelukast\u0027, u\u0027Fluticasone Propionate\u0027, u\u0027Dyphylline\u0027, u\u0027Hydrocortisone\u0027, u\u0027Salmeterol\u0027, u\u0027Formoterol\u0027, u\u0027Nedocromil\u0027, u\u0027Zileuton\u0027, u\u0027Mometasone\u0027, u\u0027Enprofylline\u0027, u\u0027Isoproterenol\u0027, u\u0027Omalizumab\u0027, u\u0027Isoetharine\u0027, u\u0027Zafirlukast\u0027, u\u0027Cinalukast\u0027, u\u0027Terbutaline\u0027]\n"
           }
         ]
       },
@@ -98,8 +98,8 @@
       "jobName": "paragraph_1491949886887_1760865228",
       "id": "20170411-183126_1068424072",
       "dateCreated": "Apr 11, 2017 6:31:26 PM",
-      "dateStarted": "Apr 11, 2017 6:34:37 PM",
-      "dateFinished": "Apr 11, 2017 6:34:37 PM",
+      "dateStarted": "Apr 11, 2017 8:38:40 PM",
+      "dateFinished": "Apr 11, 2017 8:38:40 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
