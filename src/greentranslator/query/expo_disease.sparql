@@ -1,0 +1,12 @@
+prefix envo:  <http://identifiers.org/envo/ctd/resource/>
+prefix mesh:  <http://bio2rdf.org/mesh:>
+select ?exposure ?stressorAgentID ?stressorAgentName ?diseaseID where {
+
+  values ( ?stressorAgentID ?stressorAgentName ?diseaseID ) {
+    ( mesh:D052638 "Particulate Matter" mesh:D001249 )
+  }
+
+  ?exposure envo:stressoragentid     ?stressorAgentID ;
+            envo:diseaseid           ?diseaseID ;
+            envo:stressoragentname   ?stressorAgentName .
+}​

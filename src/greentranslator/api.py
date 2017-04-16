@@ -65,7 +65,16 @@ class GreenTranslator (Translator):
         }""").substitute (disease="asthma")
 
         return self.blazegraph.execute_query (text)
-
+    def get_genes_pathways_by_disease (self, diseases):
+        result = None
+        # ?diseaseID ?drugGenericName ?swissProtID ?uniprotGeneID ?geneBankID ?pathwayName ?keggPath
+        fn = os.path.join(os.path.dirname(__file__), 'query', 'genes_pathways_by_disease.sparql')
+        diseaseMeshIDList = ' '.join (list(map (lambda d : "( mesh:{0} )".format (d), diseases)))
+        with open (fn, 'r') as stream:
+            query = Template (stream.read ()).substitute (diseaseMeshIDList=diseaseMeshIDList)
+            print (query)
+            result = self.blazegraph.execute_query (query)
+        return result
 
     def get_exposure_by_area (self, exposure_type, latitude, longitude, radius):
         """ get_exposure_score:
@@ -93,4 +102,15 @@ def main ():
     results = translator.get_drugs_by_disease ("asthma")
     print ("Asthma drugs: {}".format (list(map (lambda b : b['generic_name'].value, results.bindings))))
 
-#main ()
+
+    results = translator.get_genes_pathways_by_disease (diseases = [ 'd001249', 'd003371', 'd001249' ])
+
+    genes_paths = list(map (lambda b : "{0}->{1} ({2})".format (b['uniprotGeneID'].value,
+                                                                b['keggPath'].value,
+                                                                b['pathwayName'].value),
+                            results.bindings))
+    print ("Asthma genes/pathways:")
+    for g in genes_paths:
+        print (g)
+
+main ()
