@@ -10,7 +10,7 @@ setup(
       name = 'greentranslator',
       packages = [ 'greentranslator' ], # this must be the same as the name above
       package_dir={ 'greentranslator' : 'greentranslator' },
-      package_data={ 'greentranslator' : [ 'greentranslator/query/*.sparql' ]},
+      package_data={ 'greentranslator' : [ 'query/*.sparql' ]},
       version = '$version',
       description = 'Green Team BioMedical Data Translator',
       author = 'Steve Cox',
@@ -47,6 +47,7 @@ publish () {
     python -m pip --no-cache-dir install greentranslator==$version
 
  
+    cd ..
     cat <<EOF> test.py
 from greentranslator.api import GreenTranslator
 translator = GreenTranslator()
@@ -58,8 +59,8 @@ print ("Exposure: {}".format (exposure))
 EOF
     python test.py
 
-    rm test.py
+#    rm test.py
 }
 
 
-publish
+publish $*
