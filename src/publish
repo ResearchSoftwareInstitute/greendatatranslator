@@ -13,6 +13,7 @@ setup(
       description = 'Green Team BioMedical Data Translator',
       author = 'Steve Cox',
       author_email = 'scox@renci.org',
+      include_package_data=True,
       url = 'https://github.com/ResearchSoftwareInstitute/greendatatranslator',
       download_url = 'https://github.com/ResearchSoftwareInstitute/greendatatranslator/archive/$version.tar.gz',
       keywords = [ 'biomedical', 'environmental', 'exposure', 'clinical' ],
@@ -43,7 +44,7 @@ publish () {
     fi
     python -m pip --no-cache-dir install greentranslator==$version
 
-
+ 
     cat <<EOF> test.py
 from greentranslator.api import GreenTranslator
 translator = GreenTranslator()

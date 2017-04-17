@@ -37,6 +37,26 @@ class Translator (DataLake):
     def __init__(self, name):
         DataLake.__init__(self, name)
 
+class Exposures (object):
+
+    def __init__(self, exposures):
+        self.exposures = exposures
+
+    def get_exposure_by_area (self, exposure_type, latitude, longitude, radius):
+        """ get_exposure_score:
+            array of location/date parameters
+        """
+        result = None
+        try:
+            result = self.exposures. \
+                     exposures_exposure_type_coordinates_get(exposure_type,
+                                                             latitude=latitude,
+                                                             longitude=longitude,
+                                                             radius=radius)
+        except ApiException as e:
+            print("Exception when calling DefaultApi->exposures_exposure_type_coordinates_get: %s\n" % e)
+        return result
+        
 class GreenTranslator (Translator):
 
     def __init__(self, name="greentranslator", config={}):
@@ -107,7 +127,7 @@ def main ():
 
     genes_paths = list(map (lambda b : "{0}->{1} ({2})".format (b['uniprotGeneID'].value,
                                                                 b['keggPath'].value,
-                                                                b['pathwayName'].value),
+                                                          b['pathwayName'].value),
                             results.bindings))
     print ("Asthma genes/pathways:")
     for g in genes_paths:
