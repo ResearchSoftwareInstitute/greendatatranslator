@@ -95,4 +95,4 @@ def main ():
         print (acs_income.get_col('B19037E_036'))
     acs_income.close ()
 
-main ()
+#main ()

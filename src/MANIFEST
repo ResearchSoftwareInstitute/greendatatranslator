@@ -5,3 +5,6 @@ greentranslator/__init__.py
 greentranslator/api.py
 greentranslator/l2.py
 greentranslator/livy.py
+greentranslator/query/disease_drug_pathway.sparql
+greentranslator/query/expo_disease.sparql
+greentranslator/query/genes_pathways_by_disease.sparql

@@ -48,7 +48,7 @@ def main ():
         print (code)
         print(lc.execute (code))
     lc.close ()
-main ()
+#main ()
 
 '''
 {'id': 0, 'state': 'running', 'output': None}
