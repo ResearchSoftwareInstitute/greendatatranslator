@@ -16,5 +16,5 @@ Please update this [README](README.md) with relevant links to repositories, docu
 
 1. SmartAPI: [https://github.com/SmartAPI](https://github.com/SmartAPI)
     - Website: [http://smart-api.info](http://smart-api.info)
-1. Swagger Overview: [mjstealey/swagger-demo](https://github.com/mjstealey/swagger-demo)
+1. Swagger Overview: [https://mjstealey.github.io/swagger-demo/](https://mjstealey.github.io/swagger-demo/)
 
