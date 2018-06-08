@@ -76,49 +76,50 @@ An **Informational** DT-RFC describes a Translator design issue, or provides gen
 
 ## Foundation of the DT-RFC Process
 #### Background
-The activities of NCATS Data Translator teams play a vital role in the Translator, and are also critical to the Reasoner. In the process of building the Translator we must make decisions, but we need to make decisions based on feedback from individual contributors, the FSs, the KCs, and the many NIH stakeholders, including Data STAGE.  Further, there is considerable overlap and interaction between the KCs and the FSs, but they have somewhat different responsibilities and timelines.  As a result, we need to establish a process that enables effective interactions between the KCs and the FSs, and also supports shared decision making.  To accomplish this, we propose the use of Requests for Comments (RFCs).
+The activities of NCATS Data Translator teams play a vital role in the Translator, and are also critical to the Reasoner. In the process of building the Translator we must make decisions, but we need to make decisions based on feedback from individual contributors, the teams, and the many NIH stakeholders, including Translator and Reasoner. Further, there is considerable overlap and interaction between the Translator and the Reasoner, but they have somewhat different responsibilities and timelines. As a result, we need to establish a process that enables effective interactions between the Translator and Reasoner, and also supports shared decision making. To accomplish this, we propose the use of Requests for Comments (RFCs).  
 
-Principles that support the need for RFCs:
-1. Where possible, we enable individual contributors and teams to independently make the decisions necessary to build components, to build the FSs, and to subsequently build the DC.
-2. We actively seek feedback from a broad community of domain experts, and not all of those experts are part of the teams building the KCs, the FSs, the DC, or STAGE.
-3. The KCs provide domain expertise and also build communities-of-practice.
-4. The KCs help the DC to manage the risk in building the DC.
-5. The KCs are responsible for not only providing feedback on the current technology, but also provide context and feedback on future technologies.
-6. The KCs operate asynchronously from the FSs.
-7. The FSs will seek input from a broad community of stakeholders outside the DT.
-8. By using RFCs the work of building the DC can proceed as multiple, interoperable and  parallel projects, thus permitting exploration and resiliency.
+Principles that support the need for RFCs:  
+1. Where possible, we enable individual contributors and teams to independently make the decisions necessary to build components, and to subsequently build the Translator.  
+2. We actively seek feedback from a broad community of domain experts, and not all of those experts are part of the teams building the Translator or Reasoner.  
+3. The teams provide domain expertise and also build communities-of-practice.  
+4. The teams help manage the risk in building the Translator.  
+5. The teams are responsible for not only providing feedback on the current technology, but also provide context and feedback on future technologies.  
+6. The teams will seek input from a broad community of stakeholders outside the DT.  
+7. By using RFCs the work of building the Translator can proceed as multiple, interoperable and parallel projects, thus permitting exploration and resiliency.  
 
-The KCs’ roles are:
-1. Each KC focuses on challenges that fall within an area of competence that must be addressed for the DC, and as such they act as community conveners to encourage exploration and innovation.
-2. In cases when challenges and solutions overlap or have dependencies with other KCs, the KC will involve other KCs and divide the discussions and responsibilities appropriately. 
-3. They act as working groups that evaluate key areas of technology necessary for the Translator.
-4. The KCs may implement products that are  intended to be used by the FSs on an ongoing basis.
-5. The KCs put forward Requests for RFCs to solicit feedback on key areas in which standards may need to emerge.
+The Teams’ roles are:  
+1. Each team focuses on challenges that fall within an area of competence that must be addressed for the Translator, and as such they act as community conveners to encourage exploration and innovation.  
+2. In cases when challenges and solutions overlap or have dependencies with other teams, a given team will involve other teams and divide the discussions and responsibilities appropriately.  
+3. They act as working groups that evaluate key areas of technology necessary for the Translator.  
+4. The teams may implement products that are intended to be used by other teams on an ongoing basis.  
+5. The teams put forward Requests for RFCs to solicit feedback on key areas in which standards may need to emerge.  
 
-The FSs’ roles are:
-1. Each FS focuses on a set of challenges that must be addressed for a particular implementation of the DC, as well as the interoperability of the components they build across other stacks.
-2. The FSs act as development teams that implement and evaluate key areas of technology necessary for the Translator.
-3. The FSs put forward RFCs to solicit feedback on key areas in which standards may need to emerge.
+The Reasoner roles are:  
+1. Each Reasoner focuses on a set of challenges that must be addressed for a particular aspect of the Translator, as well as the interoperability of the components they build across other Translator components.  
+2. The Reasoners act as development teams that implement and evaluate key areas of technology necessary for the Translator.  
+3. The Reasoners put forward RFCs to solicit feedback on key areas in which standards may need to emerge.  
 
-An RFC should include participation from all the FS teams. Interaction between KCs and FSs
-1. The KCs serve as the group that provides in-depth technical analysis of possible choices for a given DC challenge and will implement resources to be used by the FS where necessary.
-2. The FSs serve as the primary implementers of capabilities that are eventually deployed. As such the FSs depend on and are informed by the technical analysis done the KCs.
-3. Sharing of KC analyses across the multiple teams allows cross-fertilization of options and approaches across the FSs.
+An RFC should include participation from all the teams.  
+1. The teams provide in-depth technical analysis of possible choices for a given Translator challenge and will implement resources to be used by the Translator where necessary.  
+2. The teams serve as the primary implementers of capabilities that are eventually deployed. As such the teams depend on and are informed by the technical analysis done.  
+3. Sharing of analyses across the multiple teams allows cross-fertilization of options and approaches.  
 
-Using the RFC process, through consultation with the broader community, allows the KCs and the FSs to:
-1. Initiate or refine potential standards, or 
-2. Establish or improve a DT process, or
-3. Build consensus among competing technologies, or
-4. Provide broadly useful information.
+Using the RFC process, through consultation with the broader community, allows the teams to:  
+1. Initiate or refine potential standards, or  
+2. Establish or improve a DT process, or  
+3. Build consensus among competing technologies, or  
+4. Provide broadly useful information.  
 
-Generally, an RFC should be created when:
-1. We seek to reach agreement.
-2. We seek to establish a contract between actors.
-3. We are defining conventions, e.g., interfaces, APIs, data models, etc.
-4. There is a need for transparency and inclusion on a necessary decision.
-5. A decision could impact more than one system component or team or stakeholders.
-6. We are adding dependencies that can affect more than one team.
+Generally, an RFC should be created when:  
+1. We seek to reach agreement.  
+2. We seek to establish a contract between actors.  
+3. We are defining conventions, e.g., interfaces, APIs, data models, etc.  
+4. There is a need for transparency and inclusion on a necessary decision.  
+5. A decision could impact more than one system component or team or stakeholders.  
+6. We are adding dependencies that can affect more than one team.  
 
 
 Sources: https://opensource.com/article/17/9/6-lessons-rfcs; https://www.python.org/dev/peps/pep-0001/; https://opensource.com/business/12/6/architecture-participation; https://en.wikipedia.org/wiki/Request_for_Comments; http://aturon.github.io/2018/05/25/listening-part-1/
+
+
 
