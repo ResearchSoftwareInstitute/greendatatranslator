@@ -7,7 +7,7 @@
 **DT-RFC-Type :** Process  
 **Name of the person who is to be Point of Contact for the RFC :** Stan Ahalt  
 **Email of the person who is to be Point of Contact for the RFC :** RFCGovernance@dt.groups.io   
-**Submitting Group (e.g. KC#) :** DT Governance  
+**Submitting Group :** DT Governance  
 **Requested RFC posting start date :** 06/11/2018  
 **Requested RFC posting end date :**  
 **Date Emailed for consideration :** 06/07/2018  
