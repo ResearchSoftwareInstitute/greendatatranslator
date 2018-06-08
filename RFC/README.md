@@ -24,29 +24,29 @@
 	* Date Emailed for consideration :  
 	* DT-RFC-Status : (DT-RFC-Governance will assign an initial value of “Active and open RFC period” updating with values in Steps 6 and 8 as required)
 	* URL Link to GitHub : (DT-RFC-Governance will assign a link of where intermediate and final PDFs are stored per Step 9)
-	* URL Link to Google Doc : (URL of DT-RFC Google Doc for a given RFC)
+	* URL Link to Google Doc : (URL of DT-RFC Google Doc for a given RFC)  
 
 4. Email the RFC Google Doc URL to DT-RFC-Governance at RFCGovernance@dt.groups.io {Christine, Noel, Dena, Stan}
-	a. Within 1 business day, they will either approve and post to {translator-all@googlegroups.com, translator general slack channel} or email back Point of Contact requesting refinement or clarification
-	b. If posted to {translator-all@googlegroups.com, translator general slack channel}, a unique DT-RFC tag will be assigned based on the pattern: DT-RFC-#  where # is an assigned sequential number 
-5. Once an approved DT-RFC-# posted to {translator-all@googlegroups.com, translator general slack channel}, the Translator community will be proactively encouraged to comment on it during the requested posting period.
-	a. DT project management staff will broadly announce the DT RFC on the start date, halfway through the suggested duration, the day prior, and on the RFC end date.
-	b. Cross-posting by by any NIH DT development participants is encouraged.
+	a. Within 1 business day, they will either approve and post to {translator-all@googlegroups.com, translator general slack channel} or email back Point of Contact requesting refinement or clarification  
+	b. If posted to {translator-all@googlegroups.com, translator general slack channel}, a unique DT-RFC tag will be assigned based on the pattern: DT-RFC-#  where # is an assigned sequential number.  
+5. Once an approved DT-RFC-# posted to {translator-all@googlegroups.com, translator general slack channel}, the Translator community will be proactively encouraged to comment on it during the requested posting period.  
+	a. DT project management staff will broadly announce the DT RFC on the start date, halfway through the suggested duration, the day prior, and on the RFC end date.  
+	b. Cross-posting by by any NIH DT development participants is encouraged.  
 6. Upon conclusion of the DT-RFC-# posting period, the Submitting Group will have ten business days to address comments provided in the DT-RFC-#, assign one of the follow DT-RFC-Status values, and email to DT-RFC-Governance:
-	a. Propose-Resolved
-	b. Propose-Merge (i.e. with another RFC)
-	c. Propose-Postpone
-	d.Propose-Unsuccessful
-	e. Propose-Withdrawn
-7. DT-RFC-Governance will either agree or disagree with the DT-RFC-Status assigned value of the Submitting Group in Step 6:
-	a. If DT-RFC-Governance agrees with the DT-RFC-Status value assigned by the Submitting Group , then the modified DT-RFC-# will be posted for a Final Comment Period (FCP) of no less than 5 business days.
+	a. Propose-Resolved  
+	b. Propose-Merge (i.e. with another RFC)  
+	c. Propose-Postpone  
+	d.Propose-Unsuccessful  
+	e. Propose-Withdrawn  
+7. DT-RFC-Governance will either agree or disagree with the DT-RFC-Status assigned value of the Submitting Group in Step 6:  
+	a. If DT-RFC-Governance agrees with the DT-RFC-Status value assigned by the Submitting Group , then the modified DT-RFC-# will be posted for a Final Comment Period (FCP) of no less than 5 business days.  
 	b. If DT-RFC-Governance disagrees with the DT-RFC-Status value assigned by the Submitting Group , DT-RFC-Governance will assign a different DT-RFC-Status from the list in Step 6 along with a written explanation and email back to the Point of Contact to restart the DT-RFC process at Step 3 incrementing DT-RFC-Version by 1, or at their discretion, proceed to Step 8 without further iteration.
-8. Upon conclusion of the DT-RFC-# Final Comment Period (FCP) or at their discretion, the DT-RFC-Governance will assign one of the following DT-RFC-Status values concluding the DT-RFC process without further iteration:
-	a. Resolved
-	b. Merged (i.e. with another RFC)
-	c. Postponed
-	d. Unsuccessful
-	e. Withdrawn
+8. Upon conclusion of the DT-RFC-# Final Comment Period (FCP) or at their discretion, the DT-RFC-Governance will assign one of the following DT-RFC-Status values concluding the DT-RFC process without further iteration:  
+	a. Resolved  
+	b. Merged (i.e. with another RFC)  
+	c. Postponed  
+	d. Unsuccessful  
+	e. Withdrawn  
 9. All versions of of a given DT-RFC Google Doc will be named will be named with Google version history, and an individual PDF of each named version including all contributor comments therein associated with that version will be placed in https://github.com/ResearchSoftwareInstitute/greendatatranslator/rfcs. 
 
 
