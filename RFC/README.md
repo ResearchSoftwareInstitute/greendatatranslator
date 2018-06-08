@@ -30,7 +30,7 @@
 	a. Within 1 business day, they will either approve and post to {translator all, translator general slack channel} or email back Point of Contact requesting refinement or clarification
 	b. If posted to {translator all, translator general slack channel}, a unique DT-RFC tag will be assigned based on the pattern: 
 DT-RFC-#  where # is an assigned sequential number 
-5. Once an approved DT-RFC-# posted to {translator all, translator general slack channel}, the NIH Data Commons community will be proactively encouraged to comment on it during the requested posting period.
+5. Once an approved DT-RFC-# posted to {translator all, translator general slack channel}, the Translator community will be proactively encouraged to comment on it during the requested posting period.
 	a. DT project management staff will broadly announce the DT RFC on the start date, halfway through the suggested duration, the day prior, and on the RFC end date.
 	b. Cross-posting by by any NIH DT development participants is encouraged.
 6. Upon conclusion of the DT-RFC-# posting period, the Submitting Group will have ten business days to address comments provided in the DT-RFC-#, assign one of the follow DT-RFC-Status values, and email to DT-RFC-Governance:
@@ -58,16 +58,16 @@ DT-RFC-#  where # is an assigned sequential number
 
 ## DT-RFC-Types
 #### Standards
-A **Standards** Track DT-RFC describes a new feature or implementation for the NIH Data Commons. It may also describe an interoperability standard that will be supported across the full stacks. Candidate specification must be implemented and tested for correct operation and interoperability by multiple independent parties and utilized in increasingly demanding environments, before it can be adopted as an DT Standard. Candidate specifications should include a description of any external standards that were considered, used, adapted, or rejected.
+A **Standards** Track DT-RFC describes a new feature or implementation for the Translator. It may also describe an interoperability standard that will be supported across the full stacks. Candidate specification must be implemented and tested for correct operation and interoperability by multiple independent parties and utilized in increasingly demanding environments, before it can be adopted as an DT Standard. Candidate specifications should include a description of any external standards that were considered, used, adapted, or rejected.
 
 #### Process
-A **Process** DT-RFC describes a process surrounding the NIH Data Commons, or proposes a change to (or an event in) a process. Process DT-RFCs are like Standards Track DT-RFCs but apply to areas other than the NIH Data Commons code itself. They may propose an implementation, but not to NIH Data Commons codebase.  Unlike Informational DT-RFCs, they are more than recommendations, and users are typically not free to ignore them. Examples include procedures, guidelines, and changes to the decision-making process. 
+A **Process** DT-RFC describes a process surrounding the Translator, or proposes a change to (or an event in) a process. Process DT-RFCs are like Standards Track DT-RFCs but apply to areas other than the Translator code itself. They may propose an implementation, but not to Translator codebase.  Unlike Informational DT-RFCs, they are more than recommendations, and users are typically not free to ignore them. Examples include procedures, guidelines, and changes to the decision-making process. 
 
 #### Consensus Building
-A **Consensus Building** DT-RFC describes a NIH Data Commons design issue, or provides general guidelines or information to the NIH Data Commons development community, and may propose a new feature. Unlike Informational DT-RFCs, Consensus Building DT-RFC represent a NIH Data Commons community consensus or recommendation, so users and implementers are expected to make a best effort to follow their advice.
+A **Consensus Building** DT-RFC describes a Translator design issue, or provides general guidelines or information to the Translator development community, and may propose a new feature. Unlike Informational DT-RFCs, Consensus Building DT-RFC represent a Translator community consensus or recommendation, so users and implementers are expected to make a best effort to follow their advice.
 
 #### Informational
-An **Informational** DT-RFC describes a NIH Data Commons design issue, or provides general guidelines or information to the NIH Data Commons development community, but does not propose a new feature. Informational DT-RFCs do not necessarily represent a NIH Data Commons community consensus or recommendation, so users and implementers are free to ignore Informational DT-RFCs or follow their advice.
+An **Informational** DT-RFC describes a Translator design issue, or provides general guidelines or information to the Translator development community, but does not propose a new feature. Informational DT-RFCs do not necessarily represent a Translator community consensus or recommendation, so users and implementers are free to ignore Informational DT-RFCs or follow their advice.
 
 
 
@@ -76,7 +76,7 @@ An **Informational** DT-RFC describes a NIH Data Commons design issue, or provid
 
 ## Foundation of the DT-RFC Process
 #### Background
-The activities of both the Full Stacks (FSs) and the Key Capabilities (KCs) play a vital role in the Data Commons (DC), and are also critical to the NHLBI Data STAGE. In the process of building the Data Commons we must make decisions, but we need to make decisions based on feedback from individual contributors, the FSs, the KCs, and the many NIH stakeholders, including Data STAGE.  Further, there is considerable overlap and interaction between the KCs and the FSs, but they have somewhat different responsibilities and timelines.  As a result, we need to establish a process that enables effective interactions between the KCs and the FSs, and also supports shared decision making.  To accomplish this, we propose the use of Requests for Comments (RFCs).
+The activities of NCATS Data Translator teams play a vital role in the Translator, and are also critical to the Reasoner. In the process of building the Translator we must make decisions, but we need to make decisions based on feedback from individual contributors, the FSs, the KCs, and the many NIH stakeholders, including Data STAGE.  Further, there is considerable overlap and interaction between the KCs and the FSs, but they have somewhat different responsibilities and timelines.  As a result, we need to establish a process that enables effective interactions between the KCs and the FSs, and also supports shared decision making.  To accomplish this, we propose the use of Requests for Comments (RFCs).
 
 Principles that support the need for RFCs:
 1. Where possible, we enable individual contributors and teams to independently make the decisions necessary to build components, to build the FSs, and to subsequently build the DC.
@@ -91,13 +91,13 @@ Principles that support the need for RFCs:
 The KCs’ roles are:
 1. Each KC focuses on challenges that fall within an area of competence that must be addressed for the DC, and as such they act as community conveners to encourage exploration and innovation.
 2. In cases when challenges and solutions overlap or have dependencies with other KCs, the KC will involve other KCs and divide the discussions and responsibilities appropriately. 
-3. They act as working groups that evaluate key areas of technology necessary for the Data Commons (DC).
+3. They act as working groups that evaluate key areas of technology necessary for the Translator.
 4. The KCs may implement products that are  intended to be used by the FSs on an ongoing basis.
 5. The KCs put forward Requests for RFCs to solicit feedback on key areas in which standards may need to emerge.
 
 The FSs’ roles are:
 1. Each FS focuses on a set of challenges that must be addressed for a particular implementation of the DC, as well as the interoperability of the components they build across other stacks.
-2. The FSs act as development teams that implement and evaluate key areas of technology necessary for the Data Commons.
+2. The FSs act as development teams that implement and evaluate key areas of technology necessary for the Translator.
 3. The FSs put forward RFCs to solicit feedback on key areas in which standards may need to emerge.
 
 An RFC should include participation from all the FS teams. Interaction between KCs and FSs
