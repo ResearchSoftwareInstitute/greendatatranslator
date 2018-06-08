@@ -11,13 +11,13 @@
 	* DT-RFC-# : {NOTE: Leave blank as this will be assigned by DT-RFC-Governance in Step 4 upon initial submission}  
 	* DT-RFC-Title :  
 	* DT-RFC-Version : (starting with 1, incremented as required by DT-RFC-Governance in Step 7)  
-	* DT-RFC-Type (click the type for definition) :  
+	* DT-RFC-Type : (click the type for definition)  
 		* [Standards](#standards)
 		* [Process](#process)
 		* [Consensus Building](#consensus-building)
 		* [Informational](#informational)
-	* Name of the person who is to be Point of Contact for the RFC
-	* Email of the person who is to be Point of Contact for the RFC
+	* Name of the person who is to be Point of Contact for the RFC :  
+	* Email of the person who is to be Point of Contact for the RFC :  
 	* Submitting Group :  
 	* Requested RFC posting start date :  
 	* Requested RFC posting end date :  
