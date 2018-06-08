@@ -26,7 +26,7 @@
 	* URL Link to GitHub : (DT-RFC-Governance will assign a link of where intermediate and final PDFs are stored per Step 9)
 	* URL Link to Google Doc : (URL of DT-RFC Google Doc for a given RFC)  
 
-4. Email the RFC Google Doc URL to DT-RFC-Governance at RFCGovernance@dt.groups.io {Christine, Noel, Dena, Stan}
+4. Email the RFC Google Doc URL to DT-RFC-Governance at RFCGovernance@dt.groups.io {Christine, Noel, Dena, Stan}.  
 	a. Within 1 business day, they will either approve and post to {translator-all@googlegroups.com, translator general slack channel} or email back Point of Contact requesting refinement or clarification  
 	b. If posted to {translator-all@googlegroups.com, translator general slack channel}, a unique DT-RFC tag will be assigned based on the pattern: DT-RFC-#  where # is an assigned sequential number.  
 5. Once an approved DT-RFC-# posted to {translator-all@googlegroups.com, translator general slack channel}, the Translator community will be proactively encouraged to comment on it during the requested posting period.  
