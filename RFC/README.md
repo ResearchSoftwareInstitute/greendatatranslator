@@ -4,33 +4,32 @@
 ## DT Request for Comment (RFC) Instructions and Guidelines
 
 
-1. Read the [foundational document to the DT-RFC process](#background).  Your group’s DT-RFC should align with the principles and roles therein.
-2. Create a written draft your DT-RFC as a Google Doc and set the Google Doc Sharing Status as "Anyone with the link can comment"
-	a. The location of the DT-RFC document folder will be provided by DT project management staff
-3. Except for the header, the format of the DT-RFC Google Doc is not prescriptive and should contain content sufficient for the DT-RFC-Type (defined next) and any supporting information or other documents.   The DT-RFC header placed at the beginning of the DT-RFC should contain this information:
-	* DT-RFC-# {NOTE: Leave blank as this will be assigned by DT-RFC-Governance in Step 4 upon initial submission}
-	* DT-RFC-Title
-	* DT-RFC-Version (starting with 1, incremented as required by DT-RFC-Governance in Step 7)
-	* DT-RFC-Type (click the type for definition):
+1. Read the [foundational document to the DT-RFC process](#background).  Your group’s DT-RFC should align with the principles and roles therein.  
+2. Create a written draft your DT-RFC as a Google Doc and set the Google Doc Sharing Status as "Anyone with the link can comment"  
+	a. The location of the DT-RFC document folder will be provided by DT project management staff  
+3. Except for the header, the format of the DT-RFC Google Doc is not prescriptive and should contain content sufficient for the DT-RFC-Type (defined next) and any supporting information or other documents.   The DT-RFC header placed at the beginning of the DT-RFC should contain this information:  
+	* DT-RFC-# : {NOTE: Leave blank as this will be assigned by DT-RFC-Governance in Step 4 upon initial submission}  
+	* DT-RFC-Title :  
+	* DT-RFC-Version : (starting with 1, incremented as required by DT-RFC-Governance in Step 7)  
+	* DT-RFC-Type (click the type for definition) :  
 		* [Standards](#standards)
 		* [Process](#process)
 		* [Consensus Building](#consensus-building)
 		* [Informational](#informational)
 	* Name of the person who is to be Point of Contact for the RFC
 	* Email of the person who is to be Point of Contact for the RFC
-	* Submitting Group (e.g. KC#)
-	* Requested RFC posting start date
-	* Requested RFC posting end date
-	* Date Emailed for consideration
+	* Submitting Group :  
+	* Requested RFC posting start date :  
+	* Requested RFC posting end date :  
+	* Date Emailed for consideration :  
 	* DT-RFC-Status : (DT-RFC-Governance will assign an initial value of “Active and open RFC period” updating with values in Steps 6 and 8 as required)
 	* URL Link to GitHub : (DT-RFC-Governance will assign a link of where intermediate and final PDFs are stored per Step 9)
 	* URL Link to Google Doc : (URL of DT-RFC Google Doc for a given RFC)
 
 4. Email the RFC Google Doc URL to DT-RFC-Governance at RFCGovernance@dt.groups.io {Christine, Noel, Dena, Stan}
-	a. Within 1 business day, they will either approve and post to {translator all, translator general slack channel} or email back Point of Contact requesting refinement or clarification
-	b. If posted to {translator all, translator general slack channel}, a unique DT-RFC tag will be assigned based on the pattern: 
-DT-RFC-#  where # is an assigned sequential number 
-5. Once an approved DT-RFC-# posted to {translator all, translator general slack channel}, the Translator community will be proactively encouraged to comment on it during the requested posting period.
+	a. Within 1 business day, they will either approve and post to {translator-all@googlegroups.com, translator general slack channel} or email back Point of Contact requesting refinement or clarification
+	b. If posted to {translator-all@googlegroups.com, translator general slack channel}, a unique DT-RFC tag will be assigned based on the pattern: DT-RFC-#  where # is an assigned sequential number 
+5. Once an approved DT-RFC-# posted to {translator-all@googlegroups.com, translator general slack channel}, the Translator community will be proactively encouraged to comment on it during the requested posting period.
 	a. DT project management staff will broadly announce the DT RFC on the start date, halfway through the suggested duration, the day prior, and on the RFC end date.
 	b. Cross-posting by by any NIH DT development participants is encouraged.
 6. Upon conclusion of the DT-RFC-# posting period, the Submitting Group will have ten business days to address comments provided in the DT-RFC-#, assign one of the follow DT-RFC-Status values, and email to DT-RFC-Governance:
