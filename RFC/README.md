@@ -1,4 +1,4 @@
-# DT RFC Implementation Process (DRAFT)
+# NCATS Data Translator (DT) RFC Implementation Process (DRAFT)
 
 -----------
 ## DT Request for Comment (RFC) Instructions and Guidelines
