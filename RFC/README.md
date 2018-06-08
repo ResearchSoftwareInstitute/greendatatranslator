@@ -36,7 +36,7 @@
 	a. Propose-Resolved  
 	b. Propose-Merge (i.e. with another RFC)  
 	c. Propose-Postpone  
-	d.Propose-Unsuccessful  
+	d. Propose-Unsuccessful  
 	e. Propose-Withdrawn  
 7. DT-RFC-Governance will either agree or disagree with the DT-RFC-Status assigned value of the Submitting Group in Step 6:  
 	a. If DT-RFC-Governance agrees with the DT-RFC-Status value assigned by the Submitting Group , then the modified DT-RFC-# will be posted for a Final Comment Period (FCP) of no less than 5 business days.  
