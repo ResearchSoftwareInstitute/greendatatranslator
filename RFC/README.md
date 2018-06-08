@@ -32,7 +32,7 @@
 5. Once an approved DT-RFC-# posted to {translator-all@googlegroups.com, translator general slack channel}, the Translator community will be proactively encouraged to comment on it during the requested posting period.  
 	a. DT project management staff will broadly announce the DT RFC on the start date, halfway through the suggested duration, the day prior, and on the RFC end date.  
 	b. Cross-posting by by any NIH DT development participants is encouraged.  
-6. Upon conclusion of the DT-RFC-# posting period, the Submitting Group will have ten business days to address comments provided in the DT-RFC-#, assign one of the follow DT-RFC-Status values, and email to DT-RFC-Governance:
+6. Upon conclusion of the DT-RFC-# posting period, the Submitting Group will have ten business days to address comments provided in the DT-RFC-#, assign one of the follow DT-RFC-Status values, and email to DT-RFC-Governance:  
 	a. Propose-Resolved  
 	b. Propose-Merge (i.e. with another RFC)  
 	c. Propose-Postpone  
