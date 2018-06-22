@@ -262,71 +262,72 @@ As a study PI, Claire would like to be able to see information about the users w
 
 **Timing:** Post-pilot  
 
-View Data Commons Project Activity Log
-Alice is preparing a periodic report of activity on a project.  She has performed a significant portion of work for the project on the NIH Data Commons.  She accesses the Data Commons user interface for querying the project activity log.  The user interface allows her to specify her search criteria which include her system UID and the start date and end date of the time window she’s interested in. The data returned contains all relevant of the activity on the project but may not contain certain data elements that are used by the system for its internal processing.
+#### UC-31 View Data Commons Project Activity Log
+Alice is preparing a periodic report of activity on a project.  She has performed a significant portion of work for the project on the NIH Data Commons.  She accesses the Data Commons user interface for querying the project activity log.  The user interface allows her to specify her search criteria which include her system UID and the start date and end date of the time window she’s interested in. The data returned contains all relevant of the activity on the project but may not contain certain data elements that are used by the system for its internal processing.  
 
-Timing: Post-pilot
+**Timing:** Post-pilot  
 
-View Data Access and Attribution Log
+#### UC-32 View Data Access and Attribution Log
 Joe, the provider of a resource on the Data Commons, is preparing a report documenting how frequently his resource is being used by consumers in the community.  He would like to know if his resource is properly credited/acknowledged. In addition to his own, internal logs, he wants to query the system to get a list of activity originating in the Data Commons.  He accesses the Data Commons user interface for querying the data access log.  The user interface allows him to specify his search criteria, which include the UID of his resource(s) within the Data Commons and the start date and end date of the time window he’s interested in.  The process returns all logged activity for the specified resources during the specified time window. 
 
-Timing: Post-pilot 
+**Timing:** Post-pilot  
 
-Retrieve List of Resources Accessed
-Alice is preparing a paper for publication on a project she is completing.  She has performed a significant portion of work for the project on the NIH Data Commons.  She wants to prepare a list of Data Commons resources to include in the references section of the publication.  She accesses the Data Commons user interface for querying the Distributed Ledger.  The user interface allows her to specify her search criteria which include her system UID, the start date and end date of the time window, and the GUID for the resource she’s interested in.  The process returns a block of data containing an accounting of each all logged activity for the specified user during the specified time window, related to the specified resource.  The data returned contains all relevant details from the ledger but may not contain certain data elements that are used by the System for its internal processing.
+#### UC-33 Retrieve List of Resources Accessed
+Alice is preparing a paper for publication on a project she is completing.  She has performed a significant portion of work for the project on the NIH Data Commons.  She wants to prepare a list of Data Commons resources to include in the references section of the publication.  She accesses the Data Commons user interface for querying the Distributed Ledger.  The user interface allows her to specify her search criteria which include her system UID, the start date and end date of the time window, and the GUID for the resource she’s interested in.  The process returns a block of data containing an accounting of each all logged activity for the specified user during the specified time window, related to the specified resource.  The data returned contains all relevant details from the ledger but may not contain certain data elements that are used by the System for its internal processing.  
 
-Timing: Post-pilot
+**Timing:** Post-pilot  
 
-Facilitate Security Audit
-Sarah, who represents a Governance Authority (the Authority), is performing a security audit on a resource in the Data Commons.  She accesses the Data Commons user interface for querying the audit trail.  The user interface allows her to specify her search criteria, potentially including an assertion that her query is being made with elevated permissions, for system security purposes.  Her search criteria include the GUID of resource, as well as the start date and end date of the time window of interest.  The data returned contains all relevant details from the ledger including the UIDs of the users who performed each activity and any updating entries to the activity records in the audit trail that contain risk assessment scores for particular activities.  The data returned may not contain certain data elements that are used by the system for its internal processing.
+#### UC-34 Facilitate Security Audit
+Sarah, who represents a Governance Authority (the Authority), is performing a security audit on a resource in the Data Commons.  She accesses the Data Commons user interface for querying the audit trail.  The user interface allows her to specify her search criteria, potentially including an assertion that her query is being made with elevated permissions, for system security purposes.  Her search criteria include the GUID of resource, as well as the start date and end date of the time window of interest.  The data returned contains all relevant details from the ledger including the UIDs of the users who performed each activity and any updating entries to the activity records in the audit trail that contain risk assessment scores for particular activities.  The data returned may not contain certain data elements that are used by the system for its internal processing.  
 
-Timing: Post-pilot
+**Timing:** Post-pilot  
 
-Facilitate Audit of Resource Use
-Sarah, who represents a Governance Authority, is performing an audit on a resource in the Data Commons to determine equitable use/attribution.  She accesses the Data Commons user interface for querying the audit trail.  The user interface allows her to specify her search criteria, potentially including an assertion that her query is being made with elevated permissions, for System equity analysis purposes.  Her search criteria include the GUID of the resource, as well as the start date and end date of the time window of interest (other search criteria of interest may be determined by the KC1 working group, during the pilot phase).  The data returned contains all relevant details from the audit trail including the UIDs of the users who performed each activity and any additional data elements, or references to linked resources, that are deemed relevant to an analysis of equity of use/attribution.  The data returned may not contain certain data elements that are used by the system for its internal processing.
+#### UC-35 Facilitate Audit of Resource Use
+Sarah, who represents a Governance Authority, is performing an audit on a resource in the Data Commons to determine equitable use/attribution.  She accesses the Data Commons user interface for querying the audit trail.  The user interface allows her to specify her search criteria, potentially including an assertion that her query is being made with elevated permissions, for System equity analysis purposes.  Her search criteria include the GUID of the resource, as well as the start date and end date of the time window of interest (other search criteria of interest may be determined by the KC1 working group, during the pilot phase).  The data returned contains all relevant details from the audit trail including the UIDs of the users who performed each activity and any additional data elements, or references to linked resources, that are deemed relevant to an analysis of equity of use/attribution.  The data returned may not contain certain data elements that are used by the system for its internal processing.  
 
-Timing: Post-pilot
+**Timing:** Post-pilot  
 
-View Datasets to which Associated Researchers Have Access 
-As PI, Bruce would like to have access to updated information on what members of his team have access to which datasets.
+#### UC-36 View Datasets to which Associated Researchers Have Access 
+As PI, Bruce would like to have access to updated information on what members of his team have access to which datasets.  
 
-Timing: Post-pilot
+**Timing:** Post-pilot  
 
-Audit Researcher Activities
-As Compliance Officer, Jane would like to be able to easily audit researchers and inspect their workspace so that she can see documentation of their stated research purpose, proof of IRB approval (if required), and determine that their stated research purpose agrees with the work that was actually done.
+#### UC-37 Audit Researcher Activities
+As Compliance Officer, Jane would like to be able to easily audit researchers and inspect their workspace so that she can see documentation of their stated research purpose, proof of IRB approval (if required), and determine that their stated research purpose agrees with the work that was actually done.  
 
-Timing: Post-pilot
+**Timing:** Post-pilot  
 
-Automate Oversight of Data Use
-As a member of the Data Access Committee, Sarah would like the Data Commons System to support computer-assisted data use oversight, meaning that the data use restrictions for each dataset are expressed in machine-readable standard form (i.e., expressed using a standardized ontology), there is a machine-readable standard statement of research purpose accompanying each (human-readable application for access to data), and an algorithm compares the data use restrictions to the researcher’s purpose and lets her know whether the two are compatible and if manual review is required.
+#### UC-38 Automate Oversight of Data Use
+As a member of the Data Access Committee, Sarah would like the Data Commons System to support computer-assisted data use oversight, meaning that the data use restrictions for each dataset are expressed in machine-readable standard form (i.e., expressed using a standardized ontology), there is a machine-readable standard statement of research purpose accompanying each (human-readable application for access to data), and an algorithm compares the data use restrictions to the researcher’s purpose and lets her know whether the two are compatible and if manual review is required.  
 
-Timing: Post-pilot
-Interoperability
+**Timing:** Post-pilot  
 
-Facilitate Cross-Stack Data Access
-Maria authenticates to one full stack and would like to access a dataset on a second full stack. The second full stack consults a common authorization service to determine Maria's access entitlements and allows or denies access to the file or service as appropriate.
+### Interoperability
 
-Timing: Post-pilot
+#### UC-39 Facilitate Cross-Stack Data Access
+Maria authenticates to one full stack and would like to access a dataset on a second full stack. The second full stack consults a common authorization service to determine Maria's access entitlements and allows or denies access to the file or service as appropriate.  
 
-Integrate Data Across Stacks
+**Timing:** Post-pilot  
+
+#### UC-40 Integrate Data Across Stacks
 Maria would like to access data stored on one full stack through the data grid on a second full stack. To access these data, she uses the DOS API. The first full stack’s KAS uses an opaque identity token which allows retrieval of a token from the second full stack. The first full stack’s data grid consults KAS using identity token to retrieve second full stack’s access token. The first full stack. allows or declines data access based on the second full stack’s policies.
 
-Timing: Post-pilot
+**Timing:** Post-pilot  
 
-Support Interoperability of APIs
+#### UC-41 Support Interoperability of APIs
 In the course of using the Data Commons System, Maria requires the use of multiple APIs across different service providers. The application (web site, desktop program, etc.) should use generic (third-party) code to obtain the authorization tokens necessary to use REST APIs provided by multiple service providers. The application must use authorized REST APIs from at least two independent (unaffiliated) service providers. Multiple REST APIs secured by a service provider may be used, in addition to the minimum two. Both service providers should provide OAuth2-based authorization for their APIs. The application’s registration process with respect to the service providers must be documented. The application must use the same standard (generic, third-party) OAuth2 code when gaining access to each API. The application must display the end-user identity information that was returned from each service provider. The application must display the results of accessing the REST API from each service provider. The application should perform some integrated operation between the REST APIs, such as retrieving data from one and computing on it via another. 
 
-Timing: Post-pilot
+**Timing:** Post-pilot  
 
-Mirror Authorization Across All Commons Tools
-Jennifer would like to apply for access to data and, if she is granted permission to use it, have this authorization mirrored across all Commons tools without having to re-apply for access.
+#### UC-42 Mirror Authorization Across All Commons Tools
+Jennifer would like to apply for access to data and, if she is granted permission to use it, have this authorization mirrored across all Commons tools without having to re-apply for access.  
 
-Timing: Post-pilot
+**Timing:** Post-pilot  
 
-Identify Datasets
-Maria would like to be able to state her research purpose using a standard format that ideally will not require/minimize typing free text, and have the system automatically identify all datasets whose data use restrictions are consistent with her research purpose.
+#### UC-43 Identify Datasets
+Maria would like to be able to state her research purpose using a standard format that ideally will not require/minimize typing free text, and have the system automatically identify all datasets whose data use restrictions are consistent with her research purpose.  
 
-Timing: Post-pilot
+**Timing:** Post-pilot  
 
 
 
