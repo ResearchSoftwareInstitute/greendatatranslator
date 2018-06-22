@@ -10,7 +10,10 @@
 **DCPPC-RFC-Status :** Pending  
 **URL Link to GitHub :**   
 **URL Link to this Document :** https://docs.google.com/document/d/1Eizi5W7oV45gmQ-QO3AqXwZOPQdhWGDPX_qecroR3xI/edit  
-  
+
+-----------
+-----------
+
 # NIH Data Commons
 
 # KC6 Security, Ethics, and Privacy Use Cases  
@@ -87,6 +90,7 @@ UC-41.	Support Interoperability of APIs
 UC-42.	Mirror Authorization Across All Commons Tools	  
 UC-43.	Identify Datasets	
 
+-----------
 
 ### Introduction
 
