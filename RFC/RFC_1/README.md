@@ -207,56 +207,57 @@ As PI, Bruce would like the Data Commons System to that ensure that members of h
 
 **Timing:** Pilot  
 
-Prevent Unauthorized Data Use
-As PI, Bruce would like the Data Commons System to ensure that it is not possible to unintentionally violate data use restrictions when his team are using Commons Services.  For example, he would like to ensure that none of his team members ever put “cancer only” and “diabetes only” datasets in the same workspace and do a joint analysis on them to study cancer.
+#### UC-21 Prevent Unauthorized Data Use
+As PI, Bruce would like the Data Commons System to ensure that it is not possible to unintentionally violate data use restrictions when his team are using Commons Services.  For example, he would like to ensure that none of his team members ever put “cancer only” and “diabetes only” datasets in the same workspace and do a joint analysis on them to study cancer.  
 
-Timing: Post-pilot
+**Timing:** Post-pilot  
 
-Provision Compliant Computing Workspace
-Maria authenticates to a full stack and requests access to a dataset and a workspace to conduct an analysis. The system must ensure that the computing environment provided to the Maria meets all regulatory, security, and privacy requirements of the dataset. For example, if a given dataset requires a FISMA moderate environment, then this environment should be the instantiated be the means through which the dataset is accessed.
+#### UC-22 Provision Compliant Computing Workspace
+Maria authenticates to a full stack and requests access to a dataset and a workspace to conduct an analysis. The system must ensure that the computing environment provided to the Maria meets all regulatory, security, and privacy requirements of the dataset. For example, if a given dataset requires a FISMA moderate environment, then this environment should be the instantiated be the means through which the dataset is accessed.  
 
-Timing: Post-pilot
+**Timing:** Post-pilot  
 
-Apply Institutional Signature to All Relevant Datasets
-Once approved for a dataset from an institution, Maria would like to not have to get re-approved by the signing official at her Institution for each dataset she applies for access to.
+#### UC-23 Apply Institutional Signature to All Relevant Datasets
+Once approved for a dataset from an institution, Maria would like to not have to get re-approved by the signing official at her Institution for each dataset she applies for access to.  
 
-Timing: Post-pilot
+**Timing:** Post-pilot  
 
-Preauthorize Access to Data Sets
-As Signing Official, Marion would like to be able to pre-authorize researchers at her institution to access Commons datasets, rather than having to re-sign for each request to access data.
+#### UC-24 Preauthorize Access to Data Sets
+As Signing Official, Marion would like to be able to pre-authorize researchers at her institution to access Commons datasets, rather than having to re-sign for each request to access data.  
 
-Timing: Post-pilot
-Auditing and Logging
+**Timing:** Post-pilot  
 
-Log Unsuccessful Authentication Attempts
-Alice, a user of the NIH Data Commons Pilot Phase Consortium (DCPPC) system (the “System”), logs in to the System using the credentials she previously applied and approved from an authentication provider (the “Authenticator”), which is tightly integrated with the System. She forgets her password, so only successfully logs in at the second attempt. The Authenticator collects details about these log-in activities, whether successful or not, and logs them in an audit trail.
+### Auditing and Logging
 
-Timing: Pilot
+#### UC-25 Log Unsuccessful Authentication Attempts
+Alice, a user of the NIH Data Commons Pilot Phase Consortium (DCPPC) system (the “System”), logs in to the System using the credentials she previously applied and approved from an authentication provider (the “Authenticator”), which is tightly integrated with the System. She forgets her password, so only successfully logs in at the second attempt. The Authenticator collects details about these log-in activities, whether successful or not, and logs them in an audit trail.  
 
-Log Dataset Access Requests
-After logging in, Alice can see the datasets and resources that are available in the System.  Access to these resources are controlled by an authorization provider (the “Authorizer”). Alice chooses a dataset and submits an access request.  The Authorizer collects details about her request and logs the data access request. 
+**Timing:** Pilot  
 
-Timing: Pilot
+#### UC-26 Log Dataset Access Requests
+After logging in, Alice can see the datasets and resources that are available in the System.  Access to these resources are controlled by an authorization provider (the “Authorizer”). Alice chooses a dataset and submits an access request.  The Authorizer collects details about her request and logs the data access request.  
 
-Log Data Analysis Steps
+**Timing:** Pilot  
+
+#### UC-27 Log Data Analysis Steps
 Alice requests to perform a specific analysis on a specific dataset using a workflow that is managed by the System. Access is granted by the authorizer, and the request details are logged.  The analysis is conducted using a third-party DCPPC component and the steps in the analysis are logged. 
 
-Timing: Pilot
+**Timing:** Pilot
 
-Conduct Risk Assessment and Log the Result
-Alice performs certain type of data analysis (e.g., count query) that has been flagged within the System as requiring a risk assessment to be performed for every access request.  The system performs the necessary risk evaluation/assessment and logs the result.
+#### UC-28 Conduct Risk Assessment and Log the Result
+Alice performs certain type of data analysis (e.g., count query) that has been flagged within the System as requiring a risk assessment to be performed for every access request.  The system performs the necessary risk evaluation/assessment and logs the result.  
 
-Timing: Post-pilot
+**Timing:** Post-pilot  
 
-View Data Access Summary
-As a participant in a study, Jennifer would like to be able to see a summary of how many users and/or analysis projects have utilized data from the study in which she is a participant. Ideally, she could do this from a publicly-accessible view, i.e. without having to log into the Commons or otherwise verify/assert her identity as a participant in a given study (which would have the danger of exposing her identity, in addition to being very difficult to assert).
+#### UC-29 View Data Access Summary
+As a participant in a study, Jennifer would like to be able to see a summary of how many users and/or analysis projects have utilized data from the study in which she is a participant. Ideally, she could do this from a publicly-accessible view, i.e. without having to log into the Commons or otherwise verify/assert her identity as a participant in a given study (which would have the danger of exposing her identity, in addition to being very difficult to assert).  
 
-Timing: Post-pilot
+**Timing:** Post-pilot  
 
-View Data Access Details
-As a study PI, Claire would like to be able to see information about the users who have been granted access to her study’s data in the Commons. If possible, this information should include the user name and institutional affiliation. She should also be able to see information about frequency and volume of analyses run on her study’s data in the Commons.
+#### UC-30 View Data Access Details
+As a study PI, Claire would like to be able to see information about the users who have been granted access to her study’s data in the Commons. If possible, this information should include the user name and institutional affiliation. She should also be able to see information about frequency and volume of analyses run on her study’s data in the Commons.  
 
-Timing: Post-pilot
+**Timing:** Post-pilot  
 
 View Data Commons Project Activity Log
 Alice is preparing a periodic report of activity on a project.  She has performed a significant portion of work for the project on the NIH Data Commons.  She accesses the Data Commons user interface for querying the project activity log.  The user interface allows her to specify her search criteria which include her system UID and the start date and end date of the time window she’s interested in. The data returned contains all relevant of the activity on the project but may not contain certain data elements that are used by the system for its internal processing.
