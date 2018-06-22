@@ -82,7 +82,7 @@ DCPPC-RFC-#  where # is an assigned sequential number
 
 
 ## DCPPC-RFC-Types
-#### Design Princple
+#### Design Principle
 A  **Design Principle** DCPPC-RFC describes a new feature or implementation for the NIH Data Commons. It may also describe an interoperability design principle that will be supported across the full stacks. Candidate specification must be implemented and tested for correct operation and interoperability by multiple independent parties and utilized in increasingly demanding environments, before it can be adopted as an DCPPC Design Principle. Candidate specifications should include a description of any external design principles and/or standards that were considered, used, adapted, or rejected.
 
 #### Process
