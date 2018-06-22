@@ -55,14 +55,14 @@ Below are the DCPPC-RFC instructions and guidelines.  Steps 1 and 2 are for the 
   * URL Link to GitHub : (DCPPC-RFC-Governance will assign a link of where RFC documents are stored per Step 8)
   * URL Link to RFC Text (URL of DCPPC-RFC text for a given RFC)
 
-4. Email  the DCPPC-RFC text to DCPPC-RFC-Governance at RFCGovernance@dcppc.groups.io {Owen, Titus, Stan}
-  a. Within 2 business days, they will either approve and post to {leads@dcppc.groups.io, nih-dcppc general slack channel} or email back Point of Contact requesting refinement or clarification.
+4. Email the DCPPC-RFC text to DCPPC-RFC-Governance at RFCGovernance@dcppc.groups.io {Owen, Titus, Stan}.   
+  a. Within 2 business days, they will either approve and post to {leads@dcppc.groups.io, nih-dcppc general slack channel} or email back Point of Contact requesting refinement or clarification.  
   b. If posted to {leads@dcppc.groups.io, nih-dcppc general slack channel}, a unique DCPPC-RFC tag will be assigned based on the pattern: 
-DCPPC-RFC-#  where # is an assigned sequential number 
+DCPPC-RFC-#  where # is an assigned sequential number  
 
 5. Once an approved DCPPC-RFC-# is posted to {leads@dcppc.groups.io, nih-dcppc general slack channel}, the NIH Data Commons community will be proactively encouraged to comment on it during the requested posting period.
-  a. DCPPC project management staff will broadly announce the DCPPC RFC on the start date, halfway through the suggested duration, the day prior, and on the RFC end date.
-  b. Cross-posting by any NIH DCPPC community members is encouraged.
+  a. DCPPC project management staff will broadly announce the DCPPC RFC on the start date, halfway through the suggested duration, the day prior, and on the RFC end date.  
+  b. Cross-posting by any NIH DCPPC community members is encouraged.  
 
 6. Upon conclusion of the DCPPC-RFC-# posting period, the Submitting Individual or Group will have ten business days to prepare a summary to address comments provided in the DCPPC-RFC-#. In the summary, agreement and disagreement should be clearly articulated, and proposed decisions to be made, or not made, are clearly articulated. If there are disagreements with the RFC, those disagreements should be clearly articulated in the summary by the authors of the RFC, to the satisfaction of the disagreeing parties (that is, in the summary the articulation of the disagreement is to be to the satisfaction of the disagreeing party, not that the RFC itself is proposed to the satisfaction of all parties).
 
