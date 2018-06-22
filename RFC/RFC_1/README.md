@@ -99,6 +99,7 @@ Each use case is described in terms of a user story. The use cases incorporate t
   * Jennifer – study participant;  
   * Joe – data provider;  
   * Sarah – governance.  
+
 The use cases that follow are designed to inform technical and policy requirements and, as such, do not address implementation details. Each full stack team will determine how the finalized use cases should be implemented.  
 
 ### Authentication and Identity Management
@@ -108,51 +109,51 @@ Maria provides proof of identity​ to the authentication authority. The identit
 
 **Timing:** Pilot  
 
-#### Authenticate Using Single Sign-on 
+#### UC-2 Authenticate Using Single Sign-on 
 Maria authenticates to one of the Full Stacks using her credentials. She should be required to authenticate only once within a single computing session. Once she has authenticated, she should be able to access (assuming they meet the necessary authorization criteria) resources across all data commons stacks.  
 
 **Timing:** Pilot  
 
 
-Authenticate User with Trusted Identify Provider
-Maria would like to authenticate to one of the full stacks. When she authenticates, the authentication application should review the identity information returned and determine whether or not it satisfies a specific set of criteria. If it doesn’t, the user must be guided through the process of satisfying the criteria through further authentication actions. The criteria for acceptable identification ensures that the user must have authenticated his or her identity using one of a set of trusted identity providers and that the authentication must have occurred not more than X seconds/minutes/hours ago.
+#### UC-3 Authenticate User with Trusted Identify Provider
+Maria would like to authenticate to one of the full stacks. When she authenticates, the authentication application should review the identity information returned and determine whether or not it satisfies a specific set of criteria. If it doesn’t, the user must be guided through the process of satisfying the criteria through further authentication actions. The criteria for acceptable identification ensures that the user must have authenticated his or her identity using one of a set of trusted identity providers and that the authentication must have occurred not more than X seconds/minutes/hours ago.  
 
-Timing: Pilot 
+**Timing:** Pilot 
 
-Support Multi-level Authentication
-Maria initially logs in to a full stack using single-factor authentication. When Maria tries to access a dataset, the system determines that additional authentication requirements must be met, such as two-factor authentication. In this case, the system must guide Maria through the process of meeting these additional requirements.
+#### UC-4 Support Multi-level Authentication
+Maria initially logs in to a full stack using single-factor authentication. When Maria tries to access a dataset, the system determines that additional authentication requirements must be met, such as two-factor authentication. In this case, the system must guide Maria through the process of meeting these additional requirements.  
 
-Timing: Post-pilot
+**Timing:** Post-pilot  
 
-Establish Identity Authority
-Alice, as one of the proprietors of the full stack selects a legally and technologically appropriate entity to manage user identities. The identity authority implements an authentication protocol and technology stack to include: encryption protocols and requirements, a secure, well documented, and a reliable web API. The identity authority implements and publishes credential criteria and protocols (two factor, dongle, etc.).
+#### UC-5 Establish Identity Authority
+Alice, as one of the proprietors of the full stack selects a legally and technologically appropriate entity to manage user identities. The identity authority implements an authentication protocol and technology stack to include: encryption protocols and requirements, a secure, well documented, and a reliable web API. The identity authority implements and publishes credential criteria and protocols (two factor, dongle, etc.).  
 
-Timing: Pilot
+**Timing:** Pilot  
 
-Support a Range of Digital Identities
-As a data commons user, Maria would like to be able to authenticate using eRA Commons, Google Identity, AWS identity or her Institutional Identity.
+#### UC-6 Support a Range of Digital Identities
+As a data commons user, Maria would like to be able to authenticate using eRA Commons, Google Identity, AWS identity or her Institutional Identity.  
 
-Timing: Pilot
+**Timing:** Pilot  
 
-Authenticate Prior to Deployment of Computational Workspace
-Maria authenticates through a full stack’s web portal, launches a Jupyter notebook in a workspace for computation, and connects to a data analytic service (e.g., Spark). The workspace for computation transmits Maria’s token in the request to the data analytic service. The data analytic service invokes KAS to validate or reject Maria’s authentication token. If authenticated, virtual infrastructure is deployed and configured to use authentication token provided for Maria hence having access to other resources to which Maria has access to such as data grid. A billing infrastructure audits Maria's resource consumption.
+#### UC-7 Authenticate Prior to Deployment of Computational Workspace
+Maria authenticates through a full stack’s web portal, launches a Jupyter notebook in a workspace for computation, and connects to a data analytic service (e.g., Spark). The workspace for computation transmits Maria’s token in the request to the data analytic service. The data analytic service invokes KAS to validate or reject Maria’s authentication token. If authenticated, virtual infrastructure is deployed and configured to use authentication token provided for Maria hence having access to other resources to which Maria has access to such as data grid. A billing infrastructure audits Maria's resource consumption.  
 
-Timing: Pilot
+**Timing:** Pilot  
 
-Authenticate User to FISMA-Compliant Workspace
-Having authenticated to a full stack, Maria requests a FISMA-compliant VM in the cloud for a workspace for working with sensitive data. The web portal transacts multi-factor authentication to instantiate a FISMA-moderate workspace. Embedded technical security policies (i.e., Data Tags) are enacted as first-class citizens within metadata to support the data-driven security controls.  An audit trail commences to track when data comes in or out, who’s accessing data, when they accessed it, and when it moves, and who moves it. Automatic generation of event logs based on FISMA controls are made available.
+#### UC-8 Authenticate User to FISMA-Compliant Workspace
+Having authenticated to a full stack, Maria requests a FISMA-compliant VM in the cloud for a workspace for working with sensitive data. The web portal transacts multi-factor authentication to instantiate a FISMA-moderate workspace. Embedded technical security policies (i.e., Data Tags) are enacted as first-class citizens within metadata to support the data-driven security controls.  An audit trail commences to track when data comes in or out, who’s accessing data, when they accessed it, and when it moves, and who moves it. Automatic generation of event logs based on FISMA controls are made available.  
 
-Timing: Post-pilot
+**Timing:** Post-pilot  
 
-Link Identities to Signify Institutional Relationships
-As PI, Bruce would like to easily specify the members of his team and their electronic identities, and have these identities linked to his own identity in a manner that signifies the PI-Researcher relationship.
+#### UC-9 Link Identities to Signify Institutional Relationships
+As PI, Bruce would like to easily specify the members of his team and their electronic identities, and have these identities linked to his own identity in a manner that signifies the PI-Researcher relationship.  
 
-Timing: Post-pilot
+**Timing:** Post-pilot  
 
-Authenticate Through a Full Stack’s Web Portal
-Maria attempts to directly access content on the full stack’s web portal requiring authentication. If Maria is denied access, she is notified of the result of the authentication attempt but not the reasons.
+#### UC-10 Authenticate Through a Full Stack’s Web Portal
+Maria attempts to directly access content on the full stack’s web portal requiring authentication. If Maria is denied access, she is notified of the result of the authentication attempt but not the reasons.  
 
-Timing: Pilot
+**Timing:** Pilot  
 
 Validate Identity
 As Compliance Officer, Jane would like the Data Commons System to feature “identity-proofing” so that a researcher’s physical identity is linked to their electronic identity, allowing her to identify and remediate researchers that break guidelines.
