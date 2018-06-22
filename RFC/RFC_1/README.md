@@ -16,51 +16,53 @@
 # KC6 Security, Ethics, and Privacy Use Cases
 
 Prepared by the KC6 Use Cases Working Group:
-*Becky Boyles
-Moran Cabili
-Erin Friday
-Ray Idaszak
-Juergen Klenk
-Cathy Laurie
-Alison Leaf
-Jessica Lyons
-Sarah Nelson
-Saiju Pyarajan
-Anurag Sethi
-Kevin Wilson*
+*Becky Boyles*  
+*Moran Cabili*  
+*Erin Friday*  
+*Ray Idaszak*  
+*Juergen Klenk*  
+*Cathy Laurie*  
+*Alison Leaf*  
+*Jessica Lyons*  
+*Sarah Nelson*  
+*Saiju Pyarajan*  
+*Anurag Sethi*  
+*Kevin Wilson*  
 
 
-Version 1.0
-16 June 2018
+Version 1.0  
+16 June 2018  
 
-Table of Contents
-**Introduction**	4
-Authentication and Identity Management	4
-UC-1.	Provision of User Identities in a Full Stack System	4
-UC-2.	Authenticate Using Single Sign-on	4
-UC-3.	Authenticate User with Trusted Identify Provider	5
-UC-4.	Support Multi-level Authentication	5
-UC-5.	Establish Identity Authority	5
-UC-6.	Support a Range of Digital Identities	5
-UC-7.	Authenticate Prior to Deployment of Computational Workspace	5
-UC-8.	Authenticate User to FISMA-Compliant Workspace	6
-UC-9.	Link Identities to Signify Institutional Relationships	6
-UC-10.	Authenticate Through a Full Stack’s Web Portal	6
-UC-11.	Validate Identity	6
-UC-12.	Support Delegation of Signing Authority	6
-Authorization and Data Access	6
-UC-13.	Authorize Data Access According to Dataset Access Requirements	7
-UC-14.	Establish an Authorization Registry	7
-UC-15.	Authorize Data Access According to Different Levels	7
-UC-16.	Access Data Based on Existing DAR	7
-UC-17.	Facilitate Access to User-Submitted Data	7
-UC-18.	Verify Access Permissions when Executing Workflows	8
-UC-19.	Request and Obtain Data Access	8
-UC-20.	Prevent Unauthorized Data Sharing	8
-UC-21.	Prevent Unauthorized Data Use	8
-UC-22.	Provision Compliant Computing Workspace	8
-UC-23.	Apply Institutional Signature to All Relevant Datasets	8
-UC-24.	Preauthorize Access to Data Sets	9
+Table of Contents  
+**Introduction**	4  
+**Authentication and Identity Management**	4  
+UC-1.	Provision of User Identities in a Full Stack System	4  
+UC-2.	Authenticate Using Single Sign-on	4  
+UC-3.	Authenticate User with Trusted Identify Provider	5  
+UC-4.	Support Multi-level Authentication	5  
+UC-5.	Establish Identity Authority	5  
+UC-6.	Support a Range of Digital Identities	5  
+UC-7.	Authenticate Prior to Deployment of Computational Workspace	5  
+UC-8.	Authenticate User to FISMA-Compliant Workspace	6  
+UC-9.	Link Identities to Signify Institutional Relationships	6  
+UC-10.	Authenticate Through a Full Stack’s Web Portal	6  
+UC-11.	Validate Identity	6  
+UC-12.	Support Delegation of Signing Authority	6  
+
+Authorization and Data Access	6  
+UC-13.	Authorize Data Access According to Dataset Access Requirements	7  
+UC-14.	Establish an Authorization Registry	7  
+UC-15.	Authorize Data Access According to Different Levels	7  
+UC-16.	Access Data Based on Existing DAR	7  
+UC-17.	Facilitate Access to User-Submitted Data	7  
+UC-18.	Verify Access Permissions when Executing Workflows	8  
+UC-19.	Request and Obtain Data Access	8  
+UC-20.	Prevent Unauthorized Data Sharing	8  
+UC-21.	Prevent Unauthorized Data Use	8  
+UC-22.	Provision Compliant Computing Workspace	8  
+UC-23.	Apply Institutional Signature to All Relevant Datasets	8  
+UC-24.	Preauthorize Access to Data Sets	9  
+
 Auditing and Logging	9
 UC-25.	Log Unsuccessful Authentication Attempts	9
 UC-26.	Log Dataset Access Requests	9
