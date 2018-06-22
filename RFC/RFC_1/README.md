@@ -34,57 +34,57 @@ Version 1.0
 16 June 2018  
 
 ## Table of Contents  
-### Introduction	4  
-[Authentication and Identity Management](#authentication-and-Identity-Management)  
-UC-1.	Provision of User Identities in a Full Stack System	4  
-UC-2.	Authenticate Using Single Sign-on	4  
-UC-3.	Authenticate User with Trusted Identify Provider	5  
-UC-4.	Support Multi-level Authentication	5  
-UC-5.	Establish Identity Authority	5  
-UC-6.	Support a Range of Digital Identities	5  
-UC-7.	Authenticate Prior to Deployment of Computational Workspace	5  
-UC-8.	Authenticate User to FISMA-Compliant Workspace	6  
-UC-9.	Link Identities to Signify Institutional Relationships	6  
-UC-10.	Authenticate Through a Full Stack’s Web Portal	6  
-UC-11.	Validate Identity	6  
-UC-12.	Support Delegation of Signing Authority	6  
+### Introduction	
+### Authentication and Identity Management  
+UC-1.	Provision of User Identities in a Full Stack System	  
+UC-2.	Authenticate Using Single Sign-on	  
+UC-3.	Authenticate User with Trusted Identify Provider	  
+UC-4.	Support Multi-level Authentication	  
+UC-5.	Establish Identity Authority	  
+UC-6.	Support a Range of Digital Identities	  
+UC-7.	Authenticate Prior to Deployment of Computational Workspace	  
+UC-8.	Authenticate User to FISMA-Compliant Workspace	  
+UC-9.	Link Identities to Signify Institutional Relationships	  
+UC-10.	Authenticate Through a Full Stack’s Web Portal	  
+UC-11.	Validate Identity	  
+UC-12.	Support Delegation of Signing Authority	  
 
-### Authorization and Data Access	6  
-UC-13.	Authorize Data Access According to Dataset Access Requirements	7  
-UC-14.	Establish an Authorization Registry	7  
-UC-15.	Authorize Data Access According to Different Levels	7  
-UC-16.	Access Data Based on Existing DAR	7  
-UC-17.	Facilitate Access to User-Submitted Data	7  
-UC-18.	Verify Access Permissions when Executing Workflows	8  
-UC-19.	Request and Obtain Data Access	8  
-UC-20.	Prevent Unauthorized Data Sharing	8  
-UC-21.	Prevent Unauthorized Data Use	8  
-UC-22.	Provision Compliant Computing Workspace	8  
-UC-23.	Apply Institutional Signature to All Relevant Datasets	8  
-UC-24.	Preauthorize Access to Data Sets	9  
+### Authorization and Data Access	  
+UC-13.	Authorize Data Access According to Dataset Access Requirements	  
+UC-14.	Establish an Authorization Registry	  
+UC-15.	Authorize Data Access According to Different Levels	  
+UC-16.	Access Data Based on Existing DAR	  
+UC-17.	Facilitate Access to User-Submitted Data	  
+UC-18.	Verify Access Permissions when Executing Workflows	  
+UC-19.	Request and Obtain Data Access	  
+UC-20.	Prevent Unauthorized Data Sharing	  
+UC-21.	Prevent Unauthorized Data Use	  
+UC-22.	Provision Compliant Computing Workspace	  
+UC-23.	Apply Institutional Signature to All Relevant Datasets	  
+UC-24.	Preauthorize Access to Data Sets	  
 
-### Auditing and Logging	9  
-UC-25.	Log Unsuccessful Authentication Attempts	9  
-UC-26.	Log Dataset Access Requests	9  
-UC-27.	Log Data Analysis Steps	9  
-UC-28.	Conduct Risk Assessment and Log the Result	9  
-UC-29.	View Data Access Summary	10  
-UC-30.	View Data Access Details	10  
-UC-31.	View Data Commons Project Activity Log	10  
-UC-32.	View Data Access and Attribution Log	10  
-UC-33.	Retrieve List of Resources Accessed	10  
-UC-34.	Facilitate Security Audit	11  
-UC-35.	Facilitate Audit of Resource Use	11  
-UC-36.	View Datasets to which Associated Researchers Have Access	11  
-UC-37.	Audit Researcher Activities	12  
-UC-38.	Automate Oversight of Data Use	12  
+### Auditing and Logging	 
+UC-25.	Log Unsuccessful Authentication Attempts	 
+UC-26.	Log Dataset Access Requests	  
+UC-27.	Log Data Analysis Steps	  
+UC-28.	Conduct Risk Assessment and Log the Result	  
+UC-29.	View Data Access Summary	  
+UC-30.	View Data Access Details	  
+UC-31.	View Data Commons Project Activity Log	  
+UC-32.	View Data Access and Attribution Log	  
+UC-33.	Retrieve List of Resources Accessed	  
+UC-34.	Facilitate Security Audit	  
+UC-35.	Facilitate Audit of Resource Use	  
+UC-36.	View Datasets to which Associated Researchers Have Access	  
+UC-37.	Audit Researcher Activities	  
+UC-38.	Automate Oversight of Data Use	  
 
-### Interoperability	12  
-UC-39.	Facilitate Cross-Stack Data Access	12  
-UC-40.	Integrate Data Across Stacks	12  
-UC-41.	Support Interoperability of APIs	12  
-UC-42.	Mirror Authorization Across All Commons Tools	13  
-UC-43.	Identify Datasets	13
+### Interoperability	  
+UC-39.	Facilitate Cross-Stack Data Access	  
+UC-40.	Integrate Data Across Stacks	  
+UC-41.	Support Interoperability of APIs	  
+UC-42.	Mirror Authorization Across All Commons Tools	  
+UC-43.	Identify Datasets	
 
 
 ### Introduction
@@ -155,57 +155,57 @@ Maria attempts to directly access content on the full stack’s web portal requi
 
 **Timing:** Pilot  
 
-Validate Identity
-As Compliance Officer, Jane would like the Data Commons System to feature “identity-proofing” so that a researcher’s physical identity is linked to their electronic identity, allowing her to identify and remediate researchers that break guidelines.
+#### UC-11 Validate Identity
+As Compliance Officer, Jane would like the Data Commons System to feature “identity-proofing” so that a researcher’s physical identity is linked to their electronic identity, allowing her to identify and remediate researchers that break guidelines.  
 
-Timing: Post-pilot
+**Timing:** Post-pilot  
 
-Support Delegation of Signing Authority
-As PI, Bruce would like to have the ability to delegate to his admin or project manager the ability to edit (but not submit) his data access requests and manage access to his team members.
+#### UC-12 Support Delegation of Signing Authority
+As PI, Bruce would like to have the ability to delegate to his admin or project manager the ability to edit (but not submit) his data access requests and manage access to his team members.  
 
-Timing: Post-pilot
-Authorization and Data Access
+**Timing:** Post-pilot  
 
-Authorize Data Access According to Dataset Access Requirements
-After authenticating, Maria attempts to access a dataset. Regardless of which service authenticates Maria, the system should automatically determine whether she meets the criteria to gain access to the dataset. The system must ensure that Maria meets all necessary conditions. For example, if formal IRB approval is required then there must be a mechanism for the service to verify that this approval has been obtained. If Maria has appropriate permissions she should be afforded access to the dataset. If she does not have appropriate permissions, the system should deny her access to the dataset.
+### Authorization and Data Access
 
-Timing: Post-pilot
+#### UC-13 Authorize Data Access According to Dataset Access Requirements
+After authenticating, Maria attempts to access a dataset. Regardless of which service authenticates Maria, the system should automatically determine whether she meets the criteria to gain access to the dataset. The system must ensure that Maria meets all necessary conditions. For example, if formal IRB approval is required then there must be a mechanism for the service to verify that this approval has been obtained. If Maria has appropriate permissions she should be afforded access to the dataset. If she does not have appropriate permissions, the system should deny her access to the dataset.  
 
-Establish an Authorization Registry
-Alice, a proprietor of a full stack selects a legally and technologically appropriate entity to manage data access entitlements. The authorization registry develops and publishes a taxonomy of entitlements representing levels of capability.
+**Timing:** Post-pilot  
 
-Timing: Post-pilot
+#### UC-14 Establish an Authorization Registry
+Alice, a proprietor of a full stack selects a legally and technologically appropriate entity to manage data access entitlements. The authorization registry develops and publishes a taxonomy of entitlements representing levels of capability.  
 
-Authorize Data Access According to Different Levels
-Maria enters agreements and contracts entitling her to access data sets at various levels. The authorization registry records Maria's entitlements in an authorization data store. The authorization registry expresses facts about all of Maria's agreements and contracts in the taxonomy's schema. The authorization registry is used in the future to determine which datasets Maria has access to and what permissions she has.
+**Timing:** Post-pilot  
 
-Timing: Post-pilot
+#### UC-15 Authorize Data Access According to Different Levels
+Maria enters agreements and contracts entitling her to access data sets at various levels. The authorization registry records Maria's entitlements in an authorization data store. The authorization registry expresses facts about all of Maria's agreements and contracts in the taxonomy's schema. The authorization registry is used in the future to determine which datasets Maria has access to and what permissions she has.  
 
-Access Data Based on Existing DAR
-As a study PI, Claire would like to access data in the Commons for which she already has an approved dbGaP DAR, without having to re-apply for access.
+**Timing:** Post-pilot  
 
-Timing: Pilot
+#### UC-16 Access Data Based on Existing DAR
+As a study PI, Claire would like to access data in the Commons for which she already has an approved dbGaP DAR, without having to re-apply for access.  
+
+**Timing:** Pilot  
  
-Facilitate Access to User-Submitted Data
-Maria would like to publish a dataset in the commons. She is required to provide evidence of data sharing agreements in order to publish the data in the commons. If Alice wants to access this dataset, she must “sign” the data sharing agreement in order to access the data.
+#### UC-17 Facilitate Access to User-Submitted Data
+Maria would like to publish a dataset in the commons. She is required to provide evidence of data sharing agreements in order to publish the data in the commons. If Alice wants to access this dataset, she must “sign” the data sharing agreement in order to access the data.  
+**Timing:** Post-pilot  
 
-Timing: Post-pilot
 
+#### UC-18 Verify Access Permissions when Executing Workflows
+Maria makes a successful authentication attempt to the full stack’s portal application and then selects a workspace for her Spark or CWL workflow to execute. Maria's computation attempts to access a file in the data grid (e.g., TOPMed, GTEx, etc.). Access control configuration within the data grid consults Maria's credential to validate her access. The data grid grants or denies access based on access control metadata associated with the valid token.  
 
-Verify Access Permissions when Executing Workflows
-Maria makes a successful authentication attempt to the full stack’s portal application and then selects a workspace for her Spark or CWL workflow to execute. Maria's computation attempts to access a file in the data grid (e.g., TOPMed, GTEx, etc.). Access control configuration within the data grid consults Maria's credential to validate her access. The data grid grants or denies access based on access control metadata associated with the valid token.
+**Timing:** Post-pilot  
 
-Timing: Post-pilot
-
-Request and Obtain Data Access
+#### UC-19 Request and Obtain Data Access
 Maria would like to be able to request data access through the Data Commons System and wait no more than one day between applying for access to a dataset and being granted access to it.
 
-Timing: Post-pilot
+**Timing:** Post-pilot  
 
-Prevent Unauthorized Data Sharing
-As PI, Bruce would like the Data Commons System to that ensure that members of his team are not able to unintentionally redistribute data using Commons services to researchers that are not authorized to see them.
+#### UC-20 Prevent Unauthorized Data Sharing
+As PI, Bruce would like the Data Commons System to that ensure that members of his team are not able to unintentionally redistribute data using Commons services to researchers that are not authorized to see them.  
 
-Timing: Pilot
+**Timing:** Pilot  
 
 Prevent Unauthorized Data Use
 As PI, Bruce would like the Data Commons System to ensure that it is not possible to unintentionally violate data use restrictions when his team are using Commons Services.  For example, he would like to ensure that none of his team members ever put “cancer only” and “diabetes only” datasets in the same workspace and do a joint analysis on them to study cancer.
