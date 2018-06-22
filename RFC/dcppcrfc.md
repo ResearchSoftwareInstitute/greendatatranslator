@@ -144,13 +144,13 @@ Generally, an RFC should be created when:
 6. We are adding dependencies that can affect more than one team.
 
 
-Sources: 
-https://opensource.com/article/17/9/6-lessons-rfcs
-https://en.wikipedia.org/wiki/Internet_Draft
-https://en.wikipedia.org/wiki/Request_for_Comments 
-https://www.python.org/dev/peps/pep-0001/
-https://opensource.com/business/12/6/architecture-participation
-http://aturon.github.io/2018/05/25/listening-part-1/
+Sources:  
+https://opensource.com/article/17/9/6-lessons-rfcs  
+https://en.wikipedia.org/wiki/Internet_Draft  
+https://en.wikipedia.org/wiki/Request_for_Comments  
+https://www.python.org/dev/peps/pep-0001/  
+https://opensource.com/business/12/6/architecture-participation  
+http://aturon.github.io/2018/05/25/listening-part-1/  
 
 
 
