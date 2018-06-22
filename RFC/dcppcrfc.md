@@ -66,12 +66,12 @@ DCPPC-RFC-#  where # is an assigned sequential number
 
 6. Upon conclusion of the DCPPC-RFC-# posting period, the Submitting Individual or Group will have ten business days to prepare a summary to address comments provided in the DCPPC-RFC-#. In the summary, agreement and disagreement should be clearly articulated, and proposed decisions to be made, or not made, are clearly articulated. If there are disagreements with the RFC, those disagreements should be clearly articulated in the summary by the authors of the RFC, to the satisfaction of the disagreeing parties (that is, in the summary the articulation of the disagreement is to be to the satisfaction of the disagreeing party, not that the RFC itself is proposed to the satisfaction of all parties).
 
-7. Upon conclusion of the DCPPC-RFC-# posting period or at their discretion, the DCPPC-RFC-Governance will assign one of the following DCPPC-RFC-Status values concluding the DCPPC-RFC process without further iteration:
-  a. Resolved
-  b. Merged (i.e. with another DCPPC-RFC)
-  c. Postponed
-  d. Unsuccessful
-  e. Withdrawn
+7. Upon conclusion of the DCPPC-RFC-# posting period or at their discretion, the DCPPC-RFC-Governance will assign one of the following DCPPC-RFC-Status values concluding the DCPPC-RFC process without further iteration:  
+   a. Resolved  
+   b. Merged (i.e. with another DCPPC-RFC)  
+   c. Postponed  
+   d. Unsuccessful  
+   e. Withdrawn  
 
 8. All documents from a concluded DCPPC-RFC with all contributor comments will be placed in https://github.com/dcppc/internal/rfcs. 
 
