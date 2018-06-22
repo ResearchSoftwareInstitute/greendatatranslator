@@ -63,54 +63,55 @@ UC-22.	Provision Compliant Computing Workspace	8
 UC-23.	Apply Institutional Signature to All Relevant Datasets	8  
 UC-24.	Preauthorize Access to Data Sets	9  
 
-Auditing and Logging	9
-UC-25.	Log Unsuccessful Authentication Attempts	9
-UC-26.	Log Dataset Access Requests	9
-UC-27.	Log Data Analysis Steps	9
-UC-28.	Conduct Risk Assessment and Log the Result	9
-UC-29.	View Data Access Summary	10
-UC-30.	View Data Access Details	10
-UC-31.	View Data Commons Project Activity Log	10
-UC-32.	View Data Access and Attribution Log	10
-UC-33.	Retrieve List of Resources Accessed	10
-UC-34.	Facilitate Security Audit	11
-UC-35.	Facilitate Audit of Resource Use	11
-UC-36.	View Datasets to which Associated Researchers Have Access	11
-UC-37.	Audit Researcher Activities	12
-UC-38.	Automate Oversight of Data Use	12
-Interoperability	12
-UC-39.	Facilitate Cross-Stack Data Access	12
-UC-40.	Integrate Data Across Stacks	12
-UC-41.	Support Interoperability of APIs	12
-UC-42.	Mirror Authorization Across All Commons Tools	13
+### Auditing and Logging	9  
+UC-25.	Log Unsuccessful Authentication Attempts	9  
+UC-26.	Log Dataset Access Requests	9  
+UC-27.	Log Data Analysis Steps	9  
+UC-28.	Conduct Risk Assessment and Log the Result	9  
+UC-29.	View Data Access Summary	10  
+UC-30.	View Data Access Details	10  
+UC-31.	View Data Commons Project Activity Log	10  
+UC-32.	View Data Access and Attribution Log	10  
+UC-33.	Retrieve List of Resources Accessed	10  
+UC-34.	Facilitate Security Audit	11  
+UC-35.	Facilitate Audit of Resource Use	11  
+UC-36.	View Datasets to which Associated Researchers Have Access	11  
+UC-37.	Audit Researcher Activities	12  
+UC-38.	Automate Oversight of Data Use	12  
+
+### Interoperability	12  
+UC-39.	Facilitate Cross-Stack Data Access	12  
+UC-40.	Integrate Data Across Stacks	12  
+UC-41.	Support Interoperability of APIs	12  
+UC-42.	Mirror Authorization Across All Commons Tools	13  
 UC-43.	Identify Datasets	13
 
-
-
-Introduction
 
-This document contains a series of use cases, which serve to inform the Security, Ethics, and Privacy-related functionality that needs to be incorporated into the NIH Data Commons full stack systems. Each user story identifies a key use case along with a recommendation for whether the functionality should be incorporated into the systems within the 180-day pilot phase of the project or whether it is a longer-term activity. The purpose of this document is to facilitate communication and consensus around Security, Ethics, and Privacy-related functionality and once approved, it will serve as a roadmap for policy and technical implementation.
-Each use case is described in terms of a user story. The use cases incorporate the perspective of a range of data commons stakeholders, with each user representing a specific set of stakeholders. Featured users are:
-Maria – data commons end user;
-Alice – proprietor of a full stack;
-Bruce – principal investigator (PI);
-Jane – compliance officer;
-Claire – study PI;
-Jennifer – study participant;
-Joe – data provider;
-Sarah – governance.
-The use cases that follow are designed to inform technical and policy requirements and, as such, do not address implementation details. Each full stack team will determine how the finalized use cases should be implemented.
-Authentication and Identity Management
+### Introduction
 
-Provision of User Identities in a Full Stack System
-Maria provides proof of identity​ to the authentication authority. The identity authority updates their registry such that the API will verify Maria's identity. The full stack provisions user identities for Maria in their data platform and in their compute platforms.
+This document contains a series of use cases, which serve to inform the Security, Ethics, and Privacy-related functionality that needs to be incorporated into the NIH Data Commons full stack systems. Each user story identifies a key use case along with a recommendation for whether the functionality should be incorporated into the systems within the 180-day pilot phase of the project or whether it is a longer-term activity. The purpose of this document is to facilitate communication and consensus around Security, Ethics, and Privacy-related functionality and once approved, it will serve as a roadmap for policy and technical implementation.  
+Each use case is described in terms of a user story. The use cases incorporate the perspective of a range of data commons stakeholders, with each user representing a specific set of stakeholders. Featured users are:  
+  * Maria – data commons end user;  
+  * Alice – proprietor of a full stack;  
+  * Bruce – principal investigator (PI);  
+  * Jane – compliance officer;  
+  * Claire – study PI;  
+  * Jennifer – study participant;  
+  * Joe – data provider;  
+  * Sarah – governance.  
+The use cases that follow are designed to inform technical and policy requirements and, as such, do not address implementation details. Each full stack team will determine how the finalized use cases should be implemented.  
 
-Timing: Pilot
+### Authentication and Identity Management
 
-Authenticate Using Single Sign-on 
-Maria authenticates to one of the Full Stacks using her credentials. She should be required to authenticate only once within a single computing session. Once she has authenticated, she should be able to access (assuming they meet the necessary authorization criteria) resources across all data commons stacks.
+#### UC-1 Provision of User Identities in a Full Stack System
+Maria provides proof of identity​ to the authentication authority. The identity authority updates their registry such that the API will verify Maria's identity. The full stack provisions user identities for Maria in their data platform and in their compute platforms.  
 
-Timing: Pilot
+**Timing:** Pilot  
+
+#### Authenticate Using Single Sign-on 
+Maria authenticates to one of the Full Stacks using her credentials. She should be required to authenticate only once within a single computing session. Once she has authenticated, she should be able to access (assuming they meet the necessary authorization criteria) resources across all data commons stacks.  
+
+**Timing:** Pilot  
 
 
 Authenticate User with Trusted Identify Provider
