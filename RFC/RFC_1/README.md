@@ -33,9 +33,9 @@ Prepared by the KC6 Use Cases Working Group:
 Version 1.0  
 16 June 2018  
 
-Table of Contents  
-**Introduction**	4  
-**Authentication and Identity Management**	4  
+## Table of Contents  
+### Introduction	4  
+### Authentication and Identity Management	4  
 UC-1.	Provision of User Identities in a Full Stack System	4  
 UC-2.	Authenticate Using Single Sign-on	4  
 UC-3.	Authenticate User with Trusted Identify Provider	5  
@@ -49,7 +49,7 @@ UC-10.	Authenticate Through a Full Stack’s Web Portal	6
 UC-11.	Validate Identity	6  
 UC-12.	Support Delegation of Signing Authority	6  
 
-Authorization and Data Access	6  
+### Authorization and Data Access	6  
 UC-13.	Authorize Data Access According to Dataset Access Requirements	7  
 UC-14.	Establish an Authorization Registry	7  
 UC-15.	Authorize Data Access According to Different Levels	7  
