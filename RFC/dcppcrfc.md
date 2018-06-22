@@ -39,10 +39,10 @@ Below are the DCPPC-RFC instructions and guidelines.  Steps 1 and 2 are for the 
   * DCPPC-RFC-# : (NOTE: Leave blank as this will be assigned by DCPPC-RFC-Governance in Step 4 upon initial submission)
   * DCPPC-RFC-Title : 
   * DCPPC-RFC-Type : (click the type for definition):
-    * Design Principle
-    * Process
-    * Consensus Building
-    * Informational
+    * [Design Principle](#design-principle)
+    * [Process](#process)
+    * [Consensus Building](#consensus-building)
+    * [Informational](#informational)
   * Name of the person who is to be Point of Contact for the RFC : 
   * Email of the person who is to be Point of Contact for the RFC : 
   * Submitting Individual or Group : 
