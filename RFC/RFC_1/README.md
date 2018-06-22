@@ -35,7 +35,7 @@ Version 1.0
 
 ## Table of Contents  
 ### Introduction	4  
-### [Authentication and Identity Management](#authentication-and-identity-management)  
+[Authentication and Identity Management](#authentication-and-Identity-Management)  
 UC-1.	Provision of User Identities in a Full Stack System	4  
 UC-2.	Authenticate Using Single Sign-on	4  
 UC-3.	Authenticate User with Trusted Identify Provider	5  
