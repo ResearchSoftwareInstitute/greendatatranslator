@@ -13,9 +13,10 @@
   
 # NIH Data Commons
 
-# KC6 Security, Ethics, and Privacy Use Cases
+# KC6 Security, Ethics, and Privacy Use Cases  
 
-Prepared by the KC6 Use Cases Working Group:
+Prepared by the KC6 Use Cases Working Group:  
+
 *Becky Boyles*  
 *Moran Cabili*  
 *Erin Friday*  
