@@ -30,7 +30,7 @@ Below are the DCPPC-RFC instructions and guidelines.  Steps 1 and 2 are for the 
 
 ===
 ### DCPPC-DRAFT
-1. Read the background document to the DCPPC-RFC process.  Your individual or group’s DCPPC-DRAFT and eventual DCPPC-RFC should align with the principles and roles therein.
+1. Read the [background document to the DCPPC-RFC process](#background).  Your individual or group’s DCPPC-DRAFT and eventual DCPPC-RFC should align with the principles and roles therein.
 2. Create, iterate, and refine your DCPPC-DRAFT as a work-in-progress document for work you or your group may be positioning to be published as a DCPPC-RFC, when ready, as a Request for Comments (RFC).  Use your DCPPC-DRAFT to iterate on a design principle, process, guideline, or informational topic until it is polished and ready to be proposed to the broader DCPPC community for adoption or dissemination.  The format of the DCPPC-DRAFT text or determining when it is ready to be put forward as a DCPPC-RFC is not prescriptive - you or your group determine that. The proposing individual or group coordinates the DCPPC-DRAFT content, chooses the scope and audience to iterate it with, chooses when to call it finished, and chooses if/when to submit it as a DCPPC-RFC.  The DCPPC-RFC-Governance - described in Step 4 below - is not involved in a DCPPC-DRAFT until or unless it is submitted as a DCPPC-RFC.
 
 ===
