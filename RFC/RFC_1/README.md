@@ -103,7 +103,7 @@ Each use case is described in terms of a user story. The use cases incorporate t
 
 The use cases that follow are designed to inform technical and policy requirements and, as such, do not address implementation details. Each full stack team will determine how the finalized use cases should be implemented.  
 
-===============
+-----------
 
 ### Authentication and Identity Management
 
