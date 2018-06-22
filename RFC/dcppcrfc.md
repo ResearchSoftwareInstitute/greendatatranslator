@@ -15,9 +15,10 @@ The DCPPC-RFC is a publication from the DCPPC community describing a design prin
 
 
 
-|  |Refined, polished?|Content modifiable?|Community-wide?|Require DCPPC RFC Governance to post?|
-|*DCPPC-DRAFT*|No|Yes|Not necessarily|No|
-|*DCPPC-RFC*|Yes|No|Yes|Yes|
+|               |Refined, polished?|Content modifiable?|Community-wide?|Require DCPPC RFC Governance to post?|
+|---------------|------------------|-------------------|---------------|-------------------------------------|
+|**DCPPC-DRAFT**|No                |Yes                |Not necessarily|No                                   |
+|**DCPPC-RFC**  |Yes               |No                 |Yes            |Yes                                  |
 
 
 Below are the DCPPC-RFC instructions and guidelines.  Steps 1 and 2 are for the DCPPC-DRAFT preceding the DCPPC-RFC, and steps 3-8 are for the DCPPC-RFC.
