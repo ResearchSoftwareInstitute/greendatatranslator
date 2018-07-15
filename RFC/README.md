@@ -102,14 +102,14 @@ Below are the DCPPC-RFC instructions and guidelines. Steps 1-3 are for Team-DRAF
 -----------
 
 ## DCPPC-RFC-Types
-#### DRAFT Consensus Building
-A **DRAFT Consensus Building** DCPPC-RFC describes a NIH Data Commons design issue, or provides general guidelines or information to the NIH Data Commons development community, and may propose a new feature. This type of RFC type includes use cases or demonstration of how the design, guideline, or information meets a specific need, and/or which stakeholders' needs have been met. Precursor to DCPPC-RFCs, DRAFT Consensus Building drafts represent a NIH Data Commons community consensus or recommendation, so users and implementers are expected to make a best effort to contribute to the dialogue surrounding the draft.
-
 #### Design Principle
 A  **Design Principle** DCPPC-RFC describes a new feature or implementation for the NIH Data Commons. It may also describe an interoperability design principle that will be supported across the full stacks. Candidate specification must be implemented and tested for correct operation and interoperability by multiple independent parties and utilized in increasingly demanding environments, before it can be adopted as an DCPPC Design Principle. Candidate specifications should include a description of any external design principles and/or standards that were considered, used, adapted, or rejected.
 
 #### Process
 A **Process** DCPPC-RFC describes a process surrounding the NIH Data Commons, or proposes a change to (or an event in) a process. Process DCPPC-RFCs are like Design Principle DCPPC-RFCs but apply to areas other than the NIH Data Commons code itself. They may propose an implementation, but not to NIH Data Commons codebase.  Unlike Informational DCPPC-RFCs, they are more than recommendations, and users are typically not free to ignore them. Examples include procedures, guidelines, and changes to the decision-making process. 
+
+#### Consensus Building
+A **DRAFT Consensus Building** DCPPC-RFC describes a NIH Data Commons design issue, or provides general guidelines or information to the NIH Data Commons development community, and may propose a new feature. This type of RFC type includes use cases or demonstration of how the design, guideline, or information meets a specific need, and/or which stakeholders' needs have been met. Precursor to DCPPC-RFCs, DRAFT Consensus Building drafts represent a NIH Data Commons community consensus or recommendation, so users and implementers are expected to make a best effort to contribute to the dialogue surrounding the draft.
 
 #### Informational
 An Informational DCPPC-RFC describes a NIH Data Commons design issue, or provides general guidelines or information to the NIH Data Commons development community, but does not propose a new feature. Informational DCPPC-RFCs do not necessarily represent a NIH Data Commons community consensus or recommendation, so users and implementers are free to ignore Informational DCPPC-RFCs or follow their advice.
