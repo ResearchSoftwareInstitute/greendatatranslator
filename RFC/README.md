@@ -170,7 +170,7 @@ https://www.python.org/dev/peps/pep-0001/
 https://opensource.com/business/12/6/architecture-participation  
 http://aturon.github.io/2018/05/25/listening-part-1/  
 
-### RFC Governance
+#### RFC Governance
 Titus Brown   
 Owen White  
 Stan Ahalt  
