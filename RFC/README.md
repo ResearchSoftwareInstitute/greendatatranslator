@@ -1,78 +1,103 @@
 # DCPPC-DRAFT  
 ## Proposed DCPPC RFC Implementation Process  
------------
+-----------  
 
-The comments and suggestions in this document are being used to stage an RFC for the DCPPC RFC process itself.  
+The comments and suggestions in this document are being used to stage an RFC for the DCPPC RFC process itself.
 
 ### Preamble
-The (proposed) DCPPC RFC Process is modeled after industry RFC processes and includes two basic steps: a DCPPC-DRAFT and the actual DCPPC-RFC.  We briefly describe when to use each and refer the proposer(s) to the [Sources](#sources) section   for elaboration, additional background, or context.
+The (proposed) DCPPC RFC Process is modeled after industry RFC processes and includes three basic steps: a Google document drafted by and shared with the submitting team/proposer(s) (“Team-DRAFT”), a Google document shared with the DCPPC Consortium for comment and iteration (“DCPPC-DRAFT”), and the final document posted in GitHub for final comment (but not alteration) from the Consortium (“DCPPC-RFC”). We briefly describe when to use each and refer the proposer(s) to the Sources section for elaboration, additional background, or context.  
+
+### Team-DRAFT
+The Team-Draft is a document that a team wishing to develop an RFC should create and share within the team. It should be located in place accessible to the entire proposing team, but does not need to made broadly available to the Consortium. The Team-Draft is a document containing preliminary technical specifications, results of related work, or other technical information. Use a Team-Draft to iterate within the proposing team on a design principle, process, guideline, or informational topic before it is polished and before it may be ready to be proposed to the broader DCPPC community for adoption or dissemination. Drafts are intended to be work-in-progress documents for work that may eventually be published as a Request for Comments (RFC). 
+When the proposing team has reached consensus on the contents of that draft, the team submits the Team-Draft to the DCPPC-RFC-Governance (currently Stan, Owen and Titus).  
 
 ### DCPPC-DRAFT
-The DCPPC-DRAFT is a document containing preliminary technical specifications, results of related work, or other technical information.  Drafts are intended to be work-in-progress documents for work that may eventually be published as a Request for Comments (RFC).  Use a DCPPC-DRAFT to iterate on a design principle, process, guideline, or informational topic before it is polished and before it may be ready to be proposed to the broader DCPPC community for adoption or dissemination.  Not all DCPPC-DRAFTs need to become a DCPPC-RFC, nor is it appropriate to refer to an effort as a “Draft RFC” according to industry RFC convention. Rather, iterate and refine a DCPPC-DRAFT, and if desired, submit it as a DCPPC-RFC when ready.
+After submission, the DCPPC-RFC-Governance creates the DCPPC-DRAFT, which will be promulgated broadly to the Consortium and opened for comment. Using Consortium comments, the proposing team should iterate on the design principle, process, guideline, or informational topic until general consensus is reached. Not all DCPPC-DRAFTs need to become a DCPPC-RFC, nor is it appropriate to refer to an effort as a “Draft RFC” per industry RFC convention. Rather, iterate and refine a DCPPC-DRAFT, and if desired, submit it as a DCPPC-RFC when ready.  
 
 ### DCPPC-RFC
-The DCPPC-RFC is a publication from the DCPPC community describing a design principle, process, guideline, or information applicable to the working of the NIH Data Commons. It is submitted either for peer review for adherence or adoption by the community, or to convey new concepts or information to the community.  It is expected that the DCPPC-DRAFT is used as a precursor by an individual or group to refine and polish a design principle, process, guideline, or informational topic prior to publishing as a DCPPC-RFC.  As a publication, the text in a published DCPPC-RFC will not change once published according to accepted RFC convention.
+The DCPPC-RFC is a publication from the DCPPC community describing a design principle, process, guideline, or information applicable to the working of the NIH Data Commons. It is submitted either for peer review for adherence or adoption by the community or to convey new concepts or information to the community. It is expected that the DCPPC-DRAFT is used as a precursor by a team to refine and polish a design principle, process, guideline, or informational topic and reach general consensus within the Consortium prior to publishing as a DCPPC-RFC. Once published, the text in a DCPPC-RFC will not change per accepted RFC convention.  
 
 
+|               |Refined, polished?|Content modifiable?|Community-wide?|Require DCPPC RFC Governance to post?|Location|
+|---------------|------------------|-------------------|---------------|-------------------------------------|--------|
+|**Team-DRAFT** |No                |Yes                |No             |No                                   |Team Google Folder             |
+|**DCPPC-DRAFT**|Yes               |Yes                |Yes            |Yes                                  |Google Folder                 |
+|**DCPPC-RFC**  |Yes               |No                 |Yes            |Yes                                  |DCPPC GitHub Internal Repo|
 
-|               |Refined, polished?|Content modifiable?|Community-wide?|Require DCPPC RFC Governance to post?|
-|---------------|------------------|-------------------|---------------|-------------------------------------|
-|**DCPPC-DRAFT**|No                |Yes                |Not necessarily|No                                   |
-|**DCPPC-RFC**  |Yes               |No                 |Yes            |Yes                                  |
-
-
-Below are the DCPPC-RFC instructions and guidelines.  Steps 1 and 2 are for the DCPPC-DRAFT preceding the DCPPC-RFC, and steps 3-8 are for the DCPPC-RFC.
+Below are the DCPPC-RFC instructions and guidelines. Steps 1-3 are for Team-DRAFT, Steps 4-10 are for the DCPPC-DRAFT preceding the DCPPC-RFC, and steps 11-16 are for the DCPPC-RFC.
 
 -----------
-
 
 ### DCPPC Request for Comments (RFC) Instructions and Guidelines
 
 ===
-### DCPPC-DRAFT
-1. Read the [background document to the DCPPC-RFC process](#background).  Your individual or group’s DCPPC-DRAFT and eventual DCPPC-RFC should align with the principles and roles therein.
-2. Create, iterate, and refine your DCPPC-DRAFT as a work-in-progress document for work you or your group may be positioning to be published as a DCPPC-RFC, when ready, as a Request for Comments (RFC).  Use your DCPPC-DRAFT to iterate on a design principle, process, guideline, or informational topic until it is polished and ready to be proposed to the broader DCPPC community for adoption or dissemination.  The format of the DCPPC-DRAFT text or determining when it is ready to be put forward as a DCPPC-RFC is not prescriptive - you or your group determine that. The proposing individual or group coordinates the DCPPC-DRAFT content, chooses the scope and audience to iterate it with, chooses when to call it finished, and chooses if/when to submit it as a DCPPC-RFC.  The DCPPC-RFC-Governance - described in Step 4 below - is not involved in a DCPPC-DRAFT until or unless it is submitted as a DCPPC-RFC.
+### Team-DRAFT
+1. Read the [background document to the DCPPC-RFC process](#background). A Team-DRAFT and eventual DCPPC-DRAFT and DCPPC-RFC should align with the principles and roles therein.  
+2. Create, iterate, and refine your Team-DRAFT as a work-in-progress document until the proposing team has reached consensus and is ready to share with the Consortium.  
+3. The format of the Team-DRAFT text or the determination of when it is ready to be put forward as a DCPPC-DRAFT is not prescriptive -- your team determines that. The proposing team coordinates the Team-DRAFT content, chooses the scope and audience to iterate it with, chooses when to call it finished, and chooses if/when to submit it as a DCPPC-DRAFT. The DCPPC-RFC-Governance - described in below - is not involved in a Team-DRAFT until or unless it is submitted as a DCPPC-DRAFT.  
 
-===
-### DCPPC-RFC
-3. Except for the header, the format of the DCPPC-RFC is not prescriptive and should contain content sufficient for the DCPPC-RFC-Type (defined next) and any supporting information or other documents.   The DCPPC-RFC header placed at the beginning of the DCPPC-RFC should contain this information:
-  * DCPPC-RFC-# : (NOTE: Leave blank as this will be assigned by DCPPC-RFC-Governance in Step 4 upon initial submission)
-  * DCPPC-RFC-Title : 
-  * DCPPC-RFC-Type : (click the type for definition):
-    * [DRAFT Consensus Building](#draft-consensus-building)
+### DCPPC-DRAFT
+4. Before submission, add the below header to your document. Except for the header, the format of the DCPPC-DRAFT is not prescriptive and should contain content sufficient for the DCPPC-DRAFT-Type (defined next) and any supporting information or other documents.  
+The header placed at the beginning of the DCPPC-DRAFT should contain this information:
+   * DCPPC-DRAFT-#: (NOTE: Leave blank as this will be assigned by DCPPC-RFC-Governance upon initial submission)   
+   * DCPPC-DRAFT-Title:  
+   * DCPPC-DRAFT-Type: (click the type for definition):  
     * [Design Principle](#design-principle)
     * [Process](#process)
+    * [Consensus Building](#consensus-building)
     * [Informational](#informational)
-  * Name of the person who is to be Point of Contact for the RFC : 
-  * Email of the person who is to be Point of Contact for the RFC : 
-  * Submitting Individual or Group : 
-  * Requested RFC posting start date : 
-  * Requested RFC posting end date : 
-  * Date Emailed for consideration : 
-  * DCPPC-RFC-Status : (DCPPC-RFC-Governance will assign)
-    * Pending
-    * Active and open for comment
-  * URL Link to GitHub : (DCPPC-RFC-Governance will assign a link of where RFC documents are stored per Step 8)
-  * URL Link to RFC Text (URL of DCPPC-RFC text for a given RFC)
+   * Name of the person who is to be Point of Contact for the DCPPC-DRAFT:  
+   * Email of the person who is to be Point of Contact for the DCPPC-DRAFT:  
+   * Submitting Team:  
+   * Requested DCPPC-DRAFT posting start date:  
+   * Date Emailed for consideration:  
+   * DCPPC-DRAFT-Status: (DCPPC-RFC-Governance will assign)  
+     * Pending  
+     * Active and open for comment  
 
-4. Email the DCPPC-RFC text to DCPPC-RFC-Governance at RFCGovernance@dcppc.groups.io {Owen, Titus, Stan}.   
-   a. Within 2 business days, they will either approve and post to {leads@dcppc.groups.io, nih-dcppc general slack channel} or email back Point of Contact requesting refinement or clarification.   
-   b. If posted to {leads@dcppc.groups.io, nih-dcppc general slack channel}, a unique DCPPC-RFC tag will be assigned based on the pattern: DCPPC-RFC-#  where # is an assigned sequential number  
+5. Email the DCPPC-DRAFT text to DCPPC-RFC-Governance at RFCGovernance@dcppc.groups.io.  
+6. After submission to the DCPPC-RFC-Governance, DCPPC-RFC-Governance project management staff will move the document into a new folder in the shared DCPPC folder and promulgate widely, via email at broadcast@dcppc.groups.io, project-managers@dcppc.groups.io, and the NIH weekly email and via nih-dcppc.slack.com on the general channel and project manager channel (“Distribution List”).  
+7. After promulgation to the Consortium, the proposing team should iterate and refine the DCPPC-DRAFT based on Consortium comments. Use the DCPPC-DRAFT to iterate on a design principle, process, guideline, or informational topic until it is polished and ready to be finalized and formally submitted to the Consortium as a DCPPC-RFC.  
+8. During the DCPPC-DRAFT process, the proposing team should regularly review the DCPPC-DRAFT and try to resolve issues to develop consensus within the Consortium. However, before clicking “resolve” on any comments, the proposing team should created a saved version of the document, including comments, and save that version as a pdf in the folder for that DCPPC-DRAFT. This will preserve all comments throughout the process to ensure that all community comments are considered. After those comments are addressed, the proposed team should repeat this process after a significant number of additional comments are made.
+9.  When the proposing team has determined that the Consortium has no additional substantive comments on the DCPPC-DRAFT, the document can be submitted to the DCPPC-RFC-Governance for conversion to a DCPPC-RFC at the discretion of the proposing team.  
+10. Upon conclusion of the DCPPC-RFC posting period, the submitting team will have ten business days to prepare a summary to address comments provided in the DCPPC-RFC. In the summary, agreement and disagreement should be clearly articulated, and proposed decisions to be made, or not made, are clearly articulated. If there are disagreements with the DCPPC-RFC, those disagreements should be clearly articulated in the summary by the authors of the DCPPC-RFC, to the satisfaction of the disagreeing parties (that is, in the summary the articulation of the disagreement is to be to the satisfaction of the disagreeing party, not that the DCPPC-RFC itself is proposed to the satisfaction of all parties).  
 
-5. Once an approved DCPPC-RFC-# is posted to {leads@dcppc.groups.io, nih-dcppc general slack channel}, the NIH Data Commons community will be proactively encouraged to comment on it during the requested posting period.  
-   a. DCPPC project management staff will broadly announce the DCPPC RFC on the start date, halfway through the suggested duration, the day prior, and on the RFC end date.  
+### DCPPC-RFC
+11. Except for the header, the format of the DCPPC-RFC is not prescriptive and should contain content sufficient for the DCPPC-RFC-Type (defined next) and any supporting information or other documents. The DCPPC-RFC header placed at the beginning of the DCPPC-RFC should contain this information:  
+   * DCPPC-RFC-#: (NOTE: Leave blank as this will be assigned by DCPPC-RFC-Governance in Step 4 upon initial submission)  
+   * DCPPC-RFC-Title:  
+   * DCPPC-RFC-Type: (click the type for definition):  
+    * [Design Principle](#design-principle)
+    * [Process](#process)
+    * [Consensus Building](#consensus-building)
+    * [Informational](#informational)
+   * Name of the person who is to be Point of Contact for the RFC:  
+   * Email of the person who is to be Point of Contact for the RFC:  
+   * Submitting Team:  
+   * Requested RFC posting start date:  
+   * Date Emailed for consideration:  
+   * DCPPC-RFC-Status: (DCPPC-RFC-Governance will assign)  
+     * Pending  
+     * Active and open for comment  
+   * URL Link to GitHub : (DCPPC-RFC-Governance will assign a link of where RFC documents are stored)  
+12. Email the DCPPC-RFC text to DCPPC-RFC-Governance at RFCGovernance@dcppc.groups.io.  
+   a. Within 2 business days, they will either approve or email back the Point of Contact requesting refinement or clarification.  
+   b. If approved, the Governance project management team will  
+     i. assign a unique DCPPC-RFC tag based on the pattern: DCPPC-RFC-# where # is an assigned sequential number;  
+     ii. move the DCPPC-RFC to its GitHub location;  
+     iii. update the relevant header information;  
+     iv. and post to Distribution Lists.  
+13. Once an approved DCPPC-RFC is posted to Distribution Lists, the NIH Data Commons community will be proactively encouraged to comment on it during the requested posting period.  
+   a. DCPPC-RFC-Governance project management staff will announce the DCPPC-RFC to Distribution Lists on the start date, halfway through the suggested duration, the day prior, and on the RFC end date.  
    b. Cross-posting by any NIH DCPPC community members is encouraged.  
-
-6. Upon conclusion of the DCPPC-RFC-# posting period, the Submitting Individual or Group will have ten business days to prepare a summary to address comments provided in the DCPPC-RFC-#. In the summary, agreement and disagreement should be clearly articulated, and proposed decisions to be made, or not made, are clearly articulated. If there are disagreements with the RFC, those disagreements should be clearly articulated in the summary by the authors of the RFC, to the satisfaction of the disagreeing parties (that is, in the summary the articulation of the disagreement is to be to the satisfaction of the disagreeing party, not that the RFC itself is proposed to the satisfaction of all parties).
-
-7. Upon conclusion of the DCPPC-RFC-# posting period or at their discretion, the DCPPC-RFC-Governance will assign one of the following DCPPC-RFC-Status values concluding the DCPPC-RFC process without further iteration:  
+14. Upon conclusion of the DCPPC-RFC posting period, the submitting team will have ten business days to prepare a summary to address comments provided in the DCPPC-RFC. In the summary, agreement and disagreement should be clearly articulated, and proposed decisions to be made, or not made, are clearly articulated. If there are disagreements with the DCPPC-RFC, those disagreements should be clearly articulated in the summary by the authors of the DCPPC-RFC, to the satisfaction of the disagreeing parties (that is, in the summary the articulation of the disagreement is to be to the satisfaction of the disagreeing party, not that the DCPPC-RFC itself is proposed to the satisfaction of all parties).  
+15.  Upon conclusion of the DCPPC-RFC-# posting period or at their discretion, the DCPPC-RFC-Governance will assign one of the following DCPPC-RFC-Status values concluding the DCPPC-RFC process without further iteration:  
    a. Resolved  
    b. Merged (i.e. with another DCPPC-RFC)  
    c. Postponed  
    d. Unsuccessful  
    e. Withdrawn  
-
-8. All documents from a concluded DCPPC-RFC with all contributor comments will be placed in https://github.com/dcppc/internal/rfcs. 
+16. All documents from a concluded DCPPC-RFC with all contributor comments will be placed in https://github.com/dcppc/internal/rfcs. 
 
 
 -----------
