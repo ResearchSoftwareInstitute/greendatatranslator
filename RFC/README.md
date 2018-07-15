@@ -38,21 +38,21 @@ Below are the DCPPC-RFC instructions and guidelines. Steps 1-3 are for Team-DRAF
 ### DCPPC-DRAFT
 4. Before submission, add the below header to your document. Except for the header, the format of the DCPPC-DRAFT is not prescriptive and should contain content sufficient for the DCPPC-DRAFT-Type (defined next) and any supporting information or other documents.  
 The header placed at the beginning of the DCPPC-DRAFT should contain this information:
-   * DCPPC-DRAFT-#: (NOTE: Leave blank as this will be assigned by DCPPC-RFC-Governance upon initial submission)   
-   * DCPPC-DRAFT-Title:  
-   * DCPPC-DRAFT-Type: (click the type for definition):  
+  * DCPPC-DRAFT-#: (NOTE: Leave blank as this will be assigned by DCPPC-RFC-Governance upon initial submission)   
+  * DCPPC-DRAFT-Title:  
+  * DCPPC-DRAFT-Type: (click the type for definition):  
     * [Design Principle](#design-principle)  
     * [Process](#process)  
     * [Consensus Building](#consensus-building)  
     * [Informational](#informational)  
-   * Name of the person who is to be Point of Contact for the DCPPC-DRAFT:  
-   * Email of the person who is to be Point of Contact for the DCPPC-DRAFT:  
-   * Submitting Team:  
-   * Requested DCPPC-DRAFT posting start date:  
-   * Date Emailed for consideration:  
-   * DCPPC-DRAFT-Status: (DCPPC-RFC-Governance will assign)  
-     * Pending  
-     * Active and open for comment  
+  * Name of the person who is to be Point of Contact for the DCPPC-DRAFT:  
+  * Email of the person who is to be Point of Contact for the DCPPC-DRAFT:  
+  * Submitting Team:  
+  * Requested DCPPC-DRAFT posting start date:  
+  * Date Emailed for consideration:  
+  * DCPPC-DRAFT-Status: (DCPPC-RFC-Governance will assign)  
+    * Pending  
+    * Active and open for comment  
 
 5. Email the DCPPC-DRAFT text to DCPPC-RFC-Governance at RFCGovernance@dcppc.groups.io.  
 6. After submission to the DCPPC-RFC-Governance, DCPPC-RFC-Governance project management staff will move the document into a new folder in the shared DCPPC folder and promulgate widely, via email at broadcast@dcppc.groups.io, project-managers@dcppc.groups.io, and the NIH weekly email and via nih-dcppc.slack.com on the general channel and project manager channel (“Distribution List”).  
