@@ -8,7 +8,7 @@ The (proposed) DCPPC RFC Process is modeled after industry RFC processes and inc
 
 ### Team-DRAFT
 The Team-Draft is a document that a team wishing to develop an RFC should create and share within the team. It should be located in place accessible to the entire proposing team, but does not need to made broadly available to the Consortium. The Team-Draft is a document containing preliminary technical specifications, results of related work, or other technical information. Use a Team-Draft to iterate within the proposing team on a design principle, process, guideline, or informational topic before it is polished and before it may be ready to be proposed to the broader DCPPC community for adoption or dissemination. Drafts are intended to be work-in-progress documents for work that may eventually be published as a Request for Comments (RFC). 
-When the proposing team has reached consensus on the contents of that draft, the team submits the Team-Draft to the DCPPC-RFC-Governance (currently Stan, Owen and Titus).  
+When the proposing team has reached consensus on the contents of that draft, the team submits the Team-Draft to the [DCPPC-RFC-Governance](#rfc-governance).  
 
 ### DCPPC-DRAFT
 After submission, the DCPPC-RFC-Governance creates the DCPPC-DRAFT, which will be promulgated broadly to the Consortium and opened for comment. Using Consortium comments, the proposing team should iterate on the design principle, process, guideline, or informational topic until general consensus is reached. Not all DCPPC-DRAFTs need to become a DCPPC-RFC, nor is it appropriate to refer to an effort as a “Draft RFC” per industry RFC convention. Rather, iterate and refine a DCPPC-DRAFT, and if desired, submit it as a DCPPC-RFC when ready.  
@@ -170,7 +170,10 @@ https://www.python.org/dev/peps/pep-0001/
 https://opensource.com/business/12/6/architecture-participation  
 http://aturon.github.io/2018/05/25/listening-part-1/  
 
-
+### RFC Governance
+Titus Brown   
+Owen White  
+Stan Ahalt  
 
 
 
