@@ -41,10 +41,10 @@ The header placed at the beginning of the DCPPC-DRAFT should contain this inform
    * DCPPC-DRAFT-#: (NOTE: Leave blank as this will be assigned by DCPPC-RFC-Governance upon initial submission)   
    * DCPPC-DRAFT-Title:  
    * DCPPC-DRAFT-Type: (click the type for definition):  
-    * [Design Principle](#design-principle)
-    * [Process](#process)
-    * [Consensus Building](#consensus-building)
-    * [Informational](#informational)
+    * [Design Principle](#design-principle)  
+    * [Process](#process)  
+    * [Consensus Building](#consensus-building)  
+    * [Informational](#informational)  
    * Name of the person who is to be Point of Contact for the DCPPC-DRAFT:  
    * Email of the person who is to be Point of Contact for the DCPPC-DRAFT:  
    * Submitting Team:  
