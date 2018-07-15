@@ -1,5 +1,4 @@
-# DCPPC-DRAFT  
-## Proposed DCPPC RFC Implementation Process  
+# Proposed DCPPC RFC Implementation Process  
 -----------  
 
 The comments and suggestions in this document are being used to stage an RFC for the DCPPC RFC process itself.
