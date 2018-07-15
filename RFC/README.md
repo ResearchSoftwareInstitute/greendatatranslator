@@ -63,22 +63,22 @@ Below are the DCPPC-RFC instructions and guidelines. Steps 1-3 are for Team-DRAF
 
 ### DCPPC-RFC
 11. Except for the header, the format of the DCPPC-RFC is not prescriptive and should contain content sufficient for the DCPPC-RFC-Type (defined next) and any supporting information or other documents. The DCPPC-RFC header placed at the beginning of the DCPPC-RFC should contain this information:  
-   * DCPPC-RFC-#: (NOTE: Leave blank as this will be assigned by DCPPC-RFC-Governance in Step 4 upon initial submission)  
-   * DCPPC-RFC-Title:  
-   * DCPPC-RFC-Type: (click the type for definition):  
+  * DCPPC-RFC-#: (NOTE: Leave blank as this will be assigned by DCPPC-RFC-Governance in Step 4 upon initial submission)  
+  * DCPPC-RFC-Title:  
+  * DCPPC-RFC-Type: (click the type for definition):  
     * [Design Principle](#design-principle)
     * [Process](#process)
     * [Consensus Building](#consensus-building)
     * [Informational](#informational)
-   * Name of the person who is to be Point of Contact for the RFC:  
-   * Email of the person who is to be Point of Contact for the RFC:  
-   * Submitting Team:  
-   * Requested RFC posting start date:  
-   * Date Emailed for consideration:  
-   * DCPPC-RFC-Status: (DCPPC-RFC-Governance will assign)  
-     * Pending  
-     * Active and open for comment  
-   * URL Link to GitHub : (DCPPC-RFC-Governance will assign a link of where RFC documents are stored)  
+  * Name of the person who is to be Point of Contact for the RFC:  
+  * Email of the person who is to be Point of Contact for the RFC:  
+  * Submitting Team:  
+  * Requested RFC posting start date:  
+  * Date Emailed for consideration:  
+  * DCPPC-RFC-Status: (DCPPC-RFC-Governance will assign)  
+    * Pending  
+    * Active and open for comment  
+  * URL Link to GitHub : (DCPPC-RFC-Governance will assign a link of where RFC documents are stored)  
 12. Email the DCPPC-RFC text to DCPPC-RFC-Governance at RFCGovernance@dcppc.groups.io.  
    a. Within 2 business days, they will either approve or email back the Point of Contact requesting refinement or clarification.  
    b. If approved, the Governance project management team will  
